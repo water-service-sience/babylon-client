@@ -1,0 +1,30 @@
+".container": {
+	backgroundColor:"white"
+},
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#000"
+}, 
+"#post" : {
+	top : "10%"
+},
+"#look" : {
+	top : "30%"
+}
+"#setting" : {
+	bottom : "10%",
+	right : "5%"
+}
+
+".big_button" : {
+	width : "80%",
+	height : Ti.UI.SIZE,
+	color : "#000000"
+},
+
+".small_button" : {
+	width : "30%",
+	height : Ti.UI.SIZE,
+	color : "#550000"
+}

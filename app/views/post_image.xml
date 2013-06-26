@@ -1,0 +1,11 @@
+<Alloy>
+	<Window class="container">
+		<Label id="title">Hello, World</Label>
+		
+		
+		<Label id="nickname_label">ニックネーム</Label><TextField id="nickname"></TextField>
+		
+		<Button id="create" onClick="createAccount">アカウント作成</Button>
+		
+	</Window>
+</Alloy>
