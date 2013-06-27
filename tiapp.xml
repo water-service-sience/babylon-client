@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>jp.utokyo.babylon</id>
+    <id>jp.utokyo.wss.babylon</id>
     <name>babylon-client</name>
     <version>1.0</version>
     <publisher>takezoux2</publisher>

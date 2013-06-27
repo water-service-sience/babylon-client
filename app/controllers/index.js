@@ -3,6 +3,10 @@ var api = require("api");
 var client = api.client;
 
 function onPostClicked(e) {
+	var view = Alloy.createController("post_image").getView();
+	
+	Alloy.Globals.naviCon.open(view);
+	
 }
 
 function onLookClicked(e) {
@@ -20,5 +24,5 @@ $.index.addEventListener("open",function(){
 	}
 });
 
-
-$.index.open();
+Alloy.Globals.naviCon.open($.index);
+//$.index.open();

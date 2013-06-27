@@ -1,5 +1,8 @@
 function Controller() {
-    function onPostClicked() {}
+    function onPostClicked() {
+        var view = Alloy.createController("post_image").getView();
+        Alloy.Globals.naviCon.open(view);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -50,7 +53,7 @@ function Controller() {
             view.open();
         }
     });
-    $.index.open();
+    Alloy.Globals.naviCon.open($.index);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);
     _.extend($, exports);
 }

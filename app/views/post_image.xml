@@ -1,11 +1,14 @@
 <Alloy>
 	<Window class="container">
-		<Label id="title">Hello, World</Label>
+		<Label id="title">投稿</Label>
 		
+		<ImageView id="photo"></ImageView>
 		
-		<Label id="nickname_label">ニックネーム</Label><TextField id="nickname"></TextField>
+		<Label id="bad">悪い</Label><Label id="good">良い</Label>
+		<Slider id="goodness"></Slider>
 		
-		<Button id="create" onClick="createAccount">アカウント作成</Button>
+		<Button id="post" onClick="onPostClicked">投稿</Button>
+		<Button id="recapture" onClick="onRecaptureClicked">再撮影</Button>
 		
 	</Window>
 </Alloy>

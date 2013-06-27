@@ -19,13 +19,14 @@ function Controller() {
     $.__views.title = Ti.UI.createLabel({
         top: "10%",
         height: Ti.UI.SIZE,
-        text: "Hello, World",
+        text: "アカウント作成",
         id: "title"
     });
     $.__views.create_account.add($.__views.title);
     $.__views.nickname_label = Ti.UI.createLabel({
         left: "5%",
         width: "20%",
+        top: "35%",
         font: {
             fontSize: "16dp",
             fontWeight: "bold"
@@ -37,6 +38,7 @@ function Controller() {
     $.__views.nickname = Ti.UI.createTextField({
         left: "30%",
         width: "65%",
+        top: "35%",
         backgroundColor: "#ffffff",
         font: {
             fontSize: "16dp",

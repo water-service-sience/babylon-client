@@ -2,7 +2,7 @@
 
 function createClient() {
 	var c = {
-		isLogin : false,
+		isLogin : true,
 		nickname : "hoge"
 	};
 	return c;

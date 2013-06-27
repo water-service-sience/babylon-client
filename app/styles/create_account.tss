@@ -4,7 +4,6 @@
 },
 
 "#title" : {
-
     top : "10%",
     height : Ti.UI.SIZE
 },
@@ -20,6 +19,7 @@
 "#nickname" : {
     left : "30%",
     width : "65%",
+    top : "35%",
     backgroundColor : "#ffffff",
     font :  {
         fontSize: '16dp',
