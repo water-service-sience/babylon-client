@@ -1,0 +1,8 @@
+".container": {
+	backgroundColor: "white"
+},
+"#logout_button" : {
+	bottom : "5%",
+	width : "80%"
+}
+

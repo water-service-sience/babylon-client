@@ -1,0 +1,7 @@
+<Alloy>
+	<Window class="container">
+		
+		
+		<Button id="logout_button" onClick="onLogoutClicked">ログアウト</Button>
+	</Window>
+</Alloy>

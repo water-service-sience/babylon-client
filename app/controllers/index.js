@@ -15,7 +15,9 @@ function onLookClicked(e) {
 	Alloy.Globals.naviCon.open(view);
 }
 function onSettingClicked(e){
+	var view = Alloy.createController("setting").getView();
 	
+	Alloy.Globals.naviCon.open(view);
 }
 
 $.index.addEventListener("open",function(){

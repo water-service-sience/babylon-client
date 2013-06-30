@@ -1,9 +1,9 @@
 function Controller() {
     function createAccount() {
         alert("Create account " + $.nickname.value);
-        client.isLogin = true;
-        client.nickname = $.nickname.value;
-        $.create_account.close();
+        client.createAccount($.nickname.value, function(success) {
+            success ? $.create_account.close() : alert("Fail to create account");
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;

@@ -7,6 +7,10 @@ function Controller() {
         var view = Alloy.createController("look_menu").getView();
         Alloy.Globals.naviCon.open(view);
     }
+    function onSettingClicked() {
+        var view = Alloy.createController("setting").getView();
+        Alloy.Globals.naviCon.open(view);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
@@ -57,6 +61,7 @@ function Controller() {
         id: "setting"
     });
     $.__views.index.add($.__views.setting);
+    onSettingClicked ? $.__views.setting.addEventListener("click", onSettingClicked) : __defers["$.__views.setting!click!onSettingClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var api = require("api");
@@ -70,6 +75,7 @@ function Controller() {
     Alloy.Globals.naviCon.open($.index);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);
     __defers["$.__views.look!click!onLookClicked"] && $.__views.look.addEventListener("click", onLookClicked);
+    __defers["$.__views.setting!click!onSettingClicked"] && $.__views.setting.addEventListener("click", onSettingClicked);
     _.extend($, exports);
 }
 

@@ -8,9 +8,14 @@ function createAccount(e){
 	
 	alert("Create account " + $.nickname.value);
 	
-	client.isLogin = true;
-	client.nickname = $.nickname.value;
+	client.createAccount($.nickname.value,function(success){
+		if(success){
+			$.create_account.close();
+		}else{
+			alert("Fail to create account");
+		}
+	});
 	
-	$.create_account.close();
+	
 	
 }
