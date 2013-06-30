@@ -3,6 +3,12 @@ var photoData = "";
 
 function onPostClicked(e){
 	
+	Alloy.Globals.api.postManager.post(photoData,$.goodness.value);
+	
+	var view = Alloy.createController("finish_post").getView();
+	Alloy.Globals.naviCon.home();
+	Alloy.Globals.naviCon.open(view);
+	
 }
 
 function onRecaptureClicked(e){
@@ -45,7 +51,7 @@ function showCamera() {
 			}
 		},
 		//overlay : overlay,
-   	    saveToPhotoGallery:true,
+   	    saveToPhotoGallery:false,
 		mediaTypes : Ti.Media.MEDIA_TYPE_PHOTO,
 	});
 }

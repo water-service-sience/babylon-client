@@ -1,0 +1,12 @@
+<Alloy>
+	<Window class="container">
+		<!-- Note the ns attribute is used to change the default namespace. -->
+        <View id="map" ns="Ti.Map" onClick="mapClicked"
+            animate="true" regionFit="true" userLocation="true"
+            mapType="Ti.Map.STANDARD_TYPE" >
+
+            <!-- Place other child views here, such as an ImageView to add an overlay. -->
+
+        </View>
+	</Window>
+</Alloy>

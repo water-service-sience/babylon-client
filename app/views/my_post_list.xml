@@ -1,0 +1,5 @@
+<Alloy>
+	<Window class="container">
+		<ListView id="my_posts" onItemclick="onPostSelected"></ListView>
+	</Window>
+</Alloy>

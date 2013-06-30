@@ -15,3 +15,4 @@ var api = require('api');
 var NavigationController = require('NavigationController'); // use the NavigationController library
 var navController = new NavigationController();
 Alloy.Globals.naviCon = navController;
+Alloy.Globals.api = api;

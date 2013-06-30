@@ -1,0 +1,7 @@
+<Alloy>
+	<Window class="container">
+		<ImageView id="photo"></ImageView>
+		<Label id="category_label">内容</Label>
+		
+	</Window>
+</Alloy>

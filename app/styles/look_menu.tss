@@ -1,0 +1,17 @@
+".container": {
+	 backgroundColor:"#ddddff"
+},
+"#my_lands" : {
+	top : "3%",
+	left : "3%",
+	right : "3%",
+	bottom : "43%"
+},
+
+"#show_map" : {
+	top : "65%"
+},
+"#show_self_posts" : {
+	top : "80%"
+}
+

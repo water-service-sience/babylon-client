@@ -6,11 +6,15 @@
 	height: Ti.UI.SIZE,
 	color: "#000"
 }, 
+"#status_message" : {
+	top:"3%",
+	color : "red"
+},
 "#post" : {
-	top : "10%"
+	top : "15%"
 },
 "#look" : {
-	top : "30%"
+	top : "35%"
 }
 "#setting" : {
 	bottom : "10%",

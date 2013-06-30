@@ -8,4 +8,6 @@ var navController = new NavigationController();
 
 Alloy.Globals.naviCon = navController;
 
+Alloy.Globals.api = api;
+
 Alloy.createController("index");

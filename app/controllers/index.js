@@ -10,7 +10,9 @@ function onPostClicked(e) {
 }
 
 function onLookClicked(e) {
+	var view = Alloy.createController("look_menu").getView();
 	
+	Alloy.Globals.naviCon.open(view);
 }
 function onSettingClicked(e){
 	
@@ -21,7 +23,13 @@ $.index.addEventListener("open",function(){
 		var view = Alloy.createController("create_account").getView();
 		view.open();
 		
-	}
+	}/*else{
+		var view = Alloy.createController("post_detail").getView();
+	    Alloy.Globals.naviCon.open(view);
+	
+	}*/
+	
+	
 });
 
 Alloy.Globals.naviCon.open($.index);

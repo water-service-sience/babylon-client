@@ -1,0 +1,11 @@
+<Alloy>
+	<Window class="container">
+		
+		<ListView id="my_lands" onItemclick="onSelectOwnLand">
+		</ListView>
+		
+		<Button id="show_map" onClick="onShowMapClicked">周辺を地図で見る</Button>
+		<Button id="show_self_posts" onClick="onShowSelfPostClicked">自分の投稿を見る</Button>
+		
+	</Window>
+</Alloy>

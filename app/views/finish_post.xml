@@ -1,0 +1,15 @@
+<Alloy>
+	<Window class="container">
+		<Label id="title">投稿ありがとうございます</Label>
+		
+		<Label id="subtitle">追加情報の編集</Label>
+		<!--<Label id="category_label">問い合わせ内容</Label>
+		<Picker id="category"></Picker> -->
+		
+		<TextField id="comment"></TextField>
+		
+		<Button id="save_button" onClick="onSaveClicked">追加情報を送信</Button>
+		
+		<Button id="return_button" onClick="onReturnClicked">戻る</Button>
+	</Window>
+</Alloy>

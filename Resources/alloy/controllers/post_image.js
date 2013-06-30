@@ -1,5 +1,10 @@
 function Controller() {
-    function onPostClicked() {}
+    function onPostClicked() {
+        Alloy.Globals.api.postManager.post(photoData, $.goodness.value);
+        var view = Alloy.createController("finish_post").getView();
+        Alloy.Globals.naviCon.home();
+        Alloy.Globals.naviCon.open(view);
+    }
     function onRecaptureClicked() {
         showCamera();
     }
@@ -34,7 +39,7 @@ function Controller() {
                     a.show();
                 }
             },
-            saveToPhotoGallery: true,
+            saveToPhotoGallery: false,
             mediaTypes: Ti.Media.MEDIA_TYPE_PHOTO
         });
     }

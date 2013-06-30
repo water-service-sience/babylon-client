@@ -1,0 +1,17 @@
+<Alloy>
+	<Window class="container">
+		<ScrollView id="scroll_view">
+		
+		<ImageView id="photo"></ImageView>
+		<Label id="date">2013年6月23日</Label>
+		<Label id="goodness_label">評価</Label><Label id="goodness">良い</Label>
+		<Label id="water_height_label">水位</Label><Label id="water_height">22センチ</Label>
+		
+		<TextField id="comment"></TextField>
+		<Button id="send_comment">コメントする</Button>
+		
+		
+		<Button id="from_admin">管理者からの返信を見る</Button>
+		</ScrollView>
+	</Window>
+</Alloy>

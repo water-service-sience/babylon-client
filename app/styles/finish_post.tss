@@ -1,0 +1,48 @@
+".container": {
+	 backgroundColor:"#ddddff"
+},
+"#title" : {
+	top : "2%"
+},
+"#subtitle" : {
+	top : "10%"
+},
+"#category_label" : {
+	textAlign : "left",
+    left : "5%",
+	top : "25%",
+    font :  {
+        fontSize: '13dp',
+        fontWeight: 'bold'
+    }	 
+},
+"#category" : {
+	left : "40%",
+	top : "17%",
+	height : "10%",
+	width : "50%",
+    font :  {
+        fontSize: '13dp',
+        fontWeight: 'bold'
+    }	 
+},
+"#comment" : {
+	left : "5%",
+	top : "35%",
+	width : "90%",
+	height : "40%",
+	backgroundColor:"white"
+},
+"#save_button" : {
+	top : "80%",
+	left : "5%",
+	width : "60%"
+},
+"#return_button" : {
+	top : "80%",
+	left : "70%",
+	width : "25%"
+}
+
+
+
