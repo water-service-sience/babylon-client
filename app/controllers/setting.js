@@ -10,4 +10,10 @@ function onLogoutClicked(){
 	view.open();
 }
 
+$.setting.addEventListener("open",function(){
+	var api = Alloy.Globals.api;
+	$.nickname.text = api.client.nickname;
+	$.user_id.text = api.client.userId;
+});
+
 

@@ -6,7 +6,6 @@ var client = api.client;
 
 function createAccount(e){
 	
-	alert("Create account " + $.nickname.value);
 	
 	client.createAccount($.nickname.value,function(success){
 		if(success){

@@ -1,6 +1,32 @@
 ".container": {
 	backgroundColor: "white"
 },
+"#user_id_label" : {
+	top : "5%",
+	left : "2%",
+	width : "40%",
+	textAlign : "left"
+},
+"#user_id" : {
+	top : "5%",
+	left : "45%",
+	width : "40%",
+	textAlign : "left"
+},
+
+"#nickname_label" : {
+	top : "15%",
+	left : "2%",
+	width : "40%",
+	textAlign : "left"
+},
+"#nickname" : {
+	top : "15%",
+	left : "45%",
+	width : "40%",
+	textAlign : "left"
+},
+
 "#logout_button" : {
 	bottom : "5%",
 	width : "80%"

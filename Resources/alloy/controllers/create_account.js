@@ -1,6 +1,5 @@
 function Controller() {
     function createAccount() {
-        alert("Create account " + $.nickname.value);
         client.createAccount($.nickname.value, function(success) {
             success ? $.create_account.close() : alert("Fail to create account");
         });

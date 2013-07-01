@@ -1,9 +1,10 @@
 function Controller() {
     function onPostClicked() {
-        Alloy.Globals.api.postManager.post(photoData, $.goodness.value);
-        var view = Alloy.createController("finish_post").getView();
-        Alloy.Globals.naviCon.home();
-        Alloy.Globals.naviCon.open(view);
+        Alloy.Globals.api.postManager.post(photoData, $.goodness.value, function() {
+            var view = Alloy.createController("finish_post").getView();
+            Alloy.Globals.naviCon.home();
+            Alloy.Globals.naviCon.open(view);
+        });
     }
     function onRecaptureClicked() {
         showCamera();
@@ -30,11 +31,7 @@ function Controller() {
                 var a = Titanium.UI.createAlertDialog({
                     title: "Camera"
                 });
-                if (error.code == Titanium.Media.NO_CAMERA) {
-                    a.setMessage("No camera");
-                    a.show();
-                    showGallery();
-                } else {
+                if (error.code == Titanium.Media.NO_CAMERA) showGallery(); else {
                     a.setMessage("Unexpected error: " + error.code);
                     a.show();
                 }

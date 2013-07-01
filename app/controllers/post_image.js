@@ -3,11 +3,14 @@ var photoData = "";
 
 function onPostClicked(e){
 	
-	Alloy.Globals.api.postManager.post(photoData,$.goodness.value);
+	Alloy.Globals.api.postManager.post(photoData,$.goodness.value,function(result){
+		
+		var view = Alloy.createController("finish_post").getView();
+		Alloy.Globals.naviCon.home();
+		Alloy.Globals.naviCon.open(view);
+		
+	});
 	
-	var view = Alloy.createController("finish_post").getView();
-	Alloy.Globals.naviCon.home();
-	Alloy.Globals.naviCon.open(view);
 	
 }
 
@@ -42,8 +45,8 @@ function showCamera() {
 				title : 'Camera'
 			});
 			if (error.code == Titanium.Media.NO_CAMERA) {
-				a.setMessage('No camera');
-			    a.show();
+				//a.setMessage('No camera');
+			    //a.show();
 			    showGallery();
 			} else {
 				a.setMessage('Unexpected error: ' + error.code);
