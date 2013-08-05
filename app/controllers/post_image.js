@@ -5,6 +5,8 @@ function onPostClicked(e){
 	
 	Alloy.Globals.api.postManager.post(photoData,$.goodness.value,function(result){
 		
+		Alloy.Globals.lastPost = result;
+		
 		var view = Alloy.createController("finish_post").getView();
 		Alloy.Globals.naviCon.home();
 		Alloy.Globals.naviCon.open(view);

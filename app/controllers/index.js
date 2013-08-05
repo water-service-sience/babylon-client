@@ -1,5 +1,6 @@
 
 var api = require("api");
+
 var client = api.client;
 
 function onPostClicked(e) {
@@ -24,7 +25,6 @@ $.index.addEventListener("open",function(){
 	if(!client.isLogin){
 		var view = Alloy.createController("create_account").getView();
 		view.open();
-		
 	}/*else{
 		var view = Alloy.createController("post_detail").getView();
 	    Alloy.Globals.naviCon.open(view);

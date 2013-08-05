@@ -1,6 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-var ServerUrl = "http://localhost:9000";
+//var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 function DB(){
 	var dbName = "userpref";
 	this.dbName = dbName;
@@ -218,7 +219,7 @@ var client = new APIClient();
 
 function PostManager() {
 	
-	
+	self = this;
 	this.myPosts = [];
 	
 	this.post = function(image, goodness,callback){
@@ -237,29 +238,62 @@ function PostManager() {
 					var imageId = result.imageId;
 					Ti.API.info("Success to upload image : " + imageId);
 				    
-					callback(null);
+				    var obj = {
+				    	"imageId" : imageId,
+				    	"latitude" : lat,
+				    	longitude : lon,
+				    	goodness : goodness
+				    	
+				    };
+				    
+				    client.post("/post",obj,function(post){
+				    	post.photo = image;
+				    	self.myPosts.push(post);
+				    	
+				    	Ti.API.info("Success to post:" + post.postId)
+						callback(post);
+				    });
 				});
-				
-				
+		});
+	};
+	
+	this.updatePost = function( updateParam , callback){
+		client.post("/post/update",updateParam,function(e){
+			
+			Ti.API.info("Succcess to update post:" + updateParam.postId);
+			callback(e);
 		});
 	};
 	
 	this.getNearByPosts = function(/*function(postList)*/ callback ){
-		callback(m.myPosts);
+		
+		Titanium.Geolocation.getCurrentPosition(function(e){
+			var param = {
+				lat : e.coords.latitude,
+				lot : e.coords.longitude
+			};
+			
+			client.get("/post/near",
+			  param,function(posts){
+				callback(posts);
+			});
+		});
+		
 	};
 	
 	this.getMyPosts = function(callback){
-		callback(m.myPosts);
+		callback(self.myPosts);
 	};
 	return this;
 }
 
 function LandManager(){
-	
-	this.getOwnLonds = function(){
-		return [{title : "１番の田んぼ"},
-		{title:"２番の田んぼ"},
-		{title:"海の田んぼ"}]
+	this.getOwnLands = function(){
+		return [
+        { title :"１番の田んぼ"},
+        { title :"２番の田んぼ"},
+        { title :"海の田んぼ"}
+        ];
 	
 	};
 	

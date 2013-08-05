@@ -44,12 +44,13 @@ function Controller() {
             });
         });
         Alloy.Globals.api.postManager.getNearByPosts(function(posts) {
+            Ti.API.debug("Near posts are " + posts);
             var annotations = [];
             for (var i in posts) {
                 var d = posts[i];
                 var anno = Titanium.Map.createAnnotation({
-                    latitude: d.lat,
-                    longitude: d.lon,
+                    latitude: d.latitude,
+                    longitude: d.longitude,
                     title: d.title,
                     pincolor: Titanium.Map.ANNOTATION_RED,
                     animate: true,

@@ -137,6 +137,7 @@ function APIClient() {
 }
 
 function PostManager() {
+    self = this;
     this.myPosts = [];
     this.post = function(image, goodness, callback) {
         Titanium.Geolocation.getCurrentPosition(function(e) {
@@ -147,21 +148,46 @@ function PostManager() {
             client.postBinary("/photo/upload", image, function() {}, function(result) {
                 var imageId = result.imageId;
                 Ti.API.info("Success to upload image : " + imageId);
-                callback(null);
+                var obj = {
+                    imageId: imageId,
+                    latitude: lat,
+                    longitude: lon,
+                    goodness: goodness
+                };
+                client.post("/post", obj, function(post) {
+                    post.photo = image;
+                    self.myPosts.push(post);
+                    Ti.API.info("Success to post:" + post.postId);
+                    callback(post);
+                });
             });
         });
     };
+    this.updatePost = function(updateParam, callback) {
+        client.post("/post/update", updateParam, function(e) {
+            Ti.API.info("Succcess to update post:" + updateParam.postId);
+            callback(e);
+        });
+    };
     this.getNearByPosts = function(callback) {
-        callback(m.myPosts);
+        Titanium.Geolocation.getCurrentPosition(function(e) {
+            var param = {
+                lat: e.coords.latitude,
+                lot: e.coords.longitude
+            };
+            client.get("/post/near", param, function(posts) {
+                callback(posts);
+            });
+        });
     };
     this.getMyPosts = function(callback) {
-        callback(m.myPosts);
+        callback(self.myPosts);
     };
     return this;
 }
 
 function LandManager() {
-    this.getOwnLonds = function() {
+    this.getOwnLands = function() {
         return [ {
             title: "１番の田んぼ"
         }, {
@@ -175,7 +201,7 @@ function LandManager() {
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
 
-var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 var client = new APIClient();
 

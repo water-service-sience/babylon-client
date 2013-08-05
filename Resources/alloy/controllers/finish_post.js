@@ -1,8 +1,16 @@
 function Controller() {
     function onSaveClicked() {
-        Alloy.Globals.naviCon.home();
+        var param = {
+            postId: postData.postId,
+            comment: $.comment.value
+        };
+        Alloy.Globals.api.postManager.updatePost(param, function() {
+            Alloy.Globals.lastPost = null;
+            Alloy.Globals.naviCon.home();
+        });
     }
     function onReturnClicked() {
+        Alloy.Globals.lastPost = null;
         Alloy.Globals.naviCon.home();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -57,7 +65,10 @@ function Controller() {
     onReturnClicked ? $.__views.return_button.addEventListener("click", onReturnClicked) : __defers["$.__views.return_button!click!onReturnClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.finish_post.addEventListener("open", function() {});
+    var postData = null;
+    $.finish_post.addEventListener("open", function() {
+        postData = Alloy.Globals.lastPost;
+    });
     __defers["$.__views.save_button!click!onSaveClicked"] && $.__views.save_button.addEventListener("click", onSaveClicked);
     __defers["$.__views.return_button!click!onReturnClicked"] && $.__views.return_button.addEventListener("click", onReturnClicked);
     _.extend($, exports);

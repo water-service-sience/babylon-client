@@ -27,6 +27,7 @@ function Controller() {
     onPostSelected ? $.__views.my_posts.addEventListener("itemclick", onPostSelected) : __defers["$.__views.my_posts!itemclick!onPostSelected"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    reuire("calendar");
     $.my_post_list.addEventListener("open", function() {
         Alloy.Globals.api.postManager.getMyPosts(function(posts) {
             var dataSet = [];

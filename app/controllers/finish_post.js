@@ -1,17 +1,31 @@
 
+var postData = null;
 
 function onSaveClicked(){
-
-	Alloy.Globals.naviCon.home();
+	
+	var param = {
+		postId : postData.postId,
+		comment : $.comment.value
+	};
+	
+	Alloy.Globals.api.postManager.updatePost(param,function(e){
+		
+		Alloy.Globals.lastPost = null;
+		Alloy.Globals.naviCon.home();
+	});
+	
 }
 
 function onReturnClicked(){
+	Alloy.Globals.lastPost = null;
 
 	Alloy.Globals.naviCon.home();
 
 }
 
 $.finish_post.addEventListener("open",function(e){
+	postData = Alloy.Globals.lastPost;
+	
 	var data = [];
 	/*data[0]=Ti.UI.createPickerRow({title:'Bananas'});
 	data[1]=Ti.UI.createPickerRow({title:'Strawberries'});

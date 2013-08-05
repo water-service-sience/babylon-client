@@ -1,4 +1,5 @@
 
+var calendar = reuire("calendar");
 
 function onPostSelected(e){
 	
