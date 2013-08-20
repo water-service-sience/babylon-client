@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container">
+		
+		
+		<View id="calendar"></View>
+		<View id="posts">
+			<TableView id="postTable">
+				
+			</TableView>
+			
+		</View>
+	</Window>
+</Alloy>

@@ -3,6 +3,7 @@
 		<Label id="status_message">管理者からの通知が１件あります</Label>
 		<Button id="post" class="big_button" onClick="onPostClicked">農地情報を送信する</Button>
 		<Button id="look" class="big_button" onClick="onLookClicked">周辺の情報を見る</Button>
+		<Button id="look_mine" class="big_button" onClick="onLookMineClicked">自分の投稿を見る</Button>
 		
 		<Button id="setting" class="small_button" onClick="onSettingClicked">設定</Button>
 	</Window>

@@ -1,0 +1,1 @@
+module.exports = [{"isClass":true,"priority":10000.0029,"key":"container","style":{backgroundColor:"#ddddff",}},{"isId":true,"priority":100000.003,"key":"my_lands","style":{top:"3%",left:"3%",right:"3%",bottom:"43%",}},{"isId":true,"priority":100000.0031,"key":"show_map","style":{top:"65%",}},{"isId":true,"priority":100000.0032,"key":"show_self_posts","style":{top:"80%",}}];

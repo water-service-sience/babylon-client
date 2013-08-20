@@ -7,8 +7,10 @@ function Controller() {
         Alloy.Globals.naviCon.open(view);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "post_map";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -17,9 +19,9 @@ function Controller() {
         id: "post_map"
     });
     $.__views.post_map && $.addTopLevelView($.__views.post_map);
-    var __alloyId1 = [];
+    var __alloyId29 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId1,
+        annotations: __alloyId29,
         id: "map",
         ns: Ti.Map,
         animate: "true",

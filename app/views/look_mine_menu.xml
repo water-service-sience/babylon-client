@@ -1,0 +1,8 @@
+<Alloy>
+	<Window class="container">
+		
+		
+		<Button id="show_calendar" onClick="onShowCalendarClicked">カレンダー</Button>
+		
+	</Window>
+</Alloy>

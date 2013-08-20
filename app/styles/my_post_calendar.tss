@@ -1,0 +1,13 @@
+".container": {
+	backgroundColor: "white"
+},
+
+"#calendar" : {
+	backgroundColor : "#cceeff"
+},
+
+"#posts" : {
+	backgroundColor : "white",
+	visible : false
+
+}

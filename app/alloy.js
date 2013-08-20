@@ -11,8 +11,10 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 var api = require('api');
+var util = require("util");
 
 var NavigationController = require('NavigationController'); // use the NavigationController library
 var navController = new NavigationController();
 Alloy.Globals.naviCon = navController;
 Alloy.Globals.api = api;
+Alloy.Globals.util = util;

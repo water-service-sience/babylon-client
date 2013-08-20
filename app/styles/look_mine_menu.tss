@@ -1,0 +1,7 @@
+".container": {
+	backgroundColor: "white"
+}
+
+"#show_calendar" : {
+	top : "30%"
+}

@@ -1,10 +1,14 @@
 function Controller() {
     function onPostClicked() {
-        var view = Alloy.createController("post_image").getView();
+        var view = Alloy.createController("post_detail").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onLookClicked() {
         var view = Alloy.createController("look_menu").getView();
+        Alloy.Globals.naviCon.open(view);
+    }
+    function onLookMineClicked() {
+        var view = Alloy.createController("look_mine_menu").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onSettingClicked() {
@@ -12,8 +16,10 @@ function Controller() {
         Alloy.Globals.naviCon.open(view);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     var __defers = {};
@@ -51,6 +57,16 @@ function Controller() {
     });
     $.__views.index.add($.__views.look);
     onLookClicked ? $.__views.look.addEventListener("click", onLookClicked) : __defers["$.__views.look!click!onLookClicked"] = true;
+    $.__views.look_mine = Ti.UI.createButton({
+        width: "80%",
+        height: Ti.UI.SIZE,
+        color: "#000000",
+        top: "55%",
+        title: "自分の投稿を見る",
+        id: "look_mine"
+    });
+    $.__views.index.add($.__views.look_mine);
+    onLookMineClicked ? $.__views.look_mine.addEventListener("click", onLookMineClicked) : __defers["$.__views.look_mine!click!onLookMineClicked"] = true;
     $.__views.setting = Ti.UI.createButton({
         width: "30%",
         height: Ti.UI.SIZE,
@@ -75,6 +91,7 @@ function Controller() {
     Alloy.Globals.naviCon.open($.index);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);
     __defers["$.__views.look!click!onLookClicked"] && $.__views.look.addEventListener("click", onLookClicked);
+    __defers["$.__views.look_mine!click!onLookMineClicked"] && $.__views.look_mine.addEventListener("click", onLookMineClicked);
     __defers["$.__views.setting!click!onSettingClicked"] && $.__views.setting.addEventListener("click", onSettingClicked);
     _.extend($, exports);
 }

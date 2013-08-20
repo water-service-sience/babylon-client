@@ -16,6 +16,9 @@
 "#look" : {
 	top : "35%"
 }
+"#look_mine" : {
+    top : "55%"
+}
 "#setting" : {
 	bottom : "10%",
 	right : "5%"
