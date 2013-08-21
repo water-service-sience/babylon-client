@@ -1,10 +1,10 @@
 function Controller() {
     function onSelectOwnLand() {
-        var view = Alloy.createController("post_map").getView();
+        var view = Alloy.createController("show_map").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onShowMapClicked() {
-        var view = Alloy.createController("post_map").getView();
+        var view = Alloy.createController("show_map").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onShowSelfPostClicked() {
@@ -34,6 +34,7 @@ function Controller() {
     $.__views.look_menu.add($.__views.my_lands);
     onSelectOwnLand ? $.__views.my_lands.addEventListener("itemclick", onSelectOwnLand) : __defers["$.__views.my_lands!itemclick!onSelectOwnLand"] = true;
     $.__views.show_map = Ti.UI.createButton({
+        height: "38dp",
         top: "65%",
         title: "周辺を地図で見る",
         id: "show_map"
@@ -41,6 +42,7 @@ function Controller() {
     $.__views.look_menu.add($.__views.show_map);
     onShowMapClicked ? $.__views.show_map.addEventListener("click", onShowMapClicked) : __defers["$.__views.show_map!click!onShowMapClicked"] = true;
     $.__views.show_self_posts = Ti.UI.createButton({
+        height: "38dp",
         top: "80%",
         title: "自分の投稿を見る",
         id: "show_self_posts"

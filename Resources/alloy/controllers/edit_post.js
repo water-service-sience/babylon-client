@@ -16,6 +16,9 @@ function Controller() {
     });
     $.__views.edit_post.add($.__views.photo);
     $.__views.category_label = Ti.UI.createLabel({
+        font: {
+            fontSize: "20dp"
+        },
         text: "内容",
         id: "category_label"
     });

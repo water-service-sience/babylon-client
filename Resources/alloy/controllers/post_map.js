@@ -1,7 +1,6 @@
 function Controller() {
     function mapClicked(e) {
-        var anno = e.annotation;
-        Alloy.Globals.post = anno.post;
+        e.annotation;
         var controller = Alloy.createController("post_detail");
         var view = controller.getView();
         Alloy.Globals.naviCon.open(view);
@@ -19,9 +18,9 @@ function Controller() {
         id: "post_map"
     });
     $.__views.post_map && $.addTopLevelView($.__views.post_map);
-    var __alloyId29 = [];
+    var __alloyId58 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId29,
+        annotations: __alloyId58,
         id: "map",
         ns: Ti.Map,
         animate: "true",
@@ -34,31 +33,43 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.post_map.addEventListener("open", function() {
-        Titanium.Geolocation.getCurrentPosition(function(e) {
-            var lat = e.coords.latitude;
-            var lon = e.coords.longitude;
-            $.map.setLocation({
-                latitude: lat,
-                longitude: lon,
-                animate: false,
-                latitudeDelta: .04,
-                longitudeDelta: .04
-            });
+        var post = Alloy.Globals.post;
+        var lat = post.latitude;
+        var lon = post.longitude;
+        $.map.setLocation({
+            latitude: lat,
+            longitude: lon,
+            animate: false,
+            latitudeDelta: .04,
+            longitudeDelta: .04
         });
-        Alloy.Globals.api.postManager.getNearByPosts(function(posts) {
+        var annotations = [];
+        var anno = Titanium.Map.createAnnotation({
+            latitude: lat,
+            longitude: lon,
+            title: post.title,
+            pincolor: Titanium.Map.ANNOTATION_RED,
+            animate: true,
+            post: post
+        });
+        annotations.push(anno);
+        Alloy.Globals.api.postManager.getNearPosts(lat, lon, function(posts) {
             Ti.API.debug("Near posts are " + posts);
-            var annotations = [];
             for (var i in posts) {
                 var d = posts[i];
-                var anno = Titanium.Map.createAnnotation({
-                    latitude: d.latitude,
-                    longitude: d.longitude,
-                    title: d.title,
-                    pincolor: Titanium.Map.ANNOTATION_RED,
-                    animate: true,
-                    post: d
-                });
-                annotations.push(anno);
+                if (d.id != post.id) {
+                    var pincolor = 0;
+                    pincolor = d.userId == api.userId ? Titanium.Map.ANNOTATION_BLUE : Titanium.Map.ANNOTATION_GREEN;
+                    var anno = Titanium.Map.createAnnotation({
+                        latitude: d.latitude,
+                        longitude: d.longitude,
+                        title: d.title,
+                        pincolor: pincolor,
+                        animate: true,
+                        post: d
+                    });
+                    annotations.push(anno);
+                }
             }
             $.map.annotations = annotations;
         });

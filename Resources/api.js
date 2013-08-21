@@ -50,6 +50,7 @@ function APIClient() {
             onload: function() {
                 var ak = this.responseText;
                 Ti.API.info("Success - GET:" + url);
+                Ti.API.debug(ak);
                 var d = JSON.parse(ak);
                 callback(d);
             },
@@ -171,9 +172,14 @@ function PostManager() {
     };
     this.getNearByPosts = function(callback) {
         Titanium.Geolocation.getCurrentPosition(function(e) {
+            self.getNearPosts(e.coords.latitude, e.coords.longitude, callback);
+        });
+    };
+    this.getNearPosts = function(lat, lon, callback) {
+        Titanium.Geolocation.getCurrentPosition(function() {
             var param = {
-                lat: e.coords.latitude,
-                lot: e.coords.longitude
+                lat: lat,
+                lot: lon
             };
             client.get("/post/near", param, function(posts) {
                 callback(posts);
@@ -192,6 +198,14 @@ function PostManager() {
     this.getPost = function(postId, callback) {
         client.get("/post/detail/" + postId, null, function(post) {
             callback(post);
+        });
+    };
+    this.commentTo = function(postId, message, callback) {
+        var param = {
+            comment: message
+        };
+        client.post("/post/comment/" + postId, param, function(c) {
+            callback(c);
         });
     };
     return this;

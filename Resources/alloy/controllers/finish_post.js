@@ -27,12 +27,18 @@ function Controller() {
     });
     $.__views.finish_post && $.addTopLevelView($.__views.finish_post);
     $.__views.title = Ti.UI.createLabel({
+        font: {
+            fontSize: "20dp"
+        },
         top: "2%",
         text: "投稿ありがとうございます",
         id: "title"
     });
     $.__views.finish_post.add($.__views.title);
     $.__views.subtitle = Ti.UI.createLabel({
+        font: {
+            fontSize: "20dp"
+        },
         top: "10%",
         text: "追加情報の編集",
         id: "subtitle"
@@ -48,6 +54,7 @@ function Controller() {
     });
     $.__views.finish_post.add($.__views.comment);
     $.__views.save_button = Ti.UI.createButton({
+        height: "38dp",
         top: "80%",
         left: "5%",
         width: "60%",
@@ -57,6 +64,7 @@ function Controller() {
     $.__views.finish_post.add($.__views.save_button);
     onSaveClicked ? $.__views.save_button.addEventListener("click", onSaveClicked) : __defers["$.__views.save_button!click!onSaveClicked"] = true;
     $.__views.return_button = Ti.UI.createButton({
+        height: "38dp",
         top: "80%",
         left: "70%",
         width: "25%",

@@ -7,25 +7,35 @@
 			<ImageView id="photo"></ImageView>
 			
 			<View class="line_element">
-			    <Label id="date">2013年6月23日</Label>
+			    <Label>投稿日時:</Label><Label id="date">2013年6月23日</Label>
 			</View>
 			<View class="line_element">
-				<Label id="goodness_label">評価 </Label><Label id="goodness" class="var">良い</Label>
+				<Label id="goodness_label">評価:</Label><Label id="goodness" class="var">良い</Label>
 			</View>
-			<View class="line_element" >
+			<View id="append_info_area" >
 				<Label id="water_height_label">水位 </Label><Label id="water_height">22センチ</Label>
 			</View>
+			<Button id="show_in_map">投稿場所を見る</Button>
+			<View id="private_area">
+				<Button id="edit_post">投稿内容を編集</Button>
+				<Button id="show_updates">管理者からの返信を見る</Button>
+			</View>
+			
 			<View id="comment_area">
 				
 				<ListView id="comment_list" class="list" defaultItemTemplate="comment">
 					<Templates>
-						<ItemTemplate name="comment" id="list">
+						<ItemTemplate name="comment">
 							<View class="list">
 								<View class="line_element">
 									<Label>名前</Label><Label bindId="nickname">aaa</Label>
+								</View>
+								<View class="line_element">
 									<Label> 書き込み</Label><Label bindId="date">8/9 17:00</Label>
 								</View>
-								<View class="line_element"><Label>コメント</Label><Label bindId="comment">aaa</Label></View>
+								<View class="line_element">
+									<Label>コメント</Label><Label bindId="comment">aaa</Label>
+								</View>
 							</View>
 						</ItemTemplate>
 						
@@ -33,13 +43,10 @@
 				</ListView>
 				
 			</View>
-			<Button id="show_comment">コメントを全て見る</Button>
+			<Button id="show_comments">コメントを全て見る</Button>
 			<View class="line_element">
 				<TextField id="comment" borderStyle="Ti.UI.INPUT_BORDERSTYLE_ROUNDED"></TextField>
 				<Button id="send_comment">コメントする</Button>
-			</View>
-			<View id="private_area">
-				<Button id="from_admin">管理者からの返信を見る</Button>
 			</View>
 		</ScrollView>
 	</Window>

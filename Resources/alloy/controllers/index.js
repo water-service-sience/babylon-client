@@ -1,10 +1,10 @@
 function Controller() {
     function onPostClicked() {
-        var view = Alloy.createController("post_detail").getView();
+        var view = Alloy.createController("post_image").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onLookClicked() {
-        var view = Alloy.createController("look_menu").getView();
+        var view = Alloy.createController("post_detail").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onLookMineClicked() {
@@ -29,6 +29,9 @@ function Controller() {
     });
     $.__views.index && $.addTopLevelView($.__views.index);
     $.__views.status_message = Ti.UI.createLabel({
+        font: {
+            fontSize: "20dp"
+        },
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "red",
@@ -38,8 +41,8 @@ function Controller() {
     });
     $.__views.index.add($.__views.status_message);
     $.__views.post = Ti.UI.createButton({
-        width: "80%",
         height: Ti.UI.SIZE,
+        width: "80%",
         color: "#000000",
         top: "15%",
         title: "農地情報を送信する",
@@ -48,8 +51,8 @@ function Controller() {
     $.__views.index.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.look = Ti.UI.createButton({
-        width: "80%",
         height: Ti.UI.SIZE,
+        width: "80%",
         color: "#000000",
         top: "35%",
         title: "周辺の情報を見る",
@@ -58,8 +61,8 @@ function Controller() {
     $.__views.index.add($.__views.look);
     onLookClicked ? $.__views.look.addEventListener("click", onLookClicked) : __defers["$.__views.look!click!onLookClicked"] = true;
     $.__views.look_mine = Ti.UI.createButton({
-        width: "80%",
         height: Ti.UI.SIZE,
+        width: "80%",
         color: "#000000",
         top: "55%",
         title: "自分の投稿を見る",
@@ -68,8 +71,8 @@ function Controller() {
     $.__views.index.add($.__views.look_mine);
     onLookMineClicked ? $.__views.look_mine.addEventListener("click", onLookMineClicked) : __defers["$.__views.look_mine!click!onLookMineClicked"] = true;
     $.__views.setting = Ti.UI.createButton({
-        width: "30%",
         height: Ti.UI.SIZE,
+        width: "30%",
         color: "#550000",
         bottom: "10%",
         right: "5%",

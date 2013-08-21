@@ -3,13 +3,13 @@
 function onSelectOwnLand(e){
 	//alert(e.section.items[e.itemIndex].properties.title + " : " + e.itemIndex);
 	
-	var view = Alloy.createController("post_map").getView();
+	var view = Alloy.createController("show_map").getView();
 	Alloy.Globals.naviCon.open(view);
 }
 
 function onShowMapClicked(e){
 	
-	var view = Alloy.createController("post_map").getView();
+	var view = Alloy.createController("show_map").getView();
 	Alloy.Globals.naviCon.open(view);
 }
 function onShowSelfPostClicked(e){

@@ -86,6 +86,7 @@ function APIClient() {
 			onload : function(e) {
 				var ak = this.responseText;
 				Ti.API.info("Success - GET:" + url);
+				Ti.API.debug(ak);
 				var d = JSON.parse(ak);
 				callback(d);
 			},
@@ -131,7 +132,7 @@ function APIClient() {
 		c.setRequestHeader("Content-Type","text/json");
 		c.send(JSON.stringify(params));
 		
-	}
+	};
 	
 	
 	this.postBinary = function(url , data,onProgress, callback){
@@ -170,7 +171,7 @@ function APIClient() {
 		Ti.API.debug("AK=" + accessKey);
 		c.send(data);
 		
-	}
+	};
 	
 	this.createAccount = function(nickname , cb){
 		self.post("/create/account",{
@@ -250,7 +251,7 @@ function PostManager() {
 				    	post.photo = image;
 				    	self.myPosts.push(post);
 				    	
-				    	Ti.API.info("Success to post:" + post.postId)
+				    	Ti.API.info("Success to post:" + post.postId);
 						callback(post);
 				    });
 				});
@@ -268,9 +269,15 @@ function PostManager() {
 	this.getNearByPosts = function(/*function(postList)*/ callback ){
 		
 		Titanium.Geolocation.getCurrentPosition(function(e){
+			self.getNearPosts(e.coords.latitude,e.coords.longitude,callback);
+		});
+		
+	};
+	this.getNearPosts = function(lat,lon,callback){
+		Titanium.Geolocation.getCurrentPosition(function(e){
 			var param = {
-				lat : e.coords.latitude,
-				lot : e.coords.longitude
+				lat : lat,
+				lot : lon
 			};
 			
 			client.get("/post/near",
@@ -278,7 +285,6 @@ function PostManager() {
 				callback(posts);
 			});
 		});
-		
 	};
 	
 	this.getMyPosts = function(year,month,callback){
@@ -294,9 +300,18 @@ function PostManager() {
 	
 	this.getPost = function(postId, callback){
 		client.get("/post/detail/" + postId,null,function(post){
-			callback(post)
+			callback(post);
 		});
-	}
+	};
+	
+	this.commentTo = function(postId, message,callback) {
+		var param = {
+			comment : message
+		};
+		client.post("/post/comment/" + postId,param,function(c){
+			callback(c);
+		});
+	};
 	
 	return this;
 }
@@ -320,7 +335,7 @@ exports.toImageUrl = function(post){
 	}else{
 		return ServerUrl + "/images/" + post.imageFile;
 	}
-}
+};
 
 
 exports.client = client;

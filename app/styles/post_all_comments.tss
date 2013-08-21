@@ -1,4 +1,15 @@
 
 ".container" : {
-  
+    layout : "vertical"
+},
+".line_element" : {
+    layout : 'horizontal',
+    height : "30dp"
+},
+".list" : {
+	layout : "vertical"
+},
+"#comment_list" : {
+	bottom : 0
 }
+

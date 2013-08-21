@@ -5,12 +5,22 @@
 ".line_element" : {
 	
     layout : 'horizontal',
-    height : 30
+    height : "35dp"
 },
 "#comment_area" : {
-	height : "30%",
+	height : "120dp",
 	layout : "vertical"
 },
+
+"#private_area" : {
+	layout : "vertical",
+	height : "80dp"
+},
+"#append_info_area" : {
+	height : "35dp",
+	layout : "horizontal"
+},
+
 "#scroll_view" : {
 	height : Ti.UI.SIZE,
     layout : 'vertical'
@@ -25,9 +35,6 @@
 	width : "200dp",
 	height : "30dp"
 },
-"#private_area" : {
-	layout : "vertical"
-}
 
 
 

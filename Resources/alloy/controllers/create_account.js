@@ -18,6 +18,9 @@ function Controller() {
     });
     $.__views.create_account && $.addTopLevelView($.__views.create_account);
     $.__views.title = Ti.UI.createLabel({
+        font: {
+            fontSize: "20dp"
+        },
         top: "10%",
         height: Ti.UI.SIZE,
         text: "アカウント作成",
@@ -25,13 +28,13 @@ function Controller() {
     });
     $.__views.create_account.add($.__views.title);
     $.__views.nickname_label = Ti.UI.createLabel({
-        left: "5%",
-        width: "20%",
-        top: "35%",
         font: {
             fontSize: "16dp",
             fontWeight: "bold"
         },
+        left: "5%",
+        width: "20%",
+        top: "35%",
         text: "ニックネーム",
         id: "nickname_label"
     });
@@ -49,6 +52,7 @@ function Controller() {
     });
     $.__views.create_account.add($.__views.nickname);
     $.__views.create = Ti.UI.createButton({
+        height: "38dp",
         bottom: "20%",
         width: "70%",
         title: "アカウント作成",

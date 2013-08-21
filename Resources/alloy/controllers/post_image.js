@@ -55,6 +55,9 @@ function Controller() {
     });
     $.__views.post_image && $.addTopLevelView($.__views.post_image);
     $.__views.title = Ti.UI.createLabel({
+        font: {
+            fontSize: "20dp"
+        },
         top: "2%",
         height: Ti.UI.SIZE,
         text: "投稿",
@@ -70,26 +73,26 @@ function Controller() {
     });
     $.__views.post_image.add($.__views.photo);
     $.__views.bad = Ti.UI.createLabel({
-        left: "3%",
-        bottom: "40%",
-        width: "30%",
         font: {
             fontSize: "16dp",
             fontWeight: "bold"
         },
+        left: "3%",
+        bottom: "40%",
+        width: "30%",
         text: "悪い",
         id: "bad"
     });
     $.__views.post_image.add($.__views.bad);
     $.__views.good = Ti.UI.createLabel({
-        right: "3%",
-        bottom: "40%",
-        width: "30%",
-        textAlign: "right",
         font: {
             fontSize: "16dp",
             fontWeight: "bold"
         },
+        right: "3%",
+        bottom: "40%",
+        width: "30%",
+        textAlign: "right",
         text: "良い",
         id: "good"
     });
@@ -102,6 +105,7 @@ function Controller() {
     });
     $.__views.post_image.add($.__views.goodness);
     $.__views.post = Ti.UI.createButton({
+        height: "38dp",
         left: "5%",
         bottom: "5%",
         width: "60%",
@@ -111,6 +115,7 @@ function Controller() {
     $.__views.post_image.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.recapture = Ti.UI.createButton({
+        height: "38dp",
         bottom: "5%",
         left: "70%",
         width: "25%",

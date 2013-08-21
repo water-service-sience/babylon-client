@@ -1,4 +1,25 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Window class="container">
+		
+		<View class="line_element">
+			<TextField id="comment" borderStyle="Ti.UI.INPUT_BORDERSTYLE_ROUNDED"></TextField>
+			<Button id="send_comment">コメントする</Button>
+		</View>
+		
+		<ListView id="comment_list" class="list" defaultItemTemplate="comment">
+			<Templates>
+				<ItemTemplate name="comment" id="list">
+					<View class="list">
+						<View class="line_element">
+							<Label>名前</Label><Label bindId="nickname">aaa</Label>
+							<Label> 書き込み</Label><Label bindId="date">8/9 17:00</Label>
+						</View>
+						<View class="line_element"><Label>コメント</Label><Label bindId="comment">aaa</Label></View>
+					</View>
+				</ItemTemplate>
+				
+			</Templates>
+		</ListView>
+		
+	</Window>
 </Alloy>

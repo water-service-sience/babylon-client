@@ -17,6 +17,7 @@ function Controller() {
     });
     $.__views.look_mine_menu && $.addTopLevelView($.__views.look_mine_menu);
     $.__views.show_calendar = Ti.UI.createButton({
+        height: "38dp",
         top: "30%",
         title: "カレンダー",
         id: "show_calendar"

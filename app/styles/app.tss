@@ -1,0 +1,6 @@
+"Label" : {
+	font: { fontSize:"20dp" }
+},
+"Button" : {
+	height : "38dp"
+}
