@@ -56,7 +56,7 @@ function Controller() {
     $.__views.post_image && $.addTopLevelView($.__views.post_image);
     $.__views.title = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "2%",
         height: Ti.UI.SIZE,

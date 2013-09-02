@@ -2,18 +2,6 @@
 
 var preClick = null;
 
-function mapClicked(e)
-{
-	var anno = e.annotation;
-	
-	
-	var controller = Alloy.createController("post_detail");
-	var view = controller.getView();
-	Alloy.Globals.naviCon.open(view);
-	
-
-}
-
 $.post_map.addEventListener("open",function(e){
 	var post = Alloy.Globals.post;
 	
@@ -28,8 +16,8 @@ $.post_map.addEventListener("open",function(e){
     var anno = Titanium.Map.createAnnotation({
 	    latitude:lat,
 	    longitude:lon,
-	    title:post.title,
-	    pincolor:Titanium.Map.ANNOTATION_RED,
+	    title:util.dateFormat(post.posted),
+	    pincolor:Titanium.Map.ANNOTATION_GREEN,
 	    animate:true,
 	    post:post // Custom property to uniquely identify this annotation.
 	});	
@@ -42,15 +30,15 @@ $.post_map.addEventListener("open",function(e){
 			if(d.id != post.id){
 				var pincolor = 0;
 				if(d.userId == api.userId){
-					pincolor = Titanium.Map.ANNOTATION_BLUE;
+					pincolor = Titanium.Map.ANNOTATION_RED;
 				}else{
-					pincolor = Titanium.Map.ANNOTATION_GREEN;
+					pincolor = Titanium.Map.ANNOTATION_RED;
 				}
 				
 				var anno = Titanium.Map.createAnnotation({
 				    latitude:d.latitude,
 				    longitude:d.longitude,
-				    title:d.title,
+				    title: "ここです。",
 				    pincolor:pincolor,
 				    animate:true,
 				    post:d // Custom property to uniquely identify this annotation.

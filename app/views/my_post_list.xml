@@ -1,5 +1,16 @@
 <Alloy>
 	<Window class="container">
-		<ListView id="my_posts" onItemclick="onPostSelected"></ListView>
+		<ListView id="my_posts" defaultItemTemplate="template" onItemclick="onPostSelected">
+			<Templates>
+				<ItemTemplate name="template">
+					<ImageView bindId="thumbnail"></ImageView>
+					<Label bindId="date">
+					<Label bindId="explanation">
+				</ItemTemplate>
+			</Templates>
+			
+            <ListSection headerTitle="投稿一覧">
+            </ListSection>
+		</ListView>
 	</Window>
 </Alloy>

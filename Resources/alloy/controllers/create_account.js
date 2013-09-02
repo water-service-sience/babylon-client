@@ -19,7 +19,7 @@ function Controller() {
     $.__views.create_account && $.addTopLevelView($.__views.create_account);
     $.__views.title = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "10%",
         height: Ti.UI.SIZE,
@@ -40,6 +40,7 @@ function Controller() {
     });
     $.__views.create_account.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createTextField({
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         left: "30%",
         width: "65%",
         top: "35%",

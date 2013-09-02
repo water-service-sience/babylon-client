@@ -60,7 +60,7 @@ function APIClient() {
             }
         });
         c.open("GET", url);
-        self.isLogin && c.setRequestHeader(AccessKeyHeader, accessKey);
+        self.isLogin && c.setRequestHeader(AccessKeyHeader, self.accessKey);
         c.send();
     };
     this.post = function(url, params, callback) {
@@ -78,7 +78,7 @@ function APIClient() {
             }
         });
         c.open("POST", url);
-        self.isLogin && c.setRequestHeader(AccessKeyHeader, accessKey);
+        self.isLogin && c.setRequestHeader(AccessKeyHeader, self.accessKey);
         c.setRequestHeader("Content-Type", "text/json");
         c.send(JSON.stringify(params));
     };
@@ -176,14 +176,12 @@ function PostManager() {
         });
     };
     this.getNearPosts = function(lat, lon, callback) {
-        Titanium.Geolocation.getCurrentPosition(function() {
-            var param = {
-                lat: lat,
-                lot: lon
-            };
-            client.get("/post/near", param, function(posts) {
-                callback(posts);
-            });
+        var param = {
+            lat: lat,
+            lon: lon
+        };
+        client.get("/post/near?lon=" + lon + "&lat=" + lat, param, function(posts) {
+            callback(posts);
         });
     };
     this.getMyPosts = function(year, month, callback) {
@@ -208,17 +206,28 @@ function PostManager() {
             callback(c);
         });
     };
+    this.getCategories = function(callback) {
+        client.get("/post/category/all", null, function(r) {
+            callback(r);
+        });
+    };
     return this;
 }
 
 function LandManager() {
     this.getOwnLands = function() {
         return [ {
-            title: "１番の田んぼ"
+            name: "本郷キャンパス",
+            lat: 35.7133,
+            lon: 139.762
         }, {
-            title: "２番の田んぼ"
+            name: "駒場キャンパス",
+            lat: 35.661132,
+            lon: 139.684933
         }, {
-            title: "海の田んぼ"
+            name: "田無",
+            lat: 35.73655,
+            lon: 139.538849
         } ];
     };
     return this;

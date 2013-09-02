@@ -94,6 +94,18 @@ NavigationController.prototype.home = function() {
 	}
 	Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {return v.title}));
 };
+NavigationController.prototype.pop = function() {
+	Ti.API.log("pop function.");
+	if (this.windowStack.length > 1) {
+		// setup chain reaction by setting up the flags on all the windows
+		
+       	var lastIndex = this.windowStack.length - 1; 
+       	//this.windowStack[lastIndex].fireEvent("set.to.close", {win:this.windowStack[lastIndex - 1]});
+        // start chain reaction, close first window
+		(this.navGroup) ? this.navGroup.close(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+	}
+	Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {return v.title}));
+};
 
 NavigationController.prototype.openFromHome = function(windowToOpen) {
 	Ti.API.log("openFromHome function.");

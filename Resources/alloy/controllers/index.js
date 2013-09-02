@@ -4,7 +4,7 @@ function Controller() {
         Alloy.Globals.naviCon.open(view);
     }
     function onLookClicked() {
-        var view = Alloy.createController("post_detail").getView();
+        var view = Alloy.createController("look_menu").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onLookMineClicked() {
@@ -28,18 +28,6 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.status_message = Ti.UI.createLabel({
-        font: {
-            fontSize: "20dp"
-        },
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "red",
-        top: "3%",
-        text: "管理者からの通知が１件あります",
-        id: "status_message"
-    });
-    $.__views.index.add($.__views.status_message);
     $.__views.post = Ti.UI.createButton({
         height: Ti.UI.SIZE,
         width: "80%",

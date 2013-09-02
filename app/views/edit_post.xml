@@ -1,7 +1,26 @@
 <Alloy>
 	<Window class="container">
-		<ImageView id="photo"></ImageView>
-		<Label id="category_label">内容</Label>
+		<ScrollView id="scroll_view">
+			<ImageView id="photo"></ImageView>
+			
+			<View class="line_element">
+				<Label>内容:</Label><Label id="category">Hoge</Label>
+				<Button id="select_category">変更</Button>
+			</View>
+			
+			<View height="20dp">
+				<Label id="bad">悪い</Label><Label id="good">良い</Label>
+			</View>
+			<Slider id="goodness"></Slider>
+			<TextArea id="comment"></TextArea>
+			<View class="line_element">
+				<Label>緯度経度</Label><Label id="location">123,233</Label>
+				<Button id="select_location">変更</Button>
+			</View>
+		
+			<Button id="save">保存</Button>
+		
+		</ScrollView>
 		
 	</Window>
 </Alloy>

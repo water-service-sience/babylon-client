@@ -15,16 +15,15 @@ function onPostClicked(e) {
 }
 
 function onLookClicked(e) {
-	var view = Alloy.createController("post_detail").getView();
-	Alloy.Globals.naviCon.open(view);
-	//;var view = Alloy.createController("look_menu").getView();
+	//var view = Alloy.createController("select_category",{hoge : "aaaa"}).getView();
 	//Alloy.Globals.naviCon.open(view);
+	var view = Alloy.createController("look_menu").getView();
+	Alloy.Globals.naviCon.open(view);
 	//var view = Alloy.createController("my_post_calendar").getView();
 	//Alloy.Globals.naviCon.open(view);
 }
 
 function onLookMineClicked(e){
-	
 	var view = Alloy.createController("look_mine_menu").getView();
 	Alloy.Globals.naviCon.open(view);
 }

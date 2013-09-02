@@ -98,7 +98,7 @@ function APIClient() {
 		});
 		c.open("GET", url);
 		if(self.isLogin){
-			c.setRequestHeader(AccessKeyHeader,accessKey);
+			c.setRequestHeader(AccessKeyHeader,self.accessKey);
 		}		
 		c.send();
 	};
@@ -127,7 +127,7 @@ function APIClient() {
 		});
 		c.open("POST", url);
 		if(self.isLogin){
-			c.setRequestHeader(AccessKeyHeader,accessKey);
+			c.setRequestHeader(AccessKeyHeader,self.accessKey);
 		}		
 		c.setRequestHeader("Content-Type","text/json");
 		c.send(JSON.stringify(params));
@@ -274,16 +274,14 @@ function PostManager() {
 		
 	};
 	this.getNearPosts = function(lat,lon,callback){
-		Titanium.Geolocation.getCurrentPosition(function(e){
-			var param = {
-				lat : lat,
-				lot : lon
-			};
-			
-			client.get("/post/near",
-			  param,function(posts){
-				callback(posts);
-			});
+		var param = {
+			lat : lat,
+			lon : lon
+		};
+		
+		client.get("/post/near?lon=" + lon + "&lat=" + lat,
+		  param,function(posts){
+			callback(posts);
 		});
 	};
 	
@@ -296,6 +294,7 @@ function PostManager() {
 			callback(posts);
 		});
 	};
+	
 	
 	
 	this.getPost = function(postId, callback){
@@ -313,15 +312,22 @@ function PostManager() {
 		});
 	};
 	
+	this.getCategories = function(callback){
+		client.get("/post/category/all",null,function(r){
+			callback(r);
+		});
+	};
+	
+	
 	return this;
 }
 
 function LandManager(){
 	this.getOwnLands = function(){
 		return [
-        { title :"１番の田んぼ"},
-        { title :"２番の田んぼ"},
-        { title :"海の田んぼ"}
+        { name :"本郷キャンパス", lat : 35.7133 ,lon:139.762},
+        { name :"駒場キャンパス", lat : 35.661132, lon : 139.684933},
+        { name :"田無", lat : 35.736550, lon : 139.538849}
         ];
 	
 	};

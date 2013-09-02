@@ -28,7 +28,7 @@ function Controller() {
     $.__views.finish_post && $.addTopLevelView($.__views.finish_post);
     $.__views.title = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "2%",
         text: "投稿ありがとうございます",
@@ -37,7 +37,7 @@ function Controller() {
     $.__views.finish_post.add($.__views.title);
     $.__views.subtitle = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "10%",
         text: "追加情報の編集",
@@ -45,6 +45,7 @@ function Controller() {
     });
     $.__views.finish_post.add($.__views.subtitle);
     $.__views.comment = Ti.UI.createTextField({
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         left: "5%",
         top: "35%",
         width: "90%",

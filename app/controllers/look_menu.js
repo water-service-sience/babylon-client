@@ -1,20 +1,15 @@
 
 
 function onSelectOwnLand(e){
-	//alert(e.section.items[e.itemIndex].properties.title + " : " + e.itemIndex);
-	
+	var land = e.section.items[e.itemIndex].properties.land;
+	Alloy.Globals.land = land;
 	var view = Alloy.createController("show_map").getView();
 	Alloy.Globals.naviCon.open(view);
 }
 
 function onShowMapClicked(e){
-	
+	Alloy.Globals.land = null;
 	var view = Alloy.createController("show_map").getView();
-	Alloy.Globals.naviCon.open(view);
-}
-function onShowSelfPostClicked(e){
-	
-	var view = Alloy.createController("my_post_list").getView();
 	Alloy.Globals.naviCon.open(view);
 }
 
@@ -25,7 +20,13 @@ $.look_menu.addEventListener("open",function(e){
 	var dataSet = [];
 	for(var i in lands){
 		var l = lands[i];
-		dataSet.push({properties : l});
+		dataSet.push({
+			properties : {
+				height : "20dp",
+				land : l
+			},
+			name : {text : l.name}
+		});
 	}
 	var section = Ti.UI.createListSection({ headerTitle: '農地'});
 	section.setItems(dataSet);

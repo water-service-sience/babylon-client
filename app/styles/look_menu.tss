@@ -1,17 +1,11 @@
 ".container": {
-	 backgroundColor:"#ddddff"
+	 backgroundColor:"#ddddff",
+	 layout : "vertical"
 },
 "#my_lands" : {
-	top : "3%",
 	left : "3%",
 	right : "3%",
-	bottom : "43%"
+	height : "50%"
 },
 
-"#show_map" : {
-	top : "65%"
-},
-"#show_self_posts" : {
-	top : "80%"
-}
 

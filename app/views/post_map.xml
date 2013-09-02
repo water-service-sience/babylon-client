@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container">
 		<!-- Note the ns attribute is used to change the default namespace. -->
-        <View id="map" ns="Ti.Map" onClick="mapClicked"
+        <View id="map" ns="Ti.Map"
             animate="true" regionFit="true" userLocation="true"
             mapType="Ti.Map.STANDARD_TYPE" >
 

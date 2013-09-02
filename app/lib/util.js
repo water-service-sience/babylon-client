@@ -1,6 +1,6 @@
 
 
-exports.dateToString = function(date){
+var dateFormat = function(date){
 	if(typeof(date) == "int" || typeof(date) == "string" || typeof(date) == "number"){
 		date = new Date(date);
 	}
@@ -11,6 +11,11 @@ exports.dateToString = function(date){
 	
 	
 };
+
+exports.dateToString = dateFormat;
+exports.dateFormat = dateFormat;
+
+
 
 exports.goodnessToString = function(goodness){
 	if( goodness < 10) return "非常に悪い";

@@ -20,7 +20,7 @@ function Controller() {
     $.__views.setting && $.addTopLevelView($.__views.setting);
     $.__views.user_id_label = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "5%",
         left: "2%",
@@ -32,7 +32,7 @@ function Controller() {
     $.__views.setting.add($.__views.user_id_label);
     $.__views.user_id = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "5%",
         left: "45%",
@@ -44,7 +44,7 @@ function Controller() {
     $.__views.setting.add($.__views.user_id);
     $.__views.nickname_label = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "15%",
         left: "2%",
@@ -56,7 +56,7 @@ function Controller() {
     $.__views.setting.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createLabel({
         font: {
-            fontSize: "20dp"
+            fontSize: "18dp"
         },
         top: "15%",
         left: "45%",

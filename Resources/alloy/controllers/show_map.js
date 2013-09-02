@@ -1,10 +1,13 @@
 function Controller() {
     function mapClicked(e) {
         var anno = e.annotation;
-        Alloy.Globals.post = anno.post;
-        var controller = Alloy.createController("post_detail");
-        var view = controller.getView();
-        Alloy.Globals.naviCon.open(view);
+        Ti.API.debug("Anno = " + anno + " : " + anno.post);
+        if (null != anno.post) {
+            Alloy.Globals.post = anno.post;
+            var controller = Alloy.createController("post_detail");
+            var view = controller.getView();
+            Alloy.Globals.naviCon.open(view);
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "show_map";
@@ -19,9 +22,9 @@ function Controller() {
         id: "show_map"
     });
     $.__views.show_map && $.addTopLevelView($.__views.show_map);
-    var __alloyId59 = [];
+    var __alloyId91 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId59,
+        annotations: __alloyId91,
         id: "map",
         ns: Ti.Map,
         animate: "true",
@@ -33,8 +36,48 @@ function Controller() {
     mapClicked ? $.__views.map.addEventListener("click", mapClicked) : __defers["$.__views.map!click!mapClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.post_map.addEventListener("open", function() {
-        Titanium.Geolocation.getCurrentPosition(function(e) {
+    var util = Alloy.Globals.util;
+    $.show_map.addEventListener("open", function() {
+        var annotations = [];
+        var pinPosts = function(lat, lon) {
+            Alloy.Globals.api.postManager.getNearPosts(lat, lon, function(posts) {
+                Ti.API.debug("Near posts are " + posts);
+                for (var i in posts) {
+                    var d = posts[i];
+                    var anno = Titanium.Map.createAnnotation({
+                        latitude: d.latitude,
+                        longitude: d.longitude,
+                        title: util.dateFormat(d.posted),
+                        pincolor: Titanium.Map.ANNOTATION_RED,
+                        animate: true,
+                        post: d
+                    });
+                    annotations.push(anno);
+                }
+                $.map.annotations = annotations;
+            });
+        };
+        if (null != Alloy.Globals.land) {
+            var land = Alloy.Globals.land;
+            var lat = land.lat;
+            var lon = land.lon;
+            $.map.setLocation({
+                latitude: lat,
+                longitude: lon,
+                animate: false,
+                latitudeDelta: .04,
+                longitudeDelta: .04
+            });
+            var anno = Titanium.Map.createAnnotation({
+                latitude: lat,
+                longitude: lon,
+                title: land.name,
+                pincolor: Titanium.Map.ANNOTATION_GREEN,
+                animate: true
+            });
+            annotations.push(anno);
+            pinPosts(lat, lon);
+        } else Titanium.Geolocation.getCurrentPosition(function(e) {
             var lat = e.coords.latitude;
             var lon = e.coords.longitude;
             $.map.setLocation({
@@ -44,23 +87,7 @@ function Controller() {
                 latitudeDelta: .04,
                 longitudeDelta: .04
             });
-        });
-        Alloy.Globals.api.postManager.getNearByPosts(function(posts) {
-            Ti.API.debug("Near posts are " + posts);
-            var annotations = [];
-            for (var i in posts) {
-                var d = posts[i];
-                var anno = Titanium.Map.createAnnotation({
-                    latitude: d.latitude,
-                    longitude: d.longitude,
-                    title: d.title,
-                    pincolor: Titanium.Map.ANNOTATION_RED,
-                    animate: true,
-                    post: d
-                });
-                annotations.push(anno);
-            }
-            $.map.annotations = annotations;
+            pinPosts(lat, lon);
         });
     });
     __defers["$.__views.map!click!mapClicked"] && $.__views.map.addEventListener("click", mapClicked);

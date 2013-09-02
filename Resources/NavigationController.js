@@ -70,6 +70,17 @@ NavigationController.prototype.home = function() {
     }));
 };
 
+NavigationController.prototype.pop = function() {
+    Ti.API.log("pop function.");
+    if (this.windowStack.length > 1) {
+        this.windowStack.length - 1;
+        this.navGroup ? this.navGroup.close(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+    }
+    Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {
+        return v.title;
+    }));
+};
+
 NavigationController.prototype.openFromHome = function(windowToOpen) {
     Ti.API.log("openFromHome function.");
     if (1 == this.windowStack.length) this.open(windowToOpen); else {

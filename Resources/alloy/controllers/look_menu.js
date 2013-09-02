@@ -1,14 +1,13 @@
 function Controller() {
-    function onSelectOwnLand() {
+    function onSelectOwnLand(e) {
+        var land = e.section.items[e.itemIndex].properties.land;
+        Alloy.Globals.land = land;
         var view = Alloy.createController("show_map").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onShowMapClicked() {
+        Alloy.Globals.land = null;
         var view = Alloy.createController("show_map").getView();
-        Alloy.Globals.naviCon.open(view);
-    }
-    function onShowSelfPostClicked() {
-        var view = Alloy.createController("my_post_list").getView();
         Alloy.Globals.naviCon.open(view);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -21,34 +20,48 @@ function Controller() {
     var __defers = {};
     $.__views.look_menu = Ti.UI.createWindow({
         backgroundColor: "#ddddff",
+        layout: "vertical",
         id: "look_menu"
     });
     $.__views.look_menu && $.addTopLevelView($.__views.look_menu);
-    $.__views.my_lands = Ti.UI.createListView({
-        top: "3%",
-        left: "3%",
-        right: "3%",
-        bottom: "43%",
-        id: "my_lands"
-    });
-    $.__views.look_menu.add($.__views.my_lands);
-    onSelectOwnLand ? $.__views.my_lands.addEventListener("itemclick", onSelectOwnLand) : __defers["$.__views.my_lands!itemclick!onSelectOwnLand"] = true;
     $.__views.show_map = Ti.UI.createButton({
         height: "38dp",
-        top: "65%",
         title: "周辺を地図で見る",
         id: "show_map"
     });
     $.__views.look_menu.add($.__views.show_map);
     onShowMapClicked ? $.__views.show_map.addEventListener("click", onShowMapClicked) : __defers["$.__views.show_map!click!onShowMapClicked"] = true;
-    $.__views.show_self_posts = Ti.UI.createButton({
-        height: "38dp",
-        top: "80%",
-        title: "自分の投稿を見る",
-        id: "show_self_posts"
+    var __alloyId6 = {};
+    var __alloyId9 = [];
+    var __alloyId10 = {
+        type: "Ti.UI.Label",
+        bindId: "name",
+        properties: {
+            font: {
+                fontSize: "18dp"
+            },
+            text: "aaa",
+            bindId: "name"
+        }
+    };
+    __alloyId9.push(__alloyId10);
+    var __alloyId8 = {
+        properties: {
+            name: "template"
+        },
+        childTemplates: __alloyId9
+    };
+    __alloyId6["template"] = __alloyId8;
+    $.__views.my_lands = Ti.UI.createListView({
+        left: "3%",
+        right: "3%",
+        height: "50%",
+        templates: __alloyId6,
+        id: "my_lands",
+        defaultItemTemplate: "template"
     });
-    $.__views.look_menu.add($.__views.show_self_posts);
-    onShowSelfPostClicked ? $.__views.show_self_posts.addEventListener("click", onShowSelfPostClicked) : __defers["$.__views.show_self_posts!click!onShowSelfPostClicked"] = true;
+    $.__views.look_menu.add($.__views.my_lands);
+    onSelectOwnLand ? $.__views.my_lands.addEventListener("itemclick", onSelectOwnLand) : __defers["$.__views.my_lands!itemclick!onSelectOwnLand"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.look_menu.addEventListener("open", function() {
@@ -57,7 +70,13 @@ function Controller() {
         for (var i in lands) {
             var l = lands[i];
             dataSet.push({
-                properties: l
+                properties: {
+                    height: "20dp",
+                    land: l
+                },
+                name: {
+                    text: l.name
+                }
             });
         }
         var section = Ti.UI.createListSection({
@@ -66,9 +85,8 @@ function Controller() {
         section.setItems(dataSet);
         $.my_lands.sections = [ section ];
     });
-    __defers["$.__views.my_lands!itemclick!onSelectOwnLand"] && $.__views.my_lands.addEventListener("itemclick", onSelectOwnLand);
     __defers["$.__views.show_map!click!onShowMapClicked"] && $.__views.show_map.addEventListener("click", onShowMapClicked);
-    __defers["$.__views.show_self_posts!click!onShowSelfPostClicked"] && $.__views.show_self_posts.addEventListener("click", onShowSelfPostClicked);
+    __defers["$.__views.my_lands!itemclick!onSelectOwnLand"] && $.__views.my_lands.addEventListener("itemclick", onSelectOwnLand);
     _.extend($, exports);
 }
 

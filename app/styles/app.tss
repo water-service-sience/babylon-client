@@ -1,6 +1,15 @@
 "Label" : {
-	font: { fontSize:"20dp" }
+	font: { fontSize:"18dp" }
 },
 "Button" : {
 	height : "38dp"
+},
+"TextArea" : {
+	borderRadius : 5
+},
+"TextField" : {
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+},
+"ScrollView" : {
+	layout : "vertical"
 }
