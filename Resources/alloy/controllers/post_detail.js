@@ -3,8 +3,8 @@ function Controller() {
         Ti.API.debug("Hoge");
         $.photo.image = api.toImageUrl(post);
     }
-    function onShowUpdatesClicked() {
-        var view = Alloy.createController("post_all_updates").getView();
+    function onShowMessagesClicked() {
+        var view = Alloy.createController("post_messages").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onShowInMapClicked() {
@@ -198,12 +198,12 @@ function Controller() {
         id: "edit_post"
     });
     $.__views.private_area.add($.__views.edit_post);
-    $.__views.show_updates = Ti.UI.createButton({
+    $.__views.show_messages = Ti.UI.createButton({
         height: "38dp",
         title: "管理者からの返信を見る",
-        id: "show_updates"
+        id: "show_messages"
     });
-    $.__views.private_area.add($.__views.show_updates);
+    $.__views.private_area.add($.__views.show_messages);
     $.__views.__alloyId60 = Ti.UI.createView({
         layout: "horizontal",
         height: "35dp",
@@ -355,7 +355,7 @@ function Controller() {
     var util = Alloy.Globals.util;
     $.post_detail.addEventListener("open", function() {
         var post = Alloy.Globals.post;
-        $.show_updates.addEventListener("click", onShowUpdatesClicked);
+        $.show_messages.addEventListener("click", onShowMessagesClicked);
         $.show_in_map.addEventListener("click", onShowInMapClicked);
         $.edit_post.addEventListener("click", onEditPostClicked);
         $.send_comment.addEventListener("click", onSendCommentClicked);

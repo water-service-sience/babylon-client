@@ -19,8 +19,8 @@ function onShowCommentsClicked(e){
 	var view = Alloy.createController("post_all_comments").getView();
 	Alloy.Globals.naviCon.open(view);
 }
-function onShowUpdatesClicked(e){
-	var view = Alloy.createController("post_all_updates").getView();
+function onShowMessagesClicked(e){
+	var view = Alloy.createController("post_messages").getView();
 	Alloy.Globals.naviCon.open(view);
 }
 function onShowInMapClicked(e){
@@ -92,7 +92,7 @@ $.post_detail.addEventListener("open",function(e){
 	
 	var post = Alloy.Globals.post;
 	
-	$.show_updates.addEventListener("click",onShowUpdatesClicked);
+	$.show_messages.addEventListener("click",onShowMessagesClicked);
 	$.show_in_map.addEventListener("click",onShowInMapClicked);
 	$.edit_post.addEventListener("click",onEditPostClicked);
 	$.send_comment.addEventListener("click",onSendCommentClicked);

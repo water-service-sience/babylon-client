@@ -21,7 +21,7 @@
 			<Button id="show_in_map">投稿場所を見る</Button>
 			<View id="private_area">
 				<Button id="edit_post">投稿内容を編集</Button>
-				<Button id="show_updates">管理者からの返信を見る</Button>
+				<Button id="show_messages">管理者からの返信を見る</Button>
 			</View>
 			
 			<View class="line_element">

@@ -1,0 +1,28 @@
+
+".container" : {
+  "layout" : "vertical",
+  backgroundColor:"#ddddff",
+  
+},
+"#send_message" : {
+	"width" : "80%",
+	"height" : "100%"
+},
+".line_element" : {
+	"layout" : "horizontal",
+	"height" : "50dp"
+},
+".v_list" : 
+{
+	"layout" : "vertical"
+},
+".right" : {
+	"right" : 0
+},
+
+".line1" : {
+	"height" : "30dp"
+},
+".line-left" : {
+	"bottom" : 0
+}

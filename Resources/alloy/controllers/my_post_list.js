@@ -1,10 +1,10 @@
 function Controller() {
     function onPostSelected(e) {
+        var item = e.section.getItemAt(e.itemIndex);
+        Alloy.Globals.post = item.post;
         var controller = Alloy.createController("post_detail");
         var view = controller.getView();
         Alloy.Globals.naviCon.open(view);
-        view.setPostAt(e.itemIndex);
-        Alloy.Globals.post = Alloy.Globals.api.postManager.myPosts[e.itemIndex];
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "my_post_list";
@@ -101,7 +101,6 @@ function Controller() {
     onPostSelected ? $.__views.my_posts.addEventListener("itemclick", onPostSelected) : __defers["$.__views.my_posts!itemclick!onPostSelected"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    require("calendar");
     var api = Alloy.Globals.api;
     var util = Alloy.Globals.util;
     $.my_post_list.addEventListener("open", function() {
@@ -113,6 +112,7 @@ function Controller() {
                     properties: {
                         height: "105dp"
                     },
+                    post: p,
                     thumbnail: {
                         image: api.toImageUrl(p)
                     },

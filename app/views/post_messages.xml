@@ -1,0 +1,26 @@
+<Alloy>
+	<Window class="container">
+		
+		<View class="line_element">
+			<TextField id="send_message"></TextField>
+		</View>
+		
+		<ListView id="messages" class="list"defaultItemTemplate="template">
+			<Templates>
+				<ItemTemplate name="template">
+					<View class="v_list">
+						<View class="line_element line1">
+							<Label>送信:</Label><Label bindId="nickname">aaa</Label>
+							<Label>  投稿日:</Label><Label class="right" bindId="date">8/9 17:00</Label>
+						</View>
+						<View class="line_element line-left">
+							<Label>コメント</Label><Label bindId="message">aaa</Label>
+						</View>
+					</View>
+				</ItemTemplate>
+				
+			</Templates>
+		</ListView>
+		
+	</Window>
+</Alloy>

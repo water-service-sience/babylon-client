@@ -22,9 +22,9 @@ function Controller() {
         id: "show_map"
     });
     $.__views.show_map && $.addTopLevelView($.__views.show_map);
-    var __alloyId96 = [];
+    var __alloyId122 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId96,
+        annotations: __alloyId122,
         id: "map",
         ns: Ti.Map,
         animate: "true",
