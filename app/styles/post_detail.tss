@@ -12,7 +12,7 @@
     height : "35dp"
 },
 "#comment_area" : {
-	height : "120dp",
+	height : "80%",
 	layout : "vertical"
 },
 
@@ -24,21 +24,20 @@
 	height : "35dp",
 	layout : "horizontal"
 },
-
-"#scroll_view" : {
-	height : Ti.UI.SIZE,
-    layout : 'vertical'
-},
 ".list" : {
 	layout : "vertical"
 },
 "#comment_list" : {
-	height : "200dp"
+	top : 0,
+	height : "80%"
 },
-".comment" : {
+"#comment" : {
 	width : "200dp",
 	height : "30dp"
 },
+".right" : {
+	right : 0
+}
 
 
 

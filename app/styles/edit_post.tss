@@ -29,7 +29,9 @@
 },
 "#goodness" : {
 	left : "5%",
-	width : "90%"
+	width : "90%",
+	max : 100,
+	min : 0
 },
 "#comment" : {
 	width : "100%",

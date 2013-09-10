@@ -6,8 +6,10 @@ function onPostClicked(e){
 	Alloy.Globals.api.postManager.post(photoData,$.goodness.value,function(result){
 		
 		Alloy.Globals.lastPost = result;
+		Alloy.Globals.post = result;
 		
-		var view = Alloy.createController("finish_post").getView();
+		var view = Alloy.createController("edit_post").getView();
+		alert("投稿完了");
 		Alloy.Globals.naviCon.home();
 		Alloy.Globals.naviCon.open(view);
 		
@@ -63,8 +65,6 @@ function showCamera() {
 
 $.post_image.addEventListener("open",function(){
 	showCamera();
-	$.goodness.max = 100;
-	$.goodness.min = 0;
 	$.goodness.value = 50;
 	$.post.enabled = false;
 });

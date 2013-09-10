@@ -37,7 +37,9 @@
 "#goodness" : {
 	left : "5%",
 	bottom : "30%",
-	width : "90%"
+	width : "90%",
+	max : 100,
+	min : 0
 },
 "#post" : {
     left : "5%",

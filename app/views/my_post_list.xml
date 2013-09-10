@@ -3,9 +3,14 @@
 		<ListView id="my_posts" defaultItemTemplate="template" onItemclick="onPostSelected">
 			<Templates>
 				<ItemTemplate name="template">
-					<ImageView bindId="thumbnail"></ImageView>
-					<Label bindId="date">
-					<Label bindId="explanation">
+					<View class="list">
+						<ImageView class="thumb" bindId="thumbnail"></ImageView>
+						<View class="v_container">
+							<Label bindId="date">
+							<Label bindId="category">
+						</View>
+					</View>	
+						
 				</ItemTemplate>
 			</Templates>
 			

@@ -2,7 +2,9 @@ function Controller() {
     function onPostClicked() {
         Alloy.Globals.api.postManager.post(photoData, $.goodness.value, function(result) {
             Alloy.Globals.lastPost = result;
-            var view = Alloy.createController("finish_post").getView();
+            Alloy.Globals.post = result;
+            var view = Alloy.createController("edit_post").getView();
+            alert("投稿完了");
             Alloy.Globals.naviCon.home();
             Alloy.Globals.naviCon.open(view);
         });
@@ -101,6 +103,8 @@ function Controller() {
         left: "5%",
         bottom: "30%",
         width: "90%",
+        max: 100,
+        min: 0,
         id: "goodness"
     });
     $.__views.post_image.add($.__views.goodness);
@@ -129,8 +133,6 @@ function Controller() {
     var photoData = "";
     $.post_image.addEventListener("open", function() {
         showCamera();
-        $.goodness.max = 100;
-        $.goodness.min = 0;
         $.goodness.value = 50;
         $.post.enabled = false;
     });

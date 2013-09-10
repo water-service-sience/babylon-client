@@ -22,35 +22,59 @@ function Controller() {
     var __alloyId11 = {};
     var __alloyId14 = [];
     var __alloyId16 = {
-        type: "Ti.UI.ImageView",
-        bindId: "thumbnail",
+        type: "Ti.UI.View",
+        childTemplates: function() {
+            var __alloyId17 = [];
+            var __alloyId19 = {
+                type: "Ti.UI.ImageView",
+                bindId: "thumbnail",
+                properties: {
+                    width: "100dp",
+                    height: "100dp",
+                    bindId: "thumbnail"
+                }
+            };
+            __alloyId17.push(__alloyId19);
+            var __alloyId21 = {
+                type: "Ti.UI.View",
+                childTemplates: function() {
+                    var __alloyId22 = [];
+                    var __alloyId24 = {
+                        type: "Ti.UI.Label",
+                        bindId: "date",
+                        properties: {
+                            font: {
+                                fontSize: "18dp"
+                            },
+                            bindId: "date"
+                        }
+                    };
+                    __alloyId22.push(__alloyId24);
+                    var __alloyId26 = {
+                        type: "Ti.UI.Label",
+                        bindId: "category",
+                        properties: {
+                            font: {
+                                fontSize: "18dp"
+                            },
+                            bindId: "category"
+                        }
+                    };
+                    __alloyId22.push(__alloyId26);
+                    return __alloyId22;
+                }(),
+                properties: {
+                    layout: "vertical"
+                }
+            };
+            __alloyId17.push(__alloyId21);
+            return __alloyId17;
+        }(),
         properties: {
-            bindId: "thumbnail"
+            layout: "horizontal"
         }
     };
     __alloyId14.push(__alloyId16);
-    var __alloyId18 = {
-        type: "Ti.UI.Label",
-        bindId: "date",
-        properties: {
-            font: {
-                fontSize: "18dp"
-            },
-            bindId: "date"
-        }
-    };
-    __alloyId14.push(__alloyId18);
-    var __alloyId20 = {
-        type: "Ti.UI.Label",
-        bindId: "explanation",
-        properties: {
-            font: {
-                fontSize: "18dp"
-            },
-            bindId: "explanation"
-        }
-    };
-    __alloyId14.push(__alloyId20);
     var __alloyId13 = {
         properties: {
             name: "template"
@@ -58,17 +82,17 @@ function Controller() {
         childTemplates: __alloyId14
     };
     __alloyId11["template"] = __alloyId13;
-    var __alloyId21 = [];
-    $.__views.__alloyId22 = Ti.UI.createListSection({
+    var __alloyId27 = [];
+    $.__views.__alloyId28 = Ti.UI.createListSection({
         headerTitle: "投稿一覧",
-        id: "__alloyId22"
+        id: "__alloyId28"
     });
-    __alloyId21.push($.__views.__alloyId22);
+    __alloyId27.push($.__views.__alloyId28);
     $.__views.my_posts = Ti.UI.createListView({
         top: "0%",
         width: "100%",
         bottom: "5%",
-        sections: __alloyId21,
+        sections: __alloyId27,
         templates: __alloyId11,
         id: "my_posts",
         defaultItemTemplate: "template"
@@ -78,13 +102,26 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     require("calendar");
+    var api = Alloy.Globals.api;
+    var util = Alloy.Globals.util;
     $.my_post_list.addEventListener("open", function() {
         Alloy.Globals.api.postManager.getMyPosts(0, 0, function(posts) {
             var dataSet = [];
             for (var i in posts) {
-                var l = posts[i];
+                var p = posts[i];
                 dataSet.push({
-                    properties: l
+                    properties: {
+                        height: "105dp"
+                    },
+                    thumbnail: {
+                        image: api.toImageUrl(p)
+                    },
+                    date: {
+                        text: util.dateToString(p.posted)
+                    },
+                    category: {
+                        text: p.category.label
+                    }
                 });
             }
             $.my_posts.sections[0].setItems(dataSet);

@@ -32,20 +32,38 @@ function onEditPostClicked(e){
 	Alloy.Globals.naviCon.open(view);
 	
 }
+function onSendCommentClicked(e){
+	var post = Alloy.Globals.post;
+	var message = $.comment.value;
+	$.comment.value = "";
+	$.comment.blur();
+	api.postManager.commentTo(post.id,message,function(post){
+		Alloy.Globals.post = post;
+		updateDisplayInformation(post);
+	});
+}
 
 
 function updateDisplayInformation(post){
 	//新着情報		
-	if(post.unreadUpdates > 0){
+	if(post.userId == api.client.userId && post.unreadMessages > 0){
 		$.status_message.visible = true;
-		$.status_message.text = "未読の返信が" + post.unreadUpdates + "件あります。";
+		$.status_message.text = "未読の返信が" + post.unreadMessages + "件あります。";
 	}else{
 		$.status_message.visible = false;
 	}
+	
+	if(post.userId == api.client.userId){
+		$.private_area.visible = true;
+	}else{
+		$.private_area.visible = false;
+	}
+	
 	//投稿情報
 	$.photo.image = api.toImageUrl(post);
 	$.date.text = util.dateToString(post.posted);
 	$.goodness.text = util.goodnessToString(post.goodness);
+	$.post_user.text = post.user.nickname;
 	
 	
 	var commentSection = Ti.UI.createListSection({ headerTitle: 'コメント'});
@@ -74,10 +92,11 @@ $.post_detail.addEventListener("open",function(e){
 	
 	var post = Alloy.Globals.post;
 	
-	$.show_comments.addEventListener("click",onShowCommentsClicked);
 	$.show_updates.addEventListener("click",onShowUpdatesClicked);
 	$.show_in_map.addEventListener("click",onShowInMapClicked);
 	$.edit_post.addEventListener("click",onEditPostClicked);
+	$.send_comment.addEventListener("click",onSendCommentClicked);
+	$.comment.addEventListener("return",onSendCommentClicked);
 	if(post){
 		updateDisplayInformation(post);
 		  

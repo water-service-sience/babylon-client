@@ -1,4 +1,5 @@
 var dateFormat = function(date) {
+    if (null == date) return "----";
     ("int" == typeof date || "string" == typeof date || "number" == typeof date) && (date = new Date(date));
     return date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate() + " " + ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
 };

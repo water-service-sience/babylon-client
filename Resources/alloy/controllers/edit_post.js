@@ -16,16 +16,18 @@ function Controller() {
     function onSaveClicked() {
         var post = Alloy.Globals.post;
         var param = {
+            postId: post.id,
             category: post.category.id,
-            comment: $.comment.text
+            comment: $.comment.value
         };
-        api.postManager.updatePost(param, function() {
+        api.postManager.updatePost(param, function(e) {
+            Alloy.Globals.post = e;
             Alloy.Globals.naviCon.pop();
         });
     }
-    function updatePost(post) {
-        $.comment.text = post.comment;
-        $.location.text = post.longitude + " " + post.latitude;
+    function updateDisplayInfo(post) {
+        $.comment.value = post.comment;
+        $.location.text = post.latitude.toFixed(2) + " " + post.longitude.toFixed(2);
         $.photo.image = api.toImageUrl(post);
         $.goodness.value = post.goodness;
         $.category.text = post.category.label;
@@ -112,6 +114,8 @@ function Controller() {
     $.__views.goodness = Ti.UI.createSlider({
         left: "5%",
         width: "90%",
+        max: 100,
+        min: 0,
         id: "goodness"
     });
     $.__views.scroll_view.add($.__views.goodness);
@@ -165,7 +169,7 @@ function Controller() {
         $.select_category.addEventListener("click", onSelectCategoryClicked);
         $.select_location.addEventListener("click", onSelectLocationClicked);
         var post = Alloy.Globals.post;
-        updatePost(post);
+        updateDisplayInfo(post);
     });
     _.extend($, exports);
 }

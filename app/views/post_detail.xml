@@ -7,6 +7,9 @@
 			<ImageView id="photo"></ImageView>
 			
 			<View class="line_element">
+			    <Label>投稿者:</Label><Label id="post_user">ほげ</Label>
+			</View>
+			<View class="line_element">
 			    <Label>投稿日時:</Label><Label id="date">2013年6月23日</Label>
 			</View>
 			<View class="line_element">
@@ -21,6 +24,11 @@
 				<Button id="show_updates">管理者からの返信を見る</Button>
 			</View>
 			
+			<View class="line_element">
+				<TextField id="comment" borderStyle="Ti.UI.INPUT_BORDERSTYLE_ROUNDED"></TextField>
+				<Button id="send_comment">コメントする</Button>
+			</View>
+			
 			<View id="comment_area">
 				
 				<ListView id="comment_list" class="list" defaultItemTemplate="comment">
@@ -28,10 +36,8 @@
 						<ItemTemplate name="comment">
 							<View class="list">
 								<View class="line_element">
-									<Label>名前</Label><Label bindId="nickname">aaa</Label>
-								</View>
-								<View class="line_element">
-									<Label> 書き込み</Label><Label bindId="date">8/9 17:00</Label>
+									<Label>投稿:</Label><Label bindId="nickname">aaa</Label>
+									<Label>さん 投稿日:</Label><Label class="right" bindId="date">8/9 17:00</Label>
 								</View>
 								<View class="line_element">
 									<Label>コメント</Label><Label bindId="comment">aaa</Label>
@@ -42,11 +48,6 @@
 					</Templates>
 				</ListView>
 				
-			</View>
-			<Button id="show_comments">コメントを全て見る</Button>
-			<View class="line_element">
-				<TextField id="comment" borderStyle="Ti.UI.INPUT_BORDERSTYLE_ROUNDED"></TextField>
-				<Button id="send_comment">コメントする</Button>
 			</View>
 		</ScrollView>
 	</Window>

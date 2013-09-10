@@ -1,6 +1,8 @@
 
 
 var dateFormat = function(date){
+	if(date == null) return "----";
+	
 	if(typeof(date) == "int" || typeof(date) == "string" || typeof(date) == "number"){
 		date = new Date(date);
 	}

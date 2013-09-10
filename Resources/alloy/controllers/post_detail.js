@@ -3,10 +3,6 @@ function Controller() {
         Ti.API.debug("Hoge");
         $.photo.image = api.toImageUrl(post);
     }
-    function onShowCommentsClicked() {
-        var view = Alloy.createController("post_all_comments").getView();
-        Alloy.Globals.naviCon.open(view);
-    }
     function onShowUpdatesClicked() {
         var view = Alloy.createController("post_all_updates").getView();
         Alloy.Globals.naviCon.open(view);
@@ -19,14 +15,26 @@ function Controller() {
         var view = Alloy.createController("edit_post").getView();
         Alloy.Globals.naviCon.open(view);
     }
+    function onSendCommentClicked() {
+        var post = Alloy.Globals.post;
+        var message = $.comment.value;
+        $.comment.value = "";
+        $.comment.blur();
+        api.postManager.commentTo(post.id, message, function(post) {
+            Alloy.Globals.post = post;
+            updateDisplayInformation(post);
+        });
+    }
     function updateDisplayInformation(post) {
-        if (post.unreadUpdates > 0) {
+        if (post.userId == api.client.userId && post.unreadMessages > 0) {
             $.status_message.visible = true;
-            $.status_message.text = "未読の返信が" + post.unreadUpdates + "件あります。";
+            $.status_message.text = "未読の返信が" + post.unreadMessages + "件あります。";
         } else $.status_message.visible = false;
+        $.private_area.visible = post.userId == api.client.userId ? true : false;
         $.photo.image = api.toImageUrl(post);
         $.date.text = util.dateToString(post.posted);
         $.goodness.text = util.goodnessToString(post.goodness);
+        $.post_user.text = post.user.nickname;
         var commentSection = Ti.UI.createListSection({
             headerTitle: "コメント"
         });
@@ -67,7 +75,6 @@ function Controller() {
     $.__views.post_detail && $.addTopLevelView($.__views.post_detail);
     $.__views.scroll_view = Ti.UI.createScrollView({
         layout: "vertical",
-        height: Ti.UI.SIZE,
         id: "scroll_view"
     });
     $.__views.post_detail.add($.__views.scroll_view);
@@ -85,20 +92,42 @@ function Controller() {
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
-    $.__views.__alloyId49 = Ti.UI.createView({
+    $.__views.__alloyId55 = Ti.UI.createView({
         layout: "horizontal",
         height: "35dp",
-        id: "__alloyId49"
+        id: "__alloyId55"
     });
-    $.__views.scroll_view.add($.__views.__alloyId49);
-    $.__views.__alloyId50 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId55);
+    $.__views.__alloyId56 = Ti.UI.createLabel({
+        font: {
+            fontSize: "18dp"
+        },
+        text: "投稿者:",
+        id: "__alloyId56"
+    });
+    $.__views.__alloyId55.add($.__views.__alloyId56);
+    $.__views.post_user = Ti.UI.createLabel({
+        font: {
+            fontSize: "18dp"
+        },
+        text: "ほげ",
+        id: "post_user"
+    });
+    $.__views.__alloyId55.add($.__views.post_user);
+    $.__views.__alloyId57 = Ti.UI.createView({
+        layout: "horizontal",
+        height: "35dp",
+        id: "__alloyId57"
+    });
+    $.__views.scroll_view.add($.__views.__alloyId57);
+    $.__views.__alloyId58 = Ti.UI.createLabel({
         font: {
             fontSize: "18dp"
         },
         text: "投稿日時:",
-        id: "__alloyId50"
+        id: "__alloyId58"
     });
-    $.__views.__alloyId49.add($.__views.__alloyId50);
+    $.__views.__alloyId57.add($.__views.__alloyId58);
     $.__views.date = Ti.UI.createLabel({
         font: {
             fontSize: "18dp"
@@ -106,13 +135,13 @@ function Controller() {
         text: "2013年6月23日",
         id: "date"
     });
-    $.__views.__alloyId49.add($.__views.date);
-    $.__views.__alloyId51 = Ti.UI.createView({
+    $.__views.__alloyId57.add($.__views.date);
+    $.__views.__alloyId59 = Ti.UI.createView({
         layout: "horizontal",
         height: "35dp",
-        id: "__alloyId51"
+        id: "__alloyId59"
     });
-    $.__views.scroll_view.add($.__views.__alloyId51);
+    $.__views.scroll_view.add($.__views.__alloyId59);
     $.__views.goodness_label = Ti.UI.createLabel({
         font: {
             fontSize: "18dp"
@@ -120,7 +149,7 @@ function Controller() {
         text: "評価:",
         id: "goodness_label"
     });
-    $.__views.__alloyId51.add($.__views.goodness_label);
+    $.__views.__alloyId59.add($.__views.goodness_label);
     $.__views.goodness = Ti.UI.createLabel({
         font: {
             fontSize: "18dp"
@@ -128,7 +157,7 @@ function Controller() {
         text: "良い",
         id: "goodness"
     });
-    $.__views.__alloyId51.add($.__views.goodness);
+    $.__views.__alloyId59.add($.__views.goodness);
     $.__views.append_info_area = Ti.UI.createView({
         height: "35dp",
         layout: "horizontal",
@@ -175,33 +204,52 @@ function Controller() {
         id: "show_updates"
     });
     $.__views.private_area.add($.__views.show_updates);
+    $.__views.__alloyId60 = Ti.UI.createView({
+        layout: "horizontal",
+        height: "35dp",
+        id: "__alloyId60"
+    });
+    $.__views.scroll_view.add($.__views.__alloyId60);
+    $.__views.comment = Ti.UI.createTextField({
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        width: "200dp",
+        height: "30dp",
+        id: "comment"
+    });
+    $.__views.__alloyId60.add($.__views.comment);
+    $.__views.send_comment = Ti.UI.createButton({
+        height: "38dp",
+        title: "コメントする",
+        id: "send_comment"
+    });
+    $.__views.__alloyId60.add($.__views.send_comment);
     $.__views.comment_area = Ti.UI.createView({
-        height: "120dp",
+        height: "80%",
         layout: "vertical",
         id: "comment_area"
     });
     $.__views.scroll_view.add($.__views.comment_area);
-    var __alloyId52 = {};
-    var __alloyId55 = [];
-    var __alloyId57 = {
+    var __alloyId61 = {};
+    var __alloyId64 = [];
+    var __alloyId66 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId58 = [];
-            var __alloyId60 = {
+            var __alloyId67 = [];
+            var __alloyId69 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId61 = [];
-                    var __alloyId63 = {
+                    var __alloyId70 = [];
+                    var __alloyId72 = {
                         type: "Ti.UI.Label",
                         properties: {
                             font: {
                                 fontSize: "18dp"
                             },
-                            text: "名前"
+                            text: "投稿:"
                         }
                     };
-                    __alloyId61.push(__alloyId63);
-                    var __alloyId65 = {
+                    __alloyId70.push(__alloyId72);
+                    var __alloyId74 = {
                         type: "Ti.UI.Label",
                         bindId: "nickname",
                         properties: {
@@ -212,54 +260,43 @@ function Controller() {
                             bindId: "nickname"
                         }
                     };
-                    __alloyId61.push(__alloyId65);
-                    return __alloyId61;
-                }(),
-                properties: {
-                    layout: "horizontal",
-                    height: "35dp"
-                }
-            };
-            __alloyId58.push(__alloyId60);
-            var __alloyId67 = {
-                type: "Ti.UI.View",
-                childTemplates: function() {
-                    var __alloyId68 = [];
-                    var __alloyId70 = {
+                    __alloyId70.push(__alloyId74);
+                    var __alloyId76 = {
                         type: "Ti.UI.Label",
                         properties: {
                             font: {
                                 fontSize: "18dp"
                             },
-                            text: "書き込み"
+                            text: "さん 投稿日:"
                         }
                     };
-                    __alloyId68.push(__alloyId70);
-                    var __alloyId72 = {
+                    __alloyId70.push(__alloyId76);
+                    var __alloyId78 = {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
                             font: {
                                 fontSize: "18dp"
                             },
+                            right: 0,
                             text: "8/9 17:00",
                             bindId: "date"
                         }
                     };
-                    __alloyId68.push(__alloyId72);
-                    return __alloyId68;
+                    __alloyId70.push(__alloyId78);
+                    return __alloyId70;
                 }(),
                 properties: {
                     layout: "horizontal",
                     height: "35dp"
                 }
             };
-            __alloyId58.push(__alloyId67);
-            var __alloyId74 = {
+            __alloyId67.push(__alloyId69);
+            var __alloyId80 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId75 = [];
-                    var __alloyId77 = {
+                    var __alloyId81 = [];
+                    var __alloyId83 = {
                         type: "Ti.UI.Label",
                         properties: {
                             font: {
@@ -268,8 +305,8 @@ function Controller() {
                             text: "コメント"
                         }
                     };
-                    __alloyId75.push(__alloyId77);
-                    var __alloyId79 = {
+                    __alloyId81.push(__alloyId83);
+                    var __alloyId85 = {
                         type: "Ti.UI.Label",
                         bindId: "comment",
                         properties: {
@@ -280,70 +317,49 @@ function Controller() {
                             bindId: "comment"
                         }
                     };
-                    __alloyId75.push(__alloyId79);
-                    return __alloyId75;
+                    __alloyId81.push(__alloyId85);
+                    return __alloyId81;
                 }(),
                 properties: {
                     layout: "horizontal",
                     height: "35dp"
                 }
             };
-            __alloyId58.push(__alloyId74);
-            return __alloyId58;
+            __alloyId67.push(__alloyId80);
+            return __alloyId67;
         }(),
         properties: {
             layout: "vertical"
         }
     };
-    __alloyId55.push(__alloyId57);
-    var __alloyId54 = {
+    __alloyId64.push(__alloyId66);
+    var __alloyId63 = {
         properties: {
             name: "comment"
         },
-        childTemplates: __alloyId55
+        childTemplates: __alloyId64
     };
-    __alloyId52["comment"] = __alloyId54;
+    __alloyId61["comment"] = __alloyId63;
     $.__views.comment_list = Ti.UI.createListView({
         layout: "vertical",
-        height: "200dp",
-        templates: __alloyId52,
+        top: 0,
+        height: "80%",
+        templates: __alloyId61,
         id: "comment_list",
         defaultItemTemplate: "comment"
     });
     $.__views.comment_area.add($.__views.comment_list);
-    $.__views.show_comments = Ti.UI.createButton({
-        height: "38dp",
-        title: "コメントを全て見る",
-        id: "show_comments"
-    });
-    $.__views.scroll_view.add($.__views.show_comments);
-    $.__views.__alloyId80 = Ti.UI.createView({
-        layout: "horizontal",
-        height: "35dp",
-        id: "__alloyId80"
-    });
-    $.__views.scroll_view.add($.__views.__alloyId80);
-    $.__views.comment = Ti.UI.createTextField({
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "comment"
-    });
-    $.__views.__alloyId80.add($.__views.comment);
-    $.__views.send_comment = Ti.UI.createButton({
-        height: "38dp",
-        title: "コメントする",
-        id: "send_comment"
-    });
-    $.__views.__alloyId80.add($.__views.send_comment);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var api = Alloy.Globals.api;
     var util = Alloy.Globals.util;
     $.post_detail.addEventListener("open", function() {
         var post = Alloy.Globals.post;
-        $.show_comments.addEventListener("click", onShowCommentsClicked);
         $.show_updates.addEventListener("click", onShowUpdatesClicked);
         $.show_in_map.addEventListener("click", onShowInMapClicked);
         $.edit_post.addEventListener("click", onEditPostClicked);
+        $.send_comment.addEventListener("click", onSendCommentClicked);
+        $.comment.addEventListener("return", onSendCommentClicked);
         post ? updateDisplayInformation(post) : api.postManager.getPost(1, function(post) {
             Alloy.Globals.post = post;
             updateDisplayInformation(post);

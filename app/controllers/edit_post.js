@@ -4,7 +4,6 @@ var util = Alloy.Globals.util;
 var api = Alloy.Globals.api;
 
 function onSelectCategoryClicked(e){
-	
 	var post = Alloy.Globals.post;
 	var view = Alloy.createController("select_category",{
 		selectCallback : function(c) {
@@ -17,7 +16,6 @@ function onSelectCategoryClicked(e){
 
 function onSelectLocationClicked(e)
 {
-	
 	var view = Alloy.createController("select_location").getView();
 	Alloy.Globals.naviCon.open(view);
 }
@@ -25,11 +23,13 @@ function onSelectLocationClicked(e)
 function onSaveClicked(e){
 	var post = Alloy.Globals.post;
 	var param = {
+		postId : post.id,
 		category : post.category.id,
-		comment : $.comment.text,
+		comment : $.comment.value,
 		//goodness : $.goodness.value
 	};
 	api.postManager.updatePost(param,function( e){
+		Alloy.Globals.post = e;
 		Alloy.Globals.naviCon.pop();
 	});
 	
@@ -38,9 +38,11 @@ function onSaveClicked(e){
 
 
 
-function updatePost(post){
-	$.comment.text = post.comment;
-	$.location.text = post.longitude + " " + post.latitude;
+function updateDisplayInfo(post){
+	
+	$.comment.value = post.comment;
+	$.location.text = post.latitude.toFixed(2) + " " + 
+	  post.longitude.toFixed(2);
 	$.photo.image = api.toImageUrl(post);
 	$.goodness.value = post.goodness;
 	$.category.text = post.category.label;
@@ -55,6 +57,6 @@ $.edit_post.addEventListener("open",function(e){
 
 	var post = Alloy.Globals.post;
 	
-	updatePost(post);
+	updateDisplayInfo(post);
 
 });

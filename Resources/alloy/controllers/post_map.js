@@ -11,9 +11,9 @@ function Controller() {
         id: "post_map"
     });
     $.__views.post_map && $.addTopLevelView($.__views.post_map);
-    var __alloyId81 = [];
+    var __alloyId86 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId81,
+        annotations: __alloyId86,
         id: "map",
         ns: Ti.Map,
         animate: "true",

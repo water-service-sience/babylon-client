@@ -1,6 +1,8 @@
 <Alloy>
 	<Window class="container">
 		<ScrollView id="scroll_view">
+			
+			
 			<ImageView id="photo"></ImageView>
 			
 			<View class="line_element">

@@ -5,4 +5,15 @@
 	top:"0%",
 	width : "100%",
 	bottom : "5%"
+},
+".list" : {
+	layout : "horizontal"
+},
+".thumb" : {
+	
+	width : "100dp",
+	height : "100dp"
+},
+".v_container" : {
+	layout : "vertical"
 }
