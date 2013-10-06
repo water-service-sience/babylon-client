@@ -279,6 +279,7 @@ function Controller() {
     var exports = {};
     $.__views.my_post_calendar = Ti.UI.createWindow({
         backgroundColor: "white",
+        layout: "vertical",
         id: "my_post_calendar"
     });
     $.__views.my_post_calendar && $.addTopLevelView($.__views.my_post_calendar);

@@ -19,12 +19,13 @@ function Controller() {
     var __defers = {};
     $.__views.show_map = Ti.UI.createWindow({
         backgroundColor: "white",
+        layout: "vertical",
         id: "show_map"
     });
     $.__views.show_map && $.addTopLevelView($.__views.show_map);
-    var __alloyId122 = [];
+    var __alloyId137 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId122,
+        annotations: __alloyId137,
         id: "map",
         ns: Ti.Map,
         animate: "true",

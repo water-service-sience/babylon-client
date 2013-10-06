@@ -1,15 +1,77 @@
+".container" : {
+	backgroundColor: "#f0ffff",
+	layout : "vertical"
+},
+".simple_container" : {
+	backgroundColor: "#f0ffff"
+},
 "Label" : {
-	font: { fontSize:"18dp" }
+	textAlign : "left",
+	font : { fontSize : "18dp"},
+	height : "24dp"
 },
 "Button" : {
-	height : "38dp"
+	font: { fontSize:"32dp" },
+	height : "52dp",
+	backgroundFocusedColor : "#ffe4e1",
+	left : "10dp",
+	right : "10dp"
 },
 "TextArea" : {
+	font: { fontSize:"24dp" },
 	borderRadius : 5
 },
 "TextField" : {
+	font: { fontSize:"24dp" },
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 },
 "ScrollView" : {
 	layout : "vertical"
+},
+".line_element" : {
+	height : "38dp",
+	layout : "horizontal"
+},
+".line_element_b" : {
+	height : "54dp",
+	layout : "horizontal"
+},
+".small_space" : {
+	width : "3dp"
+},
+".space1" : {
+	width : "10%"
+},
+".space2" : {
+	width : "20%"
+},
+".space3" : {
+	width : "30%"
+},
+".space4" : {
+	width : "40%"
+},
+".space5" : {
+	width : "50%"
+},
+".space6" : {
+	width : "60%"
+},
+".space7" : {
+	width : "70%"
+},
+".space8" : {
+	width : "80%"
+},
+".space9" : {
+	width : "90%"
+},
+".line_break" : {
+	width : "100%",
+	height : "25dp"
 }
+
+
+
+
+

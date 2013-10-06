@@ -230,12 +230,15 @@ function LandManager() {
             lon: 139.538849
         } ];
     };
+    this.updateOwnLand = function(land, callback) {
+        client.post("/land/update", land, callback);
+    };
     return this;
 }
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
 
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
 
 var client = new APIClient();
 

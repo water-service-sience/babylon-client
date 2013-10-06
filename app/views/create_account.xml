@@ -2,9 +2,10 @@
 	<Window class="container">
 		<Label id="title">アカウント作成</Label>
 		
-		
-		<Label id="nickname_label">ニックネーム</Label><TextField id="nickname"></TextField>
-		
+		<View id="center_panel" class="line_element">
+			<Label id="nickname_label" class="small_text">ニックネーム</Label>
+			<TextField id="nickname"></TextField>
+		</View>
 		<Button id="create" onClick="createAccount">アカウント作成</Button>
 		
 	</Window>

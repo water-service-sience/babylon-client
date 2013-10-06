@@ -1,0 +1,29 @@
+".goodness_panel" : {
+	height : "55dp",
+	width : "100%"
+},
+"#bad" : {
+	top : "1dp",
+    left : "2dp",
+    font :  {
+        fontSize: '16dp',
+        fontWeight: 'bold'
+    }	
+},
+"#good" : {
+	top : "1dp",
+    right : "2dp",
+    textAlign : "right",
+    font :  {
+        fontSize: '16dp',
+        fontWeight: 'bold'
+    }	
+},
+"#goodness" : {
+	top : "25dp",
+	left : "2dp",
+	right : "2dp",
+	max : 100,
+	min : 0,
+	value : 50
+}

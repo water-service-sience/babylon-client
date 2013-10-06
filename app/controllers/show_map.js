@@ -62,7 +62,6 @@ $.show_map.addEventListener("open",function(e){
 		Titanium.Geolocation.getCurrentPosition(function(e){
 			var lat = e.coords.latitude;
 			var lon = e.coords.longitude;
-			
 			$.map.setLocation({
 		        latitude:lat, longitude:lon, animate:false,
 		        latitudeDelta:0.04, longitudeDelta:0.04

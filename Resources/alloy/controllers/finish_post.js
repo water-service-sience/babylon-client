@@ -23,28 +23,36 @@ function Controller() {
     var __defers = {};
     $.__views.finish_post = Ti.UI.createWindow({
         backgroundColor: "#ddddff",
+        layout: "vertical",
         id: "finish_post"
     });
     $.__views.finish_post && $.addTopLevelView($.__views.finish_post);
     $.__views.title = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         top: "2%",
         text: "投稿ありがとうございます",
         id: "title"
     });
     $.__views.finish_post.add($.__views.title);
     $.__views.subtitle = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         top: "10%",
         text: "追加情報の編集",
         id: "subtitle"
     });
     $.__views.finish_post.add($.__views.subtitle);
     $.__views.comment = Ti.UI.createTextField({
+        font: {
+            fontSize: "24dp"
+        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         left: "5%",
         top: "35%",
@@ -55,9 +63,14 @@ function Controller() {
     });
     $.__views.finish_post.add($.__views.comment);
     $.__views.save_button = Ti.UI.createButton({
-        height: "38dp",
-        top: "80%",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
         left: "5%",
+        right: "10dp",
+        top: "80%",
         width: "60%",
         title: "追加情報を送信",
         id: "save_button"
@@ -65,9 +78,14 @@ function Controller() {
     $.__views.finish_post.add($.__views.save_button);
     onSaveClicked ? $.__views.save_button.addEventListener("click", onSaveClicked) : __defers["$.__views.save_button!click!onSaveClicked"] = true;
     $.__views.return_button = Ti.UI.createButton({
-        height: "38dp",
-        top: "80%",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
         left: "70%",
+        right: "10dp",
+        top: "80%",
         width: "25%",
         title: "戻る",
         id: "return_button"

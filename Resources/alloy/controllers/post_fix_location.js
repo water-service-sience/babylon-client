@@ -7,6 +7,8 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.post_fix_location = Ti.UI.createView({
+        backgroundColor: "#f0ffff",
+        layout: "vertical",
         id: "post_fix_location"
     });
     $.__views.post_fix_location && $.addTopLevelView($.__views.post_fix_location);

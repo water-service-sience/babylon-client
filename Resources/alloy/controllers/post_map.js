@@ -8,12 +8,13 @@ function Controller() {
     var exports = {};
     $.__views.post_map = Ti.UI.createWindow({
         backgroundColor: "white",
+        layout: "vertical",
         id: "post_map"
     });
     $.__views.post_map && $.addTopLevelView($.__views.post_map);
-    var __alloyId86 = [];
+    var __alloyId88 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId86,
+        annotations: __alloyId88,
         id: "map",
         ns: Ti.Map,
         animate: "true",

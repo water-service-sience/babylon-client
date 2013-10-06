@@ -1,0 +1,16 @@
+<Alloy>
+	<Window class="container">
+		
+		
+		
+		<ListView id="land_list" onItemclick="onSelectLand" defaultItemTemplate="template">
+			<Templates>
+				<ItemTemplate name="template">
+					<Label bindId="name" id="land_name">aaa</Label>
+				</ItemTemplate>
+			</Templates>
+			
+		</ListView>
+		
+	</Window>
+</Alloy>

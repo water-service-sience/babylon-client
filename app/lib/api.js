@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-//var ServerUrl = "http://localhost:9000";
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
+//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 function DB(){
 	var dbName = "userpref";
 	this.dbName = dbName;
@@ -323,6 +323,9 @@ function PostManager() {
 }
 
 function LandManager(){
+	
+	var self = this;
+	
 	this.getOwnLands = function(){
 		return [
         { name :"本郷キャンパス", lat : 35.7133 ,lon:139.762},
@@ -330,6 +333,10 @@ function LandManager(){
         { name :"田無", lat : 35.736550, lon : 139.538849}
         ];
 	
+	};
+	
+	this.updateOwnLand = function(land,callback){
+		client.post("/land/update",land,callback);
 	};
 	
 	return this;

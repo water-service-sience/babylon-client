@@ -1,14 +1,1 @@
-".container": {
-	backgroundColor: "white"
-},
 
-"#show_calendar" : {
-	top : "30%"
-},
-
-"#my_lands" : {
-	top : "3%",
-	left : "3%",
-	right : "3%",
-	bottom : "43%"
-}

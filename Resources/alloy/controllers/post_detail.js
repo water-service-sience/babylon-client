@@ -69,7 +69,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.post_detail = Ti.UI.createWindow({
-        backgroundColor: "#ddddff",
+        backgroundColor: "#f0ffff",
         id: "post_detail"
     });
     $.__views.post_detail && $.addTopLevelView($.__views.post_detail);
@@ -79,81 +79,96 @@ function Controller() {
     });
     $.__views.post_detail.add($.__views.scroll_view);
     $.__views.status_message = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "未読の返信が1件あります。",
         id: "status_message"
     });
     $.__views.scroll_view.add($.__views.status_message);
     $.__views.photo = Ti.UI.createImageView({
+        left: 0,
         width: "100%",
         autorotate: true,
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
     $.__views.__alloyId55 = Ti.UI.createView({
+        height: "38dp",
         layout: "horizontal",
-        height: "35dp",
         id: "__alloyId55"
     });
     $.__views.scroll_view.add($.__views.__alloyId55);
     $.__views.__alloyId56 = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "投稿者:",
         id: "__alloyId56"
     });
     $.__views.__alloyId55.add($.__views.__alloyId56);
     $.__views.post_user = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "ほげ",
         id: "post_user"
     });
     $.__views.__alloyId55.add($.__views.post_user);
     $.__views.__alloyId57 = Ti.UI.createView({
+        height: "38dp",
         layout: "horizontal",
-        height: "35dp",
         id: "__alloyId57"
     });
     $.__views.scroll_view.add($.__views.__alloyId57);
     $.__views.__alloyId58 = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "投稿日時:",
         id: "__alloyId58"
     });
     $.__views.__alloyId57.add($.__views.__alloyId58);
     $.__views.date = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "2013年6月23日",
         id: "date"
     });
     $.__views.__alloyId57.add($.__views.date);
     $.__views.__alloyId59 = Ti.UI.createView({
+        height: "38dp",
         layout: "horizontal",
-        height: "35dp",
         id: "__alloyId59"
     });
     $.__views.scroll_view.add($.__views.__alloyId59);
     $.__views.goodness_label = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "評価:",
         id: "goodness_label"
     });
     $.__views.__alloyId59.add($.__views.goodness_label);
     $.__views.goodness = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "良い",
         id: "goodness"
     });
@@ -165,52 +180,75 @@ function Controller() {
     });
     $.__views.scroll_view.add($.__views.append_info_area);
     $.__views.water_height_label = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "水位",
         id: "water_height_label"
     });
     $.__views.append_info_area.add($.__views.water_height_label);
     $.__views.water_height = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
+        height: "24dp",
         text: "22センチ",
         id: "water_height"
     });
     $.__views.append_info_area.add($.__views.water_height);
     $.__views.show_in_map = Ti.UI.createButton({
-        height: "38dp",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         title: "投稿場所を見る",
         id: "show_in_map"
     });
     $.__views.scroll_view.add($.__views.show_in_map);
     $.__views.private_area = Ti.UI.createView({
         layout: "vertical",
-        height: "80dp",
+        height: "104dp",
         id: "private_area"
     });
     $.__views.scroll_view.add($.__views.private_area);
     $.__views.edit_post = Ti.UI.createButton({
-        height: "38dp",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         title: "投稿内容を編集",
         id: "edit_post"
     });
     $.__views.private_area.add($.__views.edit_post);
     $.__views.show_messages = Ti.UI.createButton({
-        height: "38dp",
-        title: "管理者からの返信を見る",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
+        title: "管理者の返信を見る",
         id: "show_messages"
     });
     $.__views.private_area.add($.__views.show_messages);
     $.__views.__alloyId60 = Ti.UI.createView({
-        layout: "horizontal",
-        height: "35dp",
         id: "__alloyId60"
     });
     $.__views.scroll_view.add($.__views.__alloyId60);
     $.__views.comment = Ti.UI.createTextField({
+        font: {
+            fontSize: "24dp"
+        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         width: "200dp",
         height: "30dp",
@@ -218,7 +256,13 @@ function Controller() {
     });
     $.__views.__alloyId60.add($.__views.comment);
     $.__views.send_comment = Ti.UI.createButton({
-        height: "38dp",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         title: "コメントする",
         id: "send_comment"
     });
@@ -242,9 +286,11 @@ function Controller() {
                     var __alloyId72 = {
                         type: "Ti.UI.Label",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "投稿:"
                         }
                     };
@@ -253,9 +299,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "nickname",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "aaa",
                             bindId: "nickname"
                         }
@@ -264,9 +312,11 @@ function Controller() {
                     var __alloyId76 = {
                         type: "Ti.UI.Label",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "さん 投稿日:"
                         }
                     };
@@ -275,9 +325,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             right: 0,
                             text: "8/9 17:00",
                             bindId: "date"
@@ -287,8 +339,8 @@ function Controller() {
                     return __alloyId70;
                 }(),
                 properties: {
-                    layout: "horizontal",
-                    height: "35dp"
+                    height: "38dp",
+                    layout: "horizontal"
                 }
             };
             __alloyId67.push(__alloyId69);
@@ -299,9 +351,11 @@ function Controller() {
                     var __alloyId83 = {
                         type: "Ti.UI.Label",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "コメント"
                         }
                     };
@@ -310,9 +364,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "comment",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "aaa",
                             bindId: "comment"
                         }
@@ -321,8 +377,8 @@ function Controller() {
                     return __alloyId81;
                 }(),
                 properties: {
-                    layout: "horizontal",
-                    height: "35dp"
+                    height: "38dp",
+                    layout: "horizontal"
                 }
             };
             __alloyId67.push(__alloyId80);

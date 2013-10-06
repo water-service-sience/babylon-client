@@ -1,37 +1,13 @@
-".container": {
-	 backgroundColor:"#ddddff",
-	 layout : "vertical"
-},
+".scroll_view" : {
+	layout : "vertical",
+	width : "300dp"
+}
 ".line_element" : {
 	height : "35dp",
 	layout : "horizontal"
-	
 },
 "#photo" :{
 	width : "100%"
-},
-"#bad" : {
-    left : "3%",
-    width : "30%",
-    font :  {
-        fontSize: '16dp',
-        fontWeight: 'bold'
-    }	
-},
-"#good" : {
-    right : "3%",
-    width : "30%",
-    textAlign : "right",
-    font :  {
-        fontSize: '16dp',
-        fontWeight: 'bold'
-    }	
-},
-"#goodness" : {
-	left : "5%",
-	width : "90%",
-	max : 100,
-	min : 0
 },
 "#comment" : {
 	width : "100%",

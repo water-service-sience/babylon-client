@@ -3,12 +3,11 @@
 		<Label id="title">投稿</Label>
 		
 		<ImageView id="photo"></ImageView>
-		
-		<Label id="bad">悪い</Label><Label id="good">良い</Label>
-		<Slider id="goodness"></Slider>
-		
-		<Button id="post" onClick="onPostClicked">投稿</Button>
-		<Button id="recapture" onClick="onRecaptureClicked">再撮影</Button>
-		
+		<Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" />
+		<View class="line_element_b">
+			<View class="small_space"></View>
+			<Button id="post" onClick="onPostClicked">投稿</Button>
+			<Button id="recapture" onClick="onRecaptureClicked">再撮影</Button>
+		</View>
 	</Window>
 </Alloy>

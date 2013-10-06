@@ -34,23 +34,33 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.post_all_comments = Ti.UI.createWindow({
+        backgroundColor: "#f0ffff",
         layout: "vertical",
         id: "post_all_comments"
     });
     $.__views.post_all_comments && $.addTopLevelView($.__views.post_all_comments);
     $.__views.__alloyId30 = Ti.UI.createView({
-        layout: "horizontal",
         height: "30dp",
+        layout: "horizontal",
         id: "__alloyId30"
     });
     $.__views.post_all_comments.add($.__views.__alloyId30);
     $.__views.comment = Ti.UI.createTextField({
+        font: {
+            fontSize: "24dp"
+        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "comment"
     });
     $.__views.__alloyId30.add($.__views.comment);
     $.__views.send_comment = Ti.UI.createButton({
-        height: "38dp",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         title: "コメントする",
         id: "send_comment"
     });
@@ -68,9 +78,11 @@ function Controller() {
                     var __alloyId41 = {
                         type: "Ti.UI.Label",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "名前"
                         }
                     };
@@ -79,9 +91,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "nickname",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "aaa",
                             bindId: "nickname"
                         }
@@ -90,9 +104,11 @@ function Controller() {
                     var __alloyId45 = {
                         type: "Ti.UI.Label",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "書き込み"
                         }
                     };
@@ -101,9 +117,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "8/9 17:00",
                             bindId: "date"
                         }
@@ -112,8 +130,8 @@ function Controller() {
                     return __alloyId39;
                 }(),
                 properties: {
-                    layout: "horizontal",
-                    height: "30dp"
+                    height: "30dp",
+                    layout: "horizontal"
                 }
             };
             __alloyId36.push(__alloyId38);
@@ -124,9 +142,11 @@ function Controller() {
                     var __alloyId52 = {
                         type: "Ti.UI.Label",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "コメント"
                         }
                     };
@@ -135,9 +155,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "comment",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             text: "aaa",
                             bindId: "comment"
                         }
@@ -146,8 +168,8 @@ function Controller() {
                     return __alloyId50;
                 }(),
                 properties: {
-                    layout: "horizontal",
-                    height: "30dp"
+                    height: "30dp",
+                    layout: "horizontal"
                 }
             };
             __alloyId36.push(__alloyId49);

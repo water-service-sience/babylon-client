@@ -7,6 +7,8 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.post_all_updates = Ti.UI.createView({
+        backgroundColor: "#f0ffff",
+        layout: "vertical",
         id: "post_all_updates"
     });
     $.__views.post_all_updates && $.addTopLevelView($.__views.post_all_updates);

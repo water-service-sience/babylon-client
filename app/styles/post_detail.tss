@@ -1,24 +1,15 @@
-".container": {
-	backgroundColor:"#ddddff"
-	 
-},
 "#photo" : {
+	left : 0,
 	width : "100%",
 	autorotate : true
-},
-".line_element" : {
-	
-    layout : 'horizontal',
-    height : "35dp"
 },
 "#comment_area" : {
 	height : "80%",
 	layout : "vertical"
 },
-
 "#private_area" : {
 	layout : "vertical",
-	height : "80dp"
+	height : "104dp"
 },
 "#append_info_area" : {
 	height : "35dp",

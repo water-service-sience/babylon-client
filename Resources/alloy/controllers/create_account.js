@@ -13,49 +13,54 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.create_account = Ti.UI.createWindow({
-        backgroundColor: "#ddddff",
+        backgroundColor: "#f0ffff",
+        layout: "vertical",
         id: "create_account"
     });
     $.__views.create_account && $.addTopLevelView($.__views.create_account);
     $.__views.title = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
-        top: "10%",
-        height: Ti.UI.SIZE,
+        height: "24dp",
         text: "アカウント作成",
         id: "title"
     });
     $.__views.create_account.add($.__views.title);
+    $.__views.center_panel = Ti.UI.createView({
+        height: "50%",
+        layout: "horizontal",
+        id: "center_panel"
+    });
+    $.__views.create_account.add($.__views.center_panel);
     $.__views.nickname_label = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
-            fontSize: "16dp",
-            fontWeight: "bold"
+            fontSize: "18dp"
         },
-        left: "5%",
-        width: "20%",
-        top: "35%",
+        height: "24dp",
         text: "ニックネーム",
         id: "nickname_label"
     });
-    $.__views.create_account.add($.__views.nickname_label);
+    $.__views.center_panel.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createTextField({
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        left: "30%",
-        width: "65%",
-        top: "35%",
-        backgroundColor: "#ffffff",
         font: {
-            fontSize: "16dp",
-            fontWeight: "bold"
+            fontSize: "24dp"
         },
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        width: "50%",
         id: "nickname"
     });
-    $.__views.create_account.add($.__views.nickname);
+    $.__views.center_panel.add($.__views.nickname);
     $.__views.create = Ti.UI.createButton({
-        height: "38dp",
-        bottom: "20%",
-        width: "70%",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         title: "アカウント作成",
         id: "create"
     });

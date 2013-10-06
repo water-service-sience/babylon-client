@@ -1,37 +1,13 @@
-".container": {
-	backgroundColor:"white"
-},
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
-}, 
 "#status_message" : {
-	top:"3%",
 	color : "red"
 },
-"#post" : {
-	top : "15%"
+"Button" : {
+	height : "15%",
+	left : "5dp"
 },
-"#look" : {
-	top : "35%"
-}
-"#look_mine" : {
-    top : "55%"
-}
 "#setting" : {
-	bottom : "10%",
-	right : "5%"
-}
-
-".big_button" : {
-	width : "80%",
-	height : Ti.UI.SIZE,
-	color : "#000000"
-},
-
-".small_button" : {
-	width : "30%",
-	height : Ti.UI.SIZE,
-	color : "#550000"
+	right : 0,
+	left : "70%",
+	bottom : "5dp"
+	
 }

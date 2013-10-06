@@ -15,7 +15,8 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.my_post_list = Ti.UI.createWindow({
-        backgroundColor: "#ddddff",
+        backgroundColor: "#f0ffff",
+        layout: "vertical",
         id: "my_post_list"
     });
     $.__views.my_post_list && $.addTopLevelView($.__views.my_post_list);
@@ -43,9 +44,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             bindId: "date"
                         }
                     };
@@ -54,9 +57,11 @@ function Controller() {
                         type: "Ti.UI.Label",
                         bindId: "category",
                         properties: {
+                            textAlign: "left",
                             font: {
                                 fontSize: "18dp"
                             },
+                            height: "24dp",
                             bindId: "category"
                         }
                     };

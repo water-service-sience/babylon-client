@@ -6,8 +6,8 @@
 					<View class="list">
 						<ImageView class="thumb" bindId="thumbnail"></ImageView>
 						<View class="v_container">
-							<Label bindId="date">
-							<Label bindId="category">
+							<Label class="small_text" bindId="date">
+							<Label class="small_text" bindId="category">
 						</View>
 					</View>	
 						

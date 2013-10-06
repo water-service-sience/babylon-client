@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container">
+	<Window class="simple_container">
 		<ScrollView id="scroll_view">
 			
 			<Label id="status_message">未読の返信が1件あります。</Label>
@@ -21,10 +21,10 @@
 			<Button id="show_in_map">投稿場所を見る</Button>
 			<View id="private_area">
 				<Button id="edit_post">投稿内容を編集</Button>
-				<Button id="show_messages">管理者からの返信を見る</Button>
+				<Button id="show_messages">管理者の返信を見る</Button>
 			</View>
 			
-			<View class="line_element">
+			<View class="">
 				<TextField id="comment" borderStyle="Ti.UI.INPUT_BORDERSTYLE_ROUNDED"></TextField>
 				<Button id="send_comment">コメントする</Button>
 			</View>

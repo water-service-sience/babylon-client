@@ -1,10 +1,7 @@
 <Alloy>
 	<Window class="container">
-		
-		
-		<Button id="show_calendar" onClick="onShowCalendarClicked">カレンダーで見る</Button>
-		
-		
-		<Button id="show_self_posts" onClick="onShowSelfPostClicked">自分の投稿一覧を見る</Button>
+		<Label>自分の投稿を見る</Label>
+		<Button id="show_calendar" onClick="onShowCalendarClicked">カレンダー</Button>
+		<Button id="show_self_posts" onClick="onShowSelfPostClicked">投稿一覧</Button>
 	</Window>
 </Alloy>

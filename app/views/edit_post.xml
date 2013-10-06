@@ -2,18 +2,15 @@
 	<Window class="container">
 		<ScrollView id="scroll_view">
 			
-			
 			<ImageView id="photo"></ImageView>
 			
-			<View class="line_element">
-				<Label>内容:</Label><Label id="category">Hoge</Label>
+			<View class="line_element_b">
+				<Label class="small_text">内容:</Label>
+				<Label id="category" class="small_text">Hoge</Label>
 				<Button id="select_category">変更</Button>
 			</View>
-			
-			<View height="20dp">
-				<Label id="bad">悪い</Label><Label id="good">良い</Label>
-			</View>
-			<Slider id="goodness"></Slider>
+			<Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" />
+		
 			<TextArea id="comment"></TextArea>
 			<View class="line_element">
 				<Label>緯度経度</Label><Label id="location">123,233</Label>

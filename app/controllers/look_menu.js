@@ -1,5 +1,4 @@
 
-
 function onSelectOwnLand(e){
 	var land = e.section.items[e.itemIndex].properties.land;
 	Alloy.Globals.land = land;
@@ -22,7 +21,7 @@ $.look_menu.addEventListener("open",function(e){
 		var l = lands[i];
 		dataSet.push({
 			properties : {
-				height : "20dp",
+				//height : "20dp",
 				land : l
 			},
 			name : {text : l.name}

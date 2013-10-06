@@ -1,10 +1,14 @@
 function Controller() {
     function onPostClicked() {
-        Alloy.Globals.api.postManager.post(photoData, $.goodness.value, function(result) {
+        var v = $.goodness.getView("goodness").value;
+        Alloy.Globals.api.postManager.post(photoData, v, function(result) {
             Alloy.Globals.lastPost = result;
             Alloy.Globals.post = result;
             var view = Alloy.createController("edit_post").getView();
-            alert("投稿完了");
+            var dialog = Titanium.UI.createAlertDialog();
+            dialog.setTitle("投稿完了");
+            dialog.setMessage("投稿ありがとうございます。追加の情報は次のページで編集できます。");
+            dialog.show();
             Alloy.Globals.naviCon.home();
             Alloy.Globals.naviCon.open(view);
         });
@@ -52,16 +56,17 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.post_image = Ti.UI.createWindow({
-        backgroundColor: "#ddddff",
+        backgroundColor: "#f0ffff",
+        layout: "vertical",
         id: "post_image"
     });
     $.__views.post_image && $.addTopLevelView($.__views.post_image);
     $.__views.title = Ti.UI.createLabel({
+        textAlign: "left",
         font: {
             fontSize: "18dp"
         },
-        top: "2%",
-        height: Ti.UI.SIZE,
+        height: "24dp",
         text: "投稿",
         id: "title"
     });
@@ -69,71 +74,57 @@ function Controller() {
     $.__views.photo = Ti.UI.createImageView({
         width: "90%",
         height: "40%",
-        top: "10%",
-        bottom: "50%",
         id: "photo"
     });
     $.__views.post_image.add($.__views.photo);
-    $.__views.bad = Ti.UI.createLabel({
-        font: {
-            fontSize: "16dp",
-            fontWeight: "bold"
-        },
-        left: "3%",
-        bottom: "40%",
-        width: "30%",
-        text: "悪い",
-        id: "bad"
+    $.__views.goodness = Alloy.createController("goodness_bar", {
+        id: "goodness",
+        __parentSymbol: $.__views.post_image
     });
-    $.__views.post_image.add($.__views.bad);
-    $.__views.good = Ti.UI.createLabel({
-        font: {
-            fontSize: "16dp",
-            fontWeight: "bold"
-        },
-        right: "3%",
-        bottom: "40%",
-        width: "30%",
-        textAlign: "right",
-        text: "良い",
-        id: "good"
+    $.__views.goodness.setParent($.__views.post_image);
+    $.__views.__alloyId86 = Ti.UI.createView({
+        height: "54dp",
+        layout: "horizontal",
+        id: "__alloyId86"
     });
-    $.__views.post_image.add($.__views.good);
-    $.__views.goodness = Ti.UI.createSlider({
-        left: "5%",
-        bottom: "30%",
-        width: "90%",
-        max: 100,
-        min: 0,
-        id: "goodness"
+    $.__views.post_image.add($.__views.__alloyId86);
+    $.__views.__alloyId87 = Ti.UI.createView({
+        width: "3dp",
+        id: "__alloyId87"
     });
-    $.__views.post_image.add($.__views.goodness);
+    $.__views.__alloyId86.add($.__views.__alloyId87);
     $.__views.post = Ti.UI.createButton({
-        height: "38dp",
-        left: "5%",
-        bottom: "5%",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         width: "60%",
         title: "投稿",
         id: "post"
     });
-    $.__views.post_image.add($.__views.post);
+    $.__views.__alloyId86.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.recapture = Ti.UI.createButton({
-        height: "38dp",
-        bottom: "5%",
-        left: "70%",
-        width: "25%",
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        left: "10dp",
+        right: "10dp",
         title: "再撮影",
         id: "recapture"
     });
-    $.__views.post_image.add($.__views.recapture);
+    $.__views.__alloyId86.add($.__views.recapture);
     onRecaptureClicked ? $.__views.recapture.addEventListener("click", onRecaptureClicked) : __defers["$.__views.recapture!click!onRecaptureClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var photoData = "";
     $.post_image.addEventListener("open", function() {
         showCamera();
-        $.goodness.value = 50;
         $.post.enabled = false;
     });
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);

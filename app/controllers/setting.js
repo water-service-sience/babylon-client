@@ -10,6 +10,12 @@ function onLogoutClicked(){
 	view.open();
 }
 
+function onSelectLandClicked(){
+	var view = Alloy.createController("setting_select_land").getView();
+	Alloy.Globals.naviCon.open(view);
+	
+}
+
 $.setting.addEventListener("open",function(){
 	var api = Alloy.Globals.api;
 	$.nickname.text = api.client.nickname;

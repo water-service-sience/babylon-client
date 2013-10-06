@@ -3,13 +3,18 @@ var photoData = "";
 
 function onPostClicked(e){
 	
-	Alloy.Globals.api.postManager.post(photoData,$.goodness.value,function(result){
+	var v = $.goodness.getView("goodness").value;
+	Alloy.Globals.api.postManager.post(photoData,v,function(result){
 		
 		Alloy.Globals.lastPost = result;
 		Alloy.Globals.post = result;
-		
 		var view = Alloy.createController("edit_post").getView();
-		alert("投稿完了");
+		
+		var dialog = Titanium.UI.createAlertDialog();
+		dialog.setTitle('投稿完了');
+		dialog.setMessage('投稿ありがとうございます。追加の情報は次のページで編集できます。'); 
+		dialog.show();
+		
 		Alloy.Globals.naviCon.home();
 		Alloy.Globals.naviCon.open(view);
 		
@@ -65,6 +70,6 @@ function showCamera() {
 
 $.post_image.addEventListener("open",function(){
 	showCamera();
-	$.goodness.value = 50;
+	//$.goodness.value = 50;
 	$.post.enabled = false;
 });
