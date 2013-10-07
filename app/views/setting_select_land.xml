@@ -10,6 +10,15 @@
 				</ItemTemplate>
 			</Templates>
 			
+			
+            <ListSection headerTitle="登録済み">
+            	<ListItem name:text="Loading" />
+            </ListSection>
+            
+            <ListSection headerTitle="編集">
+                <ListItem name:text="新しく登録する" />
+                <ListItem name:text="サーバーと同期" sync="true" />
+            </ListSection>
 		</ListView>
 		
 	</Window>

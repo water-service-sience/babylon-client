@@ -1,4 +1,11 @@
 
+/**
+ * Args
+ * {
+ * 	land : _land_data_,
+ *  callback : function(_land_)
+ * }
+ */
 
 var api = Alloy.Globals.api;
 
@@ -11,7 +18,7 @@ var callback = args.callback || function(land){
 
 var land = args.land || {
 	id : -1,
-	name : "Land1",
+	name : "new land",
 	latitude : 35.0001,
 	longitude : 135.0001 
 };

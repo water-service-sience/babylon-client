@@ -2,6 +2,9 @@
 var util = Alloy.Globals.util;
 var preClick = null;
 
+
+
+
 function mapClicked(e)
 {
 	var anno = e.annotation;
@@ -42,8 +45,8 @@ $.show_map.addEventListener("open",function(e){
 	
 	if(Alloy.Globals.land != null){
 		var land = Alloy.Globals.land;
-		var lat = land.lat;
-		var lon = land.lon;
+		var lat = land.latitude;
+		var lon = land.longitude;
 		$.map.setLocation({
 	        latitude:lat, longitude:lon, animate:false,
 	        latitudeDelta:0.04, longitudeDelta:0.04

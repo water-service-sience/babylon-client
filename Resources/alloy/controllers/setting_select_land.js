@@ -1,5 +1,39 @@
 function Controller() {
-    function onSelectLand() {}
+    function onSelectLand(e) {
+        var item = e.section.getItemAt(e.itemIndex);
+        if (1 == e.sectionIndex && 1 == e.itemIndex) {
+            $.land_list.sections[0].setItems([ {
+                name: {
+                    text: "Loading"
+                }
+            } ]);
+            api.landManager.forceUpdate(function() {
+                refresh();
+            });
+            return;
+        }
+        var controller = Alloy.createController("select_location", {
+            land: item.land,
+            callback: function() {
+                refresh();
+                Alloy.Globals.naviCon.pop();
+            }
+        });
+        var view = controller.getView();
+        Alloy.Globals.naviCon.open(view);
+    }
+    function refresh() {
+        var lands = api.landManager.getOwnLands().map(function(land) {
+            var l = land.toJSON();
+            return {
+                land: l,
+                name: {
+                    text: l.name
+                }
+            };
+        });
+        $.land_list.sections[0].setItems(lands);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "setting_select_land";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -37,7 +71,51 @@ function Controller() {
         childTemplates: __alloyId135
     };
     __alloyId132["template"] = __alloyId134;
+    var __alloyId137 = [];
+    var __alloyId140 = [];
+    $.__views.__alloyId141 = {
+        name: {
+            text: "Loading"
+        },
+        properties: {
+            id: "__alloyId141"
+        }
+    };
+    __alloyId140.push($.__views.__alloyId141);
+    $.__views.__alloyId138 = Ti.UI.createListSection({
+        headerTitle: "登録済み",
+        id: "__alloyId138"
+    });
+    __alloyId137.push($.__views.__alloyId138);
+    $.__views.__alloyId138.items = __alloyId140;
+    var __alloyId144 = [];
+    $.__views.__alloyId145 = {
+        name: {
+            text: "新しく登録する"
+        },
+        properties: {
+            id: "__alloyId145"
+        }
+    };
+    __alloyId144.push($.__views.__alloyId145);
+    $.__views.__alloyId146 = {
+        name: {
+            text: "サーバーと同期"
+        },
+        properties: {
+            sync: "true",
+            id: "__alloyId146"
+        }
+    };
+    __alloyId144.push($.__views.__alloyId146);
+    $.__views.__alloyId142 = Ti.UI.createListSection({
+        headerTitle: "編集",
+        id: "__alloyId142"
+    });
+    __alloyId137.push($.__views.__alloyId142);
+    $.__views.__alloyId142.items = __alloyId144;
     $.__views.land_list = Ti.UI.createListView({
+        sections: __alloyId137,
         templates: __alloyId132,
         id: "land_list",
         defaultItemTemplate: "template"
@@ -46,6 +124,8 @@ function Controller() {
     onSelectLand ? $.__views.land_list.addEventListener("itemclick", onSelectLand) : __defers["$.__views.land_list!itemclick!onSelectLand"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var api = Alloy.Globals.api;
+    api.landManager.cache(refresh);
     $.setting_select_land.addEventListener("open", function() {});
     __defers["$.__views.land_list!itemclick!onSelectLand"] && $.__views.land_list.addEventListener("itemclick", onSelectLand);
     _.extend($, exports);

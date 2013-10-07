@@ -3,12 +3,12 @@ var api = Alloy.Globals.api;
 var client = api.client;
 
 function onPostClicked(e) {
-	// var view = Alloy.createController("post_image").getView();
-	// Alloy.Globals.naviCon.open(view);
+	var view = Alloy.createController("post_image").getView();
+	Alloy.Globals.naviCon.open(view);
 	
  	
-	var view = Alloy.createController("select_location").getView();
-	Alloy.Globals.naviCon.open(view);
+	// var view = Alloy.createController("setting_select_land").getView();
+	// Alloy.Globals.naviCon.open(view);
  	
 	
 }

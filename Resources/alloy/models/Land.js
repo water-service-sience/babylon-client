@@ -1,9 +1,10 @@
 exports.definition = {
     config: {
         columns: {
-            name: "string",
-            latitude: "double",
-            longitude: "double"
+            id: "INTEGER PRIMARY KEY",
+            name: "TEXT",
+            latitude: "REAL",
+            longitude: "REAL"
         },
         adapter: {
             type: "sql",
@@ -15,7 +16,11 @@ exports.definition = {
         return Model;
     },
     extendCollection: function(Collection) {
-        _.extend(Collection.prototype, {});
+        _.extend(Collection.prototype, {
+            comparator: function(land) {
+                return land.get("id");
+            }
+        });
         return Collection;
     }
 };

@@ -1,6 +1,6 @@
 function Controller() {
     function onSelectOwnLand(e) {
-        var land = e.section.items[e.itemIndex].properties.land;
+        var land = e.section.items[e.itemIndex].land;
         Alloy.Globals.land = land;
         var view = Alloy.createController("show_map").getView();
         Alloy.Globals.naviCon.open(view);
@@ -73,23 +73,19 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.look_menu.addEventListener("open", function() {
-        var lands = Alloy.Globals.api.landManager.getOwnLands();
-        var dataSet = [];
-        for (var i in lands) {
-            var l = lands[i];
-            dataSet.push({
-                properties: {
-                    land: l
-                },
+        var lands = api.landManager.getOwnLands().map(function(land) {
+            var l = land.toJSON();
+            return {
+                land: l,
                 name: {
                     text: l.name
                 }
-            });
-        }
+            };
+        });
         var section = Ti.UI.createListSection({
             headerTitle: "農地"
         });
-        section.setItems(dataSet);
+        section.setItems(lands);
         $.my_lands.sections = [ section ];
     });
     __defers["$.__views.show_map!click!onShowMapClicked"] && $.__views.show_map.addEventListener("click", onShowMapClicked);

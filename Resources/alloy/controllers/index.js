@@ -1,6 +1,6 @@
 function Controller() {
     function onPostClicked() {
-        var view = Alloy.createController("select_location").getView();
+        var view = Alloy.createController("post_image").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onLookClicked() {

@@ -23,9 +23,9 @@ function Controller() {
         id: "show_map"
     });
     $.__views.show_map && $.addTopLevelView($.__views.show_map);
-    var __alloyId137 = [];
+    var __alloyId147 = [];
     $.__views.map = Ti.Map.createView({
-        annotations: __alloyId137,
+        annotations: __alloyId147,
         id: "map",
         ns: Ti.Map,
         animate: "true",
@@ -60,8 +60,8 @@ function Controller() {
         };
         if (null != Alloy.Globals.land) {
             var land = Alloy.Globals.land;
-            var lat = land.lat;
-            var lon = land.lon;
+            var lat = land.latitude;
+            var lon = land.longitude;
             $.map.setLocation({
                 latitude: lat,
                 longitude: lon,

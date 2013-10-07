@@ -1,10 +1,10 @@
 exports.definition = {
     config: {
         columns: {
-            id: "int",
-            nickname: "string",
-            accessKey: "string",
-            secretKey: "string"
+            id: "INTEGER",
+            nickname: "TEXT",
+            accessKey: "TEXT",
+            secretKey: "TEXT"
         },
         adapter: {
             type: "sql",

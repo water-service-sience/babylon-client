@@ -215,23 +215,50 @@ function PostManager() {
 }
 
 function LandManager() {
+    var self = this;
+    this.forceUpdate = function(callback) {
+        var lands = Alloy.createCollection("land");
+        lands.fetch();
+        var list = lands.map(function(l) {
+            return l;
+        });
+        for (var i in list) list[i].destroy();
+        self.cache(callback);
+    };
+    this.cache = function(callback) {
+        var lands = Alloy.createCollection("land");
+        lands.fetch();
+        0 == lands.length ? client.get("/land/list", null, function(result) {
+            for (var i in result) {
+                var l = result[i];
+                var land = Alloy.createModel("land", l);
+                land.save();
+            }
+            callback();
+        }) : callback();
+    };
     this.getOwnLands = function() {
-        return [ {
-            name: "本郷キャンパス",
-            lat: 35.7133,
-            lon: 139.762
-        }, {
-            name: "駒場キャンパス",
-            lat: 35.661132,
-            lon: 139.684933
-        }, {
-            name: "田無",
-            lat: 35.73655,
-            lon: 139.538849
-        } ];
+        var lands = Alloy.createCollection("land");
+        lands.fetch();
+        return lands;
     };
     this.updateOwnLand = function(land, callback) {
-        client.post("/land/update", land, callback);
+        client.post("/land/update", land, function(result) {
+            var collection = Alloy.createCollection("land");
+            collection.fetch({
+                query: "SELECT * from land where id = " + result.id
+            });
+            if (0 == collection.length) {
+                Ti.API.debug("Create new land:" + result.id);
+                var l = Alloy.createModel("land", result);
+                l.save();
+            } else {
+                var l = collection.at(0);
+                l.set(result);
+                l.save();
+            }
+            callback(result);
+        });
     };
     return this;
 }
