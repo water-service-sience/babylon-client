@@ -7,7 +7,7 @@ function onPostClicked(e) {
 	Alloy.Globals.naviCon.open(view);
 	
  	
-	// var view = Alloy.createController("setting_select_land").getView();
+	// var view = Alloy.createController("post_detail").getView();
 	// Alloy.Globals.naviCon.open(view);
  	
 	

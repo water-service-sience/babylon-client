@@ -4,7 +4,7 @@ var util = Alloy.Globals.util;
 
 
 function onPostSelected(e){
-	var item = e.section.getItemAt(e.itemIndex);;
+	var item = e.section.getItemAt(e.itemIndex);
 	Alloy.Globals.post = item.post;
 	var controller = Alloy.createController("post_detail");
 //controller.setPostAt(e.itemIndex);

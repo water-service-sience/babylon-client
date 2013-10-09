@@ -29,7 +29,7 @@ function Controller() {
     });
     $.__views.create_account.add($.__views.title);
     $.__views.center_panel = Ti.UI.createView({
-        height: "50%",
+        height: "30%",
         layout: "horizontal",
         id: "center_panel"
     });
@@ -59,6 +59,10 @@ function Controller() {
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         title: "アカウント作成",

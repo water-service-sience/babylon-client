@@ -2,16 +2,11 @@
 var api = Alloy.Globals.api;
 var util = Alloy.Globals.util;
 
+var args = arguments[0] || {};
 
-function setPostAt(index){
-	
-	var post = Alloy.Globals.api.postManager.myPosts[index];
-	
-		
-	$.photo.image = post.image;
-}
+var post = args.post || Alloy.Globals.post;
+
 function setPost(post) {
-	Ti.API.debug("Hoge");
 	$.photo.image = api.toImageUrl(post);
 }
 
@@ -66,38 +61,27 @@ function updateDisplayInformation(post){
 	$.post_user.text = post.user.nickname;
 	
 	
-	var commentSection = Ti.UI.createListSection({ headerTitle: 'コメント'});
-	var commentDataSet = [];
-	for(var i in post.comments){
-		var c = post.comments[i];
-		var nickname = "no name";
-		if(c.user) nickname = c.user.nickname;
-		commentDataSet.push({
-			properties : {
-				height : "105dp"
-			},
-			nickname : {text : nickname},
-			comment : {text : c.comment},
-			date : {text : util.dateToString(c.commented)}
-		});
-	}
-	
-	commentSection.setItems(commentDataSet);
-	$.comment_list.setSections([commentSection]);
+	// var commentSection = Ti.UI.createListSection({ headerTitle: 'コメント'});
+	// var commentDataSet = [];
+	// for(var i in post.comments){
+		// var c = post.comments[i];
+		// var nickname = "no name";
+		// if(c.user) nickname = c.user.nickname;
+		// commentDataSet.push({
+			// properties : {
+				// height : "105dp"
+			// },
+			// nickname : {text : nickname},
+			// comment : {text : c.comment},
+			// date : {text : util.dateToString(c.commented)}
+		// });
+	// }
+// 	
+	// commentSection.setItems(commentDataSet);
+	// $.comment_list.setSections([commentSection]);
 }
 
-
-
-$.post_detail.addEventListener("open",function(e){
-	
-	var post = Alloy.Globals.post;
-	
-	$.show_messages.addEventListener("click",onShowMessagesClicked);
-	$.show_in_map.addEventListener("click",onShowInMapClicked);
-	$.edit_post.addEventListener("click",onEditPostClicked);
-	$.send_comment.addEventListener("click",onSendCommentClicked);
-	$.comment.addEventListener("return",onSendCommentClicked);
-	if(post){
+if(post){
 		updateDisplayInformation(post);
 		  
 	}else{
@@ -107,6 +91,13 @@ $.post_detail.addEventListener("open",function(e){
 			
 		});
 	}
+
+$.post_detail.addEventListener("open",function(e){
+	
+	
+	//$.send_comment.addEventListener("click",onSendCommentClicked);
+	//$.comment.addEventListener("return",onSendCommentClicked);
+	
 });
 
 exports.setPost = setPost;

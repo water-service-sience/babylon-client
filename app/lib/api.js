@@ -1,7 +1,9 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-var ServerUrl = "http://localhost:9000";
-//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+// var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+
+
 function DB(){
 	var dbName = "userpref";
 	this.dbName = dbName;

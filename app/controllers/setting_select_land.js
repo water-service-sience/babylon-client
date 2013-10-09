@@ -17,7 +17,7 @@ function onSelectLand(e){
 		return;
 	}
 	
-	var controller = Alloy.createController("select_location",{
+	var controller = Alloy.createController("edit_land",{
 		land : item.land,
 		callback : function(land){
 			refresh();

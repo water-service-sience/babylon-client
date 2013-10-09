@@ -7,14 +7,14 @@
 			<View class="line_element_b">
 				<Label class="small_text">内容:</Label>
 				<Label id="category" class="small_text">Hoge</Label>
-				<Button id="select_category">変更</Button>
+				<Button id="select_category" class="small_button">選択</Button>
 			</View>
 			<Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" />
-		
+		    <Label>コメント</Label>
 			<TextArea id="comment"></TextArea>
 			<View class="line_element">
 				<Label>緯度経度</Label><Label id="location">123,233</Label>
-				<Button id="select_location">変更</Button>
+				<Button id="select_location" class="small_button">選択</Button>
 			</View>
 		
 			<Button id="save">保存</Button>

@@ -1,13 +1,29 @@
 
 function onLogoutClicked(){
 	
-	Alloy.Globals.api.client.logout();
+	
+	var alert = Titanium.UI.createAlertDialog(
+		{ title: 'ログアウト確認',
+		message: 'ログアウトしてもよろしいですか？', 
+		buttonNames: ['Yes', 'No'], cancel: 1 });
 	
 	
-	Alloy.Globals.naviCon.home();
-
-	var view = Alloy.createController("create_account").getView();
-	view.open();
+	alert.show();
+	alert.addEventListener('click',function(event){
+	    // Cancelボタンが押されたかどうか
+	    if(event.cancel){
+	        // cancel時の処理
+	    }
+	    // 選択されたボタンのindexも返る
+	    if(event.index == 0){
+	        // Logout処理
+			Alloy.Globals.api.client.logout();
+			Alloy.Globals.naviCon.home();
+			var view = Alloy.createController("create_account").getView();
+			view.open();
+	    }
+	});
+	
 }
 
 function onSelectLandClicked(){

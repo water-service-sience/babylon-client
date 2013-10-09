@@ -42,14 +42,16 @@ var currentYear = 2013;
 var currentMonth = 1;
 
 function onSwiped(e) {
-	if(e.direction == "left" || e.direction == "up"){
-		$.posts.visible = false;
-		if(selectedDate) selectedDate.parentTable.top = 0;
+	$.posts.visible = false;
+	if(selectedDate) selectedDate.parentTable.top = 0;
+	if(e.direction == "left"){
 		goNextMonth();
-	}else if(e.direction == "right" || e.direction == "down"){
-		$.posts.visible = false;
-		if(selectedDate) selectedDate.parentTable.top = 0;
+	}else if(e.direction == "right"){
 		goPrevMonth();
+	}else if(e.direction == "up"){
+		goPrevYear();
+	}else if(e.direction == "down"){
+		goNextYear();
 	}
 }
 
@@ -61,38 +63,48 @@ function onNextClicked(e){
 }
 
 function goNextMonth(){
-	var oldCalendar = currentCalendarView;
 	var y = currentYear;
 	var m = currentMonth + 1;
 	if(m > 12) {
 		m = 1;
 		y += 1;
 	}
-	
-	loadPosts(y,m,function(){
-		createCalendar(y,m,function(calendar){
-			$.calendar.remove(oldCalendar);
-			$.calendar.add(calendar);
-		});
-	});
+	goToMonth(y,m);
 	
 }
 function goPrevMonth(){
-	var oldCalendar = currentCalendarView;
 	var y = currentYear;
 	var m = currentMonth - 1;
 	if(m < 1) {
 		m = 12;
 		y -= 1;
 	}
-	loadPosts(y,m,function(){
-		createCalendar(y,m,function(calendar){
+	goToMonth(y,m);
+}
+
+function goNextYear(){
+	var y = currentYear + 1;
+	var m = currentMonth;
+	goToMonth(y,m);
+}
+function goPrevYear(){
+	var y = currentYear - 1;
+	var m = currentMonth;
+	goToMonth(y,m);
+
+}
+
+function goToMonth(year,month){
+	
+	var oldCalendar = currentCalendarView;
+	loadPosts(year,month,function(){
+		createCalendar(year,month,function(calendar){
 			$.calendar.remove(oldCalendar);
 			$.calendar.add(calendar);
 		});
 	});
-
 }
+
 
 var postTable;
 
@@ -135,44 +147,20 @@ function onCellClicked( e ) {
 
 function updatePostTableView(posts){
 	
-	var rows = [];
-	for( var i in posts){
+	var dataSet = [];
+	for(var i in posts){
 		var p = posts[i];
-		
-		var row = Ti.UI.createTableViewRow({
-			height : 100,
-			post : p
-		});
-		Ti.API.debug("Image = " + api.toImageUrl(p));
-		var photo = Ti.UI.createImageView({
-			image : api.toImageUrl(p),
-			left : 0,
-			top : 0,
-			bottom : 0,
-			width : 100
-			
-		});
-		var time = Ti.UI.createLabel({
-			text : util.dateToString(p.posted),
-			textAlign : "left",
-			left : 100,
-			top : 0
-		});
-		var category = Ti.UI.createLabel({
-			text : "Category:" + p.category.label,
-			textAlign : "left",
-			left : 100,
-			top : 30
-		});
-		
-		
-		row.add(photo);
-		row.add(time);
-		row.add(category);
-		
-		rows.push(row);
-		$.postTable.setData(rows);
+		dataSet.push({properties : {
+			height : "105dp"
+			},
+				post : p,
+			  thumbnail : { image : api.toImageUrl(p)},
+			  date : { text : util.dateToString(p.posted)},
+			  category : {text : p.category.label}
+			});
 	}
+	$.postTable.sections[0].setItems(dataSet);
+	
 	
 }
 
@@ -202,10 +190,16 @@ function createCell(parent,x,y,date , label ){
         touchEnabled:false,
         top : 0
     });
+    
+    var label = "";
+    if(posts.length > 0){
+    	label = posts.length + "件";
+    }
+    
     var bodyLabel = Ti.UI.createLabel({
         color:"black",
         font:{fontSize:12,fontWeight:'bold'},
-        text: posts.length + "件",
+        text: label,
         textAlign : "center",
         touchEnabled:false,
         top : cellHeight / 3
@@ -213,20 +207,19 @@ function createCell(parent,x,y,date , label ){
     thisView.add(dateLabel);
     thisView.add(bodyLabel);
     
-    thisView.addEventListener("click",onCellClicked)
+    thisView.addEventListener("click",onCellClicked);
     
     return thisView;
 }
 
 function onPostSelected(e){
-	var row = e.row;
-	var post = row.post;
+	var item = e.section.getItemAt(e.itemIndex);
+	var post = item.post;
 	
 	Alloy.Globals.post = post;
 	
 	var controller = Alloy.createController("post_detail");
 	var view = controller.getView();
-	view.setPost(post);
 	Alloy.Globals.naviCon.open(view);
 }
 

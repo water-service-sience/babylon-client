@@ -1,0 +1,7 @@
+<Alloy>
+	<View class="container">
+		<Label id="label">Hoge</Label>
+		
+		
+	</View>
+</Alloy>

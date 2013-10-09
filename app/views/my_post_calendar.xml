@@ -1,13 +1,33 @@
 <Alloy>
-	<Window class="container">
+	<Window class="simple_container">
 		
 		
-		<View id="calendar"></View>
-		<View id="posts">
-			<TableView id="postTable">
-				
-			</TableView>
+		<View id="calendar">
 			
+			<Label id="explanation">スワイプ左右で月、上下で年を変更できます</Label>
 		</View>
+		<View id="posts">
+			
+			<ListView id="postTable" defaultItemTemplate="template" onItemclick="onPostSelected">
+				<Templates>
+					<ItemTemplate name="template">
+						<View class="list">
+							<ImageView class="thumb" bindId="thumbnail"></ImageView>
+							<View class="v_container">
+								<Label class="small_text" bindId="date">
+								<Label class="small_text" bindId="category">
+							</View>
+						</View>	
+							
+					</ItemTemplate>
+				</Templates>
+				
+	            <ListSection headerTitle="投稿一覧">
+	            </ListSection>
+			</ListView>
+				
+		</View>
+		
+		
 	</Window>
 </Alloy>

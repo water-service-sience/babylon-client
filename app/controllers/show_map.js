@@ -1,42 +1,90 @@
 
+var api = Alloy.Globals.api;
 var util = Alloy.Globals.util;
 var preClick = null;
 
-
+function onZoomInClicked(e){
+	$.map.zoom(1);
+}
+function onZoomOutClicked(e){
+	$.map.zoom(-1);
+}
 
 
 function mapClicked(e)
 {
-	var anno = e.annotation;
-	Ti.API.debug("Anno = " + anno + " : " + anno.post);
-	
-	if(anno.post != null){
-		Alloy.Globals.post = anno.post;
-		
-		var controller = Alloy.createController("post_detail");
-		var view = controller.getView();
-		Alloy.Globals.naviCon.open(view);
-	}
-	
 
 }
+
+var selectedPost = null;
+
+function onClickHandler(e){
+	
+	Ti.API.debug(e.clicksource + " : " + e.type);
+	if(e.clicksource == "pin"){
+		var annotation = e.annotation;
+		var post = annotation.post;
+		
+		if(!post)return;
+	
+		
+		//上に情報を表示するために、中心をずらす。
+		var lat = post.latitude + $.map.latitudeDelta * 0.30;
+		
+		$.map.setLocation({
+	        latitude:lat, longitude:post.longitude, animate:true,
+	        latitudeDelta:$.map.latitudeDelta, longitudeDelta:$.map.longitudeDelta
+	    });
+	    
+	    //画像を表示
+	    $.image_balloon.image = api.toImageUrl(post.imageFile);
+	    $.balloon.visible = true;
+		selectedPost = post;
+	}
+	
+	
+}
+
+function createCustomView(post){
+	var c = Alloy.createController('post_position_on_map',{
+		post : post
+	});
+	return c.getView();
+}
+
+function onCloseButtonClicked(e){
+	$.balloon.visible = false;
+}
+
+function onShowDetailClicked(e){
+	if(selectedPost){
+		
+		var view = Alloy.createController("post_detail",{
+			post : selectedPost
+		}).getView();
+		Alloy.Globals.naviCon.open(view);
+		
+	}
+}
+
 
 $.show_map.addEventListener("open",function(e){
 	var annotations = [];
 	var pinPosts = function(lat,lon){
 		Alloy.Globals.api.postManager.getNearPosts(lat,lon,function(posts) {
-			Ti.API.debug("Near posts are " + posts);
+			
 			
 			for( var i in posts){
 				var d = posts[i];
 				var anno = Titanium.Map.createAnnotation({
 				    latitude:d.latitude,
 				    longitude:d.longitude,
-				    title: util.dateFormat(d.posted),
-				    pincolor:Titanium.Map.ANNOTATION_RED,
+				    customView : createCustomView(d),
 				    animate:true,
+				    title : "投稿者:" + d.user.nickname,
 				    post:d // Custom property to uniquely identify this annotation.
 				});	
+				anno.addEventListener("click",onClickHandler);
 				annotations.push(anno);
 			}
 			$.map.annotations = annotations;
@@ -73,6 +121,5 @@ $.show_map.addEventListener("open",function(e){
 				
 		});
 	}
-	
 	
 });

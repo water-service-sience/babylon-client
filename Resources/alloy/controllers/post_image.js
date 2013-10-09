@@ -5,9 +5,10 @@ function Controller() {
             Alloy.Globals.lastPost = result;
             Alloy.Globals.post = result;
             var view = Alloy.createController("edit_post").getView();
-            var dialog = Titanium.UI.createAlertDialog();
-            dialog.setTitle("投稿完了");
-            dialog.setMessage("投稿ありがとうございます。追加の情報は次のページで編集できます。");
+            var dialog = Titanium.UI.createAlertDialog({
+                title: "投稿完了",
+                message: "投稿ありがとうございます。追加の情報は次のページで編集できます。"
+            });
             dialog.show();
             Alloy.Globals.naviCon.home();
             Alloy.Globals.naviCon.open(view);
@@ -82,30 +83,34 @@ function Controller() {
         __parentSymbol: $.__views.post_image
     });
     $.__views.goodness.setParent($.__views.post_image);
-    $.__views.__alloyId86 = Ti.UI.createView({
+    $.__views.__alloyId85 = Ti.UI.createView({
         height: "54dp",
         layout: "horizontal",
+        id: "__alloyId85"
+    });
+    $.__views.post_image.add($.__views.__alloyId85);
+    $.__views.__alloyId86 = Ti.UI.createView({
+        width: "3dp",
         id: "__alloyId86"
     });
-    $.__views.post_image.add($.__views.__alloyId86);
-    $.__views.__alloyId87 = Ti.UI.createView({
-        width: "3dp",
-        id: "__alloyId87"
-    });
-    $.__views.__alloyId86.add($.__views.__alloyId87);
+    $.__views.__alloyId85.add($.__views.__alloyId86);
     $.__views.post = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         width: "60%",
         title: "投稿",
         id: "post"
     });
-    $.__views.__alloyId86.add($.__views.post);
+    $.__views.__alloyId85.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.recapture = Ti.UI.createButton({
         font: {
@@ -113,12 +118,16 @@ function Controller() {
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         title: "再撮影",
         id: "recapture"
     });
-    $.__views.__alloyId86.add($.__views.recapture);
+    $.__views.__alloyId85.add($.__views.recapture);
     onRecaptureClicked ? $.__views.recapture.addEventListener("click", onRecaptureClicked) : __defers["$.__views.recapture!click!onRecaptureClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

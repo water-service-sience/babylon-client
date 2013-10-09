@@ -30,6 +30,10 @@ function Controller() {
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         title: "周辺を地図で見る",
@@ -37,9 +41,9 @@ function Controller() {
     });
     $.__views.look_menu.add($.__views.show_map);
     onShowMapClicked ? $.__views.show_map.addEventListener("click", onShowMapClicked) : __defers["$.__views.show_map!click!onShowMapClicked"] = true;
-    var __alloyId5 = {};
-    var __alloyId8 = [];
-    var __alloyId9 = {
+    var __alloyId11 = {};
+    var __alloyId14 = [];
+    var __alloyId15 = {
         type: "Ti.UI.Label",
         bindId: "name",
         properties: {
@@ -52,19 +56,19 @@ function Controller() {
             bindId: "name"
         }
     };
-    __alloyId8.push(__alloyId9);
-    var __alloyId7 = {
+    __alloyId14.push(__alloyId15);
+    var __alloyId13 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId8
+        childTemplates: __alloyId14
     };
-    __alloyId5["template"] = __alloyId7;
+    __alloyId11["template"] = __alloyId13;
     $.__views.my_lands = Ti.UI.createListView({
         left: "3%",
         right: "3%",
         height: "80%",
-        templates: __alloyId5,
+        templates: __alloyId11,
         id: "my_lands",
         defaultItemTemplate: "template"
     });

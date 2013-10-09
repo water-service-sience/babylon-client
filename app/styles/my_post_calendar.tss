@@ -1,13 +1,33 @@
-".container": {
-	backgroundColor: "white"
-},
 
 "#calendar" : {
-	backgroundColor : "#cceeff"
+	backgroundColor : "#cceeff",
+	top : 0,
+	height : "100%"
 },
 
 "#posts" : {
 	backgroundColor : "white",
-	visible : false
+	visible : false,
+	top : "40%",
+	height : "80%"
 
+},
+"#postTable" : {
+	top : 0,
+	bottom : 0
+},
+"#explanation" : {
+	bottom : 0
+},
+".list" : {
+	layout : "horizontal"
+},
+".thumb" : {
+	
+	width : "100dp",
+	height : "100dp"
+},
+".v_container" : {
+	layout : "vertical"
 }
+

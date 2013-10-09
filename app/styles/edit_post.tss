@@ -12,5 +12,10 @@
 "#comment" : {
 	width : "100%",
 	height : "105dp"
+},
+".small_button" : {
+	font: { fontSize:"16dp" },
+	height : "20dp",
+	backgroundFocusedColor : "gray",
 }
 

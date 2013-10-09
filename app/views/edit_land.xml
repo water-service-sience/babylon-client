@@ -2,8 +2,11 @@
 	<Window class="container">
 		
 		
+		<View class="line_element">
+			<Label>名前</Label><TextField id="name"></TextField>
+		</View>
 		<!-- Note the ns attribute is used to change the default namespace. -->
-        <View id="map" ns="Ti.Map" 
+        <View id="map" ns="Ti.Map" onClick="onMapClicked"
             animate="true" regionFit="true" userLocation="true"
             mapType="Ti.Map.STANDARD_TYPE" >
 
@@ -11,6 +14,7 @@
 
         </View>
         
-    	<Button onClick="onOkClicked">選択</Button>
+    	<Button onClick="onOkClicked">保存</Button>
+    	<Button onClick="onDeleteClicked" width="30%">削除</Button>
 	</Window>
 </Alloy>

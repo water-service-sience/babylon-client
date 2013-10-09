@@ -16,7 +16,19 @@ function onSelectCategoryClicked(e){
 
 function onSelectLocationClicked(e)
 {
-	var view = Alloy.createController("select_location").getView();
+	
+	var post = Alloy.Globals.post;
+	var view = Alloy.createController("select_location",{
+		latitude : post.latitude,
+		longitude : post.longitude,
+		callback : function(e){
+			if(!e.cancel){
+				post.latitude = e.latitude;
+				post.longitude = e.longitude;
+				updateDisplayInfo(post);
+			}
+		}
+	}).getView();
 	Alloy.Globals.naviCon.open(view);
 }
 

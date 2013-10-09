@@ -1,3 +1,44 @@
 ".container": {
 	backgroundColor: "white"
+},
+".zoom_button" : {
+	font: { fontSize:"20" },
+	height : "25dp",
+	width : "25dp",
+	backgroundFocusedColor : "gray",
+},
+"#zoom_in" : {
+	left : "5dp",
+	bottom : "5ddp"
+},
+"#zoom_out" : {
+	left : "35dp",
+	bottom : "5dp"
+},
+"#balloon" : {
+	width : "95%",
+	height : "60%",
+	top : "5%",
+	backgroundColor : "white"
+},
+"#image_balloon" : {
+	width : "95%",
+	height : "85%",
+	top : "5%"
+},
+"#close_button" : {
+	width : "35dp",
+	height : "35dp",
+	top : "5dp",
+	right : "5dp",
+	left : "auto",
+	borderRadius : "15dp",
+	borderWidth : 3
+},
+"#show_detail_button" : {
+	bottom : "5dp",
+	top : "auto",
+	left : "auto",
+	right : "auto"
 }
+

@@ -10,9 +10,12 @@ function onPostClicked(e){
 		Alloy.Globals.post = result;
 		var view = Alloy.createController("edit_post").getView();
 		
-		var dialog = Titanium.UI.createAlertDialog();
-		dialog.setTitle('投稿完了');
-		dialog.setMessage('投稿ありがとうございます。追加の情報は次のページで編集できます。'); 
+		var dialog = Titanium.UI.createAlertDialog({
+			title : "投稿完了",
+			message : '投稿ありがとうございます。追加の情報は次のページで編集できます。'
+		});
+		
+		
 		dialog.show();
 		
 		Alloy.Globals.naviCon.home();

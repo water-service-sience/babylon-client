@@ -20,9 +20,9 @@ function Controller() {
         id: "select_category"
     });
     $.__views.select_category && $.addTopLevelView($.__views.select_category);
-    var __alloyId115 = {};
-    var __alloyId118 = [];
-    var __alloyId120 = {
+    var __alloyId114 = {};
+    var __alloyId117 = [];
+    var __alloyId119 = {
         type: "Ti.UI.Label",
         bindId: "label",
         properties: {
@@ -34,25 +34,25 @@ function Controller() {
             bindId: "label"
         }
     };
-    __alloyId118.push(__alloyId120);
-    var __alloyId117 = {
+    __alloyId117.push(__alloyId119);
+    var __alloyId116 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId118
+        childTemplates: __alloyId117
     };
-    __alloyId115["template"] = __alloyId117;
-    var __alloyId121 = [];
-    $.__views.__alloyId122 = Ti.UI.createListSection({
+    __alloyId114["template"] = __alloyId116;
+    var __alloyId120 = [];
+    $.__views.__alloyId121 = Ti.UI.createListSection({
         headerTitle: "カテゴリー",
-        id: "__alloyId122"
+        id: "__alloyId121"
     });
-    __alloyId121.push($.__views.__alloyId122);
+    __alloyId120.push($.__views.__alloyId121);
     $.__views.category_list = Ti.UI.createListView({
         width: "100%",
         height: "90%",
-        sections: __alloyId121,
-        templates: __alloyId115,
+        sections: __alloyId120,
+        templates: __alloyId114,
         id: "category_list",
         defaultItemTemplate: "template"
     });

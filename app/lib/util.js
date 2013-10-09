@@ -26,3 +26,29 @@ exports.goodnessToString = function(goodness){
 	else if(goodness < 90) return "良い";
 	else return "非常に良い";
 };
+
+exports.niceTimeString = function(date){
+	
+	if(!date) return "不明";
+	if(typeof(date) != "date"){
+		date = new Date(date);
+	}
+	var diff = new Date().getTime() - date.getTime();
+	
+	var DAY = 24 * 60 * 60 * 1000;
+	var HOUR = 60 * 60 * 1000;
+	var MINUTE = 60 * 1000;
+	// 1日より前
+	if(diff > DAY){
+		return Math.floor(diff / DAY) + "日前";
+	}else if(diff > HOUR){
+		return Math.floor(diff / HOUR) + "時間前";
+	}else if(diff > MINUTE){
+		return Math.floor(diff / MINUTE) + "分前";
+	}else{
+		return "ちょうど今";
+	}
+	
+};
+
+

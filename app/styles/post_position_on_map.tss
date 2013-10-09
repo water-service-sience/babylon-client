@@ -1,0 +1,6 @@
+
+"#label" : {
+    borderColor : "black",
+    borderRadius : 5,
+    borderWidth : 2
+}

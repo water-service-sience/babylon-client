@@ -1,40 +1,41 @@
 function Controller() {
     function onSwiped(e) {
-        if ("left" == e.direction || "up" == e.direction) {
-            $.posts.visible = false;
-            selectedDate && (selectedDate.parentTable.top = 0);
-            goNextMonth();
-        } else if ("right" == e.direction || "down" == e.direction) {
-            $.posts.visible = false;
-            selectedDate && (selectedDate.parentTable.top = 0);
-            goPrevMonth();
-        }
+        $.posts.visible = false;
+        selectedDate && (selectedDate.parentTable.top = 0);
+        "left" == e.direction ? goNextMonth() : "right" == e.direction ? goPrevMonth() : "up" == e.direction ? goPrevYear() : "down" == e.direction && goNextYear();
     }
     function goNextMonth() {
-        var oldCalendar = currentCalendarView;
         var y = currentYear;
         var m = currentMonth + 1;
         if (m > 12) {
             m = 1;
             y += 1;
         }
-        loadPosts(y, m, function() {
-            createCalendar(y, m, function(calendar) {
-                $.calendar.remove(oldCalendar);
-                $.calendar.add(calendar);
-            });
-        });
+        goToMonth(y, m);
     }
     function goPrevMonth() {
-        var oldCalendar = currentCalendarView;
         var y = currentYear;
         var m = currentMonth - 1;
         if (1 > m) {
             m = 12;
             y -= 1;
         }
-        loadPosts(y, m, function() {
-            createCalendar(y, m, function(calendar) {
+        goToMonth(y, m);
+    }
+    function goNextYear() {
+        var y = currentYear + 1;
+        var m = currentMonth;
+        goToMonth(y, m);
+    }
+    function goPrevYear() {
+        var y = currentYear - 1;
+        var m = currentMonth;
+        goToMonth(y, m);
+    }
+    function goToMonth(year, month) {
+        var oldCalendar = currentCalendarView;
+        loadPosts(year, month, function() {
+            createCalendar(year, month, function(calendar) {
                 $.calendar.remove(oldCalendar);
                 $.calendar.add(calendar);
             });
@@ -61,41 +62,28 @@ function Controller() {
         }
     }
     function updatePostTableView(posts) {
-        var rows = [];
+        var dataSet = [];
         for (var i in posts) {
             var p = posts[i];
-            var row = Ti.UI.createTableViewRow({
-                height: 100,
-                post: p
+            dataSet.push({
+                properties: {
+                    height: "105dp"
+                },
+                post: p,
+                thumbnail: {
+                    image: api.toImageUrl(p)
+                },
+                date: {
+                    text: util.dateToString(p.posted)
+                },
+                category: {
+                    text: p.category.label
+                }
             });
-            Ti.API.debug("Image = " + api.toImageUrl(p));
-            var photo = Ti.UI.createImageView({
-                image: api.toImageUrl(p),
-                left: 0,
-                top: 0,
-                bottom: 0,
-                width: 100
-            });
-            var time = Ti.UI.createLabel({
-                text: util.dateToString(p.posted),
-                textAlign: "left",
-                left: 100,
-                top: 0
-            });
-            var category = Ti.UI.createLabel({
-                text: "Category:" + p.category.label,
-                textAlign: "left",
-                left: 100,
-                top: 30
-            });
-            row.add(photo);
-            row.add(time);
-            row.add(category);
-            rows.push(row);
-            $.postTable.setData(rows);
         }
+        $.postTable.sections[0].setItems(dataSet);
     }
-    function createCell(parent, x, y, date) {
+    function createCell(parent, x, y, date, label) {
         var key = currentYear + "/" + date;
         var posts = postMap[key];
         null == posts && (posts = []);
@@ -123,13 +111,15 @@ function Controller() {
             touchEnabled: false,
             top: 0
         });
+        var label = "";
+        posts.length > 0 && (label = posts.length + "件");
         var bodyLabel = Ti.UI.createLabel({
             color: "black",
             font: {
                 fontSize: 12,
                 fontWeight: "bold"
             },
-            text: posts.length + "件",
+            text: label,
             textAlign: "center",
             touchEnabled: false,
             top: cellHeight / 3
@@ -140,12 +130,11 @@ function Controller() {
         return thisView;
     }
     function onPostSelected(e) {
-        var row = e.row;
-        var post = row.post;
+        var item = e.section.getItemAt(e.itemIndex);
+        var post = item.post;
         Alloy.Globals.post = post;
         var controller = Alloy.createController("post_detail");
         var view = controller.getView();
-        view.setPost(post);
         Alloy.Globals.naviCon.open(view);
     }
     function createDateList(year, month) {
@@ -277,27 +266,121 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.my_post_calendar = Ti.UI.createWindow({
-        backgroundColor: "white",
-        layout: "vertical",
+        backgroundColor: "#f0ffff",
         id: "my_post_calendar"
     });
     $.__views.my_post_calendar && $.addTopLevelView($.__views.my_post_calendar);
     $.__views.calendar = Ti.UI.createView({
         backgroundColor: "#cceeff",
+        top: 0,
+        height: "100%",
         id: "calendar"
     });
     $.__views.my_post_calendar.add($.__views.calendar);
+    $.__views.explanation = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        bottom: 0,
+        text: "スワイプ左右で月、上下で年を変更できます",
+        id: "explanation"
+    });
+    $.__views.calendar.add($.__views.explanation);
     $.__views.posts = Ti.UI.createView({
         backgroundColor: "white",
         visible: false,
+        top: "40%",
+        height: "80%",
         id: "posts"
     });
     $.__views.my_post_calendar.add($.__views.posts);
-    $.__views.postTable = Ti.UI.createTableView({
-        id: "postTable"
+    var __alloyId17 = {};
+    var __alloyId20 = [];
+    var __alloyId22 = {
+        type: "Ti.UI.View",
+        childTemplates: function() {
+            var __alloyId23 = [];
+            var __alloyId25 = {
+                type: "Ti.UI.ImageView",
+                bindId: "thumbnail",
+                properties: {
+                    width: "100dp",
+                    height: "100dp",
+                    bindId: "thumbnail"
+                }
+            };
+            __alloyId23.push(__alloyId25);
+            var __alloyId27 = {
+                type: "Ti.UI.View",
+                childTemplates: function() {
+                    var __alloyId28 = [];
+                    var __alloyId30 = {
+                        type: "Ti.UI.Label",
+                        bindId: "date",
+                        properties: {
+                            textAlign: "left",
+                            font: {
+                                fontSize: "18dp"
+                            },
+                            height: "24dp",
+                            bindId: "date"
+                        }
+                    };
+                    __alloyId28.push(__alloyId30);
+                    var __alloyId32 = {
+                        type: "Ti.UI.Label",
+                        bindId: "category",
+                        properties: {
+                            textAlign: "left",
+                            font: {
+                                fontSize: "18dp"
+                            },
+                            height: "24dp",
+                            bindId: "category"
+                        }
+                    };
+                    __alloyId28.push(__alloyId32);
+                    return __alloyId28;
+                }(),
+                properties: {
+                    layout: "vertical"
+                }
+            };
+            __alloyId23.push(__alloyId27);
+            return __alloyId23;
+        }(),
+        properties: {
+            layout: "horizontal"
+        }
+    };
+    __alloyId20.push(__alloyId22);
+    var __alloyId19 = {
+        properties: {
+            name: "template"
+        },
+        childTemplates: __alloyId20
+    };
+    __alloyId17["template"] = __alloyId19;
+    var __alloyId33 = [];
+    $.__views.__alloyId34 = Ti.UI.createListSection({
+        headerTitle: "投稿一覧",
+        id: "__alloyId34"
+    });
+    __alloyId33.push($.__views.__alloyId34);
+    $.__views.postTable = Ti.UI.createListView({
+        top: 0,
+        bottom: 0,
+        sections: __alloyId33,
+        templates: __alloyId17,
+        id: "postTable",
+        defaultItemTemplate: "template"
     });
     $.__views.posts.add($.__views.postTable);
+    onPostSelected ? $.__views.postTable.addEventListener("itemclick", onPostSelected) : __defers["$.__views.postTable!itemclick!onPostSelected"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var pWidth = Ti.Platform.displayCaps.platformWidth;
@@ -335,6 +418,7 @@ function Controller() {
             });
         });
     });
+    __defers["$.__views.postTable!itemclick!onPostSelected"] && $.__views.postTable.addEventListener("itemclick", onPostSelected);
     _.extend($, exports);
 }
 

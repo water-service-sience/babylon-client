@@ -1,6 +1,5 @@
 function Controller() {
     function setPost(post) {
-        Ti.API.debug("Hoge");
         $.photo.image = api.toImageUrl(post);
     }
     function onShowMessagesClicked() {
@@ -15,16 +14,6 @@ function Controller() {
         var view = Alloy.createController("edit_post").getView();
         Alloy.Globals.naviCon.open(view);
     }
-    function onSendCommentClicked() {
-        var post = Alloy.Globals.post;
-        var message = $.comment.value;
-        $.comment.value = "";
-        $.comment.blur();
-        api.postManager.commentTo(post.id, message, function(post) {
-            Alloy.Globals.post = post;
-            updateDisplayInformation(post);
-        });
-    }
     function updateDisplayInformation(post) {
         if (post.userId == api.client.userId && post.unreadMessages > 0) {
             $.status_message.visible = true;
@@ -35,31 +24,6 @@ function Controller() {
         $.date.text = util.dateToString(post.posted);
         $.goodness.text = util.goodnessToString(post.goodness);
         $.post_user.text = post.user.nickname;
-        var commentSection = Ti.UI.createListSection({
-            headerTitle: "コメント"
-        });
-        var commentDataSet = [];
-        for (var i in post.comments) {
-            var c = post.comments[i];
-            var nickname = "no name";
-            c.user && (nickname = c.user.nickname);
-            commentDataSet.push({
-                properties: {
-                    height: "105dp"
-                },
-                nickname: {
-                    text: nickname
-                },
-                comment: {
-                    text: c.comment
-                },
-                date: {
-                    text: util.dateToString(c.commented)
-                }
-            });
-        }
-        commentSection.setItems(commentDataSet);
-        $.comment_list.setSections([ commentSection ]);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "post_detail";
@@ -68,6 +32,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.post_detail = Ti.UI.createWindow({
         backgroundColor: "#f0ffff",
         id: "post_detail"
@@ -95,22 +60,22 @@ function Controller() {
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
-    $.__views.__alloyId55 = Ti.UI.createView({
+    $.__views.__alloyId80 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId55"
+        id: "__alloyId80"
     });
-    $.__views.scroll_view.add($.__views.__alloyId55);
-    $.__views.__alloyId56 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId80);
+    $.__views.__alloyId81 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "投稿者:",
-        id: "__alloyId56"
+        id: "__alloyId81"
     });
-    $.__views.__alloyId55.add($.__views.__alloyId56);
+    $.__views.__alloyId80.add($.__views.__alloyId81);
     $.__views.post_user = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -120,23 +85,23 @@ function Controller() {
         text: "ほげ",
         id: "post_user"
     });
-    $.__views.__alloyId55.add($.__views.post_user);
-    $.__views.__alloyId57 = Ti.UI.createView({
+    $.__views.__alloyId80.add($.__views.post_user);
+    $.__views.__alloyId82 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId57"
+        id: "__alloyId82"
     });
-    $.__views.scroll_view.add($.__views.__alloyId57);
-    $.__views.__alloyId58 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId82);
+    $.__views.__alloyId83 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "投稿日時:",
-        id: "__alloyId58"
+        id: "__alloyId83"
     });
-    $.__views.__alloyId57.add($.__views.__alloyId58);
+    $.__views.__alloyId82.add($.__views.__alloyId83);
     $.__views.date = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -146,13 +111,13 @@ function Controller() {
         text: "2013年6月23日",
         id: "date"
     });
-    $.__views.__alloyId57.add($.__views.date);
-    $.__views.__alloyId59 = Ti.UI.createView({
+    $.__views.__alloyId82.add($.__views.date);
+    $.__views.__alloyId84 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId59"
+        id: "__alloyId84"
     });
-    $.__views.scroll_view.add($.__views.__alloyId59);
+    $.__views.scroll_view.add($.__views.__alloyId84);
     $.__views.goodness_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -162,7 +127,7 @@ function Controller() {
         text: "評価:",
         id: "goodness_label"
     });
-    $.__views.__alloyId59.add($.__views.goodness_label);
+    $.__views.__alloyId84.add($.__views.goodness_label);
     $.__views.goodness = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -172,7 +137,7 @@ function Controller() {
         text: "良い",
         id: "goodness"
     });
-    $.__views.__alloyId59.add($.__views.goodness);
+    $.__views.__alloyId84.add($.__views.goodness);
     $.__views.append_info_area = Ti.UI.createView({
         height: "35dp",
         layout: "horizontal",
@@ -205,16 +170,22 @@ function Controller() {
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         title: "投稿場所を見る",
         id: "show_in_map"
     });
     $.__views.scroll_view.add($.__views.show_in_map);
+    onShowInMapClicked ? $.__views.show_in_map.addEventListener("click", onShowInMapClicked) : __defers["$.__views.show_in_map!click!onShowInMapClicked"] = true;
     $.__views.private_area = Ti.UI.createView({
         layout: "vertical",
         height: "104dp",
-        id: "private_area"
+        id: "private_area",
+        visible: "false"
     });
     $.__views.scroll_view.add($.__views.private_area);
     $.__views.edit_post = Ti.UI.createButton({
@@ -223,205 +194,49 @@ function Controller() {
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         title: "投稿内容を編集",
         id: "edit_post"
     });
     $.__views.private_area.add($.__views.edit_post);
+    onEditPostClicked ? $.__views.edit_post.addEventListener("click", onEditPostClicked) : __defers["$.__views.edit_post!click!onEditPostClicked"] = true;
     $.__views.show_messages = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
         height: "52dp",
         backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
         title: "管理者の返信を見る",
         id: "show_messages"
     });
     $.__views.private_area.add($.__views.show_messages);
-    $.__views.__alloyId60 = Ti.UI.createView({
-        id: "__alloyId60"
-    });
-    $.__views.scroll_view.add($.__views.__alloyId60);
-    $.__views.comment = Ti.UI.createTextField({
-        font: {
-            fontSize: "24dp"
-        },
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        width: "200dp",
-        height: "30dp",
-        id: "comment"
-    });
-    $.__views.__alloyId60.add($.__views.comment);
-    $.__views.send_comment = Ti.UI.createButton({
-        font: {
-            fontSize: "32dp"
-        },
-        height: "52dp",
-        backgroundFocusedColor: "#ffe4e1",
-        left: "10dp",
-        right: "10dp",
-        title: "コメントする",
-        id: "send_comment"
-    });
-    $.__views.__alloyId60.add($.__views.send_comment);
-    $.__views.comment_area = Ti.UI.createView({
-        height: "80%",
-        layout: "vertical",
-        id: "comment_area"
-    });
-    $.__views.scroll_view.add($.__views.comment_area);
-    var __alloyId61 = {};
-    var __alloyId64 = [];
-    var __alloyId66 = {
-        type: "Ti.UI.View",
-        childTemplates: function() {
-            var __alloyId67 = [];
-            var __alloyId69 = {
-                type: "Ti.UI.View",
-                childTemplates: function() {
-                    var __alloyId70 = [];
-                    var __alloyId72 = {
-                        type: "Ti.UI.Label",
-                        properties: {
-                            textAlign: "left",
-                            font: {
-                                fontSize: "18dp"
-                            },
-                            height: "24dp",
-                            text: "投稿:"
-                        }
-                    };
-                    __alloyId70.push(__alloyId72);
-                    var __alloyId74 = {
-                        type: "Ti.UI.Label",
-                        bindId: "nickname",
-                        properties: {
-                            textAlign: "left",
-                            font: {
-                                fontSize: "18dp"
-                            },
-                            height: "24dp",
-                            text: "aaa",
-                            bindId: "nickname"
-                        }
-                    };
-                    __alloyId70.push(__alloyId74);
-                    var __alloyId76 = {
-                        type: "Ti.UI.Label",
-                        properties: {
-                            textAlign: "left",
-                            font: {
-                                fontSize: "18dp"
-                            },
-                            height: "24dp",
-                            text: "さん 投稿日:"
-                        }
-                    };
-                    __alloyId70.push(__alloyId76);
-                    var __alloyId78 = {
-                        type: "Ti.UI.Label",
-                        bindId: "date",
-                        properties: {
-                            textAlign: "left",
-                            font: {
-                                fontSize: "18dp"
-                            },
-                            height: "24dp",
-                            right: 0,
-                            text: "8/9 17:00",
-                            bindId: "date"
-                        }
-                    };
-                    __alloyId70.push(__alloyId78);
-                    return __alloyId70;
-                }(),
-                properties: {
-                    height: "38dp",
-                    layout: "horizontal"
-                }
-            };
-            __alloyId67.push(__alloyId69);
-            var __alloyId80 = {
-                type: "Ti.UI.View",
-                childTemplates: function() {
-                    var __alloyId81 = [];
-                    var __alloyId83 = {
-                        type: "Ti.UI.Label",
-                        properties: {
-                            textAlign: "left",
-                            font: {
-                                fontSize: "18dp"
-                            },
-                            height: "24dp",
-                            text: "コメント"
-                        }
-                    };
-                    __alloyId81.push(__alloyId83);
-                    var __alloyId85 = {
-                        type: "Ti.UI.Label",
-                        bindId: "comment",
-                        properties: {
-                            textAlign: "left",
-                            font: {
-                                fontSize: "18dp"
-                            },
-                            height: "24dp",
-                            text: "aaa",
-                            bindId: "comment"
-                        }
-                    };
-                    __alloyId81.push(__alloyId85);
-                    return __alloyId81;
-                }(),
-                properties: {
-                    height: "38dp",
-                    layout: "horizontal"
-                }
-            };
-            __alloyId67.push(__alloyId80);
-            return __alloyId67;
-        }(),
-        properties: {
-            layout: "vertical"
-        }
-    };
-    __alloyId64.push(__alloyId66);
-    var __alloyId63 = {
-        properties: {
-            name: "comment"
-        },
-        childTemplates: __alloyId64
-    };
-    __alloyId61["comment"] = __alloyId63;
-    $.__views.comment_list = Ti.UI.createListView({
-        layout: "vertical",
-        top: 0,
-        height: "80%",
-        templates: __alloyId61,
-        id: "comment_list",
-        defaultItemTemplate: "comment"
-    });
-    $.__views.comment_area.add($.__views.comment_list);
+    onShowMessagesClicked ? $.__views.show_messages.addEventListener("click", onShowMessagesClicked) : __defers["$.__views.show_messages!click!onShowMessagesClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var api = Alloy.Globals.api;
     var util = Alloy.Globals.util;
-    $.post_detail.addEventListener("open", function() {
-        var post = Alloy.Globals.post;
-        $.show_messages.addEventListener("click", onShowMessagesClicked);
-        $.show_in_map.addEventListener("click", onShowInMapClicked);
-        $.edit_post.addEventListener("click", onEditPostClicked);
-        $.send_comment.addEventListener("click", onSendCommentClicked);
-        $.comment.addEventListener("return", onSendCommentClicked);
-        post ? updateDisplayInformation(post) : api.postManager.getPost(1, function(post) {
-            Alloy.Globals.post = post;
-            updateDisplayInformation(post);
-        });
+    var args = arguments[0] || {};
+    var post = args.post || Alloy.Globals.post;
+    post ? updateDisplayInformation(post) : api.postManager.getPost(1, function(post) {
+        Alloy.Globals.post = post;
+        updateDisplayInformation(post);
     });
+    $.post_detail.addEventListener("open", function() {});
     exports.setPost = setPost;
+    __defers["$.__views.show_in_map!click!onShowInMapClicked"] && $.__views.show_in_map.addEventListener("click", onShowInMapClicked);
+    __defers["$.__views.edit_post!click!onEditPostClicked"] && $.__views.edit_post.addEventListener("click", onEditPostClicked);
+    __defers["$.__views.show_messages!click!onShowMessagesClicked"] && $.__views.show_messages.addEventListener("click", onShowMessagesClicked);
     _.extend($, exports);
 }
 
