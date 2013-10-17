@@ -21,6 +21,19 @@
 	left : "10dp",
 	right : "10dp"
 },
+".small-button" : {
+	
+	font: { fontSize:"24dp" },
+	height : "36dp",
+	backgroundFocusedColor : "#ffe4e1",
+	borderColor : "black",
+	borderWidth : "1dp",
+	borderRadius : "10dp",
+	backgroundColor : "#fff0ff",
+	left : "auto",
+	right : "auto"
+}
+
 "TextArea" : {
 	font: { fontSize:"24dp" },
 	borderRadius : 5

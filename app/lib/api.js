@@ -1,6 +1,6 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-// var ServerUrl = "http://localhost:9000";
+//var ServerUrl = "http://localhost:9000";
 var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
@@ -225,12 +225,10 @@ function PostManager() {
 	self = this;
 	this.myPosts = [];
 	
-	this.post = function(image, goodness,callback){
+	this.post = function(image, params,callback){
 		Titanium.Geolocation.getCurrentPosition(function(e){
 			var lat = e.coords.latitude;
 			var lon = e.coords.longitude;
-			lat += Math.random()*0.02 - 0.01;
-			lon += Math.random()*0.02 - 0.01;
 			
 			client.postBinary("/photo/upload",
 				image,
@@ -241,13 +239,17 @@ function PostManager() {
 					var imageId = result.imageId;
 					Ti.API.info("Success to upload image : " + imageId);
 				    
-				    var obj = {
-				    	"imageId" : imageId,
-				    	"latitude" : lat,
+				    /*var obj = {
+				    	imageId : imageId,
+				    	latitude : lat,
 				    	longitude : lon,
 				    	goodness : goodness
 				    	
-				    };
+				    };*/
+				    var obj = params;
+				    obj.imageId = imageId;
+				    obj.latitude = lat;
+				    obj.longitude = lon;
 				    
 				    client.post("/post",obj,function(post){
 				    	post.photo = image;

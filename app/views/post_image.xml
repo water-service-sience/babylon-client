@@ -1,13 +1,24 @@
 <Alloy>
 	<Window class="container">
-		<Label id="title">投稿</Label>
-		
-		<ImageView id="photo"></ImageView>
-		<Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" />
-		<View class="line_element_b">
-			<View class="small_space"></View>
-			<Button id="post" onClick="onPostClicked">投稿</Button>
-			<Button id="recapture" onClick="onRecaptureClicked">再撮影</Button>
-		</View>
+		<ScrollView>
+			<Label id="title">投稿</Label>
+			
+			<ImageView id="photo"></ImageView>
+			<View class="line_element_b">
+				<Label class="small_text">内容:</Label>
+				<Label id="category" class="small_text">未選択</Label>
+				<Button id="select_category" class="small-button"
+					onClick="onSelectCategoryClicked" >選択</Button>
+			</View>
+			<Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" />
+			<Label>コメント</Label>
+			<TextArea id="comment"></TextArea>
+			
+			<View class="line_element_b">
+				<Button id="post" onClick="onPostClicked">投稿</Button>
+				<Button id="recapture" onClick="onRecaptureClicked">再撮影</Button>
+			</View>
+			<Button id="gallery" class="small-button" onClick="onGalleryClicked">ギャラリー</Button>
+		</ScrollView>
 	</Window>
 </Alloy>

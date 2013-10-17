@@ -2,8 +2,28 @@
 "#photo" : {
     width : "90%",
     height : "40%"
-},
+}
+"#category" : {
+	right : "22%"
+}
+"#select_category":{
+    right : "2%",
+    width : "20%"	
+}
 "#post" : {
-	width : "60%"
+	width : "60%",
+	left : "5dp"
+}
+"#recapture" : {
+	width : "30%",
+	right : "5dp"
+}
+"#gallery" : {
+	width : "40%",
+	left : "auto",
+	right : "5dp"
 }
 
+"#comment" : {
+	width : "100%"
+}

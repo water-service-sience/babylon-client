@@ -12,12 +12,12 @@ function Controller() {
         id: "post_messages"
     });
     $.__views.post_messages && $.addTopLevelView($.__views.post_messages);
-    $.__views.__alloyId88 = Ti.UI.createView({
+    $.__views.__alloyId91 = Ti.UI.createView({
         height: "50dp",
         layout: "horizontal",
-        id: "__alloyId88"
+        id: "__alloyId91"
     });
-    $.__views.post_messages.add($.__views.__alloyId88);
+    $.__views.post_messages.add($.__views.__alloyId91);
     $.__views.send_message = Ti.UI.createTextField({
         font: {
             fontSize: "24dp"
@@ -27,18 +27,18 @@ function Controller() {
         height: "100%",
         id: "send_message"
     });
-    $.__views.__alloyId88.add($.__views.send_message);
-    var __alloyId89 = {};
-    var __alloyId92 = [];
-    var __alloyId94 = {
+    $.__views.__alloyId91.add($.__views.send_message);
+    var __alloyId92 = {};
+    var __alloyId95 = [];
+    var __alloyId97 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId95 = [];
-            var __alloyId97 = {
+            var __alloyId98 = [];
+            var __alloyId100 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId98 = [];
-                    var __alloyId100 = {
+                    var __alloyId101 = [];
+                    var __alloyId103 = {
                         type: "Ti.UI.Label",
                         properties: {
                             textAlign: "left",
@@ -49,8 +49,8 @@ function Controller() {
                             text: "送信:"
                         }
                     };
-                    __alloyId98.push(__alloyId100);
-                    var __alloyId102 = {
+                    __alloyId101.push(__alloyId103);
+                    var __alloyId105 = {
                         type: "Ti.UI.Label",
                         bindId: "nickname",
                         properties: {
@@ -63,8 +63,8 @@ function Controller() {
                             bindId: "nickname"
                         }
                     };
-                    __alloyId98.push(__alloyId102);
-                    var __alloyId104 = {
+                    __alloyId101.push(__alloyId105);
+                    var __alloyId107 = {
                         type: "Ti.UI.Label",
                         properties: {
                             textAlign: "left",
@@ -75,8 +75,8 @@ function Controller() {
                             text: "投稿日:"
                         }
                     };
-                    __alloyId98.push(__alloyId104);
-                    var __alloyId106 = {
+                    __alloyId101.push(__alloyId107);
+                    var __alloyId109 = {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
@@ -90,20 +90,20 @@ function Controller() {
                             bindId: "date"
                         }
                     };
-                    __alloyId98.push(__alloyId106);
-                    return __alloyId98;
+                    __alloyId101.push(__alloyId109);
+                    return __alloyId101;
                 }(),
                 properties: {
                     height: "30dp",
                     layout: "horizontal"
                 }
             };
-            __alloyId95.push(__alloyId97);
-            var __alloyId108 = {
+            __alloyId98.push(__alloyId100);
+            var __alloyId111 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId109 = [];
-                    var __alloyId111 = {
+                    var __alloyId112 = [];
+                    var __alloyId114 = {
                         type: "Ti.UI.Label",
                         properties: {
                             textAlign: "left",
@@ -114,8 +114,8 @@ function Controller() {
                             text: "コメント"
                         }
                     };
-                    __alloyId109.push(__alloyId111);
-                    var __alloyId113 = {
+                    __alloyId112.push(__alloyId114);
+                    var __alloyId116 = {
                         type: "Ti.UI.Label",
                         bindId: "message",
                         properties: {
@@ -128,8 +128,8 @@ function Controller() {
                             bindId: "message"
                         }
                     };
-                    __alloyId109.push(__alloyId113);
-                    return __alloyId109;
+                    __alloyId112.push(__alloyId116);
+                    return __alloyId112;
                 }(),
                 properties: {
                     height: "50dp",
@@ -137,23 +137,23 @@ function Controller() {
                     bottom: 0
                 }
             };
-            __alloyId95.push(__alloyId108);
-            return __alloyId95;
+            __alloyId98.push(__alloyId111);
+            return __alloyId98;
         }(),
         properties: {
             layout: "vertical"
         }
     };
-    __alloyId92.push(__alloyId94);
-    var __alloyId91 = {
+    __alloyId95.push(__alloyId97);
+    var __alloyId94 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId92
+        childTemplates: __alloyId95
     };
-    __alloyId89["template"] = __alloyId91;
+    __alloyId92["template"] = __alloyId94;
     $.__views.messages = Ti.UI.createListView({
-        templates: __alloyId89,
+        templates: __alloyId92,
         id: "messages",
         defaultItemTemplate: "template"
     });

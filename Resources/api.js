@@ -140,21 +140,17 @@ function APIClient() {
 function PostManager() {
     self = this;
     this.myPosts = [];
-    this.post = function(image, goodness, callback) {
+    this.post = function(image, params, callback) {
         Titanium.Geolocation.getCurrentPosition(function(e) {
             var lat = e.coords.latitude;
             var lon = e.coords.longitude;
-            lat += .02 * Math.random() - .01;
-            lon += .02 * Math.random() - .01;
             client.postBinary("/photo/upload", image, function() {}, function(result) {
                 var imageId = result.imageId;
                 Ti.API.info("Success to upload image : " + imageId);
-                var obj = {
-                    imageId: imageId,
-                    latitude: lat,
-                    longitude: lon,
-                    goodness: goodness
-                };
+                var obj = params;
+                obj.imageId = imageId;
+                obj.latitude = lat;
+                obj.longitude = lon;
                 client.post("/post", obj, function(post) {
                     post.photo = image;
                     self.myPosts.push(post);

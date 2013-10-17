@@ -4,22 +4,29 @@ var photoData = "";
 function onPostClicked(e){
 	
 	var v = $.goodness.getView("goodness").value;
-	Alloy.Globals.api.postManager.post(photoData,v,function(result){
+	var params = {
+		goodness : v,
+		category : selectedCategory,
+		comment : $.comment.value
+	};
+	
+	Alloy.Globals.api.postManager.post(photoData,params,function(result){
 		
 		Alloy.Globals.lastPost = result;
 		Alloy.Globals.post = result;
-		var view = Alloy.createController("edit_post").getView();
 		
 		var dialog = Titanium.UI.createAlertDialog({
 			title : "投稿完了",
 			message : '投稿ありがとうございます。追加の情報は次のページで編集できます。'
 		});
 		
+		Alloy.Globals.naviCon.home();
+		dialog.addEventListener('click',function(event){
+			var view = Alloy.createController("edit_post").getView();
+			Alloy.Globals.naviCon.open(view);
+		});
 		
 		dialog.show();
-		
-		Alloy.Globals.naviCon.home();
-		Alloy.Globals.naviCon.open(view);
 		
 	});
 	
@@ -28,6 +35,10 @@ function onPostClicked(e){
 
 function onRecaptureClicked(e){
 	showCamera();
+}
+
+function onGalleryClicked(){
+	showGallery();
 }
 
 function showGallery(){
@@ -68,8 +79,22 @@ function showCamera() {
 		//overlay : overlay,
    	    saveToPhotoGallery:false,
 		mediaTypes : Ti.Media.MEDIA_TYPE_PHOTO,
+		allowEditing : true
 	});
 }
+var selectedCategory = 0;
+
+function onSelectCategoryClicked(e){
+	var post = Alloy.Globals.post;
+	var view = Alloy.createController("select_category",{
+		selectCallback : function(c) {
+			selectedCategory = c.id;
+			$.category.text = c.label;
+		}
+	}).getView();
+	Alloy.Globals.naviCon.open(view);
+}
+
 
 $.post_image.addEventListener("open",function(){
 	showCamera();
