@@ -70,7 +70,13 @@ function onShowDetailClicked(e){
 
 $.show_map.addEventListener("open",function(e){
 	var annotations = [];
+	
+	var lastLat;
+	var lastLon;
+	
 	var pinPosts = function(lat,lon){
+		lastLat = lat;
+		lastLon = lon;
 		Alloy.Globals.api.postManager.getNearPosts(lat,lon,function(posts) {
 			
 			for( var i in posts){
@@ -91,6 +97,15 @@ $.show_map.addEventListener("open",function(e){
 	};
 	
 	$.map.addEventListener("regionchanged",function(e){
+		var diff1 = lastLat - e.latitude;
+		var diff2 = lastLon - e.longitude;
+		var delta = diff1 * diff1 + diff2 * diff2;
+		
+		var region = $.map.region;
+		if(delta > (region.latitudeDelta * 0.5) * (region.latitudeDelta * 0.5) ){
+			Ti.API.log("Update");
+			pinPosts(region.latitude,region.longitude);
+		}
 		Ti.API.log("Changed:" + e.latitude + " ," + e.longitude);
 	});
 	
