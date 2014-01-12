@@ -73,10 +73,9 @@ $.show_map.addEventListener("open",function(e){
 	var pinPosts = function(lat,lon){
 		Alloy.Globals.api.postManager.getNearPosts(lat,lon,function(posts) {
 			
-			
 			for( var i in posts){
 				var d = posts[i];
-				var anno = Titanium.Map.createAnnotation({
+				var anno = Alloy.Globals.Map.createAnnotation({
 				    latitude:d.latitude,
 				    longitude:d.longitude,
 				    customView : createCustomView(d),
@@ -91,6 +90,10 @@ $.show_map.addEventListener("open",function(e){
 		});
 	};
 	
+	$.map.addEventListener("regionchanged",function(e){
+		Ti.API.log("Changed:" + e.latitude + " ," + e.longitude);
+	});
+	
 	if(Alloy.Globals.land != null){
 		var land = Alloy.Globals.land;
 		var lat = land.latitude;
@@ -99,11 +102,11 @@ $.show_map.addEventListener("open",function(e){
 	        latitude:lat, longitude:lon, animate:false,
 	        latitudeDelta:0.04, longitudeDelta:0.04
 	    });
-	    var anno = Titanium.Map.createAnnotation({
+	    var anno = Alloy.Globals.Map.createAnnotation({
 				    latitude:lat,
 				    longitude:lon,
 				    title:land.name,
-				    pincolor:Titanium.Map.ANNOTATION_GREEN,
+				    pincolor:Alloy.Globals.Map.ANNOTATION_GREEN,
 				    animate:true
 				    });	
 	    annotations.push(anno);

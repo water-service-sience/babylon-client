@@ -1,9 +1,9 @@
 <Alloy>
 	<Window class="map_container">
 		<!-- Note the ns attribute is used to change the default namespace. -->
-        <View id="map" ns="Ti.Map" onClick="mapClicked"
+        <View id="map" ns="Alloy.Globals.Map" onClick="mapClicked"
             animate="true" regionFit="true" userLocation="true"
-            mapType="Ti.Map.STANDARD_TYPE" >
+            mapType="Alloy.Globals.Map.NORMAL_TYPE" >
 
             <!-- Place other child views here, such as an ImageView to add an overlay. -->
 

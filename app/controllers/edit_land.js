@@ -85,11 +85,11 @@ function onMapRegionChanged(evt){
 function newPin(lat , lon, name, type) {
 	
 
-	var pin = Titanium.Map.createAnnotation({
+	var pin = Alloy.Globals.Map.createAnnotation({
 	    latitude:lat,
 	    longitude:lon,
 	    title:name,
-	    pincolor: Ti.Map.ANNOTATION_BLUE,
+	    pincolor: Alloy.Globals.Map.ANNOTATION_BLUE,
 	    animate:false,
 	    image : type,
 	    leftButton: "./images/appcelerator_small.png",

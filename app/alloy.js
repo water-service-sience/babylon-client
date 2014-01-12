@@ -9,6 +9,7 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+Alloy.Globals.Map = require('Ti.Map');
 
 var api = require('api');
 var util = require("util");

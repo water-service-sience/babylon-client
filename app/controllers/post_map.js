@@ -13,11 +13,11 @@ $.post_map.addEventListener("open",function(e){
         latitudeDelta:0.04, longitudeDelta:0.04
     });
 	var annotations = [];
-    var anno = Titanium.Map.createAnnotation({
+    var anno = Alloy.Globals.Map.createAnnotation({
 	    latitude:lat,
 	    longitude:lon,
 	    title:util.dateFormat(post.posted),
-	    pincolor:Titanium.Map.ANNOTATION_GREEN,
+	    pincolor:Alloy.Globals.Map.ANNOTATION_GREEN,
 	    animate:true,
 	    post:post // Custom property to uniquely identify this annotation.
 	});	
@@ -30,12 +30,12 @@ $.post_map.addEventListener("open",function(e){
 			if(d.id != post.id){
 				var pincolor = 0;
 				if(d.userId == api.userId){
-					pincolor = Titanium.Map.ANNOTATION_RED;
+					pincolor = Alloy.Globals.Map.ANNOTATION_RED;
 				}else{
-					pincolor = Titanium.Map.ANNOTATION_RED;
+					pincolor = Alloy.Globals.Map.ANNOTATION_RED;
 				}
 				
-				var anno = Titanium.Map.createAnnotation({
+				var anno = Alloy.Globals.Map.createAnnotation({
 				    latitude:d.latitude,
 				    longitude:d.longitude,
 				    title: "ここです。",

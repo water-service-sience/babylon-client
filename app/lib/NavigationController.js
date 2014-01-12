@@ -58,14 +58,16 @@ NavigationController.prototype.open = function(/*Ti.UI.Window*/windowToOpen) {
 			windowToOpen.exitOnClose = true;
 			windowToOpen.open();
 		} else {
-			this.navGroup = Ti.UI.iPhone.createNavigationGroup({
+			//this.navGroup = Ti.UI.iOS.createNavigationGroup({
+			this.navGroup = Ti.UI.iOS.createNavigationWindow({
 				window : windowToOpen
 			});
 
 			// let's use the NavigationController's createWindow function to create a window here
-			var containerWindow = Ti.UI.createWindow();
+			/*var containerWindow = Ti.UI.createWindow();
 			containerWindow.add(this.navGroup);
-			containerWindow.open();
+			containerWindow.open();*/
+			this.navGroup.open();
 		}
 	}
 	//All subsequent windows
@@ -73,7 +75,8 @@ NavigationController.prototype.open = function(/*Ti.UI.Window*/windowToOpen) {
 		if (Ti.Platform.osname === 'android') {
 			windowToOpen.open();
 		} else {
-			this.navGroup.open(windowToOpen);
+			//windowToOpen.open();
+			this.navGroup.openWindow(windowToOpen);
 		}
 	}
 	Ti.API.log("End Open. Stack: " + this.windowStack.map(function(v) {return v.title}));
