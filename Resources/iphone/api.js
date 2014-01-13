@@ -43,6 +43,16 @@ function APIClient() {
     this.accessKey = accessKey;
     this.isLogin = this.accessKey && "" != this.accessKey;
     Ti.API.info("AK = " + accessKey + " login:" + this.isLogin);
+    var showError = function(e) {
+        var code = e.code;
+        if (1 == code) {
+            var dialog = Titanium.UI.createAlertDialog({
+                title: "サーバーエラー",
+                message: "サーバーでエラーが発生しました。しばらく時間をおいて再度試してください。"
+            });
+            dialog.show();
+        }
+    };
     this.get = function(url, params, callback) {
         0 != url.indexOf("http") && (url = 0 == url.indexOf("/") ? ServerUrl + url : ServerUrl + "/" + url);
         Ti.API.log("GET:" + url);
@@ -56,7 +66,7 @@ function APIClient() {
             },
             onerror: function(e) {
                 Ti.API.error("Fail - GET:" + url + " Error=" + e.error);
-                callback(null);
+                showError(e);
             }
         });
         c.open("GET", url);
@@ -74,7 +84,7 @@ function APIClient() {
             },
             onerror: function(e) {
                 Ti.API.error("Fail - POST:" + url + " Error=" + e.error);
-                callback(null);
+                showError(e);
             }
         });
         c.open("POST", url);

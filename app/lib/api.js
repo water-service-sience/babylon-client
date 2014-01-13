@@ -74,6 +74,17 @@ function APIClient() {
 	this.isLogin =  this.accessKey && this.accessKey != "";
 	Ti.API.info("AK = " + accessKey + " login:" + this.isLogin);
 	
+	var showError = function(e){
+		var code = e.code;
+		if(code == 1){
+			var dialog = Titanium.UI.createAlertDialog({
+				title : "サーバーエラー",
+				message : 'サーバーでエラーが発生しました。しばらく時間をおいて再度試してください。'
+			});
+			dialog.show();
+		}
+	};
+	
 	this.get = function(url , params,callback){
 		
 		if(url.indexOf("http") != 0){
@@ -93,9 +104,9 @@ function APIClient() {
 				callback(d);
 			},
 			onerror : function(e) {
-				Ti.API.error("Fail - GET:" + url + " Error=" + e.error);
-				
-				callback(null);
+				Ti.API.error("Fail - GET:" + url + " Error=" + e.error );
+				showError(e);
+				//callback(null);
 			}
 		});
 		c.open("GET", url);
@@ -123,8 +134,8 @@ function APIClient() {
 			},
 			onerror : function(e) {
 				Ti.API.error("Fail - POST:" + url + " Error=" + e.error);
-				
-				callback(null);
+				showError(e);
+				//callback(null);
 			}
 		});
 		c.open("POST", url);
@@ -239,13 +250,6 @@ function PostManager() {
 					var imageId = result.imageId;
 					Ti.API.info("Success to upload image : " + imageId);
 				    
-				    /*var obj = {
-				    	imageId : imageId,
-				    	latitude : lat,
-				    	longitude : lon,
-				    	goodness : goodness
-				    	
-				    };*/
 				    var obj = params;
 				    obj.imageId = imageId;
 				    obj.latitude = lat;

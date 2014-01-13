@@ -61,7 +61,7 @@ NavigationController.prototype.home = function() {
         for (var i = this.windowStack.length - 1; i > 1; i--) this.windowStack[i].fireEvent("set.to.close", {
             win: this.windowStack[i - 1]
         });
-        this.navGroup ? this.navGroup.close(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+        this.navGroup ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
     }
     Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {
         return v.title;
@@ -72,7 +72,7 @@ NavigationController.prototype.pop = function() {
     Ti.API.log("pop function.");
     if (this.windowStack.length > 1) {
         this.windowStack.length - 1;
-        this.navGroup ? this.navGroup.close(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+        this.navGroup ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
     }
     Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {
         return v.title;

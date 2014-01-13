@@ -93,7 +93,9 @@ NavigationController.prototype.home = function() {
 			this.windowStack[i].fireEvent('set.to.close', {win: this.windowStack[i - 1]});
        	}
         // start chain reaction, close first window
-		(this.navGroup) ? this.navGroup.close(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+		(this.navGroup) ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+		//this.windowStack[this.windowStack.length - 1].close();
+	
 	}
 	Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {return v.title}));
 };
@@ -105,7 +107,8 @@ NavigationController.prototype.pop = function() {
        	var lastIndex = this.windowStack.length - 1; 
        	//this.windowStack[lastIndex].fireEvent("set.to.close", {win:this.windowStack[lastIndex - 1]});
         // start chain reaction, close first window
-		(this.navGroup) ? this.navGroup.close(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+		(this.navGroup) ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
+		//this.windowStack[lastIndex].close();
 	}
 	Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {return v.title}));
 };
