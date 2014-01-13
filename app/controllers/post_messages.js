@@ -2,12 +2,13 @@
 var util = Alloy.Globals.util;
 var api = Alloy.Globals.api;
 
-$.post_messages.addEventListener("open",function(e){
+var args = arguments[0] || {};
 
-	var post = Alloy.Globals.post;
+var post = args.post || Alloy.Globals.post;
+
+function updateMessageList(){
 	var userId = api.client.userId;
 	var messageSection = Ti.UI.createListSection({ headerTitle: 'メッセージ'});
-	
 	var messageDataSet = [];
 	for(var i in post.privateMessages){
 		var c = post.privateMessages[i];
@@ -35,4 +36,27 @@ $.post_messages.addEventListener("open",function(e){
 			
 	}
 
+}
+
+$.post_messages.addEventListener("open",function(e){
+
+	var userId = api.client.userId;
+	$.send_message_button.addEventListener("click",function(e){
+		var message = $.send_message.value;
+		api.postManager.sendMessage(post.id,message,function(e){
+			post = e;
+			updateMessageList();
+		});
+		
+	});
+	
+	if(post.privateMessages.length == 0){
+		// 詳細データが取得されていない場合は、取得する
+		api.postManager.getPost(post.id,function(p) {
+			post = p;
+			updateMessageList();
+		});
+	}else{
+		updateMessageList();
+	}
 });

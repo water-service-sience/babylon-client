@@ -3,6 +3,7 @@
 		
 		<View class="line_element">
 			<TextField id="send_message"></TextField>
+			<Button id="send_message_button" class="small-button">送信</Button>
 		</View>
 		
 		<ListView id="messages" class="list"defaultItemTemplate="template">
@@ -10,7 +11,7 @@
 				<ItemTemplate name="template">
 					<View class="v_list">
 						<View class="line_element line1">
-							<Label>送信:</Label><Label bindId="nickname">aaa</Label>
+							<Label>送信者:</Label><Label bindId="nickname">aaa</Label>
 							<Label>  投稿日:</Label><Label class="right" bindId="date">8/9 17:00</Label>
 						</View>
 						<View class="line_element line-left">

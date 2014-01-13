@@ -45,10 +45,17 @@ function APIClient() {
     Ti.API.info("AK = " + accessKey + " login:" + this.isLogin);
     var showError = function(e) {
         var code = e.code;
-        if (1 == code) {
+        Ti.API.log("ErrorCode:" + e.code);
+        if (1 == code || 2 == code || 500 == code) {
             var dialog = Titanium.UI.createAlertDialog({
                 title: "サーバーエラー",
                 message: "サーバーでエラーが発生しました。しばらく時間をおいて再度試してください。"
+            });
+            dialog.show();
+        } else {
+            var dialog = Titanium.UI.createAlertDialog({
+                title: "ネットワークエラー",
+                message: "ネットワークが利用できません。ネットワーク状態を確認して再度試してください。"
             });
             dialog.show();
         }
@@ -209,6 +216,14 @@ function PostManager() {
             comment: message
         };
         client.post("/post/comment/" + postId, param, function(c) {
+            callback(c);
+        });
+    };
+    this.sendMessage = function(postId, message, callback) {
+        var param = {
+            message: message
+        };
+        client.post("/post/message/" + postId, param, function(c) {
             callback(c);
         });
     };

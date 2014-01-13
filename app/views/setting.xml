@@ -4,9 +4,9 @@
 		<View class="line_element">
 			<Label id="user_id_label">ユーザーID:</Label><Label id="user_id" class="small_text">203</Label>
 		</View>
-		<View class="line_element">
+		<!--<View class="line_element">
 			<Label id="nickname_label">ニックネーム:</Label><Label id="nickname" class="small_text">hoge</Label>
-		</View>
+	</View>-->
 		
 		<Button id="set_username">ユーザー設定</Button>
 		<Button id="select_land" onClick="onSelectLandClicked">所有地設定</Button>

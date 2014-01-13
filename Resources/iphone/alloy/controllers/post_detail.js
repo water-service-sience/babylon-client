@@ -3,7 +3,9 @@ function Controller() {
         $.photo.image = api.toImageUrl(post);
     }
     function onShowMessagesClicked() {
-        var view = Alloy.createController("post_messages").getView();
+        var view = Alloy.createController("post_messages", {
+            post: post
+        }).getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onShowInMapClicked() {

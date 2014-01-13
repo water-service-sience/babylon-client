@@ -1,4 +1,32 @@
 function Controller() {
+    function updateMessageList() {
+        var userId = api.client.userId;
+        var messageSection = Ti.UI.createListSection({
+            headerTitle: "メッセージ"
+        });
+        var messageDataSet = [];
+        for (var i in post.privateMessages) {
+            var c = post.privateMessages[i];
+            var nickname = "no name";
+            c.sender && (nickname = userId == c.sender.id ? "あなた" : c.sender.nickname);
+            messageDataSet.push({
+                properties: {
+                    height: "105dp"
+                },
+                nickname: {
+                    text: nickname
+                },
+                message: {
+                    text: c.message
+                },
+                date: {
+                    text: util.dateToString(c.sent)
+                }
+            });
+            messageSection.setItems(messageDataSet);
+            $.messages.setSections([ messageSection ]);
+        }
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "post_messages";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -28,6 +56,22 @@ function Controller() {
         id: "send_message"
     });
     $.__views.__alloyId88.add($.__views.send_message);
+    $.__views.send_message_button = Ti.UI.createButton({
+        font: {
+            fontSize: "24dp"
+        },
+        height: "36dp",
+        backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
+        left: "auto",
+        right: "auto",
+        title: "送信",
+        id: "send_message_button"
+    });
+    $.__views.__alloyId88.add($.__views.send_message_button);
     var __alloyId89 = {};
     var __alloyId92 = [];
     var __alloyId94 = {
@@ -46,7 +90,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
-                            text: "送信:"
+                            text: "送信者:"
                         }
                     };
                     __alloyId98.push(__alloyId100);
@@ -162,34 +206,21 @@ function Controller() {
     _.extend($, $.__views);
     var util = Alloy.Globals.util;
     var api = Alloy.Globals.api;
+    var args = arguments[0] || {};
+    var post = args.post || Alloy.Globals.post;
     $.post_messages.addEventListener("open", function() {
-        var post = Alloy.Globals.post;
-        var userId = api.client.userId;
-        var messageSection = Ti.UI.createListSection({
-            headerTitle: "メッセージ"
-        });
-        var messageDataSet = [];
-        for (var i in post.privateMessages) {
-            var c = post.privateMessages[i];
-            var nickname = "no name";
-            c.sender && (nickname = userId == c.sender.id ? "あなた" : c.sender.nickname);
-            messageDataSet.push({
-                properties: {
-                    height: "105dp"
-                },
-                nickname: {
-                    text: nickname
-                },
-                message: {
-                    text: c.message
-                },
-                date: {
-                    text: util.dateToString(c.sent)
-                }
+        api.client.userId;
+        $.send_message_button.addEventListener("click", function() {
+            var message = $.send_message.value;
+            api.postManager.sendMessage(post.id, message, function(e) {
+                post = e;
+                updateMessageList();
             });
-            messageSection.setItems(messageDataSet);
-            $.messages.setSections([ messageSection ]);
-        }
+        });
+        0 == post.privateMessages.length ? api.postManager.getPost(post.id, function(p) {
+            post = p;
+            updateMessageList();
+        }) : updateMessageList();
     });
     _.extend($, exports);
 }

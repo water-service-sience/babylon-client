@@ -15,7 +15,9 @@ function onShowCommentsClicked(e){
 	Alloy.Globals.naviCon.open(view);
 }
 function onShowMessagesClicked(e){
-	var view = Alloy.createController("post_messages").getView();
+	var view = Alloy.createController("post_messages",{
+			post : post
+		}).getView();
 	Alloy.Globals.naviCon.open(view);
 }
 function onShowInMapClicked(e){
