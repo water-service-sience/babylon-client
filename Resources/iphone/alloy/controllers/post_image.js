@@ -6,7 +6,9 @@ function Controller() {
             category: selectedCategory,
             comment: $.comment.value
         };
+        setCover();
         Alloy.Globals.api.postManager.post(photoData, params, function(result) {
+            removeCover();
             Alloy.Globals.lastPost = result;
             Alloy.Globals.post = result;
             var dialog = Titanium.UI.createAlertDialog({
@@ -35,6 +37,16 @@ function Controller() {
                 $.post.enabled = true;
             }
         });
+    }
+    function setCover() {
+        $.activityIndicator.show();
+        $.post.enabled = false;
+        $.recapture.enabled = false;
+    }
+    function removeCover() {
+        $.activityIndicator.hide();
+        $.post.enabled = true;
+        $.recapture.enabled = true;
     }
     function showCamera() {
         Titanium.Media.showCamera({
@@ -88,6 +100,11 @@ function Controller() {
         id: "__alloyId83"
     });
     $.__views.post_image.add($.__views.__alloyId83);
+    $.__views.activityIndicator = Ti.UI.createActivityIndicator({
+        id: "activityIndicator",
+        message: "Uploading..."
+    });
+    $.__views.__alloyId83.add($.__views.activityIndicator);
     $.__views.title = Ti.UI.createLabel({
         textAlign: "left",
         font: {

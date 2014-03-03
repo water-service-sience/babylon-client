@@ -9,9 +9,9 @@ function onPostClicked(e){
 		category : selectedCategory,
 		comment : $.comment.value
 	};
-	
+	setCover();
 	Alloy.Globals.api.postManager.post(photoData,params,function(result){
-		
+		removeCover();
 		Alloy.Globals.lastPost = result;
 		Alloy.Globals.post = result;
 		
@@ -49,6 +49,19 @@ function showGallery(){
 			$.post.enabled = true;
 		}
 	});
+}
+
+function setCover(){
+	$.activityIndicator.show();
+	$.post.enabled = false;
+	$.recapture.enabled = false;
+}
+function removeCover(){
+	
+	$.activityIndicator.hide();
+	$.post.enabled = true;
+	$.recapture.enabled = true;
+
 }
 
 function showCamera() {

@@ -1,6 +1,7 @@
 <Alloy>
 	<Window class="container">
 		<ScrollView>
+            <ActivityIndicator id="activityIndicator" message="Uploading..."/>
 			<Label id="title">投稿</Label>
 			
 			<ImageView id="photo"></ImageView>

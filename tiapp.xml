@@ -14,7 +14,7 @@
     <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
-    <analytics>false</analytics>
+    <analytics>true</analytics>
     <guid>cc481589-c586-47bd-aa3c-ce35948be5a5</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <iphone>

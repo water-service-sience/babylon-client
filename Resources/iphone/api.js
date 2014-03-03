@@ -286,7 +286,7 @@ function LandManager() {
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
 
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
 
 var client = new APIClient();
 
