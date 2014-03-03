@@ -41,17 +41,10 @@ NavigationController.prototype.open = function(windowToOpen) {
         this.toOpen = dict.win;
     });
     windowToOpen.navBarHidden = windowToOpen.navBarHidden || false;
-    if (1 === this.windowStack.length) if ("android" === Ti.Platform.osname) {
+    if (1 === this.windowStack.length) {
         windowToOpen.exitOnClose = true;
         windowToOpen.open();
-    } else {
-        this.navGroup = Ti.UI.iPhone.createNavigationGroup({
-            window: windowToOpen
-        });
-        var containerWindow = Ti.UI.createWindow();
-        containerWindow.add(this.navGroup);
-        containerWindow.open();
-    } else "android" === Ti.Platform.osname ? windowToOpen.open() : this.navGroup.open(windowToOpen);
+    } else windowToOpen.open();
     Ti.API.log("End Open. Stack: " + this.windowStack.map(function(v) {
         return v.title;
     }));

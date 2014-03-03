@@ -51,4 +51,6 @@ $.index.addEventListener("open",function(){
 });
 
 Alloy.Globals.naviCon.open($.index);
+
+//$.index.open();
 //$.index.open();
