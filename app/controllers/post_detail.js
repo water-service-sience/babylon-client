@@ -52,8 +52,43 @@ function updateDisplayInformation(post){
 	
 	if(post.userId == api.client.userId){
 		$.private_area.visible = true;
+		$.height = "auto";
 	}else{
 		$.private_area.visible = false;
+		$.height = 0;
+	}
+	
+	$.append_info_area.removeAllChildren();
+	if(post.fieldData){
+		var index = 0;
+		var height = 20;
+		for(var key in post.fieldData){
+			var v = post.fieldData[key];
+			var line = Ti.UI.createView({
+				left : 0,
+				//top : (index * height) + "dp",
+				width : "100%",
+				height : height + "dp"
+			});
+			var label = Ti.UI.createLabel({
+				text : key + ":",
+				left : 0,
+				top : 0,
+				height : height + "dp"
+			});
+			var value = Ti.UI.createLabel({
+				text : v,
+				left : "100dp",
+				top : 0,
+				height : height + "dp"
+			});
+			index += 1;
+			line.add(label);
+			line.add(value);
+			$.append_info_area.add(line);
+			
+		}
+		$.append_info_area.height = (index * height) + "dp";
 	}
 	
 	//投稿情報

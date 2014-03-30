@@ -21,7 +21,43 @@ function Controller() {
             $.status_message.visible = true;
             $.status_message.text = "未読の返信が" + post.unreadMessages + "件あります。";
         } else $.status_message.visible = false;
-        $.private_area.visible = post.userId == api.client.userId ? true : false;
+        if (post.userId == api.client.userId) {
+            $.private_area.visible = true;
+            $.height = "auto";
+        } else {
+            $.private_area.visible = false;
+            $.height = 0;
+        }
+        $.append_info_area.removeAllChildren();
+        if (post.fieldData) {
+            var index = 0;
+            var height = 20;
+            for (var key in post.fieldData) {
+                var v = post.fieldData[key];
+                var line = Ti.UI.createView({
+                    left: 0,
+                    width: "100%",
+                    height: height + "dp"
+                });
+                var label = Ti.UI.createLabel({
+                    text: key + ":",
+                    left: 0,
+                    top: 0,
+                    height: height + "dp"
+                });
+                var value = Ti.UI.createLabel({
+                    text: v,
+                    left: "100dp",
+                    top: 0,
+                    height: height + "dp"
+                });
+                index += 1;
+                line.add(label);
+                line.add(value);
+                $.append_info_area.add(line);
+            }
+            $.append_info_area.height = index * height + "dp";
+        }
         $.photo.image = api.toImageUrl(post);
         $.date.text = util.dateToString(post.posted);
         $.goodness.text = util.goodnessToString(post.goodness);
@@ -140,32 +176,6 @@ function Controller() {
         id: "goodness"
     });
     $.__views.__alloyId93.add($.__views.goodness);
-    $.__views.append_info_area = Ti.UI.createView({
-        height: "35dp",
-        layout: "horizontal",
-        id: "append_info_area"
-    });
-    $.__views.scroll_view.add($.__views.append_info_area);
-    $.__views.water_height_label = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        text: "水位",
-        id: "water_height_label"
-    });
-    $.__views.append_info_area.add($.__views.water_height_label);
-    $.__views.water_height = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        text: "22センチ",
-        id: "water_height"
-    });
-    $.__views.append_info_area.add($.__views.water_height);
     $.__views.show_in_map = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -183,6 +193,22 @@ function Controller() {
     });
     $.__views.scroll_view.add($.__views.show_in_map);
     onShowInMapClicked ? $.__views.show_in_map.addEventListener("click", onShowInMapClicked) : __defers["$.__views.show_in_map!click!onShowInMapClicked"] = true;
+    $.__views.__alloyId94 = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        text: "-- 周辺の情報 --",
+        id: "__alloyId94"
+    });
+    $.__views.scroll_view.add($.__views.__alloyId94);
+    $.__views.append_info_area = Ti.UI.createView({
+        height: "auto",
+        layout: "vertical",
+        id: "append_info_area"
+    });
+    $.__views.scroll_view.add($.__views.append_info_area);
     $.__views.private_area = Ti.UI.createView({
         layout: "vertical",
         height: "104dp",

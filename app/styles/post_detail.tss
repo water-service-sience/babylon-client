@@ -12,8 +12,8 @@
 	height : "104dp"
 },
 "#append_info_area" : {
-	height : "35dp",
-	layout : "horizontal"
+	height : "auto",
+	layout : "vertical"
 },
 ".list" : {
 	layout : "vertical"

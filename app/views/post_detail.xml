@@ -15,10 +15,10 @@
 			<View class="line_element">
 				<Label id="goodness_label">評価:</Label><Label id="goodness" class="var">良い</Label>
 			</View>
-			<View id="append_info_area" >
-				<Label id="water_height_label">水位 </Label><Label id="water_height">22センチ</Label>
-			</View>
 			<Button id="show_in_map" onClick="onShowInMapClicked">投稿場所を見る</Button>
+			<Label>-- 周辺の情報 --</Label>
+			<View id="append_info_area">
+			</View>
 			<View id="private_area" visible="false">
 				<Button id="edit_post" onClick="onEditPostClicked">投稿内容を編集</Button>
 				<Button id="show_messages" onClick="onShowMessagesClicked">管理者の返信を見る</Button>
