@@ -70,6 +70,7 @@ function APIClient() {
 	var accessKey = readDb("accessKey");
 	this.userId = readDb("userId");
 	this.nickname = readDb("nickname");
+	this.username = readDb("username");
 	this.accessKey = accessKey;
 	this.isLogin =  this.accessKey && this.accessKey != "";
 	Ti.API.info("AK = " + accessKey + " login:" + this.isLogin);
@@ -206,10 +207,14 @@ function APIClient() {
 				self.accessKey = userData.accessKey;
 				self.userId = userData.userId;
 				self.nickname = userData.nickname;
+				self.username = userData.username;
 				Ti.API.info("Success to create account:" + self.userId);
 				writeDb("accessKey",self.accessKey);
 				writeDb("userId",self.userId);
 				writeDb("nickname",self.nickname);
+				if(self.username){
+					writeDb("username",self.username);
+				}
 				cb(true);
 			}else{
 				Ti.API.debug("Fail to create acount");
@@ -242,6 +247,7 @@ function APIClient() {
 				writeDb("accessKey",self.accessKey);
 				writeDb("userId",self.userId);
 				writeDb("nickname",self.nickname);
+				writeDb("username",username);
 				cb(true);
 			}else{
 				cb(false);
@@ -257,6 +263,7 @@ function APIClient() {
 		writeDb("accessKey","");
 		writeDb("userId","");
 		writeDb("nickname","");
+		writeDb("username","");
 	};
 	
 	this.changePassword = function(username,oldPassword,newPassword,cb){
@@ -277,6 +284,9 @@ function APIClient() {
 			if(result != null){
 				if(result.result == 1){
 					result.success = true;
+					if(username.length > 0){
+						writeDb("username",username);
+					}
 				}else{
 					result
 					.success = false;

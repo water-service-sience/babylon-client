@@ -41,4 +41,11 @@ function changePassword(e){
 }
 
 
+$.change_password.addEventListener("open",function(e){
+	
+	if(client.username){
+		$.username.value = client.username;
+	}
+	
+});
 

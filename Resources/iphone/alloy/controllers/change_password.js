@@ -216,6 +216,9 @@ function Controller() {
     _.extend($, $.__views);
     var api = require("api");
     var client = api.client;
+    $.change_password.addEventListener("open", function() {
+        client.username && ($.username.value = client.username);
+    });
     __defers["$.__views.changePassword!click!changePassword"] && $.__views.changePassword.addEventListener("click", changePassword);
     _.extend($, exports);
 }
