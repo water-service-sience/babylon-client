@@ -65,6 +65,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "コメントする",
         id: "send_comment"
     });
@@ -87,6 +88,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "名前"
                         }
                     };
@@ -100,6 +102,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "aaa",
                             bindId: "nickname"
                         }
@@ -113,6 +116,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "書き込み"
                         }
                     };
@@ -126,6 +130,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "8/9 17:00",
                             bindId: "date"
                         }
@@ -151,6 +156,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "コメント"
                         }
                     };
@@ -164,6 +170,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "aaa",
                             bindId: "comment"
                         }

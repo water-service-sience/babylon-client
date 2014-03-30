@@ -142,6 +142,24 @@ function APIClient() {
             }
         });
     };
+    this.login = function(username, password, cb) {
+        password = Titanium.Utils.md5HexDigest(password);
+        self.post("/login", {
+            username: username,
+            password: password
+        }, function(userData) {
+            if (null != userData && null != userData.userId) {
+                self.accessKey = userData.accessKey;
+                self.userId = userData.userId;
+                self.nickname = userData.nickname;
+                Ti.API.info("Success to create account:" + self.userId);
+                writeDb("accessKey", self.accessKey);
+                writeDb("userId", self.userId);
+                writeDb("nickname", self.nickname);
+                cb(true);
+            } else cb(false);
+        });
+    };
     this.logout = function() {
         Ti.API.debug("Logout");
         self.accessKey = null;
@@ -150,6 +168,23 @@ function APIClient() {
         writeDb("accessKey", "");
         writeDb("userId", "");
         writeDb("nickname", "");
+    };
+    this.changePassword = function(username, oldPassword, newPassword, cb) {
+        if (4 > newPassword.length) {
+            alert("パスワードが短すぎます。");
+            return;
+        }
+        newPassword = Titanium.Utils.md5HexDigest(newPassword);
+        oldPassword.length > 0 && (oldPassword = Titanium.Utils.md5HexDigest(oldPassword));
+        Ti.API.debug("Change password:" + username);
+        self.post("/reset/password", {
+            username: username,
+            oldPassword: oldPassword,
+            newPassword: newPassword
+        }, function(result) {
+            null != result && (result.success = 1 == result.result ? true : false);
+            cb(result);
+        });
     };
     return this;
 }
@@ -161,6 +196,7 @@ function PostManager() {
         Titanium.Geolocation.getCurrentPosition(function(e) {
             var lat = e.coords.latitude;
             var lon = e.coords.longitude;
+            Ti.API.log("image size = " + image.length);
             client.postBinary("/photo/upload", image, function() {}, function(result) {
                 var imageId = result.imageId;
                 Ti.API.info("Success to upload image : " + imageId);

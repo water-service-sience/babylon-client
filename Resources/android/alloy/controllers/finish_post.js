@@ -33,6 +33,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         top: "2%",
         text: "投稿ありがとうございます",
         id: "title"
@@ -44,6 +45,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         top: "10%",
         text: "追加情報の編集",
         id: "subtitle"
@@ -74,6 +76,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "5%",
         right: "10dp",
+        color: "#000",
         top: "80%",
         width: "60%",
         title: "追加情報を送信",
@@ -93,6 +96,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "70%",
         right: "10dp",
+        color: "#000",
         top: "80%",
         width: "25%",
         title: "戻る",

@@ -19,6 +19,7 @@ function Controller() {
             fontWeight: "bold"
         },
         height: "24dp",
+        color: "#000",
         top: "1dp",
         left: "2dp",
         text: "悪い",
@@ -32,6 +33,7 @@ function Controller() {
             fontWeight: "bold"
         },
         height: "24dp",
+        color: "#000",
         top: "1dp",
         right: "2dp",
         text: "良い",

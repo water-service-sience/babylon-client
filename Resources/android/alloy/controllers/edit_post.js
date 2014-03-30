@@ -78,6 +78,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "内容:",
         id: "__alloyId5"
     });
@@ -88,6 +89,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "Hoge",
         id: "category"
     });
@@ -104,6 +106,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "選択",
         id: "select_category"
     });
@@ -119,6 +122,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "コメント",
         id: "__alloyId6"
     });
@@ -134,7 +138,7 @@ function Controller() {
     });
     $.__views.scroll_view.add($.__views.comment);
     $.__views.__alloyId7 = Ti.UI.createView({
-        height: "38dp",
+        height: "35dp",
         layout: "horizontal",
         id: "__alloyId7"
     });
@@ -145,6 +149,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "緯度経度",
         id: "__alloyId8"
     });
@@ -155,6 +160,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "123,233",
         id: "location"
     });
@@ -171,6 +177,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "選択",
         id: "select_location"
     });
@@ -187,6 +194,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "保存",
         id: "save"
     });

@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-//var ServerUrl = "http://localhost:9000";
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
+//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
 function DB(){
@@ -228,6 +228,27 @@ function APIClient() {
 		
 	};
 	
+	this.login = function(username,password,cb){
+		password = Titanium.Utils.md5HexDigest(password);
+	    self.post("/login",{
+			username : username,
+			password : password
+		},function(userData){
+			if(userData != null && userData.userId != null){
+				self.accessKey = userData.accessKey;
+				self.userId = userData.userId;
+				self.nickname = userData.nickname;
+				Ti.API.info("Success to create account:" + self.userId);
+				writeDb("accessKey",self.accessKey);
+				writeDb("userId",self.userId);
+				writeDb("nickname",self.nickname);
+				cb(true);
+			}else{
+				cb(false);
+			}
+		});
+	};
+	
 	this.logout = function(){
 		Ti.API.debug("Logout");
 		self.accessKey = null;
@@ -236,6 +257,33 @@ function APIClient() {
 		writeDb("accessKey","");
 		writeDb("userId","");
 		writeDb("nickname","");
+	};
+	
+	this.changePassword = function(username,oldPassword,newPassword,cb){
+		if(newPassword.length < 4){
+			alert("パスワードが短すぎます。");
+			return;
+		}
+		newPassword = Titanium.Utils.md5HexDigest(newPassword);
+		if(oldPassword.length > 0){
+			oldPassword = Titanium.Utils.md5HexDigest(oldPassword);
+		}
+		Ti.API.debug("Change password:" + username);
+		 self.post("/reset/password",{
+			username : username,
+			oldPassword : oldPassword,
+			newPassword : newPassword
+		},function(result){
+			if(result != null){
+				if(result.result == 1){
+					result.success = true;
+				}else{
+					result
+					.success = false;
+				}
+			}
+			cb(result);
+		});
 	};
 	
 	
@@ -252,7 +300,7 @@ function PostManager() {
 		Titanium.Geolocation.getCurrentPosition(function(e){
 			var lat = e.coords.latitude;
 			var lon = e.coords.longitude;
-			
+			Ti.API.log("image size = " + image.length);
 			client.postBinary("/photo/upload",
 				image,
 				function(prog) {

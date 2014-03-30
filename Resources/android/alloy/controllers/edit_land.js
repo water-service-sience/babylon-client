@@ -91,6 +91,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "名前",
         id: "__alloyId1"
     });
@@ -111,7 +112,7 @@ function Controller() {
         animate: "true",
         regionFit: "true",
         userLocation: "true",
-        mapType: "Alloy.Globals.Map.NORMAL_TYPE"
+        mapType: "1"
     });
     $.__views.edit_land.add($.__views.map);
     onMapClicked ? $.__views.map.addEventListener("click", onMapClicked) : __defers["$.__views.map!click!onMapClicked"] = true;
@@ -127,6 +128,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "保存",
         id: "__alloyId2"
     });
@@ -144,6 +146,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "削除",
         width: "30%",
         id: "__alloyId3"

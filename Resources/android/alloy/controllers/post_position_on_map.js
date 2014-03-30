@@ -18,6 +18,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         borderColor: "black",
         borderRadius: 5,
         borderWidth: 2,

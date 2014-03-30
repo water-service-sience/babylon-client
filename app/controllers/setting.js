@@ -31,6 +31,11 @@ function onSelectLandClicked(){
 	Alloy.Globals.naviCon.open(view);
 	
 }
+function onChangePasswordClicked(){
+	
+	var view = Alloy.createController("change_password").getView();
+	Alloy.Globals.naviCon.open(view);
+}
 
 $.setting.addEventListener("open",function(){
 	var api = Alloy.Globals.api;

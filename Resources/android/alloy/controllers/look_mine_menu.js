@@ -27,6 +27,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "自分の投稿を見る",
         id: "__alloyId14"
     });
@@ -43,6 +44,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "カレンダー",
         id: "show_calendar"
     });
@@ -60,6 +62,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "投稿一覧",
         id: "show_self_posts"
     });

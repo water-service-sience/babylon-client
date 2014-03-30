@@ -68,6 +68,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "auto",
         right: "auto",
+        color: "#000",
         title: "送信",
         id: "send_message_button"
     });
@@ -90,6 +91,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "送信者:"
                         }
                     };
@@ -103,6 +105,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "aaa",
                             bindId: "nickname"
                         }
@@ -116,6 +119,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "投稿日:"
                         }
                     };
@@ -129,6 +133,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             right: 0,
                             text: "8/9 17:00",
                             bindId: "date"
@@ -155,6 +160,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "コメント"
                         }
                     };
@@ -168,6 +174,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             text: "aaa",
                             bindId: "message"
                         }

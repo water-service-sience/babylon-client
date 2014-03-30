@@ -62,22 +62,22 @@ function Controller() {
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
-    $.__views.__alloyId78 = Ti.UI.createView({
+    $.__views.__alloyId89 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId78"
+        id: "__alloyId89"
     });
-    $.__views.scroll_view.add($.__views.__alloyId78);
-    $.__views.__alloyId79 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId89);
+    $.__views.__alloyId90 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "投稿者:",
-        id: "__alloyId79"
+        id: "__alloyId90"
     });
-    $.__views.__alloyId78.add($.__views.__alloyId79);
+    $.__views.__alloyId89.add($.__views.__alloyId90);
     $.__views.post_user = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -87,23 +87,23 @@ function Controller() {
         text: "ほげ",
         id: "post_user"
     });
-    $.__views.__alloyId78.add($.__views.post_user);
-    $.__views.__alloyId80 = Ti.UI.createView({
+    $.__views.__alloyId89.add($.__views.post_user);
+    $.__views.__alloyId91 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId80"
+        id: "__alloyId91"
     });
-    $.__views.scroll_view.add($.__views.__alloyId80);
-    $.__views.__alloyId81 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId91);
+    $.__views.__alloyId92 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "投稿日時:",
-        id: "__alloyId81"
+        id: "__alloyId92"
     });
-    $.__views.__alloyId80.add($.__views.__alloyId81);
+    $.__views.__alloyId91.add($.__views.__alloyId92);
     $.__views.date = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -113,13 +113,13 @@ function Controller() {
         text: "2013年6月23日",
         id: "date"
     });
-    $.__views.__alloyId80.add($.__views.date);
-    $.__views.__alloyId82 = Ti.UI.createView({
+    $.__views.__alloyId91.add($.__views.date);
+    $.__views.__alloyId93 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId82"
+        id: "__alloyId93"
     });
-    $.__views.scroll_view.add($.__views.__alloyId82);
+    $.__views.scroll_view.add($.__views.__alloyId93);
     $.__views.goodness_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -129,7 +129,7 @@ function Controller() {
         text: "評価:",
         id: "goodness_label"
     });
-    $.__views.__alloyId82.add($.__views.goodness_label);
+    $.__views.__alloyId93.add($.__views.goodness_label);
     $.__views.goodness = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -139,7 +139,7 @@ function Controller() {
         text: "良い",
         id: "goodness"
     });
-    $.__views.__alloyId82.add($.__views.goodness);
+    $.__views.__alloyId93.add($.__views.goodness);
     $.__views.append_info_area = Ti.UI.createView({
         height: "35dp",
         layout: "horizontal",

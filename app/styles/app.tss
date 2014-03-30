@@ -5,9 +5,17 @@
 ".simple_container" : {
 	backgroundColor: "#f0ffff"
 },
+"Label[platform=android]": {
+   color: '#000' // all platforms except Android default to black 
+},
+"Button[platform=android]": {
+   color: '#000' // all platforms except Android default to black 
+},
 "Label" : {
 	textAlign : "left",
-	font : { fontSize : "18dp"},
+	font : { 
+		fontSize : "18dp"
+	},
 	height : "24dp"
 },
 "Button" : {
@@ -23,7 +31,9 @@
 },
 ".small-button" : {
 	
-	font: { fontSize:"24dp" },
+	font: { 
+		fontSize:"24dp"
+	},
 	height : "36dp",
 	backgroundFocusedColor : "#ffe4e1",
 	borderColor : "black",

@@ -161,6 +161,7 @@ function PostManager() {
         Titanium.Geolocation.getCurrentPosition(function(e) {
             var lat = e.coords.latitude;
             var lon = e.coords.longitude;
+            Ti.API.log("image size = " + image.length);
             client.postBinary("/photo/upload", image, function() {}, function(result) {
                 var imageId = result.imageId;
                 Ti.API.info("Success to upload image : " + imageId);

@@ -1,7 +1,11 @@
 "#nickname" : {
 	width : "50%"
 },
-"#center_panel" : {
-	height : "30%"
+"#username" : {
+	width : "50%"
+},
+"#password" : {
+	width : "50%"
 }
+
 

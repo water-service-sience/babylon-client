@@ -6,7 +6,9 @@ function Controller() {
             category: selectedCategory,
             comment: $.comment.value
         };
+        setCover();
         Alloy.Globals.api.postManager.post(photoData, params, function(result) {
+            removeCover();
             Alloy.Globals.lastPost = result;
             Alloy.Globals.post = result;
             var dialog = Titanium.UI.createAlertDialog({
@@ -35,6 +37,16 @@ function Controller() {
                 $.post.enabled = true;
             }
         });
+    }
+    function setCover() {
+        $.activityIndicator.show();
+        $.post.enabled = false;
+        $.recapture.enabled = false;
+    }
+    function removeCover() {
+        $.activityIndicator.hide();
+        $.post.enabled = true;
+        $.recapture.enabled = true;
     }
     function showCamera() {
         Titanium.Media.showCamera({
@@ -88,12 +100,18 @@ function Controller() {
         id: "__alloyId83"
     });
     $.__views.post_image.add($.__views.__alloyId83);
+    $.__views.activityIndicator = Ti.UI.createActivityIndicator({
+        id: "activityIndicator",
+        message: "Uploading..."
+    });
+    $.__views.__alloyId83.add($.__views.activityIndicator);
     $.__views.title = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "投稿",
         id: "title"
     });
@@ -116,6 +134,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "内容:",
         id: "__alloyId85"
     });
@@ -126,6 +145,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         right: "22%",
         text: "未選択",
         id: "category"
@@ -143,6 +163,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "auto",
         right: "2%",
+        color: "#000",
         width: "20%",
         title: "選択",
         id: "select_category"
@@ -160,6 +181,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "コメント",
         id: "__alloyId86"
     });
@@ -191,6 +213,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "5dp",
         right: "10dp",
+        color: "#000",
         width: "60%",
         title: "投稿",
         id: "post"
@@ -209,6 +232,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "5dp",
+        color: "#000",
         width: "30%",
         title: "再撮影",
         id: "recapture"
@@ -227,6 +251,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "auto",
         right: "5dp",
+        color: "#000",
         width: "40%",
         title: "ギャラリー",
         id: "gallery"

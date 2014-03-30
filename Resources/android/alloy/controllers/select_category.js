@@ -31,6 +31,7 @@ function Controller() {
                 fontSize: "18dp"
             },
             height: "24dp",
+            color: "#000",
             bindId: "label"
         }
     };

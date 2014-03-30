@@ -51,6 +51,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "未読の返信が1件あります。",
         id: "status_message"
     });
@@ -74,6 +75,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "投稿者:",
         id: "__alloyId79"
     });
@@ -84,6 +86,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "ほげ",
         id: "post_user"
     });
@@ -100,6 +103,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "投稿日時:",
         id: "__alloyId81"
     });
@@ -110,6 +114,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "2013年6月23日",
         id: "date"
     });
@@ -126,6 +131,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "評価:",
         id: "goodness_label"
     });
@@ -136,6 +142,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "良い",
         id: "goodness"
     });
@@ -152,6 +159,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "水位",
         id: "water_height_label"
     });
@@ -162,6 +170,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "22センチ",
         id: "water_height"
     });
@@ -178,6 +187,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "投稿場所を見る",
         id: "show_in_map"
     });
@@ -202,6 +212,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "投稿内容を編集",
         id: "edit_post"
     });
@@ -219,6 +230,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "管理者の返信を見る",
         id: "show_messages"
     });

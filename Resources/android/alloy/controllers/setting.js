@@ -47,6 +47,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         width: "40%",
         text: "ユーザーID:",
         id: "user_id_label"
@@ -58,6 +59,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         width: "60%",
         text: "203",
         id: "user_id"
@@ -75,6 +77,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         width: "40%",
         text: "ニックネーム:",
         id: "nickname_label"
@@ -86,6 +89,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         width: "60%",
         text: "hoge",
         id: "nickname"
@@ -103,6 +107,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "所有地設定",
         id: "select_land"
     });
@@ -126,6 +131,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "ログアウト",
         id: "logout_button"
     });

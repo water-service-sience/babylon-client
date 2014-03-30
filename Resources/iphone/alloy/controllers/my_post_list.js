@@ -20,13 +20,13 @@ function Controller() {
         id: "my_post_list"
     });
     $.__views.my_post_list && $.addTopLevelView($.__views.my_post_list);
-    var __alloyId34 = {};
-    var __alloyId37 = [];
-    var __alloyId39 = {
+    var __alloyId45 = {};
+    var __alloyId48 = [];
+    var __alloyId50 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId40 = [];
-            var __alloyId42 = {
+            var __alloyId51 = [];
+            var __alloyId53 = {
                 type: "Ti.UI.ImageView",
                 bindId: "thumbnail",
                 properties: {
@@ -35,12 +35,12 @@ function Controller() {
                     bindId: "thumbnail"
                 }
             };
-            __alloyId40.push(__alloyId42);
-            var __alloyId44 = {
+            __alloyId51.push(__alloyId53);
+            var __alloyId55 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId45 = [];
-                    var __alloyId47 = {
+                    var __alloyId56 = [];
+                    var __alloyId58 = {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
@@ -52,8 +52,8 @@ function Controller() {
                             bindId: "date"
                         }
                     };
-                    __alloyId45.push(__alloyId47);
-                    var __alloyId49 = {
+                    __alloyId56.push(__alloyId58);
+                    var __alloyId60 = {
                         type: "Ti.UI.Label",
                         bindId: "category",
                         properties: {
@@ -65,40 +65,40 @@ function Controller() {
                             bindId: "category"
                         }
                     };
-                    __alloyId45.push(__alloyId49);
-                    return __alloyId45;
+                    __alloyId56.push(__alloyId60);
+                    return __alloyId56;
                 }(),
                 properties: {
                     layout: "vertical"
                 }
             };
-            __alloyId40.push(__alloyId44);
-            return __alloyId40;
+            __alloyId51.push(__alloyId55);
+            return __alloyId51;
         }(),
         properties: {
             layout: "horizontal"
         }
     };
-    __alloyId37.push(__alloyId39);
-    var __alloyId36 = {
+    __alloyId48.push(__alloyId50);
+    var __alloyId47 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId37
+        childTemplates: __alloyId48
     };
-    __alloyId34["template"] = __alloyId36;
-    $.__views.__alloyId50 = Ti.UI.createListSection({
+    __alloyId45["template"] = __alloyId47;
+    $.__views.__alloyId61 = Ti.UI.createListSection({
         headerTitle: "投稿一覧",
-        id: "__alloyId50"
+        id: "__alloyId61"
     });
-    var __alloyId52 = [];
-    __alloyId52.push($.__views.__alloyId50);
+    var __alloyId63 = [];
+    __alloyId63.push($.__views.__alloyId61);
     $.__views.my_posts = Ti.UI.createListView({
         top: "0%",
         width: "100%",
         bottom: "5%",
-        sections: __alloyId52,
-        templates: __alloyId34,
+        sections: __alloyId63,
+        templates: __alloyId45,
         id: "my_posts",
         defaultItemTemplate: "template"
     });

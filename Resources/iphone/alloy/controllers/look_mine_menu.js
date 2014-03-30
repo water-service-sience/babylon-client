@@ -21,16 +21,16 @@ function Controller() {
         id: "look_mine_menu"
     });
     $.__views.look_mine_menu && $.addTopLevelView($.__views.look_mine_menu);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.__alloyId25 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "自分の投稿を見る",
-        id: "__alloyId14"
+        id: "__alloyId25"
     });
-    $.__views.look_mine_menu.add($.__views.__alloyId14);
+    $.__views.look_mine_menu.add($.__views.__alloyId25);
     $.__views.show_calendar = Ti.UI.createButton({
         font: {
             fontSize: "32dp"

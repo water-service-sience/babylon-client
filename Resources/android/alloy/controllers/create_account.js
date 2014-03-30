@@ -24,6 +24,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "アカウント作成",
         id: "title"
     });
@@ -40,6 +41,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         text: "ニックネーム",
         id: "nickname_label"
     });
@@ -65,6 +67,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "アカウント作成",
         id: "create"
     });

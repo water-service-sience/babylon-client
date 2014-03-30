@@ -107,6 +107,37 @@ function Controller() {
             var view = Alloy.createController("create_account").getView();
             view.open();
         }
+        if ("android" == Ti.Platform.osname) {
+            var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();
+            switch (rc) {
+              case Alloy.Globals.Map.SUCCESS:
+                Ti.API.info("Google Play services is installed.");
+                break;
+
+              case Alloy.Globals.Map.SERVICE_MISSING:
+                alert("Google Play開発者サビースのインストールが必要です。インストールをしてください。");
+                Ti.Platform.openURL("https://play.google.com/store/apps/details?id=com.google.android.gms&hl=ja");
+                Ti.Android.currentActivity.finish();
+                break;
+
+              case Alloy.Globals.Map.SERVICE_VERSION_UPDATE_REQUIRED:
+                alert("Google Play開発者サービスのバージョンアップが必要です。バージョンアップをしてください。");
+                Ti.Platform.openURL("https://play.google.com/store/apps/details?id=com.google.android.gms&hl=ja");
+                Ti.Android.currentActivity.finish();
+                break;
+
+              case Alloy.Globals.Map.SERVICE_DISABLED:
+                alert("Google Play services is disabled. Please enable Google Play services.");
+                break;
+
+              case Alloy.Globals.Map.SERVICE_INVALID:
+                alert("Google Play services cannot be authenticated. Reinstall Google Play services.");
+                break;
+
+              default:
+                alert("Unknown error.Google Play開発者サービスを検出できませんでした。");
+            }
+        }
     });
     Alloy.Globals.naviCon.open($.index);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);

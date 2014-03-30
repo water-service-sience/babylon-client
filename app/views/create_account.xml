@@ -8,5 +8,24 @@
 		</View>
 		<Button id="create" onClick="createAccount">アカウント作成</Button>
 		
+	
+		<View class="line_element">
+			<Label id="username_label" class="small_text">ユーザー名</Label>
+			<TextField id="username"></TextField>
+		</View>
+		<View class="line_element">
+			<Label id="password_label" class="small_text">パスワード</Label>
+			
+			<TextField id="password" passwordMask="true"></TextField>	
+		</View>
+		
+		<Button id="login" onClick="login">ログイン</Button>
+		
+		<Label>
+			お問い合わせ先:XXX-XXX-XXXX
+		</Label>
+			
+		
+		
 	</Window>
 </Alloy>

@@ -36,6 +36,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         left: "10dp",
         right: "10dp",
+        color: "#000",
         title: "周辺を地図で見る",
         id: "show_map"
     });
@@ -52,6 +53,7 @@ function Controller() {
                 fontSize: "18dp"
             },
             height: "24dp",
+            color: "#000",
             text: "aaa",
             bindId: "name"
         }

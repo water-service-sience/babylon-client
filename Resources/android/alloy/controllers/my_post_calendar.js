@@ -285,6 +285,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        color: "#000",
         bottom: 0,
         text: "スワイプ左右で月、上下で年を変更できます",
         id: "explanation"
@@ -327,6 +328,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             bindId: "date"
                         }
                     };
@@ -340,6 +342,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            color: "#000",
                             bindId: "category"
                         }
                     };
