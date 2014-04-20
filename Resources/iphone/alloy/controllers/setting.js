@@ -43,12 +43,12 @@ function Controller() {
         id: "setting"
     });
     $.__views.setting && $.addTopLevelView($.__views.setting);
-    $.__views.__alloyId168 = Ti.UI.createView({
+    $.__views.__alloyId209 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId168"
+        id: "__alloyId209"
     });
-    $.__views.setting.add($.__views.__alloyId168);
+    $.__views.setting.add($.__views.__alloyId209);
     $.__views.user_id_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -59,7 +59,7 @@ function Controller() {
         text: "ユーザーID:",
         id: "user_id_label"
     });
-    $.__views.__alloyId168.add($.__views.user_id_label);
+    $.__views.__alloyId209.add($.__views.user_id_label);
     $.__views.user_id = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -70,13 +70,13 @@ function Controller() {
         text: "203",
         id: "user_id"
     });
-    $.__views.__alloyId168.add($.__views.user_id);
-    $.__views.__alloyId169 = Ti.UI.createView({
+    $.__views.__alloyId209.add($.__views.user_id);
+    $.__views.__alloyId210 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId169"
+        id: "__alloyId210"
     });
-    $.__views.setting.add($.__views.__alloyId169);
+    $.__views.setting.add($.__views.__alloyId210);
     $.__views.nickname_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -87,7 +87,7 @@ function Controller() {
         text: "ニックネーム:",
         id: "nickname_label"
     });
-    $.__views.__alloyId169.add($.__views.nickname_label);
+    $.__views.__alloyId210.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -98,7 +98,7 @@ function Controller() {
         text: "hoge",
         id: "nickname"
     });
-    $.__views.__alloyId169.add($.__views.nickname);
+    $.__views.__alloyId210.add($.__views.nickname);
     $.__views.select_land = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -147,12 +147,12 @@ function Controller() {
     });
     $.__views.setting.add($.__views.sendQuestionnaire);
     onSendQuestionnaireClicked ? $.__views.sendQuestionnaire.addEventListener("click", onSendQuestionnaireClicked) : __defers["$.__views.sendQuestionnaire!click!onSendQuestionnaireClicked"] = true;
-    $.__views.__alloyId170 = Ti.UI.createView({
+    $.__views.__alloyId211 = Ti.UI.createView({
         width: "100%",
         height: "25dp",
-        id: "__alloyId170"
+        id: "__alloyId211"
     });
-    $.__views.setting.add($.__views.__alloyId170);
+    $.__views.setting.add($.__views.__alloyId211);
     $.__views.logout_button = Ti.UI.createButton({
         font: {
             fontSize: "32dp"

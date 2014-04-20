@@ -1,0 +1,16 @@
+<Alloy>
+	<Window class="container">
+		<ListView id="item_list" defaultItemTemplate="template" onItemclick="onItemClick">
+			<Templates>
+				<ItemTemplate name="template">
+					<Label bindId="label">
+				</ItemTemplate>
+			</Templates>
+			
+            <ListSection>
+            </ListSection>
+			
+		</ListView>
+		
+	</Window>
+</Alloy>

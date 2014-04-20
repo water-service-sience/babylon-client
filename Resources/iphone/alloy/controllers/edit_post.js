@@ -129,6 +129,7 @@ function Controller() {
             fontSize: "24dp"
         },
         borderRadius: 5,
+        suppressReturn: "false",
         id: "comment"
     });
     $.__views.scroll_view.add($.__views.comment);

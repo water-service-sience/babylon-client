@@ -21,7 +21,7 @@ function Controller() {
         id: "select_post_mode"
     });
     $.__views.select_post_mode && $.addTopLevelView($.__views.select_post_mode);
-    $.__views.__alloyId166 = Ti.UI.createButton({
+    $.__views.__alloyId207 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -33,11 +33,11 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         title: "作業記録を投稿",
-        id: "__alloyId166"
+        id: "__alloyId207"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId166);
-    onWorkReportModeClicked ? $.__views.__alloyId166.addEventListener("click", onWorkReportModeClicked) : __defers["$.__views.__alloyId166!click!onWorkReportModeClicked"] = true;
-    $.__views.__alloyId167 = Ti.UI.createButton({
+    $.__views.select_post_mode.add($.__views.__alloyId207);
+    onWorkReportModeClicked ? $.__views.__alloyId207.addEventListener("click", onWorkReportModeClicked) : __defers["$.__views.__alloyId207!click!onWorkReportModeClicked"] = true;
+    $.__views.__alloyId208 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -49,15 +49,15 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         title: "問い合わせ",
-        id: "__alloyId167"
+        id: "__alloyId208"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId167);
-    onInquiryModeClicked ? $.__views.__alloyId167.addEventListener("click", onInquiryModeClicked) : __defers["$.__views.__alloyId167!click!onInquiryModeClicked"] = true;
+    $.__views.select_post_mode.add($.__views.__alloyId208);
+    onInquiryModeClicked ? $.__views.__alloyId208.addEventListener("click", onInquiryModeClicked) : __defers["$.__views.__alloyId208!click!onInquiryModeClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
-    __defers["$.__views.__alloyId166!click!onWorkReportModeClicked"] && $.__views.__alloyId166.addEventListener("click", onWorkReportModeClicked);
-    __defers["$.__views.__alloyId167!click!onInquiryModeClicked"] && $.__views.__alloyId167.addEventListener("click", onInquiryModeClicked);
+    __defers["$.__views.__alloyId207!click!onWorkReportModeClicked"] && $.__views.__alloyId207.addEventListener("click", onWorkReportModeClicked);
+    __defers["$.__views.__alloyId208!click!onInquiryModeClicked"] && $.__views.__alloyId208.addEventListener("click", onInquiryModeClicked);
     _.extend($, exports);
 }
 

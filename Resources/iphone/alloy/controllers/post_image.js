@@ -187,6 +187,7 @@ function Controller() {
             fontSize: "24dp"
         },
         borderRadius: 5,
+        suppressReturn: "false",
         id: "comment"
     });
     $.__views.__alloyId97.add($.__views.comment);

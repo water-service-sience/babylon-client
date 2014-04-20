@@ -1,19 +1,67 @@
 <Alloy>
 	<Window class="container">
-		
-		
-		<View class="line_element">
-			<Label class="small_text">総合評価 : </Label>
-			<Label id="total_eval" class="small_text">未回答</Label>
-			<Button id="select_eval" class="small-button"
-				onClick="onSelectEvaluation" >選択</Button>
-		</View>
-		<View class="line_element">
-			<Label>備考欄</Label>
-		</View>
-		<TextArea id="note">
-		</TextArea>
-		<Button id="send" onClick="onSendClicked">送信</Button>
-		
+		<ScrollView>
+			
+			<View class="row">
+				<Label class="col_4">年齢</Label>
+				<TextField id="age" class="col_6" value="20"></TextField>
+				<Label class="col_2">歳</Label>
+			</View>
+			<View class="row">
+				<Label class="col_4">Q1.使用頻度</Label>
+				<Button id="useFrequency" class="col_8 dropdown_list" onClick="selectUseFrequency">未回答</Button>
+			</View>
+			<View class="row">
+				<Label class="col_4">Q2.操作性</Label>
+				<Button id="easiness" class="col_8 dropdown_list" onClick="selectEasiness">未回答</Button>
+			</View>
+			<Label class="question">Q3.利便性に関して</Label>
+			<View class="row">
+				<View class="col_1"></View>
+				<Label class="col_11">Q3-1.画像投稿サービス</Label>
+			</View>
+			<View class="row">
+				<View class="col_4"></View>
+				<Button id="useForImagePost" class="col_8 dropdown_list" onClick="selectUseForImagePost">未回答</Button>
+			</View>
+			<View class="row">
+				<View class="col_1"></View>
+				<Label class="col_11">Q3-2.苦情サービス</Label>
+			</View>
+			<View class="row">
+				<View class="col_4"></View>
+				<Button id="useForInquiry" class="col_8 dropdown_list" onClick="selectUseForInquiry">未回答</Button>
+			</View>
+			<View class="row">
+				<View class="col_1"></View>
+				<Label class="col_11">Q3-3.圃場モニタリング</Label>
+			</View>
+			<View class="row">
+				<View class="col_4"></View>
+				<Button id="useForFieldMonitoring" class="col_8 dropdown_list" onClick="selectUseForFieldMonitoring">未回答</Button>
+			</View>
+			
+			<Label class="question">Q4.サービスの利用に関して</Label>
+			<View class="row">
+				<View class="col_1"></View>
+				<Label class="col_11">Q4-1.継続利用</Label>
+			</View>
+			<View class="row">
+				<View class="col_4"></View>
+				<Button id="willUse" class="col_8 dropdown_list" onClick="selectWillUse">未回答</Button>
+			</View>
+			<View class="row">
+				<View class="col_1"></View>
+				<Label class="col_11">Q4-2.利用料金</Label>
+			</View>
+			<View class="row">
+				<View class="col_4"></View>
+				<Button id="costForUse" class="col_8 dropdown_list" onClick="selectCostForUse">未回答</Button>
+			</View>
+			<Label class="question">Q5.ご意見、ご感想</Label>
+			<TextArea id="freeMessage"></TextArea>
+			
+			<Button id="send" onClick="onSendClicked">送信</Button>
+		</ScrollView>
 	</Window>
 </Alloy>

@@ -46,7 +46,8 @@
 	width : "98%",
 	height : "100dp",
 	font: { fontSize:"24dp" },
-	borderRadius : 5
+	borderRadius : 5,
+	suppressReturn : "false"
 },
 "TextField" : {
 	font: { fontSize:"24dp" },

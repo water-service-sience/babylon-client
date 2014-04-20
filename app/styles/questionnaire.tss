@@ -1,9 +1,18 @@
 
 
-
-"TextArea" : {
-	"left" : "5dp",
-	"right" : "5dp",
-	"height" : "150dp",
-	"suppressReturn": "false"
+".dropdown_list" : {
+	
+	font: { fontSize:"18dp" },
+	backgroundFocusedColor : "#ffffff",
+	borderColor : "blue",
+	borderWidth : "1dp",
+	borderRadius : "5dp",
+	backgroundColor : "#ffffff"
+},
+"#age" : {
+	keyboardType : Ti.UI.KEYBOARD_NUMBER_PAD
+},
+".question" : {
+	textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
+	width : "100%"
 }

@@ -112,6 +112,7 @@ function Controller() {
             fontSize: "24dp"
         },
         borderRadius: 5,
+        suppressReturn: "false",
         id: "comment"
     });
     $.__views.post_inquiry.add($.__views.comment);

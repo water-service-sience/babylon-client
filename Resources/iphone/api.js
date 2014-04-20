@@ -343,12 +343,8 @@ function LandManager() {
 }
 
 function QuestionnaireManager() {
-    this.postQuestionnaire = function(evaluation, note, callback) {
-        var sendData = {
-            evaluation: evaluation,
-            note: note
-        };
-        client.post("/questionnaire/answer", sendData, function(result) {
+    this.postQuestionnaire = function(ansewrs, callback) {
+        client.post("/questionnaire/answer", ansewrs, function(result) {
             callback(result);
         });
     };
