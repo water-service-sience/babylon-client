@@ -71,10 +71,10 @@ function Controller() {
         animate: "true",
         regionFit: "true",
         userLocation: "true",
-        mapType: "Alloy.Globals.Map.NORMAL_TYPE"
+        mapType: "1"
     });
     $.__views.select_location.add($.__views.map);
-    $.__views.__alloyId148 = Ti.UI.createButton({
+    $.__views.__alloyId165 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -84,13 +84,12 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         title: "選択",
-        id: "__alloyId148"
+        id: "__alloyId165"
     });
-    $.__views.select_location.add($.__views.__alloyId148);
-    onOkClicked ? $.__views.__alloyId148.addEventListener("click", onOkClicked) : __defers["$.__views.__alloyId148!click!onOkClicked"] = true;
+    $.__views.select_location.add($.__views.__alloyId165);
+    onOkClicked ? $.__views.__alloyId165.addEventListener("click", onOkClicked) : __defers["$.__views.__alloyId165!click!onOkClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.Globals.api;
@@ -110,7 +109,7 @@ function Controller() {
         $.map.selectAnnotation(currentLocation);
         $.map.addEventListener("regionchanged", onMapRegionChanged);
     });
-    __defers["$.__views.__alloyId148!click!onOkClicked"] && $.__views.__alloyId148.addEventListener("click", onOkClicked);
+    __defers["$.__views.__alloyId165!click!onOkClicked"] && $.__views.__alloyId165.addEventListener("click", onOkClicked);
     _.extend($, exports);
 }
 

@@ -5,6 +5,9 @@
 		<Button id="look" onClick="onLookClicked">周辺の情報を見る</Button>
 		<Button id="look_mine" onClick="onLookMineClicked">自分の投稿を見る</Button>
 		
-		<Button id="setting" onClick="onSettingClicked">設定</Button>
+		<View class="row">
+			<View class="col_7"> </View>
+		    <Button class="col_5" id="setting" onClick="onSettingClicked">設定</Button>
+		</View>
 	</Window>
 </Alloy>

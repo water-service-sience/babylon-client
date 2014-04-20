@@ -20,9 +20,9 @@ function Controller() {
         id: "select_evaluation"
     });
     $.__views.select_evaluation && $.addTopLevelView($.__views.select_evaluation);
-    var __alloyId139 = {};
-    var __alloyId142 = [];
-    var __alloyId144 = {
+    var __alloyId156 = {};
+    var __alloyId159 = [];
+    var __alloyId161 = {
         type: "Ti.UI.Label",
         bindId: "label",
         properties: {
@@ -34,25 +34,25 @@ function Controller() {
             bindId: "label"
         }
     };
-    __alloyId142.push(__alloyId144);
-    var __alloyId141 = {
+    __alloyId159.push(__alloyId161);
+    var __alloyId158 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId142
+        childTemplates: __alloyId159
     };
-    __alloyId139["template"] = __alloyId141;
-    $.__views.__alloyId145 = Ti.UI.createListSection({
+    __alloyId156["template"] = __alloyId158;
+    $.__views.__alloyId162 = Ti.UI.createListSection({
         headerTitle: "評価",
-        id: "__alloyId145"
+        id: "__alloyId162"
     });
-    var __alloyId147 = [];
-    __alloyId147.push($.__views.__alloyId145);
+    var __alloyId164 = [];
+    __alloyId164.push($.__views.__alloyId162);
     $.__views.category_list = Ti.UI.createListView({
         width: "100%",
         height: "90%",
-        sections: __alloyId147,
-        templates: __alloyId139,
+        sections: __alloyId164,
+        templates: __alloyId156,
         id: "category_list",
         defaultItemTemplate: "template"
     });

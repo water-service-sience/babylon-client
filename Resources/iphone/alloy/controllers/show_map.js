@@ -60,7 +60,7 @@ function Controller() {
         animate: "true",
         regionFit: "true",
         userLocation: "true",
-        mapType: "Alloy.Globals.Map.NORMAL_TYPE"
+        mapType: "1"
     });
     $.__views.show_map.add($.__views.map);
     mapClicked ? $.__views.map.addEventListener("click", mapClicked) : __defers["$.__views.map!click!mapClicked"] = true;
@@ -74,9 +74,8 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5dp",
-        right: "10dp",
         width: "25dp",
+        left: "5dp",
         bottom: "5ddp",
         title: "+",
         id: "zoom_in"
@@ -93,9 +92,8 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "35dp",
-        right: "10dp",
         width: "25dp",
+        left: "35dp",
         bottom: "5dp",
         title: "-",
         id: "zoom_out"
@@ -128,10 +126,10 @@ function Controller() {
         borderWidth: 3,
         borderRadius: "15dp",
         backgroundColor: "#fff0ff",
-        left: "auto",
-        right: "5dp",
         width: "35dp",
         top: "5dp",
+        right: "5dp",
+        left: "auto",
         title: "×",
         id: "close_button"
     });
@@ -147,10 +145,11 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "auto",
-        right: "auto",
+        width: "95%",
         bottom: "5dp",
         top: "auto",
+        left: "auto",
+        right: "auto",
         title: "詳細を見る",
         id: "show_detail_button"
     });
@@ -217,16 +216,21 @@ function Controller() {
             annotations.push(anno);
             pinPosts(lat, lon);
         } else Titanium.Geolocation.getCurrentPosition(function(e) {
-            var lat = e.coords.latitude;
-            var lon = e.coords.longitude;
-            $.map.setLocation({
-                latitude: lat,
-                longitude: lon,
-                animate: false,
-                latitudeDelta: .04,
-                longitudeDelta: .04
-            });
-            pinPosts(lat, lon);
+            if (e.coords) {
+                var lat = e.coords.latitude;
+                var lon = e.coords.longitude;
+                $.map.setLocation({
+                    latitude: lat,
+                    longitude: lon,
+                    animate: false,
+                    latitudeDelta: .04,
+                    longitudeDelta: .04
+                });
+                pinPosts(lat, lon);
+            } else {
+                Ti.API.log("GPS is not availbale");
+                alert("GPS機能が利用できません。GPSをONにしてください。");
+            }
         });
     });
     __defers["$.__views.map!click!mapClicked"] && $.__views.map.addEventListener("click", mapClicked);

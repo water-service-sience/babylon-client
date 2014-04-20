@@ -125,8 +125,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         title: "保存",
         id: "__alloyId13"
     });
@@ -142,10 +141,8 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
-        title: "削除",
         width: "30%",
+        title: "削除",
         id: "__alloyId14"
     });
     $.__views.edit_land.add($.__views.__alloyId14);

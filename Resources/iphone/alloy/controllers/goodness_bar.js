@@ -6,7 +6,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.goodness_bar = Ti.UI.createWindow({
+    $.__views.goodness_bar = Ti.UI.createView({
         height: "55dp",
         width: "100%",
         id: "goodness_bar"

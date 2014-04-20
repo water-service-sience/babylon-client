@@ -72,10 +72,9 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5%",
-        right: "10dp",
-        top: "80%",
         width: "60%",
+        top: "80%",
+        left: "5%",
         title: "追加情報を送信",
         id: "save_button"
     });
@@ -91,10 +90,9 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "70%",
-        right: "10dp",
-        top: "80%",
         width: "25%",
+        top: "80%",
+        left: "70%",
         title: "戻る",
         id: "return_button"
     });

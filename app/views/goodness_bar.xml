@@ -1,6 +1,6 @@
 <Alloy>
-	<Window class="goodness_panel">
+	<View class="goodness_panel">
 		<Label id="bad">悪い</Label><Label id="good">良い</Label>
 		<Slider id="goodness"></Slider>
-	</Window>
+	</View>
 </Alloy>

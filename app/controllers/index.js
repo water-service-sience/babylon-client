@@ -3,7 +3,9 @@ var api = Alloy.Globals.api;
 var client = api.client;
 
 function onPostClicked(e) {
-	var view = Alloy.createController("post_image").getView();
+	//var view = Alloy.createController("post_image").getView();
+	var view = Alloy.createController("select_post_mode").getView();
+	
 	Alloy.Globals.naviCon.open(view);
 	
  	

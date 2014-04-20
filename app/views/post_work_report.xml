@@ -1,0 +1,23 @@
+<Alloy>
+	<Window class="container">
+        <Require type="view" src="post_image_view" id="image_view" onSetImage="onSetImage"/>	
+        <Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" height="30dp"/>
+    
+        <View class="small_space"></View>
+        <View class="row">
+        	<View class="col_6"></View>
+        	<Label class="col_3 small_text">公開</Label>
+        	<Switch class="col_3" id="isPublic" value="true"></Switch>
+        </View>
+        <View class="small_space"></View>
+		<View class="row_tall">
+			<Button class="col_8" id="post" onClick="onPostClicked">投稿</Button>
+			<Button class="col_4" id="recapture" onClick="onRecaptureClicked">再撮影</Button>
+		</View>
+		<View class="row">
+			<View class="col_6"></View>
+			<Button id="gallery" class="small-button col_6" onClick="onGalleryClicked">ギャラリー</Button>
+		</View>
+        
+	</Window>
+</Alloy>

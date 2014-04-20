@@ -20,9 +20,9 @@ function Controller() {
         id: "select_category"
     });
     $.__views.select_category && $.addTopLevelView($.__views.select_category);
-    var __alloyId130 = {};
-    var __alloyId133 = [];
-    var __alloyId135 = {
+    var __alloyId147 = {};
+    var __alloyId150 = [];
+    var __alloyId152 = {
         type: "Ti.UI.Label",
         bindId: "label",
         properties: {
@@ -34,25 +34,25 @@ function Controller() {
             bindId: "label"
         }
     };
-    __alloyId133.push(__alloyId135);
-    var __alloyId132 = {
+    __alloyId150.push(__alloyId152);
+    var __alloyId149 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId133
+        childTemplates: __alloyId150
     };
-    __alloyId130["template"] = __alloyId132;
-    $.__views.__alloyId136 = Ti.UI.createListSection({
+    __alloyId147["template"] = __alloyId149;
+    $.__views.__alloyId153 = Ti.UI.createListSection({
         headerTitle: "カテゴリー",
-        id: "__alloyId136"
+        id: "__alloyId153"
     });
-    var __alloyId138 = [];
-    __alloyId138.push($.__views.__alloyId136);
+    var __alloyId155 = [];
+    __alloyId155.push($.__views.__alloyId153);
     $.__views.category_list = Ti.UI.createListView({
         width: "100%",
         height: "90%",
-        sections: __alloyId138,
-        templates: __alloyId130,
+        sections: __alloyId155,
+        templates: __alloyId147,
         id: "category_list",
         defaultItemTemplate: "template"
     });
@@ -63,6 +63,7 @@ function Controller() {
     var api = Alloy.Globals.api;
     var args = arguments[0] || {};
     var selectCallback = args.selectCallback;
+    var selectedIndex = -1 | args.selectedIndex;
     $.select_category.addEventListener("open", function() {
         api.postManager.getCategories(function(categories) {
             var section = $.category_list.sections[0];
@@ -80,6 +81,7 @@ function Controller() {
                 });
             }
             section.items = itemData;
+            selectedIndex >= 0 && $.category_list.selectItem(0, selectedIndex);
         });
     });
     __defers["$.__views.category_list!itemclick!onItemClick"] && $.__views.category_list.addEventListener("itemclick", onItemClick);

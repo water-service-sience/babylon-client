@@ -102,8 +102,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         title: "選択",
         id: "select_category"
     });
@@ -124,12 +123,12 @@ function Controller() {
     });
     $.__views.scroll_view.add($.__views.__alloyId17);
     $.__views.comment = Ti.UI.createTextArea({
+        width: "100%",
+        height: "105dp",
         font: {
             fontSize: "24dp"
         },
         borderRadius: 5,
-        width: "100%",
-        height: "105dp",
         id: "comment"
     });
     $.__views.scroll_view.add($.__views.comment);
@@ -169,8 +168,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         title: "選択",
         id: "select_location"
     });
@@ -185,8 +183,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         title: "保存",
         id: "save"
     });

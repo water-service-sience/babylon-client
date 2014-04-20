@@ -3,6 +3,8 @@ var api = Alloy.Globals.api;
 var args = arguments[0] || {};
 var selectCallback = args.selectCallback;
 
+var selectedIndex = args.selectedIndex | -1;
+
 function onItemClick(e){
 	var item = e.section.items[e.itemIndex];
 	var category = item.properties.category;
@@ -32,6 +34,10 @@ $.select_category.addEventListener("open",function(e){
 		}
 		section.items = itemData;
 		
+		
+		if(selectedIndex >= 0){
+			$.category_list.selectItem(0,selectedIndex);
+		}
 		
 	});
 

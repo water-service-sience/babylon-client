@@ -28,22 +28,22 @@ function Controller() {
         id: "questionnaire"
     });
     $.__views.questionnaire && $.addTopLevelView($.__views.questionnaire);
-    $.__views.__alloyId126 = Ti.UI.createView({
+    $.__views.__alloyId143 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId126"
+        id: "__alloyId143"
     });
-    $.__views.questionnaire.add($.__views.__alloyId126);
-    $.__views.__alloyId127 = Ti.UI.createLabel({
+    $.__views.questionnaire.add($.__views.__alloyId143);
+    $.__views.__alloyId144 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "総合評価 :",
-        id: "__alloyId127"
+        id: "__alloyId144"
     });
-    $.__views.__alloyId126.add($.__views.__alloyId127);
+    $.__views.__alloyId143.add($.__views.__alloyId144);
     $.__views.total_eval = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -53,7 +53,7 @@ function Controller() {
         text: "未回答",
         id: "total_eval"
     });
-    $.__views.__alloyId126.add($.__views.total_eval);
+    $.__views.__alloyId143.add($.__views.total_eval);
     $.__views.select_eval = Ti.UI.createButton({
         font: {
             fontSize: "24dp"
@@ -64,37 +64,37 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "auto",
-        right: "auto",
+        width: "95%",
         title: "選択",
         id: "select_eval"
     });
-    $.__views.__alloyId126.add($.__views.select_eval);
+    $.__views.__alloyId143.add($.__views.select_eval);
     onSelectEvaluation ? $.__views.select_eval.addEventListener("click", onSelectEvaluation) : __defers["$.__views.select_eval!click!onSelectEvaluation"] = true;
-    $.__views.__alloyId128 = Ti.UI.createView({
+    $.__views.__alloyId145 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId128"
+        id: "__alloyId145"
     });
-    $.__views.questionnaire.add($.__views.__alloyId128);
-    $.__views.__alloyId129 = Ti.UI.createLabel({
+    $.__views.questionnaire.add($.__views.__alloyId145);
+    $.__views.__alloyId146 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "備考欄",
-        id: "__alloyId129"
+        id: "__alloyId146"
     });
-    $.__views.__alloyId128.add($.__views.__alloyId129);
+    $.__views.__alloyId145.add($.__views.__alloyId146);
     $.__views.note = Ti.UI.createTextArea({
+        width: "98%",
+        height: "150dp",
         font: {
             fontSize: "24dp"
         },
         borderRadius: 5,
         left: "5dp",
         right: "5dp",
-        height: "150dp",
         suppressReturn: "false",
         id: "note"
     });
@@ -109,8 +109,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         title: "送信",
         id: "send"
     });

@@ -2,12 +2,5 @@
 	color : "red"
 },
 "Button" : {
-	height : "15%",
-	left : "5dp"
-},
-"#setting" : {
-	right : 0,
-	left : "70%",
-	bottom : "5dp"
-	
+	height : "60dp"
 }

@@ -18,7 +18,7 @@ function Controller() {
         animate: "true",
         regionFit: "true",
         userLocation: "true",
-        mapType: "Alloy.Globals.Map.NORMAL_TYPE"
+        mapType: "1"
     });
     $.__views.post_map.add($.__views.map);
     exports.destroy = function() {};

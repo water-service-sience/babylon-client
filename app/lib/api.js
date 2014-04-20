@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-//var ServerUrl = "http://localhost:9000";
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
+//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
 function DB(){
@@ -307,32 +307,48 @@ function PostManager() {
 	this.myPosts = [];
 	
 	this.post = function(image, params,callback){
+		
+		var postData = function(imageId,lat,lon){
+		    var obj = params;
+		    obj.imageId = imageId;
+		    if(lat & lon){
+			    obj.latitude = lat;
+			    obj.longitude = lon;
+		    }
+		    
+		    client.post("/post",obj,function(post){
+		    	if(post){
+			    	post.photo = image;
+			    	self.myPosts.push(post);
+			    	Ti.API.info("Success to post:" + post.postId);
+		    	}
+				callback(post);
+		    });
+		};
+		
 		Titanium.Geolocation.getCurrentPosition(function(e){
-			var lat = e.coords.latitude;
-			var lon = e.coords.longitude;
-			Ti.API.log("image size = " + image.length);
-			client.postBinary("/photo/upload",
-				image,
-				function(prog) {
-					
-				},
-				function(result){
-					var imageId = result.imageId;
-					Ti.API.info("Success to upload image : " + imageId);
-				    
-				    var obj = params;
-				    obj.imageId = imageId;
-				    obj.latitude = lat;
-				    obj.longitude = lon;
-				    
-				    client.post("/post",obj,function(post){
-				    	post.photo = image;
-				    	self.myPosts.push(post);
-				    	
-				    	Ti.API.info("Success to post:" + post.postId);
-						callback(post);
-				    });
-				});
+			var lat = undefined;
+			var lon = undefined;
+			if(e.coords){
+				lat = e.coords.latitude;
+				lon = e.coords.longitude;
+			}
+			if(image){
+				Ti.API.log("image size = " + image.length);
+				client.postBinary("/photo/upload",
+					image,
+					function(prog) {
+						
+					},
+					function(result){
+						var imageId = result.imageId;
+						Ti.API.info("Success to upload image : " + imageId);
+					    postData(imageId,lat,lon);
+					}
+				);
+			}else{
+				postData(0,lat,lon);
+			}
 		});
 	};
 	
@@ -400,9 +416,13 @@ function PostManager() {
 	};
 	
 	this.getCategories = function(callback){
-		client.get("/post/category/all",null,function(r){
-			callback(r);
-		});
+		if(self.categories) callback(self.categories);
+		else {
+			client.get("/post/category/all",null,function(r){
+				self.categories = r;
+				callback(r);
+			});
+		}
 	};
 	
 	

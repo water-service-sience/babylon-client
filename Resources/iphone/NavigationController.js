@@ -2,6 +2,10 @@ function NavigationController() {
     this.windowStack = [];
 }
 
+NavigationController.prototype.getCurrentWindow = function() {
+    return this.windowStack[this.windowStack.length - 1];
+};
+
 NavigationController.prototype.open = function(windowToOpen) {
     Ti.API.log("Open function.");
     this.windowStack.push(windowToOpen);
@@ -57,12 +61,7 @@ NavigationController.prototype.open = function(windowToOpen) {
 
 NavigationController.prototype.home = function() {
     Ti.API.log("Home function.");
-    if (this.windowStack.length > 1) {
-        for (var i = this.windowStack.length - 1; i > 1; i--) this.windowStack[i].fireEvent("set.to.close", {
-            win: this.windowStack[i - 1]
-        });
-        this.navGroup ? this.navGroup.closeWindow(this.windowStack[this.windowStack.length - 1]) : this.windowStack[this.windowStack.length - 1].close();
-    }
+    if (this.windowStack.length > 1) for (var i = this.windowStack.length - 1; i > 1; i--) this.navGroup ? this.navGroup.closeWindow(this.windowStack[i]) : this.windowStack[i].close();
     Ti.API.log("End Home. Stack: " + this.windowStack.map(function(v) {
         return v.title;
     }));

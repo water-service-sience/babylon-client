@@ -26,8 +26,8 @@
 	borderWidth : "1dp",
 	borderRadius : "10dp",
 	backgroundColor : "#fff0ff",
-	left : "10dp",
-	right : "10dp"
+	width:"95%"
+	
 },
 ".small-button" : {
 	
@@ -39,12 +39,12 @@
 	borderColor : "black",
 	borderWidth : "1dp",
 	borderRadius : "10dp",
-	backgroundColor : "#fff0ff",
-	left : "auto",
-	right : "auto"
+	backgroundColor : "#fff0ff"
 }
 
 "TextArea" : {
+	width : "98%",
+	height : "100dp",
 	font: { fontSize:"24dp" },
 	borderRadius : 5
 },
@@ -64,7 +64,8 @@
 	layout : "horizontal"
 },
 ".small_space" : {
-	width : "3dp"
+	width : "3dp",
+	height : "30dp"
 },
 ".space1" : {
 	width : "10%"
@@ -96,6 +97,66 @@
 ".line_break" : {
 	width : "100%",
 	height : "25dp"
+},
+
+
+".row" : {
+	height : "38dp",
+	width : "100%",
+	layout : "horizontal"
+},
+".row_tall" : {
+	height : "54dp",
+	width : "100%",
+	layout : "horizontal"
+},
+".col_1" : {
+	height : "100%",
+	width : "8.333333%"
+},
+".col_2" : {
+	height : "100%",
+	width : "16.66666%"
+},
+".col_3" : {
+	height : "100%",
+	width : "25%"
+},
+".col_4" : {
+	height : "100%",
+	width : "33.33333%"
+},
+".col_5" : {
+	height : "100%",
+	width : "41.66666%"
+},
+".col_6" : {
+	height : "100%",
+	width : "50%"
+},
+".col_7" : {
+	height : "100%",
+	width : "58.333333%"
+},
+".col_8" : {
+	height : "100%",
+	width : "66.666666%"
+},
+".col_9" : {
+	height : "100%",
+	width : "75%"
+},
+".col_10" : {
+	height : "100%",
+	width : "83.333333%"
+},
+".col_11" : {
+	height : "100%",
+	width : "91.666666%"
+},
+".col_12" : {
+	height : "100%",
+	width : "100%"
 }
 
 

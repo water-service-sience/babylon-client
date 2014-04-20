@@ -1,0 +1,10 @@
+<Alloy>
+	<Window class="container">
+		
+		<Button onClick="onWorkReportModeClicked">作業記録を投稿</Button>
+		<Button onClick="onInquiryModeClicked">問い合わせ</Button>
+		
+		
+	</Window>
+	
+</Alloy>
