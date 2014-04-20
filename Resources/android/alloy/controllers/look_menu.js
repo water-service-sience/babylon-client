@@ -42,9 +42,9 @@ function Controller() {
     });
     $.__views.look_menu.add($.__views.show_map);
     onShowMapClicked ? $.__views.show_map.addEventListener("click", onShowMapClicked) : __defers["$.__views.show_map!click!onShowMapClicked"] = true;
-    var __alloyId9 = {};
-    var __alloyId12 = [];
-    var __alloyId13 = {
+    var __alloyId20 = {};
+    var __alloyId23 = [];
+    var __alloyId24 = {
         type: "Ti.UI.Label",
         bindId: "name",
         properties: {
@@ -58,19 +58,19 @@ function Controller() {
             bindId: "name"
         }
     };
-    __alloyId12.push(__alloyId13);
-    var __alloyId11 = {
+    __alloyId23.push(__alloyId24);
+    var __alloyId22 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId12
+        childTemplates: __alloyId23
     };
-    __alloyId9["template"] = __alloyId11;
+    __alloyId20["template"] = __alloyId22;
     $.__views.my_lands = Ti.UI.createListView({
         left: "3%",
         right: "3%",
         height: "80%",
-        templates: __alloyId9,
+        templates: __alloyId20,
         id: "my_lands",
         defaultItemTemplate: "template"
     });

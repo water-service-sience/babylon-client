@@ -1,0 +1,19 @@
+<Alloy>
+	<Window class="container">
+		
+		
+		<View class="line_element">
+			<Label class="small_text">総合評価 : </Label>
+			<Label id="total_eval" class="small_text">未回答</Label>
+			<Button id="select_eval" class="small-button"
+				onClick="onSelectEvaluation" >選択</Button>
+		</View>
+		<View class="line_element">
+			<Label>備考欄</Label>
+		</View>
+		<TextArea id="note">
+		</TextArea>
+		<Button id="send" onClick="onSendClicked">送信</Button>
+		
+	</Window>
+</Alloy>

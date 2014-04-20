@@ -328,9 +328,22 @@ function LandManager() {
     return this;
 }
 
+function QuestionnaireManager() {
+    this.postQuestionnaire = function(evaluation, note, callback) {
+        var sendData = {
+            evaluation: evaluation,
+            note: note
+        };
+        client.post("/questionnaire/answer", sendData, function(result) {
+            callback(result);
+        });
+    };
+    return this;
+}
+
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
 
-var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 var client = new APIClient();
 
@@ -343,3 +356,5 @@ exports.client = client;
 exports.postManager = new PostManager();
 
 exports.landManager = new LandManager();
+
+exports.questionnaireManager = new QuestionnaireManager();

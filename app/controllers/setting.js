@@ -37,6 +37,11 @@ function onChangePasswordClicked(){
 	Alloy.Globals.naviCon.open(view);
 }
 
+function onSendQuestionnaireClicked(){
+	var view = Alloy.createController("questionnaire").getView();
+	Alloy.Globals.naviCon.open(view);
+}
+
 $.setting.addEventListener("open",function(){
 	var api = Alloy.Globals.api;
 	$.nickname.text = api.client.nickname;

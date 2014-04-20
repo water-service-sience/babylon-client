@@ -60,7 +60,7 @@ function Controller() {
         animate: "true",
         regionFit: "true",
         userLocation: "true",
-        mapType: "Alloy.Globals.Map.NORMAL_TYPE"
+        mapType: "1"
     });
     $.__views.show_map.add($.__views.map);
     mapClicked ? $.__views.map.addEventListener("click", mapClicked) : __defers["$.__views.map!click!mapClicked"] = true;
@@ -221,16 +221,18 @@ function Controller() {
             annotations.push(anno);
             pinPosts(lat, lon);
         } else Titanium.Geolocation.getCurrentPosition(function(e) {
-            var lat = e.coords.latitude;
-            var lon = e.coords.longitude;
-            $.map.setLocation({
-                latitude: lat,
-                longitude: lon,
-                animate: false,
-                latitudeDelta: .04,
-                longitudeDelta: .04
-            });
-            pinPosts(lat, lon);
+            if (e.coords) {
+                var lat = e.coords.latitude;
+                var lon = e.coords.longitude;
+                $.map.setLocation({
+                    latitude: lat,
+                    longitude: lon,
+                    animate: false,
+                    latitudeDelta: .04,
+                    longitudeDelta: .04
+                });
+                pinPosts(lat, lon);
+            }
         });
     });
     __defers["$.__views.map!click!mapClicked"] && $.__views.map.addEventListener("click", mapClicked);

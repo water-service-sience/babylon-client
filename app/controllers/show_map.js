@@ -129,13 +129,19 @@ $.show_map.addEventListener("open",function(e){
 	}else{
 	
 		Titanium.Geolocation.getCurrentPosition(function(e){
-			var lat = e.coords.latitude;
-			var lon = e.coords.longitude;
-			$.map.setLocation({
-		        latitude:lat, longitude:lon, animate:false,
-		        latitudeDelta:0.04, longitudeDelta:0.04
-		    });
-	    	pinPosts(lat,lon);
+			if(e.coords){
+				var lat = e.coords.latitude;
+				var lon = e.coords.longitude;
+				$.map.setLocation({
+			        latitude:lat, longitude:lon, animate:false,
+			        latitudeDelta:0.04, longitudeDelta:0.04
+			    });
+		    	pinPosts(lat,lon);
+	        }else{
+				Ti.API.log("GPS is not availbale");
+				alert("GPS機能が利用できません。GPSをONにしてください。");
+	        	
+	        }
 				
 		});
 	}

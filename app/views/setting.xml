@@ -11,6 +11,7 @@
 		<!--<Button id="set_username">ユーザー設定</Button>-->
 		<Button id="select_land" onClick="onSelectLandClicked">所有地設定</Button>
 		<Button id="change_password" onClick="onChangePasswordClicked">パスワードを設定</Button>
+		<Button id="sendQuestionnaire" onClick="onSendQuestionnaireClicked">アンケートに答える</Button>
 		
 		<View class="line_break"></View>
 		

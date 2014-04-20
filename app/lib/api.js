@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-var ServerUrl = "http://localhost:9000";
-//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+//var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
 function DB(){
@@ -477,6 +477,21 @@ function LandManager(){
 	return this;
 	
 }
+
+function QuestionnaireManager(){
+	var self = this;
+	
+	this.postQuestionnaire = function(evaluation , note ,callback ){
+		var sendData = { evaluation : evaluation,note : note};
+		client.post("/questionnaire/answer",sendData,function(result){
+			
+			callback(result);
+		});
+	};
+	
+	return this;
+}
+
 exports.toImageUrl = function(post){
 	if(typeof(post) == "string"){
 		return ServerUrl + "/images/" + post;
@@ -489,3 +504,4 @@ exports.toImageUrl = function(post){
 exports.client = client;
 exports.postManager = new PostManager();
 exports.landManager = new LandManager();
+exports.questionnaireManager = new QuestionnaireManager();

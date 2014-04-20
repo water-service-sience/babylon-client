@@ -118,13 +118,15 @@ function Controller() {
             break;
 
           case Alloy.Globals.Map.SERVICE_MISSING:
-            alert("Google Play services is missing. Please install Google Play services from the Google Play store.");
+            alert("Google Play開発者サビースのインストールが必要です。インストールをしてください。");
             Ti.Platform.openURL("https://play.google.com/store/apps/details?id=com.google.android.gms&hl=ja");
             Ti.Android.currentActivity.finish();
             break;
 
           case Alloy.Globals.Map.SERVICE_VERSION_UPDATE_REQUIRED:
-            alert("Google Play services is out of date. Please update Google Play services.");
+            alert("Google Play開発者サービスのバージョンアップが必要です。バージョンアップをしてください。");
+            Ti.Platform.openURL("https://play.google.com/store/apps/details?id=com.google.android.gms&hl=ja");
+            Ti.Android.currentActivity.finish();
             break;
 
           case Alloy.Globals.Map.SERVICE_DISABLED:
@@ -136,7 +138,7 @@ function Controller() {
             break;
 
           default:
-            alert("Unknown error.");
+            alert("Unknown error.Google Play開発者サービスを検出できませんでした。");
         }
     });
     Alloy.Globals.naviCon.open($.index);

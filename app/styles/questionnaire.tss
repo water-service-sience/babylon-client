@@ -1,0 +1,9 @@
+
+
+
+"TextArea" : {
+	"left" : "5dp",
+	"right" : "5dp",
+	"height" : "150dp",
+	"suppressReturn": "false"
+}

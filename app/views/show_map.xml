@@ -3,7 +3,7 @@
 		<!-- Note the ns attribute is used to change the default namespace. -->
         <View id="map" ns="Alloy.Globals.Map" onClick="mapClicked"
             animate="true" regionFit="true" userLocation="true"
-            mapType="Alloy.Globals.Map.NORMAL_TYPE" >
+            mapType="1" >
 
             <!-- Place other child views here, such as an ImageView to add an overlay. -->
 

@@ -48,9 +48,9 @@ function Controller() {
         id: "setting_select_land"
     });
     $.__views.setting_select_land && $.addTopLevelView($.__views.setting_select_land);
-    var __alloyId127 = {};
-    var __alloyId130 = [];
-    var __alloyId131 = {
+    var __alloyId152 = {};
+    var __alloyId155 = [];
+    var __alloyId156 = {
         type: "Ti.UI.Label",
         bindId: "name",
         properties: {
@@ -64,60 +64,60 @@ function Controller() {
             bindId: "name"
         }
     };
-    __alloyId130.push(__alloyId131);
-    var __alloyId129 = {
+    __alloyId155.push(__alloyId156);
+    var __alloyId154 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId130
+        childTemplates: __alloyId155
     };
-    __alloyId127["template"] = __alloyId129;
-    var __alloyId134 = [];
-    $.__views.__alloyId135 = {
+    __alloyId152["template"] = __alloyId154;
+    var __alloyId159 = [];
+    $.__views.__alloyId160 = {
         name: {
             text: "Loading"
         },
         properties: {
-            id: "__alloyId135"
+            id: "__alloyId160"
         }
     };
-    __alloyId134.push($.__views.__alloyId135);
-    $.__views.__alloyId132 = Ti.UI.createListSection({
+    __alloyId159.push($.__views.__alloyId160);
+    $.__views.__alloyId157 = Ti.UI.createListSection({
         headerTitle: "登録済み",
-        id: "__alloyId132"
+        id: "__alloyId157"
     });
-    $.__views.__alloyId132.items = __alloyId134;
-    var __alloyId136 = [];
-    __alloyId136.push($.__views.__alloyId132);
-    var __alloyId139 = [];
-    $.__views.__alloyId140 = {
+    $.__views.__alloyId157.items = __alloyId159;
+    var __alloyId161 = [];
+    __alloyId161.push($.__views.__alloyId157);
+    var __alloyId164 = [];
+    $.__views.__alloyId165 = {
         name: {
             text: "新しく登録する"
         },
         properties: {
-            id: "__alloyId140"
+            id: "__alloyId165"
         }
     };
-    __alloyId139.push($.__views.__alloyId140);
-    $.__views.__alloyId141 = {
+    __alloyId164.push($.__views.__alloyId165);
+    $.__views.__alloyId166 = {
         name: {
             text: "サーバーと同期"
         },
         properties: {
             sync: "true",
-            id: "__alloyId141"
+            id: "__alloyId166"
         }
     };
-    __alloyId139.push($.__views.__alloyId141);
-    $.__views.__alloyId137 = Ti.UI.createListSection({
+    __alloyId164.push($.__views.__alloyId166);
+    $.__views.__alloyId162 = Ti.UI.createListSection({
         headerTitle: "編集",
-        id: "__alloyId137"
+        id: "__alloyId162"
     });
-    $.__views.__alloyId137.items = __alloyId139;
-    __alloyId136.push($.__views.__alloyId137);
+    $.__views.__alloyId162.items = __alloyId164;
+    __alloyId161.push($.__views.__alloyId162);
     $.__views.land_list = Ti.UI.createListView({
-        sections: __alloyId136,
-        templates: __alloyId127,
+        sections: __alloyId161,
+        templates: __alloyId152,
         id: "land_list",
         defaultItemTemplate: "template"
     });
