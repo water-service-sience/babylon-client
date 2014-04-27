@@ -9,7 +9,9 @@ function Controller() {
         Alloy.Globals.naviCon.open(view);
     }
     function onShowInMapClicked() {
-        var view = Alloy.createController("post_map").getView();
+        var view = Alloy.createController("post_map", {
+            post: post
+        }).getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onEditPostClicked() {
@@ -195,6 +197,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "投稿場所を見る",
         id: "show_in_map"
     });
@@ -236,6 +239,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "投稿内容を編集",
         id: "edit_post"
     });
@@ -253,6 +257,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "管理者の返信を見る",
         id: "show_messages"
     });

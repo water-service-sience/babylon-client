@@ -79,6 +79,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "アカウント作成",
         id: "create"
     });
@@ -151,6 +152,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "ログイン",
         id: "login"
     });

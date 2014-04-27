@@ -41,6 +41,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "写真を投稿する",
         id: "post"
     });
@@ -58,6 +59,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "周辺の情報を見る",
         id: "look"
     });
@@ -75,6 +77,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "自分の投稿を見る",
         id: "look_mine"
     });
@@ -105,6 +108,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "41.66666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "設定",
         id: "setting"
     });

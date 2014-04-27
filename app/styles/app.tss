@@ -9,7 +9,8 @@
    color: '#000' // all platforms except Android default to black 
 },
 "Button[platform=android]": {
-   color: '#000' // all platforms except Android default to black 
+   color: '#000', // all platforms except Android default to black ,
+   disabledColor : "#888888"
 },
 "Label" : {
 	textAlign : "left",

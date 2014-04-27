@@ -108,7 +108,6 @@ function postData(data) {
 	
 }
 
-showCamera();
 exports.showCamera = showCamera;
 exports.showGallery = showGallery;
 exports.postData = postData;

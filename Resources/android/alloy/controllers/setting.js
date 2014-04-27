@@ -115,6 +115,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "所有地設定",
         id: "select_land"
     });
@@ -132,6 +133,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "パスワードを設定",
         id: "change_password"
     });
@@ -149,6 +151,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "アンケートに答える",
         id: "sendQuestionnaire"
     });
@@ -172,6 +175,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "ログアウト",
         id: "logout_button"
     });

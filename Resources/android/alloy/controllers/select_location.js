@@ -86,6 +86,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "選択",
         id: "__alloyId206"
     });

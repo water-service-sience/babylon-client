@@ -44,3 +44,11 @@ function onPostClicked(){
 		category : selectedCategory
 	});
 }
+
+
+$.post_inquiry.addEventListener("open",function(e){
+	
+	
+	$.image_view.showCamera();
+	
+});

@@ -1,9 +1,14 @@
 
 
+var args = arguments[0] || {};
+
+var post = args.post || Alloy.Globals.post;
+
 var preClick = null;
 
+$.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
+
 $.post_map.addEventListener("open",function(e){
-	var post = Alloy.Globals.post;
 	
 	var lat = post.latitude;
 	var lon = post.longitude;

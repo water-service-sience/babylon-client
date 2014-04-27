@@ -36,6 +36,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "周辺を地図で見る",
         id: "show_map"
     });

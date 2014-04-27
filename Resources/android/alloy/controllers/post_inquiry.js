@@ -93,6 +93,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "25%",
         color: "#000",
+        disabledColor: "#888888",
         title: "選択",
         id: "select_category"
     });
@@ -146,6 +147,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "投稿",
         id: "post"
     });
@@ -163,6 +165,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "33.33333%",
         color: "#000",
+        disabledColor: "#888888",
         title: "再撮影",
         id: "recapture"
     });
@@ -193,6 +196,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "50%",
         color: "#000",
+        disabledColor: "#888888",
         title: "ギャラリー",
         id: "gallery"
     });
@@ -203,6 +207,9 @@ function Controller() {
     arguments[0] || {};
     imageIsSet = false;
     var selectedCategory = 1;
+    $.post_inquiry.addEventListener("open", function() {
+        $.image_view.showCamera();
+    });
     __defers["$.__views.image_view!setImage!onSetImage"] && $.__views.image_view.on("setImage", onSetImage);
     __defers["$.__views.select_category!click!onSelectCategoryClicked"] && $.__views.select_category.addEventListener("click", onSelectCategoryClicked);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);

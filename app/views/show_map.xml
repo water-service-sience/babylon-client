@@ -3,20 +3,20 @@
 		<!-- Note the ns attribute is used to change the default namespace. -->
         <View id="map" ns="Alloy.Globals.Map" onClick="mapClicked"
             animate="true" regionFit="true" userLocation="true"
-            mapType="1" >
+             >
 
             <!-- Place other child views here, such as an ImageView to add an overlay. -->
 
         	<Button id="zoom_in" class="zoom_button" onClick="onZoomInClicked">+</Button>
         	<Button id="zoom_out" class="zoom_button" onClick="onZoomOutClicked">-</Button>
         
-        	<View id="balloon" visible="false">
-        		<ImageView id="image_balloon" ></ImageView>
-        		<Button id="close_button" onClick="onCloseButtonClicked">×</Button>
-        		<Button id="show_detail_button" onClick="onShowDetailClicked">詳細を見る</Button>
-            </View>
         </View>
         
+    	<View id="balloon" visible="false">
+    		<ImageView id="image_balloon" ></ImageView>
+    		<Button id="close_button" onClick="onCloseButtonClicked">×</Button>
+    		<Button id="show_detail_button" onClick="onShowDetailClicked">詳細を見る</Button>
+        </View>
         
 	</Window>
 </Alloy>

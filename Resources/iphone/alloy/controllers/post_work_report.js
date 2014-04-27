@@ -158,6 +158,7 @@ function Controller() {
     arguments[0] || {};
     $.post_work_report.addEventListener("open", function() {
         $.post.enabled = false;
+        $.image_view.showCamera();
     });
     __defers["$.__views.image_view!setImage!onSetImage"] && $.__views.image_view.on("setImage", onSetImage);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);

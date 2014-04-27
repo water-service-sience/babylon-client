@@ -166,6 +166,7 @@ function Controller() {
     var currentLocation = null;
     var newLocation = null;
     init();
+    $.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
     $.edit_land.addEventListener("open", function() {
         currentLocation = newPin(land.latitude, land.longitude, land.name, "land_mark.png");
         $.map.annotations = [ currentLocation ];

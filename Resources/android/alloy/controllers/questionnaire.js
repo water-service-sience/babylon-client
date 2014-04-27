@@ -185,6 +185,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "useFrequency"
     });
@@ -221,6 +222,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "easiness"
     });
@@ -288,6 +290,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "useForImagePost"
     });
@@ -343,6 +346,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "useForInquiry"
     });
@@ -398,6 +402,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "useForFieldMonitoring"
     });
@@ -465,6 +470,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "willUse"
     });
@@ -520,6 +526,7 @@ function Controller() {
         backgroundColor: "#ffffff",
         width: "66.666666%",
         color: "#000",
+        disabledColor: "#888888",
         title: "未回答",
         id: "costForUse"
     });
@@ -561,6 +568,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "送信",
         id: "send"
     });

@@ -12,13 +12,13 @@ function Controller() {
             var annotation = e.annotation;
             var post = annotation.post;
             if (!post) return;
-            var lat = post.latitude + .3 * $.map.latitudeDelta;
+            var lat = post.latitude + .3 * $.map.region.latitudeDelta;
             $.map.setLocation({
                 latitude: lat,
                 longitude: post.longitude,
                 animate: true,
-                latitudeDelta: $.map.latitudeDelta,
-                longitudeDelta: $.map.longitudeDelta
+                latitudeDelta: $.map.region.latitudeDelta,
+                longitudeDelta: $.map.region.longitudeDelta
             });
             $.image_balloon.image = api.toImageUrl(post.imageFile);
             $.balloon.visible = true;
@@ -59,8 +59,7 @@ function Controller() {
         ns: "Alloy.Globals.Map",
         animate: "true",
         regionFit: "true",
-        userLocation: "true",
-        mapType: "1"
+        userLocation: "true"
     });
     $.__views.show_map.add($.__views.map);
     mapClicked ? $.__views.map.addEventListener("click", mapClicked) : __defers["$.__views.map!click!mapClicked"] = true;
@@ -108,7 +107,7 @@ function Controller() {
         id: "balloon",
         visible: "false"
     });
-    $.__views.map.add($.__views.balloon);
+    $.__views.show_map.add($.__views.balloon);
     $.__views.image_balloon = Ti.UI.createImageView({
         width: "95%",
         height: "85%",
@@ -129,7 +128,6 @@ function Controller() {
         width: "35dp",
         top: "5dp",
         right: "5dp",
-        left: "auto",
         title: "×",
         id: "close_button"
     });
@@ -145,11 +143,9 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        width: "95%",
+        width: "90%",
         bottom: "5dp",
-        top: "auto",
-        left: "auto",
-        right: "auto",
+        left: "5%",
         title: "詳細を見る",
         id: "show_detail_button"
     });
@@ -160,10 +156,12 @@ function Controller() {
     var api = Alloy.Globals.api;
     Alloy.Globals.util;
     var selectedPost = null;
+    $.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
     $.show_map.addEventListener("open", function() {
         var annotations = [];
         var lastLat;
         var lastLon;
+        $.map.addEventListener("click", onClickHandler);
         var pinPosts = function(lat, lon) {
             lastLat = lat;
             lastLon = lon;
@@ -178,7 +176,6 @@ function Controller() {
                         title: "投稿者:" + d.user.nickname,
                         post: d
                     });
-                    anno.addEventListener("click", onClickHandler);
                     annotations.push(anno);
                 }
                 $.map.annotations = annotations;
@@ -188,8 +185,8 @@ function Controller() {
             var diff1 = lastLat - e.latitude;
             var diff2 = lastLon - e.longitude;
             var delta = diff1 * diff1 + diff2 * diff2;
-            var region = $.map.region;
-            if (delta > .5 * region.latitudeDelta * .5 * region.latitudeDelta) {
+            var region = $.map.getRegion();
+            if (delta > .5 * region.latitudeDelta * region.latitudeDelta) {
                 Ti.API.log("Update");
                 pinPosts(region.latitude, region.longitude);
             }
@@ -199,6 +196,12 @@ function Controller() {
             var land = Alloy.Globals.land;
             var lat = land.latitude;
             var lon = land.longitude;
+            $.map.setRegion({
+                latitude: lat,
+                longitude: lon,
+                latitudeDelta: .04,
+                longitudeDelta: .04
+            });
             $.map.setLocation({
                 latitude: lat,
                 longitude: lon,
@@ -219,6 +222,12 @@ function Controller() {
             if (e.coords) {
                 var lat = e.coords.latitude;
                 var lon = e.coords.longitude;
+                $.map.setRegion({
+                    latitude: lat,
+                    longitude: lon,
+                    latitudeDelta: .04,
+                    longitudeDelta: .04
+                });
                 $.map.setLocation({
                     latitude: lat,
                     longitude: lon,

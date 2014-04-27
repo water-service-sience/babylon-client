@@ -195,6 +195,9 @@ function Controller() {
     arguments[0] || {};
     imageIsSet = false;
     var selectedCategory = 1;
+    $.post_inquiry.addEventListener("open", function() {
+        $.image_view.showCamera();
+    });
     __defers["$.__views.image_view!setImage!onSetImage"] && $.__views.image_view.on("setImage", onSetImage);
     __defers["$.__views.select_category!click!onSelectCategoryClicked"] && $.__views.select_category.addEventListener("click", onSelectCategoryClicked);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);

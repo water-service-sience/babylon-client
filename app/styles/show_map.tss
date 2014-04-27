@@ -31,14 +31,12 @@
 	height : "35dp",
 	top : "5dp",
 	right : "5dp",
-	left : "auto",
 	borderRadius : "15dp",
 	borderWidth : 3
 },
 "#show_detail_button" : {
 	bottom : "5dp",
-	top : "auto",
-	left : "auto",
-	right : "auto"
+	left : "5%",
+	width : "90%"
 }
 

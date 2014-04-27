@@ -163,6 +163,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "20%",
         color: "#000",
+        disabledColor: "#888888",
         right: "2%",
         title: "選択",
         id: "select_category"
@@ -215,6 +216,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "60%",
         color: "#000",
+        disabledColor: "#888888",
         left: "5dp",
         title: "投稿",
         id: "post"
@@ -233,6 +235,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "30%",
         color: "#000",
+        disabledColor: "#888888",
         right: "5dp",
         title: "再撮影",
         id: "recapture"
@@ -251,6 +254,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "40%",
         color: "#000",
+        disabledColor: "#888888",
         left: "auto",
         right: "5dp",
         title: "ギャラリー",

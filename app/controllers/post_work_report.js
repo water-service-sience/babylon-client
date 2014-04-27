@@ -29,5 +29,7 @@ $.post_work_report.addEventListener("open",function(e){
 	
 	$.post.enabled = false;
 	
+	$.image_view.showCamera();
+	
 });
 

@@ -33,6 +33,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "作業記録を投稿",
         id: "__alloyId207"
     });
@@ -50,6 +51,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "問い合わせ",
         id: "__alloyId208"
     });

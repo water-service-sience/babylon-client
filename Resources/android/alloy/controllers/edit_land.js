@@ -129,6 +129,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "保存",
         id: "__alloyId13"
     });
@@ -146,6 +147,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "30%",
         color: "#000",
+        disabledColor: "#888888",
         title: "削除",
         id: "__alloyId14"
     });
@@ -170,6 +172,7 @@ function Controller() {
     var currentLocation = null;
     var newLocation = null;
     init();
+    $.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
     $.edit_land.addEventListener("open", function() {
         currentLocation = newPin(land.latitude, land.longitude, land.name, "land_mark.png");
         $.map.annotations = [ currentLocation ];

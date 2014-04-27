@@ -108,7 +108,6 @@ function Controller() {
     arguments[0] || {};
     var photoData;
     var setImageEvent = "setImage";
-    showCamera();
     exports.showCamera = showCamera;
     exports.showGallery = showGallery;
     exports.postData = postData;

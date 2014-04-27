@@ -130,6 +130,7 @@ function init(){
 
 init();
 
+$.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
 $.edit_land.addEventListener("open",function(){
 	
 	

@@ -44,6 +44,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "カレンダー",
         id: "show_calendar"
     });
@@ -61,6 +62,7 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         color: "#000",
+        disabledColor: "#888888",
         title: "投稿一覧",
         id: "show_self_posts"
     });

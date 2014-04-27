@@ -29,11 +29,11 @@ function onClickHandler(e){
 	
 		
 		//上に情報を表示するために、中心をずらす。
-		var lat = post.latitude + $.map.latitudeDelta * 0.30;
+		var lat = post.latitude + $.map.region.latitudeDelta * 0.30;
 		
 		$.map.setLocation({
 	        latitude:lat, longitude:post.longitude, animate:true,
-	        latitudeDelta:$.map.latitudeDelta, longitudeDelta:$.map.longitudeDelta
+	        latitudeDelta:$.map.region.latitudeDelta, longitudeDelta:$.map.region.longitudeDelta
 	    });
 	    
 	    //画像を表示
@@ -67,12 +67,14 @@ function onShowDetailClicked(e){
 	}
 }
 
+$.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
 
 $.show_map.addEventListener("open",function(e){
 	var annotations = [];
 	
 	var lastLat;
 	var lastLon;
+	$.map.addEventListener("click",onClickHandler);
 	
 	var pinPosts = function(lat,lon){
 		lastLat = lat;
@@ -89,7 +91,7 @@ $.show_map.addEventListener("open",function(e){
 				    title : "投稿者:" + d.user.nickname,
 				    post:d // Custom property to uniquely identify this annotation.
 				});	
-				anno.addEventListener("click",onClickHandler);
+				//anno.addEventListener("click",onClickHandler);
 				annotations.push(anno);
 			}
 			$.map.annotations = annotations;
@@ -101,8 +103,8 @@ $.show_map.addEventListener("open",function(e){
 		var diff2 = lastLon - e.longitude;
 		var delta = diff1 * diff1 + diff2 * diff2;
 		
-		var region = $.map.region;
-		if(delta > (region.latitudeDelta * 0.5) * (region.latitudeDelta * 0.5) ){
+		var region = $.map.getRegion();
+		if(delta > region.latitudeDelta * region.latitudeDelta * 0.5){
 			Ti.API.log("Update");
 			pinPosts(region.latitude,region.longitude);
 		}
@@ -113,6 +115,10 @@ $.show_map.addEventListener("open",function(e){
 		var land = Alloy.Globals.land;
 		var lat = land.latitude;
 		var lon = land.longitude;
+		$.map.setRegion({
+	        latitude:lat, longitude:lon,
+	        latitudeDelta:0.04, longitudeDelta:0.04
+		});
 		$.map.setLocation({
 	        latitude:lat, longitude:lon, animate:false,
 	        latitudeDelta:0.04, longitudeDelta:0.04
@@ -132,6 +138,10 @@ $.show_map.addEventListener("open",function(e){
 			if(e.coords){
 				var lat = e.coords.latitude;
 				var lon = e.coords.longitude;
+				$.map.setRegion({
+			        latitude:lat, longitude:lon,
+			        latitudeDelta:0.04, longitudeDelta:0.04
+				});
 				$.map.setLocation({
 			        latitude:lat, longitude:lon, animate:false,
 			        latitudeDelta:0.04, longitudeDelta:0.04
