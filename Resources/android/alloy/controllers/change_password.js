@@ -72,12 +72,13 @@ function Controller() {
     });
     $.__views.__alloyId1.add($.__views.username_label);
     $.__views.username = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        width: "50%",
+        right: "2dp",
+        color: "#000",
         id: "username"
     });
     $.__views.__alloyId1.add($.__views.username);
@@ -99,12 +100,13 @@ function Controller() {
     });
     $.__views.__alloyId2.add($.__views.old_password_label);
     $.__views.old_password = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        width: "50%",
+        right: "2dp",
+        color: "#000",
         id: "old_password",
         passwordMask: "true"
     });
@@ -127,12 +129,13 @@ function Controller() {
     });
     $.__views.__alloyId3.add($.__views.new_password_label);
     $.__views.new_password = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        width: "50%",
+        right: "2dp",
+        color: "#000",
         id: "new_password",
         passwordMask: "true"
     });
@@ -155,12 +158,13 @@ function Controller() {
     });
     $.__views.__alloyId4.add($.__views.confirm_password_label);
     $.__views.confirm_password = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        width: "50%",
+        right: "2dp",
+        color: "#000",
         id: "confirm_password",
         passwordMask: "true"
     });
@@ -175,8 +179,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "変更する",
         id: "changePassword"

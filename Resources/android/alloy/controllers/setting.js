@@ -43,12 +43,12 @@ function Controller() {
         id: "setting"
     });
     $.__views.setting && $.addTopLevelView($.__views.setting);
-    $.__views.__alloyId149 = Ti.UI.createView({
+    $.__views.__alloyId209 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId149"
+        id: "__alloyId209"
     });
-    $.__views.setting.add($.__views.__alloyId149);
+    $.__views.setting.add($.__views.__alloyId209);
     $.__views.user_id_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -60,7 +60,7 @@ function Controller() {
         text: "ユーザーID:",
         id: "user_id_label"
     });
-    $.__views.__alloyId149.add($.__views.user_id_label);
+    $.__views.__alloyId209.add($.__views.user_id_label);
     $.__views.user_id = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -72,13 +72,13 @@ function Controller() {
         text: "203",
         id: "user_id"
     });
-    $.__views.__alloyId149.add($.__views.user_id);
-    $.__views.__alloyId150 = Ti.UI.createView({
+    $.__views.__alloyId209.add($.__views.user_id);
+    $.__views.__alloyId210 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId150"
+        id: "__alloyId210"
     });
-    $.__views.setting.add($.__views.__alloyId150);
+    $.__views.setting.add($.__views.__alloyId210);
     $.__views.nickname_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -90,7 +90,7 @@ function Controller() {
         text: "ニックネーム:",
         id: "nickname_label"
     });
-    $.__views.__alloyId150.add($.__views.nickname_label);
+    $.__views.__alloyId210.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -102,7 +102,7 @@ function Controller() {
         text: "hoge",
         id: "nickname"
     });
-    $.__views.__alloyId150.add($.__views.nickname);
+    $.__views.__alloyId210.add($.__views.nickname);
     $.__views.select_land = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -113,8 +113,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "所有地設定",
         id: "select_land"
@@ -131,8 +130,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "パスワードを設定",
         id: "change_password"
@@ -149,20 +147,19 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "アンケートに答える",
         id: "sendQuestionnaire"
     });
     $.__views.setting.add($.__views.sendQuestionnaire);
     onSendQuestionnaireClicked ? $.__views.sendQuestionnaire.addEventListener("click", onSendQuestionnaireClicked) : __defers["$.__views.sendQuestionnaire!click!onSendQuestionnaireClicked"] = true;
-    $.__views.__alloyId151 = Ti.UI.createView({
+    $.__views.__alloyId211 = Ti.UI.createView({
         width: "100%",
         height: "25dp",
-        id: "__alloyId151"
+        id: "__alloyId211"
     });
-    $.__views.setting.add($.__views.__alloyId151);
+    $.__views.setting.add($.__views.__alloyId211);
     $.__views.logout_button = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -173,8 +170,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "ログアウト",
         id: "logout_button"

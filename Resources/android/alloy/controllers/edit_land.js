@@ -98,9 +98,10 @@ function Controller() {
     $.__views.__alloyId11.add($.__views.__alloyId12);
     $.__views.name = Ti.UI.createTextField({
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        color: "#000",
         width: "60%",
         id: "name"
     });
@@ -126,8 +127,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "保存",
         id: "__alloyId13"
@@ -144,11 +144,9 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "30%",
         color: "#000",
         title: "削除",
-        width: "30%",
         id: "__alloyId14"
     });
     $.__views.edit_land.add($.__views.__alloyId14);

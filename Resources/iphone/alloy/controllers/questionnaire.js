@@ -5,7 +5,7 @@ function Controller() {
                 e.source.title = c.label;
                 answers.useFrequency = c.id;
             },
-            headerTitle: "１週間のうち平均何日使用しましたか？",
+            headerTitle: "このサービスを１週間のうち平均何日使用しましたか？",
             selectItems: useFrequencyList
         }).getView();
         Alloy.Globals.naviCon.open(view);
@@ -16,7 +16,7 @@ function Controller() {
                 e.source.title = c.label;
                 answers.easiness = c.id;
             },
-            headerTitle: "操作方法はわかりましたか?",
+            headerTitle: "このアプリの操作方法はわかりましたか?",
             selectItems: easinessList
         }).getView();
         Alloy.Globals.naviCon.open(view);
@@ -27,7 +27,7 @@ function Controller() {
                 e.source.title = c.label;
                 answers.useForImagePost = c.id;
             },
-            headerTitle: "画像投稿サービスは、農作業の役に立ちましたか？",
+            headerTitle: "画像投稿サービスは農作業の役に立ちましたか？",
             selectItems: useList
         }).getView();
         Alloy.Globals.naviCon.open(view);
@@ -38,7 +38,7 @@ function Controller() {
                 e.source.title = c.label;
                 answers.useForImageInquiry = c.id;
             },
-            headerTitle: "苦情サービスは、農作業の役に立ちましたか？",
+            headerTitle: "苦情サービスは農作業の役に立ちましたか？",
             selectItems: useList
         }).getView();
         Alloy.Globals.naviCon.open(view);
@@ -49,7 +49,7 @@ function Controller() {
                 e.source.title = c.label;
                 answers.useForFieldMonitoring = c.id;
             },
-            headerTitle: "圃場モニタリングサービスは、農作業の役に立ちましたか？",
+            headerTitle: "圃場モニタリングサービスは農作業の役に立ちましたか？",
             selectItems: useList
         }).getView();
         Alloy.Globals.naviCon.open(view);
@@ -67,7 +67,7 @@ function Controller() {
                     $.costForUse.title = "未回答";
                 }
             },
-            headerTitle: "今後、このサービスを使っていきたいと思いますか？",
+            headerTitle: "今後、このサービスを継続的に使っていきたいと思いますか？",
             selectItems: willUseList
         }).getView();
         Alloy.Globals.naviCon.open(view);

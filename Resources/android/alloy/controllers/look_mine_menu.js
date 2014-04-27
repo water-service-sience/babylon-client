@@ -21,7 +21,7 @@ function Controller() {
         id: "look_mine_menu"
     });
     $.__views.look_mine_menu && $.addTopLevelView($.__views.look_mine_menu);
-    $.__views.__alloyId25 = Ti.UI.createLabel({
+    $.__views.__alloyId27 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -29,9 +29,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "自分の投稿を見る",
-        id: "__alloyId25"
+        id: "__alloyId27"
     });
-    $.__views.look_mine_menu.add($.__views.__alloyId25);
+    $.__views.look_mine_menu.add($.__views.__alloyId27);
     $.__views.show_calendar = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -42,8 +42,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "カレンダー",
         id: "show_calendar"
@@ -60,8 +59,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "投稿一覧",
         id: "show_self_posts"

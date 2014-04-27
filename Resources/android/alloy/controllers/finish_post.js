@@ -53,9 +53,10 @@ function Controller() {
     $.__views.finish_post.add($.__views.subtitle);
     $.__views.comment = Ti.UI.createTextField({
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        color: "#000",
         left: "5%",
         top: "35%",
         width: "90%",
@@ -74,11 +75,10 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5%",
-        right: "10dp",
+        width: "60%",
         color: "#000",
         top: "80%",
-        width: "60%",
+        left: "5%",
         title: "追加情報を送信",
         id: "save_button"
     });
@@ -94,11 +94,10 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "70%",
-        right: "10dp",
+        width: "25%",
         color: "#000",
         top: "80%",
-        width: "25%",
+        left: "70%",
         title: "戻る",
         id: "return_button"
     });

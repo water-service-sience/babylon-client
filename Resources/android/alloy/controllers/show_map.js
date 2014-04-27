@@ -74,10 +74,9 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5dp",
-        right: "10dp",
-        color: "#000",
         width: "25dp",
+        color: "#000",
+        left: "5dp",
         bottom: "5ddp",
         title: "+",
         id: "zoom_in"
@@ -94,10 +93,9 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "35dp",
-        right: "10dp",
-        color: "#000",
         width: "25dp",
+        color: "#000",
+        left: "35dp",
         bottom: "5dp",
         title: "-",
         id: "zoom_out"
@@ -130,11 +128,11 @@ function Controller() {
         borderWidth: 3,
         borderRadius: "15dp",
         backgroundColor: "#fff0ff",
-        left: "auto",
-        right: "5dp",
-        color: "#000",
         width: "35dp",
+        color: "#000",
         top: "5dp",
+        right: "5dp",
+        left: "auto",
         title: "×",
         id: "close_button"
     });
@@ -150,11 +148,12 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "auto",
-        right: "auto",
+        width: "95%",
         color: "#000",
         bottom: "5dp",
         top: "auto",
+        left: "auto",
+        right: "auto",
         title: "詳細を見る",
         id: "show_detail_button"
     });
@@ -232,6 +231,9 @@ function Controller() {
                     longitudeDelta: .04
                 });
                 pinPosts(lat, lon);
+            } else {
+                Ti.API.log("GPS is not availbale");
+                alert("GPS機能が利用できません。GPSをONにしてください。");
             }
         });
     });

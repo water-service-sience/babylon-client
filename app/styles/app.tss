@@ -53,6 +53,14 @@
 	font: { fontSize:"24dp" },
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 },
+"TextField[platform=android]": {
+	font: { fontSize:"20dp" },
+   color: '#000' // all platforms except Android default to black 
+},
+"TextArea[platform=android]": {
+	font: { fontSize:"20dp" },
+   color: '#000' // all platforms except Android default to black 
+},
 "ScrollView" : {
 	layout : "vertical"
 },

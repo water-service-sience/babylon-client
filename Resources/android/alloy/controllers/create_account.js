@@ -59,9 +59,10 @@ function Controller() {
     $.__views.center_panel.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createTextField({
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        color: "#000",
         width: "50%",
         id: "nickname"
     });
@@ -76,8 +77,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "アカウント作成",
         id: "create"
@@ -103,9 +103,10 @@ function Controller() {
     $.__views.__alloyId8.add($.__views.username_label);
     $.__views.username = Ti.UI.createTextField({
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        color: "#000",
         width: "50%",
         id: "username"
     });
@@ -129,9 +130,10 @@ function Controller() {
     $.__views.__alloyId9.add($.__views.password_label);
     $.__views.password = Ti.UI.createTextField({
         font: {
-            fontSize: "24dp"
+            fontSize: "20dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        color: "#000",
         width: "50%",
         id: "password",
         passwordMask: "true"
@@ -147,8 +149,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "ログイン",
         id: "login"

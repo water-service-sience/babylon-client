@@ -201,24 +201,37 @@ function PostManager() {
     self = this;
     this.myPosts = [];
     this.post = function(image, params, callback) {
-        Titanium.Geolocation.getCurrentPosition(function(e) {
-            var lat = e.coords.latitude;
-            var lon = e.coords.longitude;
-            Ti.API.log("image size = " + image.length);
-            client.postBinary("/photo/upload", image, function() {}, function(result) {
-                var imageId = result.imageId;
-                Ti.API.info("Success to upload image : " + imageId);
-                var obj = params;
-                obj.imageId = imageId;
+        var postData = function(imageId, lat, lon) {
+            var obj = params;
+            obj.imageId = imageId;
+            if (lat & lon) {
                 obj.latitude = lat;
                 obj.longitude = lon;
-                client.post("/post", obj, function(post) {
+            }
+            client.post("/post", obj, function(post) {
+                if (post) {
                     post.photo = image;
                     self.myPosts.push(post);
                     Ti.API.info("Success to post:" + post.postId);
-                    callback(post);
-                });
+                }
+                callback(post);
             });
+        };
+        Titanium.Geolocation.getCurrentPosition(function(e) {
+            var lat = void 0;
+            var lon = void 0;
+            if (e.coords) {
+                lat = e.coords.latitude;
+                lon = e.coords.longitude;
+            }
+            if (image) {
+                Ti.API.log("image size = " + image.length);
+                client.postBinary("/photo/upload", image, function() {}, function(result) {
+                    var imageId = result.imageId;
+                    Ti.API.info("Success to upload image : " + imageId);
+                    postData(imageId, lat, lon);
+                });
+            } else postData(0, lat, lon);
         });
     };
     this.updatePost = function(updateParam, callback) {
@@ -272,7 +285,8 @@ function PostManager() {
         });
     };
     this.getCategories = function(callback) {
-        client.get("/post/category/all", null, function(r) {
+        self.categories ? callback(self.categories) : client.get("/post/category/all", null, function(r) {
+            self.categories = r;
             callback(r);
         });
     };
@@ -329,12 +343,8 @@ function LandManager() {
 }
 
 function QuestionnaireManager() {
-    this.postQuestionnaire = function(evaluation, note, callback) {
-        var sendData = {
-            evaluation: evaluation,
-            note: note
-        };
-        client.post("/questionnaire/answer", sendData, function(result) {
+    this.postQuestionnaire = function(ansewrs, callback) {
+        client.post("/questionnaire/answer", ansewrs, function(result) {
             callback(result);
         });
     };

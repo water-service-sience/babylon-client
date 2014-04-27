@@ -1,6 +1,6 @@
 function Controller() {
     function onPostClicked() {
-        var view = Alloy.createController("post_image").getView();
+        var view = Alloy.createController("select_post_mode").getView();
         Alloy.Globals.naviCon.open(view);
     }
     function onLookClicked() {
@@ -33,14 +33,13 @@ function Controller() {
         font: {
             fontSize: "32dp"
         },
-        height: "15%",
+        height: "60dp",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "写真を投稿する",
         id: "post"
@@ -51,14 +50,13 @@ function Controller() {
         font: {
             fontSize: "32dp"
         },
-        height: "15%",
+        height: "60dp",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "周辺の情報を見る",
         id: "look"
@@ -69,38 +67,48 @@ function Controller() {
         font: {
             fontSize: "32dp"
         },
-        height: "15%",
+        height: "60dp",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "5dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "自分の投稿を見る",
         id: "look_mine"
     });
     $.__views.index.add($.__views.look_mine);
     onLookMineClicked ? $.__views.look_mine.addEventListener("click", onLookMineClicked) : __defers["$.__views.look_mine!click!onLookMineClicked"] = true;
+    $.__views.__alloyId20 = Ti.UI.createView({
+        height: "38dp",
+        width: "100%",
+        layout: "horizontal",
+        id: "__alloyId20"
+    });
+    $.__views.index.add($.__views.__alloyId20);
+    $.__views.__alloyId21 = Ti.UI.createView({
+        height: "100%",
+        width: "58.333333%",
+        id: "__alloyId21"
+    });
+    $.__views.__alloyId20.add($.__views.__alloyId21);
     $.__views.setting = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
-        height: "15%",
+        height: "100%",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "70%",
-        right: 0,
+        width: "41.66666%",
         color: "#000",
-        bottom: "5dp",
         title: "設定",
         id: "setting"
     });
-    $.__views.index.add($.__views.setting);
+    $.__views.__alloyId20.add($.__views.setting);
     onSettingClicked ? $.__views.setting.addEventListener("click", onSettingClicked) : __defers["$.__views.setting!click!onSettingClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

@@ -99,34 +99,6 @@ function Controller() {
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
-    $.__views.__alloyId89 = Ti.UI.createView({
-        height: "38dp",
-        layout: "horizontal",
-        id: "__alloyId89"
-    });
-    $.__views.scroll_view.add($.__views.__alloyId89);
-    $.__views.__alloyId90 = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        color: "#000",
-        text: "投稿者:",
-        id: "__alloyId90"
-    });
-    $.__views.__alloyId89.add($.__views.__alloyId90);
-    $.__views.post_user = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        color: "#000",
-        text: "ほげ",
-        id: "post_user"
-    });
-    $.__views.__alloyId89.add($.__views.post_user);
     $.__views.__alloyId91 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
@@ -140,10 +112,38 @@ function Controller() {
         },
         height: "24dp",
         color: "#000",
-        text: "投稿日時:",
+        text: "投稿者:",
         id: "__alloyId92"
     });
     $.__views.__alloyId91.add($.__views.__alloyId92);
+    $.__views.post_user = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        color: "#000",
+        text: "ほげ",
+        id: "post_user"
+    });
+    $.__views.__alloyId91.add($.__views.post_user);
+    $.__views.__alloyId93 = Ti.UI.createView({
+        height: "38dp",
+        layout: "horizontal",
+        id: "__alloyId93"
+    });
+    $.__views.scroll_view.add($.__views.__alloyId93);
+    $.__views.__alloyId94 = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        color: "#000",
+        text: "投稿日時:",
+        id: "__alloyId94"
+    });
+    $.__views.__alloyId93.add($.__views.__alloyId94);
     $.__views.date = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -154,13 +154,13 @@ function Controller() {
         text: "2013年6月23日",
         id: "date"
     });
-    $.__views.__alloyId91.add($.__views.date);
-    $.__views.__alloyId93 = Ti.UI.createView({
+    $.__views.__alloyId93.add($.__views.date);
+    $.__views.__alloyId95 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId93"
+        id: "__alloyId95"
     });
-    $.__views.scroll_view.add($.__views.__alloyId93);
+    $.__views.scroll_view.add($.__views.__alloyId95);
     $.__views.goodness_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -171,7 +171,7 @@ function Controller() {
         text: "評価:",
         id: "goodness_label"
     });
-    $.__views.__alloyId93.add($.__views.goodness_label);
+    $.__views.__alloyId95.add($.__views.goodness_label);
     $.__views.goodness = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -182,7 +182,7 @@ function Controller() {
         text: "良い",
         id: "goodness"
     });
-    $.__views.__alloyId93.add($.__views.goodness);
+    $.__views.__alloyId95.add($.__views.goodness);
     $.__views.show_in_map = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -193,15 +193,14 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "投稿場所を見る",
         id: "show_in_map"
     });
     $.__views.scroll_view.add($.__views.show_in_map);
     onShowInMapClicked ? $.__views.show_in_map.addEventListener("click", onShowInMapClicked) : __defers["$.__views.show_in_map!click!onShowInMapClicked"] = true;
-    $.__views.__alloyId94 = Ti.UI.createLabel({
+    $.__views.__alloyId96 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -209,9 +208,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "-- 周辺の情報 --",
-        id: "__alloyId94"
+        id: "__alloyId96"
     });
-    $.__views.scroll_view.add($.__views.__alloyId94);
+    $.__views.scroll_view.add($.__views.__alloyId96);
     $.__views.append_info_area = Ti.UI.createView({
         height: "auto",
         layout: "vertical",
@@ -235,8 +234,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "投稿内容を編集",
         id: "edit_post"
@@ -253,8 +251,7 @@ function Controller() {
         borderWidth: "1dp",
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
-        left: "10dp",
-        right: "10dp",
+        width: "95%",
         color: "#000",
         title: "管理者の返信を見る",
         id: "show_messages"
