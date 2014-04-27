@@ -91,9 +91,9 @@ function Controller() {
             objName: "grid-view",
             objIndex: cellIndex.toString(),
             backgroundColor: cellColor,
-            left: ySpacer,
-            height: cellHeight,
-            width: cellWidth,
+            left: ySpacer + "px",
+            height: cellHeight + "px",
+            width: cellWidth + "px",
             parentTable: parent,
             xIndex: x,
             yIndex: y,
@@ -122,7 +122,7 @@ function Controller() {
             text: label,
             textAlign: "center",
             touchEnabled: false,
-            top: cellHeight / 3
+            top: cellHeight / 3 + "px"
         });
         thisView.add(dateLabel);
         thisView.add(bodyLabel);
@@ -159,8 +159,8 @@ function Controller() {
         });
         monthHeader.add(Ti.UI.createLabel({
             backgroundColor: "green",
-            top: 1,
-            left: ySpacer,
+            top: "1px",
+            left: ySpacer + "px",
             color: "black",
             textAlign: "left",
             font: {
@@ -171,8 +171,8 @@ function Controller() {
         }));
         monthHeader.add(Ti.UI.createLabel({
             left: ySpacer + cellWidth,
-            top: 1,
-            right: ySpacer + cellWidth,
+            top: "1px",
+            right: ySpacer + cellWidth + "px",
             color: "black",
             textAlign: "center",
             font: {
@@ -183,8 +183,8 @@ function Controller() {
         }));
         monthHeader.add(Ti.UI.createLabel({
             backgroundColor: "green",
-            top: 1,
-            right: ySpacer,
+            top: "1px",
+            right: ySpacer + "px",
             color: "black",
             textAlign: "right",
             font: {
@@ -213,9 +213,9 @@ function Controller() {
             var thisView = Ti.UI.createLabel({
                 objName: "grid-view",
                 backgroundColor: colorSet[x],
-                left: ySpacer,
-                height: weekdayLabelHeight,
-                width: cellWidth,
+                left: ySpacer + "px",
+                height: weekdayLabelHeight + "px",
+                width: cellWidth + "px",
                 color: "black",
                 textAlign: "center",
                 font: {
@@ -231,7 +231,7 @@ function Controller() {
         for (var y = 0; yGrid > y; y++) {
             var thisRow = Ti.UI.createView({
                 layout: "horizontal",
-                top: y * (cellHeight + ySpacer) + headerHeight
+                top: y * (cellHeight + ySpacer) + headerHeight + "px"
             });
             thisTable.add(thisRow);
             for (var x = 0; xGrid > x; x++) {
@@ -388,6 +388,13 @@ function Controller() {
     _.extend($, $.__views);
     var pWidth = Ti.Platform.displayCaps.platformWidth;
     Ti.Platform.displayCaps.platformHeight;
+    Ti.API.info("Ti.Platform.displayCaps.density: " + Ti.Platform.displayCaps.density);
+    Ti.API.info("Ti.Platform.displayCaps.dpi: " + Ti.Platform.displayCaps.dpi);
+    Ti.API.info("Ti.Platform.displayCaps.platformHeight: " + Ti.Platform.displayCaps.platformHeight);
+    Ti.API.info("Ti.Platform.displayCaps.platformWidth: " + Ti.Platform.displayCaps.platformWidth);
+    Ti.API.info("Ti.Platform.displayCaps.xdpi: " + Ti.Platform.displayCaps.xdpi);
+    Ti.API.info("Ti.Platform.displayCaps.ydpi: " + Ti.Platform.displayCaps.ydpi);
+    Ti.API.info("Ti.Platform.displayCaps.logicalDensityFactor: " + Ti.Platform.displayCaps.logicalDensityFactor);
     var api = Alloy.Globals.api;
     var util = Alloy.Globals.util;
     var monthHeaderHeight = 25;

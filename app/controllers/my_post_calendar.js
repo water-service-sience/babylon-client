@@ -2,6 +2,16 @@
 var pWidth = Ti.Platform.displayCaps.platformWidth;
 var pHeight = Ti.Platform.displayCaps.platformHeight;
 
+Ti.API.info('Ti.Platform.displayCaps.density: ' + Ti.Platform.displayCaps.density);
+Ti.API.info('Ti.Platform.displayCaps.dpi: ' + Ti.Platform.displayCaps.dpi);
+Ti.API.info('Ti.Platform.displayCaps.platformHeight: ' + Ti.Platform.displayCaps.platformHeight);
+Ti.API.info('Ti.Platform.displayCaps.platformWidth: ' + Ti.Platform.displayCaps.platformWidth);
+if(Ti.Platform.osname === 'android'){
+  Ti.API.info('Ti.Platform.displayCaps.xdpi: ' + Ti.Platform.displayCaps.xdpi);
+  Ti.API.info('Ti.Platform.displayCaps.ydpi: ' + Ti.Platform.displayCaps.ydpi);
+  Ti.API.info('Ti.Platform.displayCaps.logicalDensityFactor: ' + Ti.Platform.displayCaps.logicalDensityFactor);
+}
+
 var api = Alloy.Globals.api;
 var util = Alloy.Globals.util;
  
@@ -173,9 +183,9 @@ function createCell(parent,x,y,date , label ){
 	    objName:"grid-view",
 	    objIndex:cellIndex.toString(),
 	    backgroundColor: cellColor,//colorSet[colorSetIndex],
-	    left: ySpacer,
-	    height: cellHeight,
-	    width: cellWidth,
+	    left: ySpacer + "px",
+	    height: cellHeight + "px",
+	    width: cellWidth + "px",
 	    parentTable : parent,
 	    xIndex : x,
 	    yIndex : y,
@@ -202,7 +212,7 @@ function createCell(parent,x,y,date , label ){
         text: label,
         textAlign : "center",
         touchEnabled:false,
-        top : cellHeight / 3
+        top : (cellHeight / 3) + "px"
     });
     thisView.add(dateLabel);
     thisView.add(bodyLabel);
@@ -258,8 +268,8 @@ function createMonthHeader(year,month) {
 	});
 	monthHeader.add(Ti.UI.createLabel({
 	    backgroundColor: "green",
-	    top : 1,
-	    left: ySpacer,
+	    top : "1px",
+	    left: ySpacer + "px",
         color:"black",
    		textAlign : "left",
         font:{fontSize:12,fontWeight:'bold'},
@@ -267,8 +277,8 @@ function createMonthHeader(year,month) {
 	}));
 	monthHeader.add(Ti.UI.createLabel({
 	    left: ySpacer + cellWidth,
-	    top : 1,
-	    right: ySpacer + cellWidth,
+	    top : "1px",
+	    right: (ySpacer + cellWidth) + "px",
         color:"black",
    		textAlign : "center",
         font:{fontSize:12,fontWeight:'bold'},
@@ -277,8 +287,8 @@ function createMonthHeader(year,month) {
 	
 	monthHeader.add(Ti.UI.createLabel({
 	    backgroundColor: "green",
-	    top : 1,
-	    right: ySpacer,
+	    top : "1px",
+	    right: ySpacer + "px",
         color:"black",
    		textAlign : "right",
         font:{fontSize:12,fontWeight:'bold'},
@@ -309,9 +319,9 @@ function createCalendar(year,month,callback){
 		var thisView = Ti.UI.createLabel({
 		    objName:"grid-view",
 		    backgroundColor: colorSet[x],
-		    left: ySpacer,
-		    height: weekdayLabelHeight,
-		    width: cellWidth,
+		    left: ySpacer + "px",
+		    height: weekdayLabelHeight + "px",
+		    width: cellWidth + "px",
 	        color:"black",
        		textAlign : "center",
 	        font:{fontSize:12,fontWeight:'bold'},
@@ -325,7 +335,7 @@ function createCalendar(year,month,callback){
 	for (var y=0; y<yGrid; y++){
 		var thisRow = Ti.UI.createView({
 			layout:'horizontal',
-			top : y * (cellHeight + ySpacer) + headerHeight
+			top : (y * (cellHeight + ySpacer) + headerHeight)  + "px"
 		});
 		thisTable.add(thisRow);
 	    for (var x=0; x<xGrid; x++){
