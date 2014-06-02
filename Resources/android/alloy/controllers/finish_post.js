@@ -57,11 +57,11 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         left: "5%",
         top: "35%",
         width: "90%",
         height: "40%",
-        backgroundColor: "white",
         id: "comment"
     });
     $.__views.finish_post.add($.__views.comment);

@@ -56,11 +56,13 @@
 },
 "TextField[platform=android]": {
 	font: { fontSize:"20dp" },
-   color: '#000' // all platforms except Android default to black 
+   color: '#000', // all platforms except Android default to black ,
+   backgroundColor: 'white'
 },
 "TextArea[platform=android]": {
 	font: { fontSize:"20dp" },
-   color: '#000' // all platforms except Android default to black 
+   color: '#000', // all platforms except Android default to black 
+   backgroundColor: 'white'
 },
 "ScrollView" : {
 	layout : "vertical"

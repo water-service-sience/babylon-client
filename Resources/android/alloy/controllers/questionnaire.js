@@ -78,7 +78,7 @@ function Controller() {
                 e.source.title = c.label;
                 answers.costForUse = c.id;
             },
-            headerTitle: "１０Rあたり、年額いくらまでならこのサービスを使いたいですか?",
+            headerTitle: "１０a(1反)あたり、年額いくらまでならこのサービスを使いたいですか?",
             selectItems: costForUseList
         }).getView();
         Alloy.Globals.naviCon.open(view);
@@ -135,6 +135,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         height: "100%",
         width: "50%",
         keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
@@ -553,6 +554,7 @@ function Controller() {
         borderRadius: 5,
         suppressReturn: "false",
         color: "#000",
+        backgroundColor: "white",
         id: "freeMessage"
     });
     $.__views.__alloyId143.add($.__views.freeMessage);

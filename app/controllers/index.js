@@ -26,6 +26,12 @@ function onLookClicked(e) {
 	//Alloy.Globals.naviCon.open(view);
 }
 
+function onFieldROuterClicked(e){
+	
+	var view = Alloy.createController("water_level_chart").getView();
+	Alloy.Globals.naviCon.open(view);
+}
+
 function onLookMineClicked(e){
 	var view = Alloy.createController("look_mine_menu").getView();
 	Alloy.Globals.naviCon.open(view);

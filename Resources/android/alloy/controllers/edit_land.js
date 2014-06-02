@@ -102,6 +102,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         width: "60%",
         id: "name"
     });

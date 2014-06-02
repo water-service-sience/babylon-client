@@ -79,6 +79,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         id: "username"
     });
     $.__views.__alloyId1.add($.__views.username);
@@ -107,6 +108,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         id: "old_password",
         passwordMask: "true"
     });
@@ -136,6 +138,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         id: "new_password",
         passwordMask: "true"
     });
@@ -165,6 +168,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         id: "confirm_password",
         passwordMask: "true"
     });

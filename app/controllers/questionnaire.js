@@ -130,7 +130,7 @@ function selectCostForUse(e){
 			e.source.title = c.label;
 			answers.costForUse = c.id;
 		},
-		headerTitle : "１０Rあたり、年額いくらまでならこのサービスを使いたいですか?",
+		headerTitle : "１０a(1反)あたり、年額いくらまでならこのサービスを使いたいですか?",
 		selectItems : costForUseList
 	}).getView();
 	Alloy.Globals.naviCon.open(view);

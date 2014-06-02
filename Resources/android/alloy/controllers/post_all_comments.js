@@ -51,6 +51,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         id: "comment"
     });
     $.__views.__alloyId66.add($.__views.comment);

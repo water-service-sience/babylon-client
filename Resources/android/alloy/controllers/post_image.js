@@ -195,6 +195,7 @@ function Controller() {
         borderRadius: 5,
         suppressReturn: "false",
         color: "#000",
+        backgroundColor: "white",
         id: "comment"
     });
     $.__views.__alloyId97.add($.__views.comment);

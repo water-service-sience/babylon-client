@@ -63,6 +63,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         width: "50%",
         id: "nickname"
     });
@@ -108,6 +109,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         width: "50%",
         id: "username"
     });
@@ -135,6 +137,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         width: "50%",
         id: "password",
         passwordMask: "true"

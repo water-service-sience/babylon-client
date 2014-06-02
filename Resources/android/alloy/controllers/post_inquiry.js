@@ -119,6 +119,7 @@ function Controller() {
         borderRadius: 5,
         suppressReturn: "false",
         color: "#000",
+        backgroundColor: "white",
         id: "comment"
     });
     $.__views.post_inquiry.add($.__views.comment);

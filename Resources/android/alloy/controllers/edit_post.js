@@ -136,6 +136,7 @@ function Controller() {
         borderRadius: 5,
         suppressReturn: "false",
         color: "#000",
+        backgroundColor: "white",
         id: "comment"
     });
     $.__views.scroll_view.add($.__views.comment);

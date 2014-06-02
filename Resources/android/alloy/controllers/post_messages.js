@@ -52,6 +52,7 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#000",
+        backgroundColor: "white",
         width: "80%",
         height: "100%",
         id: "send_message"

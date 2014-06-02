@@ -1,0 +1,6 @@
+<Alloy>
+	<Window class="container">
+		
+        <WebView id="webview" url="http://de24.digitalasia.chubu.ac.jp/babylon/field_router/water_level/1/three_hours" />
+	</Window>
+</Alloy>
