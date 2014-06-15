@@ -64,19 +64,24 @@ function getFile(filename){
 	
 }
 // アンケートの保存
-function Questionnaire() {
+function FileDB(filename) {
 	
 	var self = this;
 	
-	self.filename = "questionnaire_answer";
+	//self.filename = "questionnaire_answer";
+	self.filename = filename;
 	
 	
 	this.get = function(){
 		var file = getFile(self.filename);
 		if(file.exists){
 			var content = file.read();
-			if(content){
-				return JSON.parse(content);
+			if(content && content.length > 0){
+				try{
+					return JSON.parse(content);
+				}catch(e){
+					self.delete();
+				}
 			}else{
 				return null;
 			}
@@ -91,38 +96,15 @@ function Questionnaire() {
 		file.write(JSON.stringify(data));
 		
 	};
+	this.delete = function(){
 	
+		var file = getFile(self.filename);
+		file.write("");
+	};
 	
 	return this;
 };
-exports.questionnaire = new Questionnaire();
+exports.questionnaire = new FileDB("questionnaire_answer");
+exports.userLoginInfo = new FileDB("userLoginInfo");
 
-function UserLoginInfo(){
-	var self = this;
-	
-	self.get = function(){
-		var f = getFile("userLoginInfo");
-		if(f.exists){
-			var content = file.read();
-			if(content){
-				return JSON.parse(content);
-			}else{
-				return null;
-			}
-		}else{
-			return null;
-		}
-	};
-	
-	self.set = function(data){
-		var f = getFile("userLoginInfo");
-		f.write(JSON.stringify(data));
-		
-	};
-
-
-	return this;
-}
-
-exports.userLoginInfo = new UserLoginInfo();
 

@@ -9,37 +9,27 @@ function getFile(filename) {
     return file;
 }
 
-function Questionnaire() {
+function FileDB(filename) {
     var self = this;
-    self.filename = "questionnaire_answer";
+    self.filename = filename;
     this.get = function() {
         var file = getFile(self.filename);
-        if (file.exists) {
-            var content = file.read();
-            return content ? JSON.parse(content) : null;
+        if (!file.exists) return null;
+        var content = file.read();
+        if (!(content && content.length > 0)) return null;
+        try {
+            return JSON.parse(content);
+        } catch (e) {
+            self.delete();
         }
-        return null;
     };
     this.set = function(data) {
         var file = getFile(self.filename);
         file.write(JSON.stringify(data));
     };
-    return this;
-}
-
-function UserLoginInfo() {
-    var self = this;
-    self.get = function() {
-        var f = getFile("userLoginInfo");
-        if (f.exists) {
-            var content = file.read();
-            return content ? JSON.parse(content) : null;
-        }
-        return null;
-    };
-    self.set = function(data) {
-        var f = getFile("userLoginInfo");
-        f.write(JSON.stringify(data));
+    this.delete = function() {
+        var file = getFile(self.filename);
+        file.write("");
     };
     return this;
 }
@@ -68,6 +58,6 @@ exports.niceTimeString = function(date) {
     return diff > DAY ? Math.floor(diff / DAY) + "日前" : diff > HOUR ? Math.floor(diff / HOUR) + "時間前" : diff > MINUTE ? Math.floor(diff / MINUTE) + "分前" : "ちょうど今";
 };
 
-exports.questionnaire = new Questionnaire();
+exports.questionnaire = new FileDB("questionnaire_answer");
 
-exports.userLoginInfo = new UserLoginInfo();
+exports.userLoginInfo = new FileDB("userLoginInfo");

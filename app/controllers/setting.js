@@ -1,10 +1,20 @@
 
+var util = Alloy.Globals.util;
+
 function onLogoutClicked(){
+	
+	if(!util.userLoginInfo.get()){
+		var alert = Titanium.UI.createAlertDialog(
+		{ title: 'パスワードが設定されていません',
+		message: '再ログインのために、パスワードを設定してください。'});
+		alert.show();
+		return ;
+	}
 	
 	
 	var alert = Titanium.UI.createAlertDialog(
 		{ title: 'ログアウト確認',
-		message: 'ログアウトしてもよろしいですか？', 
+		message: 'ログアウトしてもよろしいですか？(以前設定したユーザー名とパスワードで再ログイン可能です。)', 
 		buttonNames: ['Yes', 'No'], cancel: 1 });
 	
 	
@@ -18,6 +28,8 @@ function onLogoutClicked(){
 	    if(event.index == 0){
 	        // Logout処理
 			Alloy.Globals.api.client.logout();
+			util.questionnaire.delete();
+			util.userLoginInfo.delete();
 			Alloy.Globals.naviCon.home();
 			var view = Alloy.createController("create_account").getView();
 			view.open();

@@ -1,8 +1,16 @@
 function Controller() {
     function onLogoutClicked() {
+        if (!util.userLoginInfo.get()) {
+            var alert = Titanium.UI.createAlertDialog({
+                title: "パスワードが設定されていません",
+                message: "再ログインのために、パスワードを設定してください。"
+            });
+            alert.show();
+            return;
+        }
         var alert = Titanium.UI.createAlertDialog({
             title: "ログアウト確認",
-            message: "ログアウトしてもよろしいですか？",
+            message: "ログアウトしてもよろしいですか？(以前設定したユーザー名とパスワードで再ログイン可能です。)",
             buttonNames: [ "Yes", "No" ],
             cancel: 1
         });
@@ -11,6 +19,8 @@ function Controller() {
             event.cancel;
             if (0 == event.index) {
                 Alloy.Globals.api.client.logout();
+                util.questionnaire.delete();
+                util.userLoginInfo.delete();
                 Alloy.Globals.naviCon.home();
                 var view = Alloy.createController("create_account").getView();
                 view.open();
@@ -171,6 +181,7 @@ function Controller() {
     onLogoutClicked ? $.__views.logout_button.addEventListener("click", onLogoutClicked) : __defers["$.__views.logout_button!click!onLogoutClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var util = Alloy.Globals.util;
     $.setting.addEventListener("open", function() {
         var api = Alloy.Globals.api;
         $.nickname.text = api.client.nickname;

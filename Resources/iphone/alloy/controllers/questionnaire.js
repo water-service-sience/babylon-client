@@ -36,7 +36,7 @@ function Controller() {
         var view = Alloy.createController("select_list", {
             selectCallback: function(c) {
                 e.source.title = c.label;
-                answers.useForImageInquiry = c.id;
+                answers.useForInquiry = c.id;
             },
             headerTitle: "苦情サービスは農作業の役に立ちましたか？",
             selectItems: useList
@@ -58,7 +58,7 @@ function Controller() {
         var view = Alloy.createController("select_list", {
             selectCallback: function(c) {
                 e.source.title = c.label;
-                answers.useForFieldMonitoring = c.id;
+                answers.willUse = c.id;
                 if (1 == c.id) {
                     $.costForUse.enabled = false;
                     $.costForUse.title = "回答不要";
@@ -644,7 +644,7 @@ function Controller() {
             a.useForImagePost && ($.useForImagePost.title = useList[a.useForImagePost - 1].label);
             a.useForInquiry && ($.useForInquiry.title = useList[a.useForInquiry - 1].label);
             a.useForFieldMonitoring && ($.useForFieldMonitoring.title = useList[a.useForFieldMonitoring - 1].label);
-            a.willUse && ($.willUse.title = willUseList[a.willUse - 1].label);
+            a.willUse && ($.willUse.title = willUseList[4 - a.willUse].label);
             a.costForUse && ($.costForUse.title = costForUseList[a.costForUse - 1].label);
         }
     });

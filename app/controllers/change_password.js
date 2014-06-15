@@ -2,6 +2,7 @@
 
 var api = require("api");
 var client = api.client;
+var util = Alloy.Globals.util;
 
 
 function changePassword(e){
@@ -22,6 +23,11 @@ function changePassword(e){
 	client.changePassword(username,oldPassword,password,function(result){
 		$.changePassword.enable = true;
 		if(result != null && result.success){
+			var userLoginInfo = {
+				username : username
+			};
+			util.userLoginInfo.set(userLoginInfo);
+			
 			var dialog = Titanium.UI.createAlertDialog({
 				title : "変更完了",
 				message : '変更完了しました。'
@@ -42,6 +48,11 @@ function changePassword(e){
 
 
 $.change_password.addEventListener("open",function(e){
+	
+	var u = util.userLoginInfo.get();
+	if(u){
+		var username = u.username;
+	}
 	
 	if(client.username){
 		$.username.value = client.username;
