@@ -10,7 +10,8 @@
 },
 "Button[platform=android]": {
    color: '#000', // all platforms except Android default to black ,
-   disabledColor : "#888888"
+   disabledColor : "#888888",
+   borderRadius : "10dp"
 },
 "Label" : {
 	textAlign : "left",
@@ -41,7 +42,18 @@
 	borderWidth : "1dp",
 	borderRadius : "10dp",
 	backgroundColor : "#fff0ff"
-}
+},
+".big-button" : {
+	
+	font: { fontSize:"40dp" },
+	height : "80dp",
+	backgroundFocusedColor : "#ffe4e1",
+	borderColor : "black",
+	borderWidth : "1dp",
+	borderRadius : "10dp",
+	backgroundColor : "#fff0ff",
+	width:"95%"
+},
 
 "TextArea" : {
 	width : "98%",

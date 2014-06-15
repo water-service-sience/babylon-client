@@ -1,3 +1,49 @@
+function getFile(filename) {
+    if ("iphone" == Ti.Platform.osname) {
+        var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, filename);
+        return file;
+    }
+    var newDir = Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory, "datas");
+    newDir.createDirectory();
+    var file = Ti.Filesystem.getFile(newDir.nativePath, filename);
+    return file;
+}
+
+function Questionnaire() {
+    var self = this;
+    self.filename = "questionnaire_answer";
+    this.get = function() {
+        var file = getFile(self.filename);
+        if (file.exists) {
+            var content = file.read();
+            return content ? JSON.parse(content) : null;
+        }
+        return null;
+    };
+    this.set = function(data) {
+        var file = getFile(self.filename);
+        file.write(JSON.stringify(data));
+    };
+    return this;
+}
+
+function UserLoginInfo() {
+    var self = this;
+    self.get = function() {
+        var f = getFile("userLoginInfo");
+        if (f.exists) {
+            var content = file.read();
+            return content ? JSON.parse(content) : null;
+        }
+        return null;
+    };
+    self.set = function(data) {
+        var f = getFile("userLoginInfo");
+        f.write(JSON.stringify(data));
+    };
+    return this;
+}
+
 var dateFormat = function(date) {
     if (null == date) return "----";
     ("int" == typeof date || "string" == typeof date || "number" == typeof date) && (date = new Date(date));
@@ -21,3 +67,7 @@ exports.niceTimeString = function(date) {
     var MINUTE = 6e4;
     return diff > DAY ? Math.floor(diff / DAY) + "日前" : diff > HOUR ? Math.floor(diff / HOUR) + "時間前" : diff > MINUTE ? Math.floor(diff / MINUTE) + "分前" : "ちょうど今";
 };
+
+exports.questionnaire = new Questionnaire();
+
+exports.userLoginInfo = new UserLoginInfo();

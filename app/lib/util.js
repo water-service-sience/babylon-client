@@ -50,5 +50,79 @@ exports.niceTimeString = function(date){
 	}
 	
 };
+function getFile(filename){
+	if(Ti.Platform.osname == "iphone"){
+        	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, filename);
+			return file;
+        }else{
+        	var newDir = Ti.Filesystem.getFile(Ti.Filesystem.externalStorageDirectory,'datas');
+			newDir.createDirectory();
+		  
+			var file = Ti.Filesystem.getFile(newDir.nativePath,filename);
+			return file;
+        }
+	
+}
+// アンケートの保存
+function Questionnaire() {
+	
+	var self = this;
+	
+	self.filename = "questionnaire_answer";
+	
+	
+	this.get = function(){
+		var file = getFile(self.filename);
+		if(file.exists){
+			var content = file.read();
+			if(content){
+				return JSON.parse(content);
+			}else{
+				return null;
+			}
+		}else{
+			return null;
+		}
+	};
+	
+	this.set = function(data){
+		var file = getFile(self.filename);
+		
+		file.write(JSON.stringify(data));
+		
+	};
+	
+	
+	return this;
+};
+exports.questionnaire = new Questionnaire();
 
+function UserLoginInfo(){
+	var self = this;
+	
+	self.get = function(){
+		var f = getFile("userLoginInfo");
+		if(f.exists){
+			var content = file.read();
+			if(content){
+				return JSON.parse(content);
+			}else{
+				return null;
+			}
+		}else{
+			return null;
+		}
+	};
+	
+	self.set = function(data){
+		var f = getFile("userLoginInfo");
+		f.write(JSON.stringify(data));
+		
+	};
+
+
+	return this;
+}
+
+exports.userLoginInfo = new UserLoginInfo();
 

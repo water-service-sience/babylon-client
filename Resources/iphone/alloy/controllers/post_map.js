@@ -23,9 +23,10 @@ function Controller() {
     $.__views.post_map.add($.__views.map);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var args = arguments[0] || {};
+    var post = args.post || Alloy.Globals.post;
     $.map.mapType = Alloy.Globals.Map.NORMAL_TYPE;
     $.post_map.addEventListener("open", function() {
-        var post = Alloy.Globals.post;
         var lat = post.latitude;
         var lon = post.longitude;
         $.map.setLocation({

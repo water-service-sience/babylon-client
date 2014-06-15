@@ -25,7 +25,7 @@ function Controller() {
         font: {
             fontSize: "32dp"
         },
-        height: "52dp",
+        height: "15%",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
@@ -39,11 +39,22 @@ function Controller() {
     });
     $.__views.select_post_mode.add($.__views.__alloyId207);
     onWorkReportModeClicked ? $.__views.__alloyId207.addEventListener("click", onWorkReportModeClicked) : __defers["$.__views.__alloyId207!click!onWorkReportModeClicked"] = true;
-    $.__views.__alloyId208 = Ti.UI.createButton({
+    $.__views.__alloyId208 = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "auto",
+        color: "#000",
+        text: "写真付きで作業記録を投稿します。",
+        id: "__alloyId208"
+    });
+    $.__views.select_post_mode.add($.__views.__alloyId208);
+    $.__views.__alloyId209 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
-        height: "52dp",
+        height: "15%",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
@@ -53,15 +64,26 @@ function Controller() {
         color: "#000",
         disabledColor: "#888888",
         title: "問い合わせ",
-        id: "__alloyId208"
+        id: "__alloyId209"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId208);
-    onInquiryModeClicked ? $.__views.__alloyId208.addEventListener("click", onInquiryModeClicked) : __defers["$.__views.__alloyId208!click!onInquiryModeClicked"] = true;
+    $.__views.select_post_mode.add($.__views.__alloyId209);
+    onInquiryModeClicked ? $.__views.__alloyId209.addEventListener("click", onInquiryModeClicked) : __defers["$.__views.__alloyId209!click!onInquiryModeClicked"] = true;
+    $.__views.__alloyId210 = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "auto",
+        color: "#000",
+        text: "写真付きで土地改良区に問い合わせします。メッセージのみでも問い合わせは可能です。",
+        id: "__alloyId210"
+    });
+    $.__views.select_post_mode.add($.__views.__alloyId210);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
     __defers["$.__views.__alloyId207!click!onWorkReportModeClicked"] && $.__views.__alloyId207.addEventListener("click", onWorkReportModeClicked);
-    __defers["$.__views.__alloyId208!click!onInquiryModeClicked"] && $.__views.__alloyId208.addEventListener("click", onInquiryModeClicked);
+    __defers["$.__views.__alloyId209!click!onInquiryModeClicked"] && $.__views.__alloyId209.addEventListener("click", onInquiryModeClicked);
     _.extend($, exports);
 }
 

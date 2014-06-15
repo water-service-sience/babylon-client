@@ -1,8 +1,10 @@
 <Alloy>
 	<Window class="container">
 		
-		<Button onClick="onWorkReportModeClicked">作業記録を投稿</Button>
-		<Button onClick="onInquiryModeClicked">問い合わせ</Button>
+		<Button height="15%" onClick="onWorkReportModeClicked">作業記録を投稿</Button>
+		<Label height="auto">写真付きで作業記録を投稿します。</Label>
+		<Button height="15%" onClick="onInquiryModeClicked">問い合わせ</Button>
+		<Label height="auto">写真付きで土地改良区に問い合わせします。メッセージのみでも問い合わせは可能です。</Label>
 		
 		
 	</Window>

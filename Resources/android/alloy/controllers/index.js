@@ -35,9 +35,9 @@ function Controller() {
     $.__views.index && $.addTopLevelView($.__views.index);
     $.__views.post = Ti.UI.createButton({
         font: {
-            fontSize: "32dp"
+            fontSize: "40dp"
         },
-        height: "60dp",
+        height: "80dp",
         backgroundFocusedColor: "#ffe4e1",
         borderColor: "black",
         borderWidth: "1dp",
@@ -51,6 +51,24 @@ function Controller() {
     });
     $.__views.index.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
+    $.__views.field_router = Ti.UI.createButton({
+        font: {
+            fontSize: "32dp"
+        },
+        height: "60dp",
+        backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
+        width: "95%",
+        color: "#000",
+        disabledColor: "#888888",
+        title: "自分の田んぼを見る",
+        id: "field_router"
+    });
+    $.__views.index.add($.__views.field_router);
+    onFieldROuterClicked ? $.__views.field_router.addEventListener("click", onFieldROuterClicked) : __defers["$.__views.field_router!click!onFieldROuterClicked"] = true;
     $.__views.look = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -69,24 +87,6 @@ function Controller() {
     });
     $.__views.index.add($.__views.look);
     onLookClicked ? $.__views.look.addEventListener("click", onLookClicked) : __defers["$.__views.look!click!onLookClicked"] = true;
-    $.__views.field_router = Ti.UI.createButton({
-        font: {
-            fontSize: "32dp"
-        },
-        height: "60dp",
-        backgroundFocusedColor: "#ffe4e1",
-        borderColor: "black",
-        borderWidth: "1dp",
-        borderRadius: "10dp",
-        backgroundColor: "#fff0ff",
-        width: "95%",
-        color: "#000",
-        disabledColor: "#888888",
-        title: "農地水位情報を見る",
-        id: "field_router"
-    });
-    $.__views.index.add($.__views.field_router);
-    onFieldROuterClicked ? $.__views.field_router.addEventListener("click", onFieldROuterClicked) : __defers["$.__views.field_router!click!onFieldROuterClicked"] = true;
     $.__views.look_mine = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -177,8 +177,8 @@ function Controller() {
     });
     Alloy.Globals.naviCon.open($.index);
     __defers["$.__views.post!click!onPostClicked"] && $.__views.post.addEventListener("click", onPostClicked);
-    __defers["$.__views.look!click!onLookClicked"] && $.__views.look.addEventListener("click", onLookClicked);
     __defers["$.__views.field_router!click!onFieldROuterClicked"] && $.__views.field_router.addEventListener("click", onFieldROuterClicked);
+    __defers["$.__views.look!click!onLookClicked"] && $.__views.look.addEventListener("click", onLookClicked);
     __defers["$.__views.look_mine!click!onLookMineClicked"] && $.__views.look_mine.addEventListener("click", onLookMineClicked);
     __defers["$.__views.setting!click!onSettingClicked"] && $.__views.setting.addEventListener("click", onSettingClicked);
     _.extend($, exports);

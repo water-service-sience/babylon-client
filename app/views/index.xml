@@ -1,14 +1,17 @@
 <Alloy>
 	<Window class="container">
 		<!--<Label id="status_message">管理者からの通知が１件あります</Label>-->
-		<Button id="post" onClick="onPostClicked">写真を投稿する</Button>
+		
+		<Button id="post" class="big-button" onClick="onPostClicked">写真を投稿する</Button>
+		<Button id="field_router" onClick="onFieldROuterClicked">自分の田んぼを見る</Button>
 		<Button id="look" onClick="onLookClicked">周辺の情報を見る</Button>
-		<Button id="field_router" onClick="onFieldROuterClicked">農地水位情報を見る</Button>
 		<Button id="look_mine" onClick="onLookMineClicked">自分の投稿を見る</Button>
 		
 		<View class="row">
 			<View class="col_7"> </View>
 		    <Button class="col_5" id="setting" onClick="onSettingClicked">設定</Button>
 		</View>
+		<View class="line_break"></View>
+		<Button id="questionnaire" onClick="onQuestionnaireClicked">アンケートに答える</Button>
 	</Window>
 </Alloy>

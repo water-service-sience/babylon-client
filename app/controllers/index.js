@@ -1,5 +1,6 @@
 
 var api = Alloy.Globals.api;
+var util = Alloy.Globals.util;
 var client = api.client;
 
 function onPostClicked(e) {
@@ -44,6 +45,17 @@ function onSettingClicked(e){
 	
 	Alloy.Globals.naviCon.open(view);
 }
+function onQuestionnaireClicked(e){
+	var view = Alloy.createController("questionnaire").getView();
+	
+	Alloy.Globals.naviCon.open(view);
+	
+}
+
+
+	if(util.questionnaire.get()){
+		$.questionnaire.title = "アンケートを修正";
+	}
 
 $.index.addEventListener("open",function(){
 	if(!client.isLogin){

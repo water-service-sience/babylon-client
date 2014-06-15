@@ -91,9 +91,9 @@ function Controller() {
             objName: "grid-view",
             objIndex: cellIndex.toString(),
             backgroundColor: cellColor,
-            left: ySpacer,
-            height: cellHeight,
-            width: cellWidth,
+            left: ySpacer + "px",
+            height: cellHeight + "px",
+            width: cellWidth + "px",
             parentTable: parent,
             xIndex: x,
             yIndex: y,
@@ -122,7 +122,7 @@ function Controller() {
             text: label,
             textAlign: "center",
             touchEnabled: false,
-            top: cellHeight / 3
+            top: cellHeight / 3 + "px"
         });
         thisView.add(dateLabel);
         thisView.add(bodyLabel);
@@ -159,8 +159,8 @@ function Controller() {
         });
         monthHeader.add(Ti.UI.createLabel({
             backgroundColor: "green",
-            top: 1,
-            left: ySpacer,
+            top: "1px",
+            left: ySpacer + "px",
             color: "black",
             textAlign: "left",
             font: {
@@ -171,8 +171,8 @@ function Controller() {
         }));
         monthHeader.add(Ti.UI.createLabel({
             left: ySpacer + cellWidth,
-            top: 1,
-            right: ySpacer + cellWidth,
+            top: "1px",
+            right: ySpacer + cellWidth + "px",
             color: "black",
             textAlign: "center",
             font: {
@@ -183,8 +183,8 @@ function Controller() {
         }));
         monthHeader.add(Ti.UI.createLabel({
             backgroundColor: "green",
-            top: 1,
-            right: ySpacer,
+            top: "1px",
+            right: ySpacer + "px",
             color: "black",
             textAlign: "right",
             font: {
@@ -213,9 +213,9 @@ function Controller() {
             var thisView = Ti.UI.createLabel({
                 objName: "grid-view",
                 backgroundColor: colorSet[x],
-                left: ySpacer,
-                height: weekdayLabelHeight,
-                width: cellWidth,
+                left: ySpacer + "px",
+                height: weekdayLabelHeight + "px",
+                width: cellWidth + "px",
                 color: "black",
                 textAlign: "center",
                 font: {
@@ -231,7 +231,7 @@ function Controller() {
         for (var y = 0; yGrid > y; y++) {
             var thisRow = Ti.UI.createView({
                 layout: "horizontal",
-                top: y * (cellHeight + ySpacer) + headerHeight
+                top: y * (cellHeight + ySpacer) + headerHeight + "px"
             });
             thisTable.add(thisRow);
             for (var x = 0; xGrid > x; x++) {
@@ -298,13 +298,13 @@ function Controller() {
         id: "posts"
     });
     $.__views.my_post_calendar.add($.__views.posts);
-    var __alloyId28 = {};
-    var __alloyId31 = [];
-    var __alloyId33 = {
+    var __alloyId29 = {};
+    var __alloyId32 = [];
+    var __alloyId34 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId34 = [];
-            var __alloyId36 = {
+            var __alloyId35 = [];
+            var __alloyId37 = {
                 type: "Ti.UI.ImageView",
                 bindId: "thumbnail",
                 properties: {
@@ -313,12 +313,12 @@ function Controller() {
                     bindId: "thumbnail"
                 }
             };
-            __alloyId34.push(__alloyId36);
-            var __alloyId38 = {
+            __alloyId35.push(__alloyId37);
+            var __alloyId39 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId39 = [];
-                    var __alloyId41 = {
+                    var __alloyId40 = [];
+                    var __alloyId42 = {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
@@ -330,8 +330,8 @@ function Controller() {
                             bindId: "date"
                         }
                     };
-                    __alloyId39.push(__alloyId41);
-                    var __alloyId43 = {
+                    __alloyId40.push(__alloyId42);
+                    var __alloyId44 = {
                         type: "Ti.UI.Label",
                         bindId: "category",
                         properties: {
@@ -343,39 +343,39 @@ function Controller() {
                             bindId: "category"
                         }
                     };
-                    __alloyId39.push(__alloyId43);
-                    return __alloyId39;
+                    __alloyId40.push(__alloyId44);
+                    return __alloyId40;
                 }(),
                 properties: {
                     layout: "vertical"
                 }
             };
-            __alloyId34.push(__alloyId38);
-            return __alloyId34;
+            __alloyId35.push(__alloyId39);
+            return __alloyId35;
         }(),
         properties: {
             layout: "horizontal"
         }
     };
-    __alloyId31.push(__alloyId33);
-    var __alloyId30 = {
+    __alloyId32.push(__alloyId34);
+    var __alloyId31 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId31
+        childTemplates: __alloyId32
     };
-    __alloyId28["template"] = __alloyId30;
-    $.__views.__alloyId44 = Ti.UI.createListSection({
+    __alloyId29["template"] = __alloyId31;
+    $.__views.__alloyId45 = Ti.UI.createListSection({
         headerTitle: "投稿一覧",
-        id: "__alloyId44"
+        id: "__alloyId45"
     });
-    var __alloyId46 = [];
-    __alloyId46.push($.__views.__alloyId44);
+    var __alloyId47 = [];
+    __alloyId47.push($.__views.__alloyId45);
     $.__views.postTable = Ti.UI.createListView({
         top: 0,
         bottom: 0,
-        sections: __alloyId46,
-        templates: __alloyId28,
+        sections: __alloyId47,
+        templates: __alloyId29,
         id: "postTable",
         defaultItemTemplate: "template"
     });
@@ -385,6 +385,15 @@ function Controller() {
     _.extend($, $.__views);
     var pWidth = Ti.Platform.displayCaps.platformWidth;
     Ti.Platform.displayCaps.platformHeight;
+    Ti.API.info("Ti.Platform.displayCaps.density: " + Ti.Platform.displayCaps.density);
+    Ti.API.info("Ti.Platform.displayCaps.dpi: " + Ti.Platform.displayCaps.dpi);
+    Ti.API.info("Ti.Platform.displayCaps.platformHeight: " + Ti.Platform.displayCaps.platformHeight);
+    Ti.API.info("Ti.Platform.displayCaps.platformWidth: " + Ti.Platform.displayCaps.platformWidth);
+    if ("android" === Ti.Platform.osname) {
+        Ti.API.info("Ti.Platform.displayCaps.xdpi: " + Ti.Platform.displayCaps.xdpi);
+        Ti.API.info("Ti.Platform.displayCaps.ydpi: " + Ti.Platform.displayCaps.ydpi);
+        Ti.API.info("Ti.Platform.displayCaps.logicalDensityFactor: " + Ti.Platform.displayCaps.logicalDensityFactor);
+    }
     var api = Alloy.Globals.api;
     var util = Alloy.Globals.util;
     var monthHeaderHeight = 25;
