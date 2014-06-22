@@ -19,6 +19,10 @@ function Controller() {
         var view = Alloy.createController("setting").getView();
         Alloy.Globals.naviCon.open(view);
     }
+    function onQuestionnaireClicked() {
+        var view = Alloy.createController("questionnaire").getView();
+        Alloy.Globals.naviCon.open(view);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -136,10 +140,36 @@ function Controller() {
     });
     $.__views.__alloyId20.add($.__views.setting);
     onSettingClicked ? $.__views.setting.addEventListener("click", onSettingClicked) : __defers["$.__views.setting!click!onSettingClicked"] = true;
+    $.__views.__alloyId22 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId22"
+    });
+    $.__views.index.add($.__views.__alloyId22);
+    $.__views.questionnaire = Ti.UI.createButton({
+        font: {
+            fontSize: "32dp"
+        },
+        height: "60dp",
+        backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
+        width: "95%",
+        color: "#000",
+        disabledColor: "#888888",
+        title: "アンケートに答える",
+        id: "questionnaire"
+    });
+    $.__views.index.add($.__views.questionnaire);
+    onQuestionnaireClicked ? $.__views.questionnaire.addEventListener("click", onQuestionnaireClicked) : __defers["$.__views.questionnaire!click!onQuestionnaireClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var api = Alloy.Globals.api;
+    var util = Alloy.Globals.util;
     var client = api.client;
+    util.questionnaire.get() && ($.questionnaire.title = "アンケートを修正");
     $.index.addEventListener("open", function() {
         if (!client.isLogin) {
             var view = Alloy.createController("create_account").getView();
@@ -181,6 +211,7 @@ function Controller() {
     __defers["$.__views.look!click!onLookClicked"] && $.__views.look.addEventListener("click", onLookClicked);
     __defers["$.__views.look_mine!click!onLookMineClicked"] && $.__views.look_mine.addEventListener("click", onLookMineClicked);
     __defers["$.__views.setting!click!onSettingClicked"] && $.__views.setting.addEventListener("click", onSettingClicked);
+    __defers["$.__views.questionnaire!click!onQuestionnaireClicked"] && $.__views.questionnaire.addEventListener("click", onQuestionnaireClicked);
     _.extend($, exports);
 }
 

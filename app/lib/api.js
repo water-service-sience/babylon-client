@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-var ServerUrl = "http://localhost:9000";
-//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+//var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
 function DB(){
@@ -360,6 +360,7 @@ function PostManager() {
 		});
 	};
 	
+	
 	this.getNearByPosts = function(/*function(postList)*/ callback ){
 		
 		Titanium.Geolocation.getCurrentPosition(function(e){
@@ -367,14 +368,18 @@ function PostManager() {
 		});
 		
 	};
+	
+	this.updating = false;
 	this.getNearPosts = function(lat,lon,callback){
+		if(this.updating) return;
 		var param = {
 			lat : lat,
 			lon : lon
 		};
-		
+		updating = true;
 		client.get("/post/near?lon=" + lon + "&lat=" + lat,
 		  param,function(posts){
+		  	updating = false;
 			callback(posts);
 		});
 	};

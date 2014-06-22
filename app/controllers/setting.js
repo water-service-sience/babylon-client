@@ -54,6 +54,11 @@ function onSendQuestionnaireClicked(){
 	Alloy.Globals.naviCon.open(view);
 }
 
+function onManualClicked() {
+	Ti.Platform.openURL("http://de24.digitalasia.chubu.ac.jp/babylon_files/index.html");
+	
+}
+
 $.setting.addEventListener("open",function(){
 	var api = Alloy.Globals.api;
 	$.nickname.text = api.client.nickname;

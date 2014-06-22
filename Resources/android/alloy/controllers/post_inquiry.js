@@ -49,14 +49,14 @@ function Controller() {
     });
     $.__views.image_view.setParent($.__views.post_inquiry);
     onSetImage ? $.__views.image_view.on("setImage", onSetImage) : __defers["$.__views.image_view!setImage!onSetImage"] = true;
-    $.__views.__alloyId102 = Ti.UI.createView({
+    $.__views.__alloyId103 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId102"
+        id: "__alloyId103"
     });
-    $.__views.post_inquiry.add($.__views.__alloyId102);
-    $.__views.__alloyId103 = Ti.UI.createLabel({
+    $.__views.post_inquiry.add($.__views.__alloyId103);
+    $.__views.__alloyId104 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -66,9 +66,9 @@ function Controller() {
         width: "25%",
         text: "内容:",
         right: "0dp",
-        id: "__alloyId103"
+        id: "__alloyId104"
     });
-    $.__views.__alloyId102.add($.__views.__alloyId103);
+    $.__views.__alloyId103.add($.__views.__alloyId104);
     $.__views.category = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -80,7 +80,7 @@ function Controller() {
         text: "未選択",
         id: "category"
     });
-    $.__views.__alloyId102.add($.__views.category);
+    $.__views.__alloyId103.add($.__views.category);
     $.__views.select_category = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -97,9 +97,9 @@ function Controller() {
         title: "選択",
         id: "select_category"
     });
-    $.__views.__alloyId102.add($.__views.select_category);
+    $.__views.__alloyId103.add($.__views.select_category);
     onSelectCategoryClicked ? $.__views.select_category.addEventListener("click", onSelectCategoryClicked) : __defers["$.__views.select_category!click!onSelectCategoryClicked"] = true;
-    $.__views.__alloyId104 = Ti.UI.createLabel({
+    $.__views.__alloyId105 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -107,9 +107,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "メッセージ",
-        id: "__alloyId104"
+        id: "__alloyId105"
     });
-    $.__views.post_inquiry.add($.__views.__alloyId104);
+    $.__views.post_inquiry.add($.__views.__alloyId105);
     $.__views.comment = Ti.UI.createTextArea({
         width: "98%",
         height: "100dp",
@@ -123,19 +123,19 @@ function Controller() {
         id: "comment"
     });
     $.__views.post_inquiry.add($.__views.comment);
-    $.__views.__alloyId105 = Ti.UI.createView({
+    $.__views.__alloyId106 = Ti.UI.createView({
         width: "3dp",
         height: "30dp",
-        id: "__alloyId105"
-    });
-    $.__views.post_inquiry.add($.__views.__alloyId105);
-    $.__views.__alloyId106 = Ti.UI.createView({
-        height: "54dp",
-        width: "100%",
-        layout: "horizontal",
         id: "__alloyId106"
     });
     $.__views.post_inquiry.add($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createView({
+        height: "54dp",
+        width: "100%",
+        layout: "horizontal",
+        id: "__alloyId107"
+    });
+    $.__views.post_inquiry.add($.__views.__alloyId107);
     $.__views.post = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -152,7 +152,7 @@ function Controller() {
         title: "投稿",
         id: "post"
     });
-    $.__views.__alloyId106.add($.__views.post);
+    $.__views.__alloyId107.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.recapture = Ti.UI.createButton({
         font: {
@@ -170,21 +170,21 @@ function Controller() {
         title: "再撮影",
         id: "recapture"
     });
-    $.__views.__alloyId106.add($.__views.recapture);
+    $.__views.__alloyId107.add($.__views.recapture);
     onRecaptureClicked ? $.__views.recapture.addEventListener("click", onRecaptureClicked) : __defers["$.__views.recapture!click!onRecaptureClicked"] = true;
-    $.__views.__alloyId107 = Ti.UI.createView({
+    $.__views.__alloyId108 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId107"
-    });
-    $.__views.post_inquiry.add($.__views.__alloyId107);
-    $.__views.__alloyId108 = Ti.UI.createView({
-        height: "100%",
-        width: "50%",
         id: "__alloyId108"
     });
-    $.__views.__alloyId107.add($.__views.__alloyId108);
+    $.__views.post_inquiry.add($.__views.__alloyId108);
+    $.__views.__alloyId109 = Ti.UI.createView({
+        height: "100%",
+        width: "50%",
+        id: "__alloyId109"
+    });
+    $.__views.__alloyId108.add($.__views.__alloyId109);
     $.__views.gallery = Ti.UI.createButton({
         font: {
             fontSize: "24dp"
@@ -201,7 +201,7 @@ function Controller() {
         title: "ギャラリー",
         id: "gallery"
     });
-    $.__views.__alloyId107.add($.__views.gallery);
+    $.__views.__alloyId108.add($.__views.gallery);
     onGalleryClicked ? $.__views.gallery.addEventListener("click", onGalleryClicked) : __defers["$.__views.gallery!click!onGalleryClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

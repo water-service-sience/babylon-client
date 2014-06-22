@@ -15,6 +15,11 @@
 		
 		<View class="line_break"></View>
 		
+		<Button id="manual" onClick="onManualClicked">更新/マニュアル</Button>
+		
+		<View class="line_break"></View>
+		
+		
 		<Button id="logout_button" onClick="onLogoutClicked">ログアウト</Button>
 	</Window>
 </Alloy>

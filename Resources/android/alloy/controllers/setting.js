@@ -1,8 +1,16 @@
 function Controller() {
     function onLogoutClicked() {
+        if (!util.userLoginInfo.get()) {
+            var alert = Titanium.UI.createAlertDialog({
+                title: "パスワードが設定されていません",
+                message: "再ログインのために、パスワードを設定してください。"
+            });
+            alert.show();
+            return;
+        }
         var alert = Titanium.UI.createAlertDialog({
             title: "ログアウト確認",
-            message: "ログアウトしてもよろしいですか？",
+            message: "ログアウトしてもよろしいですか？(以前設定したユーザー名とパスワードで再ログイン可能です。)",
             buttonNames: [ "Yes", "No" ],
             cancel: 1
         });
@@ -11,6 +19,8 @@ function Controller() {
             event.cancel;
             if (0 == event.index) {
                 Alloy.Globals.api.client.logout();
+                util.questionnaire.delete();
+                util.userLoginInfo.delete();
                 Alloy.Globals.naviCon.home();
                 var view = Alloy.createController("create_account").getView();
                 view.open();
@@ -29,6 +39,9 @@ function Controller() {
         var view = Alloy.createController("questionnaire").getView();
         Alloy.Globals.naviCon.open(view);
     }
+    function onManualClicked() {
+        Ti.Platform.openURL("http://de24.digitalasia.chubu.ac.jp/babylon_files/index.html");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "setting";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -43,12 +56,12 @@ function Controller() {
         id: "setting"
     });
     $.__views.setting && $.addTopLevelView($.__views.setting);
-    $.__views.__alloyId211 = Ti.UI.createView({
+    $.__views.__alloyId212 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId211"
+        id: "__alloyId212"
     });
-    $.__views.setting.add($.__views.__alloyId211);
+    $.__views.setting.add($.__views.__alloyId212);
     $.__views.user_id_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -60,7 +73,7 @@ function Controller() {
         text: "ユーザーID:",
         id: "user_id_label"
     });
-    $.__views.__alloyId211.add($.__views.user_id_label);
+    $.__views.__alloyId212.add($.__views.user_id_label);
     $.__views.user_id = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -72,13 +85,13 @@ function Controller() {
         text: "203",
         id: "user_id"
     });
-    $.__views.__alloyId211.add($.__views.user_id);
-    $.__views.__alloyId212 = Ti.UI.createView({
+    $.__views.__alloyId212.add($.__views.user_id);
+    $.__views.__alloyId213 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId212"
+        id: "__alloyId213"
     });
-    $.__views.setting.add($.__views.__alloyId212);
+    $.__views.setting.add($.__views.__alloyId213);
     $.__views.nickname_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -90,7 +103,7 @@ function Controller() {
         text: "ニックネーム:",
         id: "nickname_label"
     });
-    $.__views.__alloyId212.add($.__views.nickname_label);
+    $.__views.__alloyId213.add($.__views.nickname_label);
     $.__views.nickname = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -102,7 +115,7 @@ function Controller() {
         text: "hoge",
         id: "nickname"
     });
-    $.__views.__alloyId212.add($.__views.nickname);
+    $.__views.__alloyId213.add($.__views.nickname);
     $.__views.select_land = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -157,12 +170,36 @@ function Controller() {
     });
     $.__views.setting.add($.__views.sendQuestionnaire);
     onSendQuestionnaireClicked ? $.__views.sendQuestionnaire.addEventListener("click", onSendQuestionnaireClicked) : __defers["$.__views.sendQuestionnaire!click!onSendQuestionnaireClicked"] = true;
-    $.__views.__alloyId213 = Ti.UI.createView({
+    $.__views.__alloyId214 = Ti.UI.createView({
         width: "100%",
         height: "25dp",
-        id: "__alloyId213"
+        id: "__alloyId214"
     });
-    $.__views.setting.add($.__views.__alloyId213);
+    $.__views.setting.add($.__views.__alloyId214);
+    $.__views.manual = Ti.UI.createButton({
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
+        width: "95%",
+        color: "#000",
+        disabledColor: "#888888",
+        title: "更新/マニュアル",
+        id: "manual"
+    });
+    $.__views.setting.add($.__views.manual);
+    onManualClicked ? $.__views.manual.addEventListener("click", onManualClicked) : __defers["$.__views.manual!click!onManualClicked"] = true;
+    $.__views.__alloyId215 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId215"
+    });
+    $.__views.setting.add($.__views.__alloyId215);
     $.__views.logout_button = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -183,6 +220,7 @@ function Controller() {
     onLogoutClicked ? $.__views.logout_button.addEventListener("click", onLogoutClicked) : __defers["$.__views.logout_button!click!onLogoutClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var util = Alloy.Globals.util;
     $.setting.addEventListener("open", function() {
         var api = Alloy.Globals.api;
         $.nickname.text = api.client.nickname;
@@ -191,6 +229,7 @@ function Controller() {
     __defers["$.__views.select_land!click!onSelectLandClicked"] && $.__views.select_land.addEventListener("click", onSelectLandClicked);
     __defers["$.__views.change_password!click!onChangePasswordClicked"] && $.__views.change_password.addEventListener("click", onChangePasswordClicked);
     __defers["$.__views.sendQuestionnaire!click!onSendQuestionnaireClicked"] && $.__views.sendQuestionnaire.addEventListener("click", onSendQuestionnaireClicked);
+    __defers["$.__views.manual!click!onManualClicked"] && $.__views.manual.addEventListener("click", onManualClicked);
     __defers["$.__views.logout_button!click!onLogoutClicked"] && $.__views.logout_button.addEventListener("click", onLogoutClicked);
     _.extend($, exports);
 }

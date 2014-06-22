@@ -39,6 +39,9 @@ function Controller() {
         var view = Alloy.createController("questionnaire").getView();
         Alloy.Globals.naviCon.open(view);
     }
+    function onManualClicked() {
+        Ti.Platform.openURL("http://de24.digitalasia.chubu.ac.jp/babylon_files/index.html");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "setting";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -163,6 +166,28 @@ function Controller() {
         id: "__alloyId214"
     });
     $.__views.setting.add($.__views.__alloyId214);
+    $.__views.manual = Ti.UI.createButton({
+        font: {
+            fontSize: "32dp"
+        },
+        height: "52dp",
+        backgroundFocusedColor: "#ffe4e1",
+        borderColor: "black",
+        borderWidth: "1dp",
+        borderRadius: "10dp",
+        backgroundColor: "#fff0ff",
+        width: "95%",
+        title: "更新/マニュアル",
+        id: "manual"
+    });
+    $.__views.setting.add($.__views.manual);
+    onManualClicked ? $.__views.manual.addEventListener("click", onManualClicked) : __defers["$.__views.manual!click!onManualClicked"] = true;
+    $.__views.__alloyId215 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId215"
+    });
+    $.__views.setting.add($.__views.__alloyId215);
     $.__views.logout_button = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -190,6 +215,7 @@ function Controller() {
     __defers["$.__views.select_land!click!onSelectLandClicked"] && $.__views.select_land.addEventListener("click", onSelectLandClicked);
     __defers["$.__views.change_password!click!onChangePasswordClicked"] && $.__views.change_password.addEventListener("click", onChangePasswordClicked);
     __defers["$.__views.sendQuestionnaire!click!onSendQuestionnaireClicked"] && $.__views.sendQuestionnaire.addEventListener("click", onSendQuestionnaireClicked);
+    __defers["$.__views.manual!click!onManualClicked"] && $.__views.manual.addEventListener("click", onManualClicked);
     __defers["$.__views.logout_button!click!onLogoutClicked"] && $.__views.logout_button.addEventListener("click", onLogoutClicked);
     _.extend($, exports);
 }

@@ -245,12 +245,16 @@ function PostManager() {
             self.getNearPosts(e.coords.latitude, e.coords.longitude, callback);
         });
     };
+    this.updating = false;
     this.getNearPosts = function(lat, lon, callback) {
+        if (this.updating) return;
         var param = {
             lat: lat,
             lon: lon
         };
+        updating = true;
         client.get("/post/near?lon=" + lon + "&lat=" + lat, param, function(posts) {
+            updating = false;
             callback(posts);
         });
     };
