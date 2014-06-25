@@ -28,9 +28,10 @@ function Controller() {
         properties: {
             textAlign: "left",
             font: {
-                fontSize: "18dp"
+                fontSize: "24dp"
             },
-            height: "24dp",
+            height: "28dp",
+            wordWrap: true,
             bindId: "label"
         }
     };
@@ -72,14 +73,18 @@ function Controller() {
             backgroundColor: "#e0ffff",
             borderRadius: "5dp",
             borderColor: "#80ffff",
-            borderWidth: "1dp"
+            borderWidth: "1dp",
+            font: {
+                fontSize: "24dp"
+            },
+            color: "#000"
         });
         var itemData = [];
         for (var i in selectItems) {
             var item = selectItems[i];
             itemData.push({
                 properties: {
-                    height: "25dp",
+                    height: "64dp",
                     item: item
                 },
                 label: {

@@ -8,4 +8,12 @@
 	
 	width : "100%",
 	height : "90%"
+},
+"Label" : {
+	wordWrap : true,
+	font : { 
+		fontSize : "24dp"
+	},
+	height : "28dp"
 }
+

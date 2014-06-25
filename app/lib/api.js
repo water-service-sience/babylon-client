@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-//var ServerUrl = "http://localhost:9000";
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
+//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
 function DB(){
@@ -199,8 +199,9 @@ function APIClient() {
 		
 	};
 	
-	this.createAccount = function(nickname , cb){
+	this.createAccount = function(username,nickname , cb){
 		self.post("/create/account",{
+			username : username,
 			nickname : nickname
 		},function(userData){
 			if(userData != null){
@@ -332,7 +333,10 @@ function PostManager() {
 			if(e.coords){
 				lat = e.coords.latitude;
 				lon = e.coords.longitude;
+			}else{
+				Ti.API.log("Can't get gps data");
 			}
+			
 			if(image){
 				Ti.API.log("image size = " + image.length);
 				client.postBinary("/photo/upload",

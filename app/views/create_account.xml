@@ -1,31 +1,14 @@
 <Alloy>
 	<Window class="container">
-		<Label id="title">アカウント作成</Label>
+		<Label id="title">アカウント作成/ログイン</Label>
 		
-		<View id="center_panel" class="line_element">
-			<Label id="nickname_label" class="small_text">ニックネーム</Label>
-			<TextField id="nickname"></TextField>
-		</View>
-		<Button id="create" onClick="createAccount">アカウント作成</Button>
+		<Label>氏名</Label>
+		<TextField id="name" />
+		<View class="line_break" />
+		<Label>携帯電話番号</Label>
+		<TextField id="phoneNumber" />
 		
-	
-		<View class="line_element">
-			<Label id="username_label" class="small_text">ユーザー名</Label>
-			<TextField id="username"></TextField>
-		</View>
-		<View class="line_element">
-			<Label id="password_label" class="small_text">パスワード</Label>
-			
-			<TextField id="password" passwordMask="true"></TextField>	
-		</View>
-		
-		<Button id="login" onClick="login">ログイン</Button>
-		
-		<Label>
-			お問い合わせ先:XXX-XXX-XXXX
-		</Label>
-			
-		
+		<Button id="loginOrCreateAccount" onClick="loginOrCreateAccount" >作成/ログイン</Button>
 		
 	</Window>
 </Alloy>

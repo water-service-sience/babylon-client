@@ -23,7 +23,12 @@ $.select_list.addEventListener("open",function(e){
 		backgroundColor : "#e0ffff",
 		borderRadius : "5dp",
 		borderColor : "#80ffff",
-		borderWidth : "1dp"		
+		borderWidth : "1dp",
+		font : { 
+			fontSize : "24dp"
+		},
+	    color: '#000'
+		
 	});
 	//section.headerTitle = headerTitle;
 	var itemData = [];
@@ -32,7 +37,7 @@ $.select_list.addEventListener("open",function(e){
 		var item = selectItems[i];
 		itemData.push({
 			properties : {
-				height : "25dp",
+				height : "64dp",
 				//category : c
 				item : item
 			},

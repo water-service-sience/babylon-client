@@ -3,7 +3,7 @@
 		<ListView id="item_list" defaultItemTemplate="template" onItemclick="onItemClick">
 			<Templates>
 				<ItemTemplate name="template">
-					<Label bindId="label">
+					<Label class="templateItem" bindId="label">
 				</ItemTemplate>
 			</Templates>
 			

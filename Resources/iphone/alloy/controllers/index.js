@@ -37,6 +37,16 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.welcomeMessage = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        text: "ようこそ**さん",
+        id: "welcomeMessage"
+    });
+    $.__views.index.add($.__views.welcomeMessage);
     $.__views.post = Ti.UI.createButton({
         font: {
             fontSize: "40dp"
@@ -163,6 +173,7 @@ function Controller() {
             var view = Alloy.createController("create_account").getView();
             view.open();
         }
+        $.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
         if ("android" == Ti.Platform.osname) {
             var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();
             switch (rc) {

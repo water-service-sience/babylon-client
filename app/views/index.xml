@@ -1,7 +1,7 @@
 <Alloy>
 	<Window class="container">
 		<!--<Label id="status_message">管理者からの通知が１件あります</Label>-->
-		
+		<Label id="welcomeMessage">ようこそ**さん</Label>
 		<Button id="post" class="big-button" onClick="onPostClicked">写真を投稿する</Button>
 		<Button id="field_router" onClick="onFieldROuterClicked">自分の田んぼを見る</Button>
 		<Button id="look" onClick="onLookClicked">周辺の情報を見る</Button>

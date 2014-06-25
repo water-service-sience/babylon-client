@@ -1,11 +1,13 @@
-"#nickname" : {
-	width : "50%"
+"Label" : {
+	left : "5px"
 },
-"#username" : {
-	width : "50%"
+"#name" : {
+	width : "80%",
+	right : "0px"
 },
-"#password" : {
-	width : "50%"
+"#phoneNumber" : {
+	width : "80%",
+	right : "0px"
 }
 
 

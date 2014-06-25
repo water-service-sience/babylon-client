@@ -3,13 +3,13 @@ var util = Alloy.Globals.util;
 
 function onLogoutClicked(){
 	
-	if(!util.userLoginInfo.get()){
+	/*if(!util.userLoginInfo.get()){
 		var alert = Titanium.UI.createAlertDialog(
 		{ title: 'パスワードが設定されていません',
 		message: '再ログインのために、パスワードを設定してください。'});
 		alert.show();
 		return ;
-	}
+	}*/
 	
 	
 	var alert = Titanium.UI.createAlertDialog(

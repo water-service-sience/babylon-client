@@ -67,6 +67,8 @@ $.index.addEventListener("open",function(){
 	
 	}*/
 	
+	$.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
+	
 	if(Ti.Platform.osname == "android"){
 		var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();
 		switch (rc) {

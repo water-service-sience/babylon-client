@@ -20,37 +20,38 @@ function Controller() {
         id: "select_list"
     });
     $.__views.select_list && $.addTopLevelView($.__views.select_list);
-    var __alloyId198 = {};
-    var __alloyId201 = [];
-    var __alloyId203 = {
+    var __alloyId201 = {};
+    var __alloyId204 = [];
+    var __alloyId206 = {
         type: "Ti.UI.Label",
         bindId: "label",
         properties: {
             textAlign: "left",
             font: {
-                fontSize: "18dp"
+                fontSize: "24dp"
             },
-            height: "24dp",
+            height: "28dp",
+            wordWrap: true,
             color: "#000",
             bindId: "label"
         }
     };
-    __alloyId201.push(__alloyId203);
-    var __alloyId200 = {
+    __alloyId204.push(__alloyId206);
+    var __alloyId203 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId201
+        childTemplates: __alloyId204
     };
-    __alloyId198["template"] = __alloyId200;
-    $.__views.__alloyId204 = Ti.UI.createListSection({
-        id: "__alloyId204"
+    __alloyId201["template"] = __alloyId203;
+    $.__views.__alloyId207 = Ti.UI.createListSection({
+        id: "__alloyId207"
     });
-    var __alloyId206 = [];
-    __alloyId206.push($.__views.__alloyId204);
+    var __alloyId209 = [];
+    __alloyId209.push($.__views.__alloyId207);
     $.__views.item_list = Ti.UI.createListView({
-        sections: __alloyId206,
-        templates: __alloyId198,
+        sections: __alloyId209,
+        templates: __alloyId201,
         id: "item_list",
         defaultItemTemplate: "template"
     });
@@ -73,14 +74,18 @@ function Controller() {
             backgroundColor: "#e0ffff",
             borderRadius: "5dp",
             borderColor: "#80ffff",
-            borderWidth: "1dp"
+            borderWidth: "1dp",
+            font: {
+                fontSize: "24dp"
+            },
+            color: "#000"
         });
         var itemData = [];
         for (var i in selectItems) {
             var item = selectItems[i];
             itemData.push({
                 properties: {
-                    height: "25dp",
+                    height: "64dp",
                     item: item
                 },
                 label: {

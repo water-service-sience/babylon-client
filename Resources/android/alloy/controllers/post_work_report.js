@@ -42,26 +42,26 @@ function Controller() {
         __parentSymbol: $.__views.post_work_report
     });
     $.__views.goodness.setParent($.__views.post_work_report);
-    $.__views.__alloyId136 = Ti.UI.createView({
+    $.__views.__alloyId139 = Ti.UI.createView({
         width: "3dp",
         height: "30dp",
-        id: "__alloyId136"
+        id: "__alloyId139"
     });
-    $.__views.post_work_report.add($.__views.__alloyId136);
-    $.__views.__alloyId137 = Ti.UI.createView({
+    $.__views.post_work_report.add($.__views.__alloyId139);
+    $.__views.__alloyId140 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId137"
+        id: "__alloyId140"
     });
-    $.__views.post_work_report.add($.__views.__alloyId137);
-    $.__views.__alloyId138 = Ti.UI.createView({
+    $.__views.post_work_report.add($.__views.__alloyId140);
+    $.__views.__alloyId141 = Ti.UI.createView({
         height: "100%",
         width: "50%",
-        id: "__alloyId138"
+        id: "__alloyId141"
     });
-    $.__views.__alloyId137.add($.__views.__alloyId138);
-    $.__views.__alloyId139 = Ti.UI.createLabel({
+    $.__views.__alloyId140.add($.__views.__alloyId141);
+    $.__views.__alloyId142 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -70,29 +70,29 @@ function Controller() {
         color: "#000",
         width: "25%",
         text: "公開",
-        id: "__alloyId139"
+        id: "__alloyId142"
     });
-    $.__views.__alloyId137.add($.__views.__alloyId139);
+    $.__views.__alloyId140.add($.__views.__alloyId142);
     $.__views.isPublic = Ti.UI.createSwitch({
         height: "100%",
         width: "25%",
         value: true,
         id: "isPublic"
     });
-    $.__views.__alloyId137.add($.__views.isPublic);
-    $.__views.__alloyId140 = Ti.UI.createView({
+    $.__views.__alloyId140.add($.__views.isPublic);
+    $.__views.__alloyId143 = Ti.UI.createView({
         width: "3dp",
         height: "30dp",
-        id: "__alloyId140"
+        id: "__alloyId143"
     });
-    $.__views.post_work_report.add($.__views.__alloyId140);
-    $.__views.__alloyId141 = Ti.UI.createView({
+    $.__views.post_work_report.add($.__views.__alloyId143);
+    $.__views.__alloyId144 = Ti.UI.createView({
         height: "54dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId141"
+        id: "__alloyId144"
     });
-    $.__views.post_work_report.add($.__views.__alloyId141);
+    $.__views.post_work_report.add($.__views.__alloyId144);
     $.__views.post = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -109,7 +109,7 @@ function Controller() {
         title: "投稿",
         id: "post"
     });
-    $.__views.__alloyId141.add($.__views.post);
+    $.__views.__alloyId144.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.recapture = Ti.UI.createButton({
         font: {
@@ -127,21 +127,21 @@ function Controller() {
         title: "再撮影",
         id: "recapture"
     });
-    $.__views.__alloyId141.add($.__views.recapture);
+    $.__views.__alloyId144.add($.__views.recapture);
     onRecaptureClicked ? $.__views.recapture.addEventListener("click", onRecaptureClicked) : __defers["$.__views.recapture!click!onRecaptureClicked"] = true;
-    $.__views.__alloyId142 = Ti.UI.createView({
+    $.__views.__alloyId145 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId142"
+        id: "__alloyId145"
     });
-    $.__views.post_work_report.add($.__views.__alloyId142);
-    $.__views.__alloyId143 = Ti.UI.createView({
+    $.__views.post_work_report.add($.__views.__alloyId145);
+    $.__views.__alloyId146 = Ti.UI.createView({
         height: "100%",
         width: "50%",
-        id: "__alloyId143"
+        id: "__alloyId146"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId143);
+    $.__views.__alloyId145.add($.__views.__alloyId146);
     $.__views.gallery = Ti.UI.createButton({
         font: {
             fontSize: "24dp"
@@ -158,7 +158,7 @@ function Controller() {
         title: "ギャラリー",
         id: "gallery"
     });
-    $.__views.__alloyId142.add($.__views.gallery);
+    $.__views.__alloyId145.add($.__views.gallery);
     onGalleryClicked ? $.__views.gallery.addEventListener("click", onGalleryClicked) : __defers["$.__views.gallery!click!onGalleryClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

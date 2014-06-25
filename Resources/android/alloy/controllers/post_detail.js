@@ -101,13 +101,13 @@ function Controller() {
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
-    $.__views.__alloyId92 = Ti.UI.createView({
+    $.__views.__alloyId95 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId92"
+        id: "__alloyId95"
     });
-    $.__views.scroll_view.add($.__views.__alloyId92);
-    $.__views.__alloyId93 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId95);
+    $.__views.__alloyId96 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -115,9 +115,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "投稿者:",
-        id: "__alloyId93"
+        id: "__alloyId96"
     });
-    $.__views.__alloyId92.add($.__views.__alloyId93);
+    $.__views.__alloyId95.add($.__views.__alloyId96);
     $.__views.post_user = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -128,14 +128,14 @@ function Controller() {
         text: "ほげ",
         id: "post_user"
     });
-    $.__views.__alloyId92.add($.__views.post_user);
-    $.__views.__alloyId94 = Ti.UI.createView({
+    $.__views.__alloyId95.add($.__views.post_user);
+    $.__views.__alloyId97 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId94"
+        id: "__alloyId97"
     });
-    $.__views.scroll_view.add($.__views.__alloyId94);
-    $.__views.__alloyId95 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId97);
+    $.__views.__alloyId98 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -143,9 +143,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "投稿日時:",
-        id: "__alloyId95"
+        id: "__alloyId98"
     });
-    $.__views.__alloyId94.add($.__views.__alloyId95);
+    $.__views.__alloyId97.add($.__views.__alloyId98);
     $.__views.date = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -156,13 +156,13 @@ function Controller() {
         text: "2013年6月23日",
         id: "date"
     });
-    $.__views.__alloyId94.add($.__views.date);
-    $.__views.__alloyId96 = Ti.UI.createView({
+    $.__views.__alloyId97.add($.__views.date);
+    $.__views.__alloyId99 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId96"
+        id: "__alloyId99"
     });
-    $.__views.scroll_view.add($.__views.__alloyId96);
+    $.__views.scroll_view.add($.__views.__alloyId99);
     $.__views.goodness_label = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -173,7 +173,7 @@ function Controller() {
         text: "評価:",
         id: "goodness_label"
     });
-    $.__views.__alloyId96.add($.__views.goodness_label);
+    $.__views.__alloyId99.add($.__views.goodness_label);
     $.__views.goodness = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -184,7 +184,7 @@ function Controller() {
         text: "良い",
         id: "goodness"
     });
-    $.__views.__alloyId96.add($.__views.goodness);
+    $.__views.__alloyId99.add($.__views.goodness);
     $.__views.show_in_map = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -203,7 +203,7 @@ function Controller() {
     });
     $.__views.scroll_view.add($.__views.show_in_map);
     onShowInMapClicked ? $.__views.show_in_map.addEventListener("click", onShowInMapClicked) : __defers["$.__views.show_in_map!click!onShowInMapClicked"] = true;
-    $.__views.__alloyId97 = Ti.UI.createLabel({
+    $.__views.__alloyId100 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -211,9 +211,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "-- 周辺の情報 --",
-        id: "__alloyId97"
+        id: "__alloyId100"
     });
-    $.__views.scroll_view.add($.__views.__alloyId97);
+    $.__views.scroll_view.add($.__views.__alloyId100);
     $.__views.append_info_area = Ti.UI.createView({
         height: "auto",
         layout: "vertical",

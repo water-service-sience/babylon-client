@@ -124,8 +124,9 @@ function APIClient() {
         Ti.API.debug("AK=" + accessKey);
         c.send(data);
     };
-    this.createAccount = function(nickname, cb) {
+    this.createAccount = function(username, nickname, cb) {
         self.post("/create/account", {
+            username: username,
             nickname: nickname
         }, function(userData) {
             if (null != userData) {
@@ -223,7 +224,7 @@ function PostManager() {
             if (e.coords) {
                 lat = e.coords.latitude;
                 lon = e.coords.longitude;
-            }
+            } else Ti.API.log("Can't get gps data");
             if (image) {
                 Ti.API.log("image size = " + image.length);
                 client.postBinary("/photo/upload", image, function() {}, function(result) {
@@ -245,12 +246,16 @@ function PostManager() {
             self.getNearPosts(e.coords.latitude, e.coords.longitude, callback);
         });
     };
+    this.updating = false;
     this.getNearPosts = function(lat, lon, callback) {
+        if (this.updating) return;
         var param = {
             lat: lat,
             lon: lon
         };
+        updating = true;
         client.get("/post/near?lon=" + lon + "&lat=" + lat, param, function(posts) {
+            updating = false;
             callback(posts);
         });
     };
@@ -353,7 +358,7 @@ function QuestionnaireManager() {
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
 
-var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+var ServerUrl = "http://localhost:9000";
 
 var client = new APIClient();
 

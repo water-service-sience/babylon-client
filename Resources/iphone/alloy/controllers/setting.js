@@ -1,13 +1,5 @@
 function Controller() {
     function onLogoutClicked() {
-        if (!util.userLoginInfo.get()) {
-            var alert = Titanium.UI.createAlertDialog({
-                title: "パスワードが設定されていません",
-                message: "再ログインのために、パスワードを設定してください。"
-            });
-            alert.show();
-            return;
-        }
         var alert = Titanium.UI.createAlertDialog({
             title: "ログアウト確認",
             message: "ログアウトしてもよろしいですか？(以前設定したユーザー名とパスワードで再ログイン可能です。)",

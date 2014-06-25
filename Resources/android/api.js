@@ -223,7 +223,7 @@ function PostManager() {
             if (e.coords) {
                 lat = e.coords.latitude;
                 lon = e.coords.longitude;
-            }
+            } else Ti.API.log("Can't get gps data");
             if (image) {
                 Ti.API.log("image size = " + image.length);
                 client.postBinary("/photo/upload", image, function() {}, function(result) {
