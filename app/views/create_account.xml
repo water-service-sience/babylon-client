@@ -7,7 +7,8 @@
 		<View class="line_break" />
 		<Label>携帯電話番号</Label>
 		<TextField id="phoneNumber" />
-		
+		<View class="line_break"></View>
+		<View class="line_break"></View>
 		<Button id="loginOrCreateAccount" onClick="loginOrCreateAccount" >作成/ログイン</Button>
 		
 	</Window>

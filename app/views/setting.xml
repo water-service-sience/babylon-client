@@ -5,12 +5,12 @@
 			<Label id="user_id_label">ユーザーID:</Label><Label id="user_id" class="small_text">203</Label>
 		</View>
 		<View class="line_element">
-			<Label id="nickname_label">ニックネーム:</Label><Label id="nickname" class="small_text">hoge</Label>
+			<Label id="nickname_label">氏名:</Label><Label id="nickname" class="small_text">hoge</Label>
 		</View>
 		
 		<!--<Button id="set_username">ユーザー設定</Button>-->
 		<Button id="select_land" onClick="onSelectLandClicked">所有地設定</Button>
-		<Button id="change_password" onClick="onChangePasswordClicked">パスワードを設定</Button>
+		<Button id="change_password" onClick="onChangePasswordClicked">氏名、携帯番号変更</Button>
 		<Button id="sendQuestionnaire" onClick="onSendQuestionnaireClicked">アンケートに答える</Button>
 		
 		<View class="line_break"></View>

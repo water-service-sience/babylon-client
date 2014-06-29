@@ -1,13 +1,5 @@
 function Controller() {
     function onLogoutClicked() {
-        if (!util.userLoginInfo.get()) {
-            var alert = Titanium.UI.createAlertDialog({
-                title: "パスワードが設定されていません",
-                message: "再ログインのために、パスワードを設定してください。"
-            });
-            alert.show();
-            return;
-        }
         var alert = Titanium.UI.createAlertDialog({
             title: "ログアウト確認",
             message: "ログアウトしてもよろしいですか？(以前設定したユーザー名とパスワードで再ログイン可能です。)",
@@ -21,7 +13,7 @@ function Controller() {
                 Alloy.Globals.api.client.logout();
                 util.questionnaire.delete();
                 util.userLoginInfo.delete();
-                Alloy.Globals.naviCon.home();
+                Alloy.Globals.naviCon.pop();
                 var view = Alloy.createController("create_account").getView();
                 view.open();
             }
@@ -100,7 +92,7 @@ function Controller() {
         height: "24dp",
         color: "#000",
         width: "40%",
-        text: "ニックネーム:",
+        text: "氏名:",
         id: "nickname_label"
     });
     $.__views.__alloyId216.add($.__views.nickname_label);
@@ -147,7 +139,7 @@ function Controller() {
         width: "95%",
         color: "#000",
         disabledColor: "#888888",
-        title: "パスワードを設定",
+        title: "氏名、携帯番号変更",
         id: "change_password"
     });
     $.__views.setting.add($.__views.change_password);

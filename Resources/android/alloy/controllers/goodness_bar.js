@@ -7,11 +7,22 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.goodness_bar = Ti.UI.createView({
-        height: "55dp",
+        height: "80dp",
         width: "100%",
         id: "goodness_bar"
     });
     $.__views.goodness_bar && $.addTopLevelView($.__views.goodness_bar);
+    $.__views.__alloyId19 = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        color: "#000",
+        text: "田んぼの状態",
+        id: "__alloyId19"
+    });
+    $.__views.goodness_bar.add($.__views.__alloyId19);
     $.__views.bad = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -20,7 +31,7 @@ function Controller() {
         },
         height: "24dp",
         color: "#000",
-        top: "1dp",
+        top: "26dp",
         left: "2dp",
         text: "悪い",
         id: "bad"
@@ -34,14 +45,14 @@ function Controller() {
         },
         height: "24dp",
         color: "#000",
-        top: "1dp",
+        top: "26dp",
         right: "2dp",
         text: "良い",
         id: "good"
     });
     $.__views.goodness_bar.add($.__views.good);
     $.__views.goodness = Ti.UI.createSlider({
-        top: "25dp",
+        top: "50dp",
         left: "2dp",
         right: "2dp",
         max: 100,

@@ -95,16 +95,16 @@ function Controller() {
         id: "post_image"
     });
     $.__views.post_image && $.addTopLevelView($.__views.post_image);
-    $.__views.__alloyId101 = Ti.UI.createScrollView({
+    $.__views.__alloyId98 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId101"
+        id: "__alloyId98"
     });
-    $.__views.post_image.add($.__views.__alloyId101);
+    $.__views.post_image.add($.__views.__alloyId98);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
         id: "activityIndicator",
         message: "Uploading..."
     });
-    $.__views.__alloyId101.add($.__views.activityIndicator);
+    $.__views.__alloyId98.add($.__views.activityIndicator);
     $.__views.title = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -115,20 +115,20 @@ function Controller() {
         text: "投稿",
         id: "title"
     });
-    $.__views.__alloyId101.add($.__views.title);
+    $.__views.__alloyId98.add($.__views.title);
     $.__views.photo = Ti.UI.createImageView({
         width: "90%",
         height: "40%",
         id: "photo"
     });
-    $.__views.__alloyId101.add($.__views.photo);
-    $.__views.__alloyId102 = Ti.UI.createView({
+    $.__views.__alloyId98.add($.__views.photo);
+    $.__views.__alloyId99 = Ti.UI.createView({
         height: "54dp",
         layout: "horizontal",
-        id: "__alloyId102"
+        id: "__alloyId99"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId102);
-    $.__views.__alloyId103 = Ti.UI.createLabel({
+    $.__views.__alloyId98.add($.__views.__alloyId99);
+    $.__views.__alloyId100 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -136,9 +136,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "内容:",
-        id: "__alloyId103"
+        id: "__alloyId100"
     });
-    $.__views.__alloyId102.add($.__views.__alloyId103);
+    $.__views.__alloyId99.add($.__views.__alloyId100);
     $.__views.category = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -150,7 +150,7 @@ function Controller() {
         text: "未選択",
         id: "category"
     });
-    $.__views.__alloyId102.add($.__views.category);
+    $.__views.__alloyId99.add($.__views.category);
     $.__views.select_category = Ti.UI.createButton({
         font: {
             fontSize: "24dp"
@@ -168,14 +168,14 @@ function Controller() {
         title: "選択",
         id: "select_category"
     });
-    $.__views.__alloyId102.add($.__views.select_category);
+    $.__views.__alloyId99.add($.__views.select_category);
     onSelectCategoryClicked ? $.__views.select_category.addEventListener("click", onSelectCategoryClicked) : __defers["$.__views.select_category!click!onSelectCategoryClicked"] = true;
     $.__views.goodness = Alloy.createController("goodness_bar", {
         id: "goodness",
-        __parentSymbol: $.__views.__alloyId101
+        __parentSymbol: $.__views.__alloyId98
     });
-    $.__views.goodness.setParent($.__views.__alloyId101);
-    $.__views.__alloyId104 = Ti.UI.createLabel({
+    $.__views.goodness.setParent($.__views.__alloyId98);
+    $.__views.__alloyId101 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -183,9 +183,9 @@ function Controller() {
         height: "24dp",
         color: "#000",
         text: "コメント",
-        id: "__alloyId104"
+        id: "__alloyId101"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId104);
+    $.__views.__alloyId98.add($.__views.__alloyId101);
     $.__views.comment = Ti.UI.createTextArea({
         width: "100%",
         height: "100dp",
@@ -198,13 +198,13 @@ function Controller() {
         backgroundColor: "white",
         id: "comment"
     });
-    $.__views.__alloyId101.add($.__views.comment);
-    $.__views.__alloyId105 = Ti.UI.createView({
+    $.__views.__alloyId98.add($.__views.comment);
+    $.__views.__alloyId102 = Ti.UI.createView({
         height: "54dp",
         layout: "horizontal",
-        id: "__alloyId105"
+        id: "__alloyId102"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId105);
+    $.__views.__alloyId98.add($.__views.__alloyId102);
     $.__views.post = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -222,7 +222,7 @@ function Controller() {
         title: "投稿",
         id: "post"
     });
-    $.__views.__alloyId105.add($.__views.post);
+    $.__views.__alloyId102.add($.__views.post);
     onPostClicked ? $.__views.post.addEventListener("click", onPostClicked) : __defers["$.__views.post!click!onPostClicked"] = true;
     $.__views.recapture = Ti.UI.createButton({
         font: {
@@ -241,8 +241,14 @@ function Controller() {
         title: "再撮影",
         id: "recapture"
     });
-    $.__views.__alloyId105.add($.__views.recapture);
+    $.__views.__alloyId102.add($.__views.recapture);
     onRecaptureClicked ? $.__views.recapture.addEventListener("click", onRecaptureClicked) : __defers["$.__views.recapture!click!onRecaptureClicked"] = true;
+    $.__views.__alloyId103 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId103"
+    });
+    $.__views.__alloyId98.add($.__views.__alloyId103);
     $.__views.gallery = Ti.UI.createButton({
         font: {
             fontSize: "24dp"
@@ -261,7 +267,7 @@ function Controller() {
         title: "ギャラリー",
         id: "gallery"
     });
-    $.__views.__alloyId101.add($.__views.gallery);
+    $.__views.__alloyId98.add($.__views.gallery);
     onGalleryClicked ? $.__views.gallery.addEventListener("click", onGalleryClicked) : __defers["$.__views.gallery!click!onGalleryClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

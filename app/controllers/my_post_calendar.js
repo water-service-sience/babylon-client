@@ -135,7 +135,7 @@ function onCellClicked( e ) {
 		selectedDate = e.source;
 		e.source.parentTable.top = Math.min(0,
 			 50 - (selectedDate.yIndex * cellHeight + headerHeight)
-		);
+		) + "px";
 		
 		$.posts.top = cellHeight * 2.5;
 		$.posts.visible = true;

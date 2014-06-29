@@ -10,10 +10,15 @@ function Controller() {
             alert("不正な電話番号です。");
             return;
         }
+        $.loginOrCreateAccount.enable = false;
         client.login(username, phoneNumber, function(success) {
+            $.loginOrCreateAccount.enable = true;
             success ? $.create_account.close() : client.createAccount(username, $.name.value, function(success) {
-                success ? client.changePassword(username, "", phoneNumber, function(success) {
-                    success ? $.create_account.close() : alert("アカウント作成失敗。パスワードが不正です。");
+                success ? client.changePassword(username, $.name.value, phoneNumber, function(success) {
+                    if (success) {
+                        client.setPhoneNumber(phoneNumber);
+                        $.create_account.close();
+                    } else alert("アカウント作成失敗。パスワードが不正です。");
                 }) : alert("アカウント作成失敗。おそらく、電話番号が間違っています。");
             });
         });
@@ -46,27 +51,27 @@ function Controller() {
     });
     $.__views.create_account && $.addTopLevelView($.__views.create_account);
     $.__views.title = Ti.UI.createLabel({
-        left: "5px",
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
+        left: "5px",
         text: "アカウント作成/ログイン",
         id: "title"
     });
     $.__views.create_account.add($.__views.title);
-    $.__views.__alloyId8 = Ti.UI.createLabel({
-        left: "5px",
+    $.__views.__alloyId4 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
+        left: "5px",
         text: "氏名",
-        id: "__alloyId8"
+        id: "__alloyId4"
     });
-    $.__views.create_account.add($.__views.__alloyId8);
+    $.__views.create_account.add($.__views.__alloyId4);
     $.__views.name = Ti.UI.createTextField({
         font: {
             fontSize: "24dp"
@@ -77,23 +82,23 @@ function Controller() {
         id: "name"
     });
     $.__views.create_account.add($.__views.name);
-    $.__views.__alloyId9 = Ti.UI.createView({
+    $.__views.__alloyId5 = Ti.UI.createView({
         width: "100%",
         height: "25dp",
-        id: "__alloyId9"
+        id: "__alloyId5"
     });
-    $.__views.create_account.add($.__views.__alloyId9);
-    $.__views.__alloyId10 = Ti.UI.createLabel({
-        left: "5px",
+    $.__views.create_account.add($.__views.__alloyId5);
+    $.__views.__alloyId6 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
+        left: "5px",
         text: "携帯電話番号",
-        id: "__alloyId10"
+        id: "__alloyId6"
     });
-    $.__views.create_account.add($.__views.__alloyId10);
+    $.__views.create_account.add($.__views.__alloyId6);
     $.__views.phoneNumber = Ti.UI.createTextField({
         font: {
             fontSize: "24dp"
@@ -101,9 +106,22 @@ function Controller() {
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         width: "80%",
         right: "0px",
+        keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
         id: "phoneNumber"
     });
     $.__views.create_account.add($.__views.phoneNumber);
+    $.__views.__alloyId7 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId7"
+    });
+    $.__views.create_account.add($.__views.__alloyId7);
+    $.__views.__alloyId8 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId8"
+    });
+    $.__views.create_account.add($.__views.__alloyId8);
     $.__views.loginOrCreateAccount = Ti.UI.createButton({
         font: {
             fontSize: "32dp"

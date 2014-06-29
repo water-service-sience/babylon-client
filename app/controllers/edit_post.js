@@ -5,13 +5,22 @@ var api = Alloy.Globals.api;
 
 function onSelectCategoryClicked(e){
 	var post = Alloy.Globals.post;
-	var view = Alloy.createController("select_category",{
-		selectCallback : function(c) {
-			post.category = c;
-			$.category.text = c.label;
-		}
-	}).getView();
-	Alloy.Globals.naviCon.open(view);
+	
+	
+	api.postManager.getCategories( function(categories){
+		var view = Alloy.createController("select_list",{
+			selectCallback : function(c) {
+				post.category = c.id;
+				$.category.text = c.label;
+			},
+			headerTitle : "問い合わせ内容",
+			selectItems : categories
+		}).getView();
+		Alloy.Globals.naviCon.open(view);
+		
+	});
+    
+	
 }
 
 function onSelectLocationClicked(e)

@@ -16,8 +16,8 @@
             </ListSection>
             
             <ListSection headerTitle="編集">
-                <ListItem name:text="新しく登録する" />
-                <ListItem name:text="サーバーと同期" sync="true" />
+                <ListItem height="30dp" name:text="新しく登録する" />
+                <ListItem height="30dp" name:text="サーバーと同期" sync="true" />
             </ListSection>
 		</ListView>
 		

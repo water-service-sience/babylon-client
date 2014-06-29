@@ -79,22 +79,22 @@ function Controller() {
         id: "edit_land"
     });
     $.__views.edit_land && $.addTopLevelView($.__views.edit_land);
-    $.__views.__alloyId11 = Ti.UI.createView({
+    $.__views.__alloyId9 = Ti.UI.createView({
         height: "38dp",
         layout: "horizontal",
-        id: "__alloyId11"
+        id: "__alloyId9"
     });
-    $.__views.edit_land.add($.__views.__alloyId11);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.edit_land.add($.__views.__alloyId9);
+    $.__views.__alloyId10 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "名前",
-        id: "__alloyId12"
+        id: "__alloyId10"
     });
-    $.__views.__alloyId11.add($.__views.__alloyId12);
+    $.__views.__alloyId9.add($.__views.__alloyId10);
     $.__views.name = Ti.UI.createTextField({
         font: {
             fontSize: "24dp"
@@ -103,7 +103,7 @@ function Controller() {
         width: "60%",
         id: "name"
     });
-    $.__views.__alloyId11.add($.__views.name);
+    $.__views.__alloyId9.add($.__views.name);
     $.__views.map = Alloy.Globals.Map.createView({
         height: "70%",
         id: "map",
@@ -115,7 +115,7 @@ function Controller() {
     });
     $.__views.edit_land.add($.__views.map);
     onMapClicked ? $.__views.map.addEventListener("click", onMapClicked) : __defers["$.__views.map!click!onMapClicked"] = true;
-    $.__views.__alloyId13 = Ti.UI.createButton({
+    $.__views.__alloyId11 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -127,11 +127,11 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "95%",
         title: "保存",
-        id: "__alloyId13"
+        id: "__alloyId11"
     });
-    $.__views.edit_land.add($.__views.__alloyId13);
-    onOkClicked ? $.__views.__alloyId13.addEventListener("click", onOkClicked) : __defers["$.__views.__alloyId13!click!onOkClicked"] = true;
-    $.__views.__alloyId14 = Ti.UI.createButton({
+    $.__views.edit_land.add($.__views.__alloyId11);
+    onOkClicked ? $.__views.__alloyId11.addEventListener("click", onOkClicked) : __defers["$.__views.__alloyId11!click!onOkClicked"] = true;
+    $.__views.__alloyId12 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -143,10 +143,10 @@ function Controller() {
         backgroundColor: "#fff0ff",
         width: "30%",
         title: "削除",
-        id: "__alloyId14"
+        id: "__alloyId12"
     });
-    $.__views.edit_land.add($.__views.__alloyId14);
-    onDeleteClicked ? $.__views.__alloyId14.addEventListener("click", onDeleteClicked) : __defers["$.__views.__alloyId14!click!onDeleteClicked"] = true;
+    $.__views.edit_land.add($.__views.__alloyId12);
+    onDeleteClicked ? $.__views.__alloyId12.addEventListener("click", onDeleteClicked) : __defers["$.__views.__alloyId12!click!onDeleteClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var api = Alloy.Globals.api;
@@ -174,8 +174,8 @@ function Controller() {
         $.map.addEventListener("regionchanged", onMapRegionChanged);
     });
     __defers["$.__views.map!click!onMapClicked"] && $.__views.map.addEventListener("click", onMapClicked);
-    __defers["$.__views.__alloyId13!click!onOkClicked"] && $.__views.__alloyId13.addEventListener("click", onOkClicked);
-    __defers["$.__views.__alloyId14!click!onDeleteClicked"] && $.__views.__alloyId14.addEventListener("click", onDeleteClicked);
+    __defers["$.__views.__alloyId11!click!onOkClicked"] && $.__views.__alloyId11.addEventListener("click", onOkClicked);
+    __defers["$.__views.__alloyId12!click!onDeleteClicked"] && $.__views.__alloyId12.addEventListener("click", onDeleteClicked);
     _.extend($, exports);
 }
 

@@ -54,7 +54,7 @@ function Controller() {
             selectedDate && (selectedDate.backgroundColor = cellColor);
             e.source.backgroundColor = selectedCellColor;
             selectedDate = e.source;
-            e.source.parentTable.top = Math.min(0, 50 - (selectedDate.yIndex * cellHeight + headerHeight));
+            e.source.parentTable.top = Math.min(0, 50 - (selectedDate.yIndex * cellHeight + headerHeight)) + "px";
             $.posts.top = 2.5 * cellHeight;
             $.posts.visible = true;
             $.posts.bottom = 0;
@@ -285,6 +285,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        left: "5dp",
         bottom: 0,
         text: "スワイプ左右で月、上下で年を変更できます",
         id: "explanation"
@@ -327,6 +328,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            left: "5dp",
                             bindId: "date"
                         }
                     };
@@ -340,6 +342,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            left: "5dp",
                             bindId: "category"
                         }
                     };
@@ -347,6 +350,7 @@ function Controller() {
                     return __alloyId40;
                 }(),
                 properties: {
+                    width: "auto",
                     layout: "vertical"
                 }
             };

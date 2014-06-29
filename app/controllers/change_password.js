@@ -6,27 +6,26 @@ var util = Alloy.Globals.util;
 
 
 function changePassword(e){
-	
-	var username = $.username.value;
-	var oldPassword = $.old_password.value;
-	var password = $.new_password.value;
-	var confirm = $.confirm_password.value;
-	if(password != confirm){
-		var dialog = Titanium.UI.createAlertDialog({
-			title : "パスワードエラー",
-			message : '確認用のパスワードが一致していません。新しいパスワードと新しいパスワード(確認)には、同じパスワードを入力してください。'
-		});
-		dialog.show();
+	var nickname = $.nickname.value;
+	var username = removeSpaceThenHash(nickname);
+	if(username == null){
+		alert("氏名が入力されていません。");
+		return;
 	}
+	var phoneNumber = normalizeAndValidatePhoneNumber($.phoneNumber.value);
+	
+	if(phoneNumber == null){
+		alert("不正な電話番号です。");
+		return;
+	}
+	var password = phoneNumber;
 	
 	$.changePassword.enable = false;
-	client.changePassword(username,oldPassword,password,function(result){
+	client.changePassword(username,nickname,password,function(result){
 		$.changePassword.enable = true;
 		if(result != null && result.success){
-			var userLoginInfo = {
-				username : username
-			};
-			util.userLoginInfo.set(userLoginInfo);
+			
+			client.setPhoneNumber(phoneNumber);
 			
 			var dialog = Titanium.UI.createAlertDialog({
 				title : "変更完了",
@@ -43,20 +42,41 @@ function changePassword(e){
 	});
 	
 	
+}
+
+function removeSpaceThenHash(name){
+	
+	var re = /\s/;
+	var r = name.replace(re,"");
+	Ti.API.log(r);
+	if(r.length == 0) return null;
+	else return Titanium.Utils.md5HexDigest(r);
 	
 }
 
+function normalizeAndValidatePhoneNumber( phoneNumber){
+	// -の削除
+	var v = phoneNumber.replace(/-/g, ""); 
+	var re = /^[0-9]{7,11}$/;
+	if(!re.test(v)){
+		return null;
+	}
+	return v;
+}
 
 $.change_password.addEventListener("open",function(e){
 	
-	var u = util.userLoginInfo.get();
+	$.nickname.value = client.nickname;
+	$.phoneNumber.value = client.phoneNumber;
+	
+	/*var u = util.userLoginInfo.get();
 	if(u){
 		var username = u.username;
 	}
 	
 	if(client.username){
 		$.username.value = client.username;
-	}
+	}*/
 	
 });
 

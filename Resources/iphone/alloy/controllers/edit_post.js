@@ -1,13 +1,17 @@
 function Controller() {
     function onSelectCategoryClicked() {
         var post = Alloy.Globals.post;
-        var view = Alloy.createController("select_category", {
-            selectCallback: function(c) {
-                post.category = c;
-                $.category.text = c.label;
-            }
-        }).getView();
-        Alloy.Globals.naviCon.open(view);
+        api.postManager.getCategories(function(categories) {
+            var view = Alloy.createController("select_list", {
+                selectCallback: function(c) {
+                    post.category = c.id;
+                    $.category.text = c.label;
+                },
+                headerTitle: "問い合わせ内容",
+                selectItems: categories
+            }).getView();
+            Alloy.Globals.naviCon.open(view);
+        });
     }
     function onSelectLocationClicked() {
         var post = Alloy.Globals.post;
@@ -66,22 +70,22 @@ function Controller() {
         id: "photo"
     });
     $.__views.scroll_view.add($.__views.photo);
-    $.__views.__alloyId15 = Ti.UI.createView({
+    $.__views.__alloyId13 = Ti.UI.createView({
         height: "54dp",
         layout: "horizontal",
-        id: "__alloyId15"
+        id: "__alloyId13"
     });
-    $.__views.scroll_view.add($.__views.__alloyId15);
-    $.__views.__alloyId16 = Ti.UI.createLabel({
+    $.__views.scroll_view.add($.__views.__alloyId13);
+    $.__views.__alloyId14 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "内容:",
-        id: "__alloyId16"
+        id: "__alloyId14"
     });
-    $.__views.__alloyId15.add($.__views.__alloyId16);
+    $.__views.__alloyId13.add($.__views.__alloyId14);
     $.__views.category = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -91,7 +95,7 @@ function Controller() {
         text: "Hoge",
         id: "category"
     });
-    $.__views.__alloyId15.add($.__views.category);
+    $.__views.__alloyId13.add($.__views.category);
     $.__views.select_category = Ti.UI.createButton({
         font: {
             fontSize: "16dp"
@@ -106,22 +110,28 @@ function Controller() {
         title: "選択",
         id: "select_category"
     });
-    $.__views.__alloyId15.add($.__views.select_category);
+    $.__views.__alloyId13.add($.__views.select_category);
+    $.__views.__alloyId15 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId15"
+    });
+    $.__views.scroll_view.add($.__views.__alloyId15);
     $.__views.goodness = Alloy.createController("goodness_bar", {
         id: "goodness",
         __parentSymbol: $.__views.scroll_view
     });
     $.__views.goodness.setParent($.__views.scroll_view);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    $.__views.__alloyId16 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "コメント",
-        id: "__alloyId17"
+        id: "__alloyId16"
     });
-    $.__views.scroll_view.add($.__views.__alloyId17);
+    $.__views.scroll_view.add($.__views.__alloyId16);
     $.__views.comment = Ti.UI.createTextArea({
         width: "100%",
         height: "105dp",
@@ -133,22 +143,16 @@ function Controller() {
         id: "comment"
     });
     $.__views.scroll_view.add($.__views.comment);
-    $.__views.__alloyId18 = Ti.UI.createView({
-        height: "38dp",
-        layout: "horizontal",
-        id: "__alloyId18"
-    });
-    $.__views.scroll_view.add($.__views.__alloyId18);
-    $.__views.__alloyId19 = Ti.UI.createLabel({
+    $.__views.__alloyId17 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
         text: "緯度経度",
-        id: "__alloyId19"
+        id: "__alloyId17"
     });
-    $.__views.__alloyId18.add($.__views.__alloyId19);
+    $.__views.scroll_view.add($.__views.__alloyId17);
     $.__views.location = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -158,7 +162,7 @@ function Controller() {
         text: "123,233",
         id: "location"
     });
-    $.__views.__alloyId18.add($.__views.location);
+    $.__views.scroll_view.add($.__views.location);
     $.__views.select_location = Ti.UI.createButton({
         font: {
             fontSize: "16dp"
@@ -170,10 +174,16 @@ function Controller() {
         borderRadius: "10dp",
         backgroundColor: "#fff0ff",
         width: "95%",
-        title: "選択",
+        title: "位置変更",
         id: "select_location"
     });
-    $.__views.__alloyId18.add($.__views.select_location);
+    $.__views.scroll_view.add($.__views.select_location);
+    $.__views.__alloyId18 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId18"
+    });
+    $.__views.scroll_view.add($.__views.__alloyId18);
     $.__views.save = Ti.UI.createButton({
         font: {
             fontSize: "32dp"

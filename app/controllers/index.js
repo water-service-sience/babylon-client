@@ -56,6 +56,10 @@ function onQuestionnaireClicked(e){
 	if(util.questionnaire.get()){
 		$.questionnaire.title = "アンケートを修正";
 	}
+$.index.addEventListener("focus",function(){
+	
+	$.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
+});
 
 $.index.addEventListener("open",function(){
 	if(!client.isLogin){
@@ -67,7 +71,6 @@ $.index.addEventListener("open",function(){
 	
 	}*/
 	
-	$.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
 	
 	if(Ti.Platform.osname == "android"){
 		var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();

@@ -35,7 +35,8 @@ function refresh(){
 		var l = land.toJSON();
 		return {
 			land : l,
-			name : { text : l.name}
+			name : { text : l.name},
+			height : "30dp"
 		};
 	});
 	

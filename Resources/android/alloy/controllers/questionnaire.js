@@ -106,19 +106,19 @@ function Controller() {
         id: "questionnaire"
     });
     $.__views.questionnaire && $.addTopLevelView($.__views.questionnaire);
-    $.__views.__alloyId147 = Ti.UI.createScrollView({
+    $.__views.__alloyId146 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId147"
+        id: "__alloyId146"
     });
-    $.__views.questionnaire.add($.__views.__alloyId147);
-    $.__views.__alloyId148 = Ti.UI.createView({
+    $.__views.questionnaire.add($.__views.__alloyId146);
+    $.__views.__alloyId147 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId148"
+        id: "__alloyId147"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId148);
-    $.__views.__alloyId149 = Ti.UI.createLabel({
+    $.__views.__alloyId146.add($.__views.__alloyId147);
+    $.__views.__alloyId148 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -127,9 +127,9 @@ function Controller() {
         color: "#000",
         width: "33.33333%",
         text: "年齢",
-        id: "__alloyId149"
+        id: "__alloyId148"
     });
-    $.__views.__alloyId148.add($.__views.__alloyId149);
+    $.__views.__alloyId147.add($.__views.__alloyId148);
     $.__views.age = Ti.UI.createTextField({
         font: {
             fontSize: "20dp"
@@ -143,8 +143,8 @@ function Controller() {
         id: "age",
         value: "20"
     });
-    $.__views.__alloyId148.add($.__views.age);
-    $.__views.__alloyId150 = Ti.UI.createLabel({
+    $.__views.__alloyId147.add($.__views.age);
+    $.__views.__alloyId149 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -153,17 +153,17 @@ function Controller() {
         color: "#000",
         width: "16.66666%",
         text: "歳",
-        id: "__alloyId150"
+        id: "__alloyId149"
     });
-    $.__views.__alloyId148.add($.__views.__alloyId150);
-    $.__views.__alloyId151 = Ti.UI.createView({
+    $.__views.__alloyId147.add($.__views.__alloyId149);
+    $.__views.__alloyId150 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId151"
+        id: "__alloyId150"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId151);
-    $.__views.__alloyId152 = Ti.UI.createLabel({
+    $.__views.__alloyId146.add($.__views.__alloyId150);
+    $.__views.__alloyId151 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -172,9 +172,9 @@ function Controller() {
         color: "#000",
         width: "33.33333%",
         text: "Q1.使用頻度",
-        id: "__alloyId152"
+        id: "__alloyId151"
     });
-    $.__views.__alloyId151.add($.__views.__alloyId152);
+    $.__views.__alloyId150.add($.__views.__alloyId151);
     $.__views.useFrequency = Ti.UI.createButton({
         font: {
             fontSize: "18dp"
@@ -191,15 +191,21 @@ function Controller() {
         title: "未回答",
         id: "useFrequency"
     });
-    $.__views.__alloyId151.add($.__views.useFrequency);
+    $.__views.__alloyId150.add($.__views.useFrequency);
     selectUseFrequency ? $.__views.useFrequency.addEventListener("click", selectUseFrequency) : __defers["$.__views.useFrequency!click!selectUseFrequency"] = true;
+    $.__views.__alloyId152 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId152"
+    });
+    $.__views.__alloyId146.add($.__views.__alloyId152);
     $.__views.__alloyId153 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
         id: "__alloyId153"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId153);
+    $.__views.__alloyId146.add($.__views.__alloyId153);
     $.__views.__alloyId154 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
@@ -241,14 +247,14 @@ function Controller() {
         text: "Q3.利便性に関して",
         id: "__alloyId155"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId155);
+    $.__views.__alloyId146.add($.__views.__alloyId155);
     $.__views.__alloyId156 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
         id: "__alloyId156"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId156);
+    $.__views.__alloyId146.add($.__views.__alloyId156);
     $.__views.__alloyId157 = Ti.UI.createView({
         height: "100%",
         width: "8.333333%",
@@ -273,7 +279,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId159"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId159);
+    $.__views.__alloyId146.add($.__views.__alloyId159);
     $.__views.__alloyId160 = Ti.UI.createView({
         height: "100%",
         width: "33.33333%",
@@ -304,7 +310,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId161"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId161);
+    $.__views.__alloyId146.add($.__views.__alloyId161);
     $.__views.__alloyId162 = Ti.UI.createView({
         height: "100%",
         width: "8.333333%",
@@ -329,7 +335,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId164"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId164);
+    $.__views.__alloyId146.add($.__views.__alloyId164);
     $.__views.__alloyId165 = Ti.UI.createView({
         height: "100%",
         width: "33.33333%",
@@ -360,7 +366,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId166"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId166);
+    $.__views.__alloyId146.add($.__views.__alloyId166);
     $.__views.__alloyId167 = Ti.UI.createView({
         height: "100%",
         width: "8.333333%",
@@ -385,7 +391,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId169"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId169);
+    $.__views.__alloyId146.add($.__views.__alloyId169);
     $.__views.__alloyId170 = Ti.UI.createView({
         height: "100%",
         width: "33.33333%",
@@ -421,14 +427,14 @@ function Controller() {
         text: "Q4.サービスの利用に関して",
         id: "__alloyId171"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId171);
+    $.__views.__alloyId146.add($.__views.__alloyId171);
     $.__views.__alloyId172 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
         id: "__alloyId172"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId172);
+    $.__views.__alloyId146.add($.__views.__alloyId172);
     $.__views.__alloyId173 = Ti.UI.createView({
         height: "100%",
         width: "8.333333%",
@@ -453,7 +459,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId175"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId175);
+    $.__views.__alloyId146.add($.__views.__alloyId175);
     $.__views.__alloyId176 = Ti.UI.createView({
         height: "100%",
         width: "33.33333%",
@@ -484,7 +490,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId177"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId177);
+    $.__views.__alloyId146.add($.__views.__alloyId177);
     $.__views.__alloyId178 = Ti.UI.createView({
         height: "100%",
         width: "8.333333%",
@@ -509,7 +515,7 @@ function Controller() {
         layout: "horizontal",
         id: "__alloyId180"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId180);
+    $.__views.__alloyId146.add($.__views.__alloyId180);
     $.__views.__alloyId181 = Ti.UI.createView({
         height: "100%",
         width: "33.33333%",
@@ -545,7 +551,7 @@ function Controller() {
         text: "Q5.ご意見、ご感想",
         id: "__alloyId182"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId182);
+    $.__views.__alloyId146.add($.__views.__alloyId182);
     $.__views.freeMessage = Ti.UI.createTextArea({
         width: "98%",
         height: "100dp",
@@ -558,7 +564,7 @@ function Controller() {
         backgroundColor: "white",
         id: "freeMessage"
     });
-    $.__views.__alloyId147.add($.__views.freeMessage);
+    $.__views.__alloyId146.add($.__views.freeMessage);
     $.__views.send = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -575,7 +581,7 @@ function Controller() {
         title: "送信",
         id: "send"
     });
-    $.__views.__alloyId147.add($.__views.send);
+    $.__views.__alloyId146.add($.__views.send);
     onSendClicked ? $.__views.send.addEventListener("click", onSendClicked) : __defers["$.__views.send!click!onSendClicked"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

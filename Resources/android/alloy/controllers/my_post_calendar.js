@@ -54,7 +54,7 @@ function Controller() {
             selectedDate && (selectedDate.backgroundColor = cellColor);
             e.source.backgroundColor = selectedCellColor;
             selectedDate = e.source;
-            e.source.parentTable.top = Math.min(0, 50 - (selectedDate.yIndex * cellHeight + headerHeight));
+            e.source.parentTable.top = Math.min(0, 50 - (selectedDate.yIndex * cellHeight + headerHeight)) + "px";
             $.posts.top = 2.5 * cellHeight;
             $.posts.visible = true;
             $.posts.bottom = 0;
@@ -285,6 +285,7 @@ function Controller() {
             fontSize: "18dp"
         },
         height: "24dp",
+        left: "5dp",
         color: "#000",
         bottom: 0,
         text: "スワイプ左右で月、上下で年を変更できます",
@@ -299,13 +300,13 @@ function Controller() {
         id: "posts"
     });
     $.__views.my_post_calendar.add($.__views.posts);
-    var __alloyId32 = {};
-    var __alloyId35 = [];
-    var __alloyId37 = {
+    var __alloyId29 = {};
+    var __alloyId32 = [];
+    var __alloyId34 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId38 = [];
-            var __alloyId40 = {
+            var __alloyId35 = [];
+            var __alloyId37 = {
                 type: "Ti.UI.ImageView",
                 bindId: "thumbnail",
                 properties: {
@@ -314,12 +315,12 @@ function Controller() {
                     bindId: "thumbnail"
                 }
             };
-            __alloyId38.push(__alloyId40);
-            var __alloyId42 = {
+            __alloyId35.push(__alloyId37);
+            var __alloyId39 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId43 = [];
-                    var __alloyId45 = {
+                    var __alloyId40 = [];
+                    var __alloyId42 = {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
@@ -328,12 +329,13 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            left: "5dp",
                             color: "#000",
                             bindId: "date"
                         }
                     };
-                    __alloyId43.push(__alloyId45);
-                    var __alloyId47 = {
+                    __alloyId40.push(__alloyId42);
+                    var __alloyId44 = {
                         type: "Ti.UI.Label",
                         bindId: "category",
                         properties: {
@@ -342,43 +344,45 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            left: "5dp",
                             color: "#000",
                             bindId: "category"
                         }
                     };
-                    __alloyId43.push(__alloyId47);
-                    return __alloyId43;
+                    __alloyId40.push(__alloyId44);
+                    return __alloyId40;
                 }(),
                 properties: {
+                    width: "auto",
                     layout: "vertical"
                 }
             };
-            __alloyId38.push(__alloyId42);
-            return __alloyId38;
+            __alloyId35.push(__alloyId39);
+            return __alloyId35;
         }(),
         properties: {
             layout: "horizontal"
         }
     };
-    __alloyId35.push(__alloyId37);
-    var __alloyId34 = {
+    __alloyId32.push(__alloyId34);
+    var __alloyId31 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId35
+        childTemplates: __alloyId32
     };
-    __alloyId32["template"] = __alloyId34;
-    $.__views.__alloyId48 = Ti.UI.createListSection({
+    __alloyId29["template"] = __alloyId31;
+    $.__views.__alloyId45 = Ti.UI.createListSection({
         headerTitle: "投稿一覧",
-        id: "__alloyId48"
+        id: "__alloyId45"
     });
-    var __alloyId50 = [];
-    __alloyId50.push($.__views.__alloyId48);
+    var __alloyId47 = [];
+    __alloyId47.push($.__views.__alloyId45);
     $.__views.postTable = Ti.UI.createListView({
         top: 0,
         bottom: 0,
-        sections: __alloyId50,
-        templates: __alloyId32,
+        sections: __alloyId47,
+        templates: __alloyId29,
         id: "postTable",
         defaultItemTemplate: "template"
     });

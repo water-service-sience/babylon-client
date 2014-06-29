@@ -49,6 +49,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            left: "5dp",
                             bindId: "date"
                         }
                     };
@@ -62,6 +63,7 @@ function Controller() {
                                 fontSize: "18dp"
                             },
                             height: "24dp",
+                            left: "5dp",
                             bindId: "category"
                         }
                     };
@@ -69,7 +71,8 @@ function Controller() {
                     return __alloyId59;
                 }(),
                 properties: {
-                    layout: "vertical"
+                    layout: "vertical",
+                    width: "auto"
                 }
             };
             __alloyId54.push(__alloyId58);

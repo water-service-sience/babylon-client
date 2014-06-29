@@ -231,6 +231,12 @@ function Controller() {
     });
     $.__views.__alloyId102.add($.__views.recapture);
     onRecaptureClicked ? $.__views.recapture.addEventListener("click", onRecaptureClicked) : __defers["$.__views.recapture!click!onRecaptureClicked"] = true;
+    $.__views.__alloyId103 = Ti.UI.createView({
+        width: "100%",
+        height: "25dp",
+        id: "__alloyId103"
+    });
+    $.__views.__alloyId98.add($.__views.__alloyId103);
     $.__views.gallery = Ti.UI.createButton({
         font: {
             fontSize: "24dp"

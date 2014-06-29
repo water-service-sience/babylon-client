@@ -7,7 +7,8 @@
 },
 "#phoneNumber" : {
 	width : "80%",
-	right : "0px"
+	right : "0px",
+	keyboardType : Ti.UI.KEYBOARD_NUMBER_PAD
 }
 
 

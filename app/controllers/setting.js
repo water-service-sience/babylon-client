@@ -30,7 +30,7 @@ function onLogoutClicked(){
 			Alloy.Globals.api.client.logout();
 			util.questionnaire.delete();
 			util.userLoginInfo.delete();
-			Alloy.Globals.naviCon.home();
+			Alloy.Globals.naviCon.pop();
 			var view = Alloy.createController("create_account").getView();
 			view.open();
 	    }

@@ -20,9 +20,9 @@ function Controller() {
         id: "select_list"
     });
     $.__views.select_list && $.addTopLevelView($.__views.select_list);
-    var __alloyId198 = {};
-    var __alloyId201 = [];
-    var __alloyId203 = {
+    var __alloyId201 = {};
+    var __alloyId204 = [];
+    var __alloyId206 = {
         type: "Ti.UI.Label",
         bindId: "label",
         properties: {
@@ -35,22 +35,22 @@ function Controller() {
             bindId: "label"
         }
     };
-    __alloyId201.push(__alloyId203);
-    var __alloyId200 = {
+    __alloyId204.push(__alloyId206);
+    var __alloyId203 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId201
+        childTemplates: __alloyId204
     };
-    __alloyId198["template"] = __alloyId200;
-    $.__views.__alloyId204 = Ti.UI.createListSection({
-        id: "__alloyId204"
+    __alloyId201["template"] = __alloyId203;
+    $.__views.__alloyId207 = Ti.UI.createListSection({
+        id: "__alloyId207"
     });
-    var __alloyId206 = [];
-    __alloyId206.push($.__views.__alloyId204);
+    var __alloyId209 = [];
+    __alloyId209.push($.__views.__alloyId207);
     $.__views.item_list = Ti.UI.createListView({
-        sections: __alloyId206,
-        templates: __alloyId198,
+        sections: __alloyId209,
+        templates: __alloyId201,
         id: "item_list",
         defaultItemTemplate: "template"
     });

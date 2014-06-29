@@ -1,9 +1,9 @@
 ".goodness_panel" : {
-	height : "55dp",
+	height : "80dp",
 	width : "100%"
 },
 "#bad" : {
-	top : "1dp",
+	top : "26dp",
     left : "2dp",
     font :  {
         fontSize: '16dp',
@@ -11,7 +11,7 @@
     }	
 },
 "#good" : {
-	top : "1dp",
+	top : "26dp",
     right : "2dp",
     textAlign : "right",
     font :  {
@@ -20,7 +20,7 @@
     }	
 },
 "#goodness" : {
-	top : "25dp",
+	top : "50dp",
 	left : "2dp",
 	right : "2dp",
 	max : 100,

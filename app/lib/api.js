@@ -1,7 +1,7 @@
 
 var AccessKeyHeader = "BBLN-ACCESS-KEY";
-var ServerUrl = "http://localhost:9000";
-//var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
+//var ServerUrl = "http://localhost:9000";
+var ServerUrl = "http://de24.digitalasia.chubu.ac.jp/babylon";
 
 
 function DB(){
@@ -71,6 +71,7 @@ function APIClient() {
 	this.userId = readDb("userId");
 	this.nickname = readDb("nickname");
 	this.username = readDb("username");
+	this.phoneNumber = readDb("phoneNumber");
 	this.accessKey = accessKey;
 	this.isLogin =  this.accessKey && this.accessKey != "";
 	Ti.API.info("AK = " + accessKey + " login:" + this.isLogin);
@@ -265,29 +266,30 @@ function APIClient() {
 		writeDb("userId","");
 		writeDb("nickname","");
 		writeDb("username","");
+		writeDb("phoneNumber","");
 	};
 	
-	this.changePassword = function(username,oldPassword,newPassword,cb){
-		if(newPassword.length < 4){
+	this.changePassword = function(username,nickname,password,cb){
+		if(password.length < 4){
 			alert("パスワードが短すぎます。");
 			return;
 		}
-		newPassword = Titanium.Utils.md5HexDigest(newPassword);
-		if(oldPassword.length > 0){
-			oldPassword = Titanium.Utils.md5HexDigest(oldPassword);
-		}
+		password = Titanium.Utils.md5HexDigest(password);
 		Ti.API.debug("Change password:" + username);
 		 self.post("/reset/password",{
 			username : username,
-			oldPassword : oldPassword,
-			newPassword : newPassword
+			nickname : nickname,
+			password : password
 		},function(result){
 			if(result != null){
 				if(result.result == 1){
 					result.success = true;
 					if(username.length > 0){
 						writeDb("username",username);
+						self.username = username;
 					}
+					writeDb("nickname",nickname);
+					self.nickname = nickname;
 				}else{
 					result
 					.success = false;
@@ -297,6 +299,21 @@ function APIClient() {
 		});
 	};
 	
+	this.setPhoneNumber = function(phoneNumber) {
+		self.phoneNumber = phoneNumber;
+		writeDb("phoneNumber",phoneNumber);
+		
+		var contacts = {
+			contacts : [
+			  {contactType :1 , contact : phoneNumber}
+			]
+		};
+		
+		self.post("/contact/update",contacts,function(e){
+			Ti.API.debug("Contact info are updated");
+		});
+		
+	};
 	
 	return this;
 }

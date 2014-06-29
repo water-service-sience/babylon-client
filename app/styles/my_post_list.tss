@@ -13,5 +13,9 @@
 	height : "100dp"
 },
 ".v_container" : {
-	layout : "vertical"
+	layout : "vertical",
+	width : "auto"
+},
+"Label" : {
+	left : "5dp"
 }

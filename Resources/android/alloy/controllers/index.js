@@ -37,6 +37,17 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.welcomeMessage = Ti.UI.createLabel({
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        color: "#000",
+        text: "ようこそ**さん",
+        id: "welcomeMessage"
+    });
+    $.__views.index.add($.__views.welcomeMessage);
     $.__views.post = Ti.UI.createButton({
         font: {
             fontSize: "40dp"
@@ -109,19 +120,19 @@ function Controller() {
     });
     $.__views.index.add($.__views.look_mine);
     onLookMineClicked ? $.__views.look_mine.addEventListener("click", onLookMineClicked) : __defers["$.__views.look_mine!click!onLookMineClicked"] = true;
-    $.__views.__alloyId23 = Ti.UI.createView({
+    $.__views.__alloyId20 = Ti.UI.createView({
         height: "38dp",
         width: "100%",
         layout: "horizontal",
-        id: "__alloyId23"
+        id: "__alloyId20"
     });
-    $.__views.index.add($.__views.__alloyId23);
-    $.__views.__alloyId24 = Ti.UI.createView({
+    $.__views.index.add($.__views.__alloyId20);
+    $.__views.__alloyId21 = Ti.UI.createView({
         height: "100%",
         width: "58.333333%",
-        id: "__alloyId24"
+        id: "__alloyId21"
     });
-    $.__views.__alloyId23.add($.__views.__alloyId24);
+    $.__views.__alloyId20.add($.__views.__alloyId21);
     $.__views.setting = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -138,14 +149,14 @@ function Controller() {
         title: "設定",
         id: "setting"
     });
-    $.__views.__alloyId23.add($.__views.setting);
+    $.__views.__alloyId20.add($.__views.setting);
     onSettingClicked ? $.__views.setting.addEventListener("click", onSettingClicked) : __defers["$.__views.setting!click!onSettingClicked"] = true;
-    $.__views.__alloyId25 = Ti.UI.createView({
+    $.__views.__alloyId22 = Ti.UI.createView({
         width: "100%",
         height: "25dp",
-        id: "__alloyId25"
+        id: "__alloyId22"
     });
-    $.__views.index.add($.__views.__alloyId25);
+    $.__views.index.add($.__views.__alloyId22);
     $.__views.questionnaire = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -170,6 +181,9 @@ function Controller() {
     var util = Alloy.Globals.util;
     var client = api.client;
     util.questionnaire.get() && ($.questionnaire.title = "アンケートを修正");
+    $.index.addEventListener("focus", function() {
+        $.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
+    });
     $.index.addEventListener("open", function() {
         if (!client.isLogin) {
             var view = Alloy.createController("create_account").getView();

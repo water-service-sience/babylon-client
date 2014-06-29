@@ -1,24 +1,22 @@
 function Controller() {
     function changePassword() {
-        var username = $.username.value;
-        var oldPassword = $.old_password.value;
-        var password = $.new_password.value;
-        var confirm = $.confirm_password.value;
-        if (password != confirm) {
-            var dialog = Titanium.UI.createAlertDialog({
-                title: "パスワードエラー",
-                message: "確認用のパスワードが一致していません。新しいパスワードと新しいパスワード(確認)には、同じパスワードを入力してください。"
-            });
-            dialog.show();
+        var nickname = $.nickname.value;
+        var username = removeSpaceThenHash(nickname);
+        if (null == username) {
+            alert("氏名が入力されていません。");
+            return;
         }
+        var phoneNumber = normalizeAndValidatePhoneNumber($.phoneNumber.value);
+        if (null == phoneNumber) {
+            alert("不正な電話番号です。");
+            return;
+        }
+        var password = phoneNumber;
         $.changePassword.enable = false;
-        client.changePassword(username, oldPassword, password, function(result) {
+        client.changePassword(username, nickname, password, function(result) {
             $.changePassword.enable = true;
             if (null != result && result.success) {
-                var userLoginInfo = {
-                    username: username
-                };
-                util.userLoginInfo.set(userLoginInfo);
+                client.setPhoneNumber(phoneNumber);
                 var dialog = Titanium.UI.createAlertDialog({
                     title: "変更完了",
                     message: "変更完了しました。"
@@ -32,6 +30,18 @@ function Controller() {
                 dialog.show();
             }
         });
+    }
+    function removeSpaceThenHash(name) {
+        var re = /\s/;
+        var r = name.replace(re, "");
+        Ti.API.log(r);
+        return 0 == r.length ? null : Titanium.Utils.md5HexDigest(r);
+    }
+    function normalizeAndValidatePhoneNumber(phoneNumber) {
+        var v = phoneNumber.replace(/-/g, "");
+        var re = /^[0-9]{7,11}$/;
+        if (!re.test(v)) return null;
+        return v;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "change_password";
@@ -48,122 +58,65 @@ function Controller() {
     });
     $.__views.change_password && $.addTopLevelView($.__views.change_password);
     $.__views.__alloyId0 = Ti.UI.createLabel({
+        left: 0,
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
-        text: "ユーザー名とパスワードの変更",
+        text: "氏名と電話番号の変更",
         id: "__alloyId0"
     });
     $.__views.change_password.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createView({
-        height: "38dp",
-        layout: "horizontal",
+    $.__views.__alloyId1 = Ti.UI.createLabel({
+        left: 0,
+        textAlign: "left",
+        font: {
+            fontSize: "18dp"
+        },
+        height: "24dp",
+        text: "氏名",
         id: "__alloyId1"
     });
     $.__views.change_password.add($.__views.__alloyId1);
-    $.__views.username_label = Ti.UI.createLabel({
+    $.__views.nickname = Ti.UI.createTextField({
+        width: "80%",
+        right: 0,
+        font: {
+            fontSize: "24dp"
+        },
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        id: "nickname"
+    });
+    $.__views.change_password.add($.__views.nickname);
+    $.__views.__alloyId2 = Ti.UI.createLabel({
+        left: 0,
         textAlign: "left",
         font: {
             fontSize: "18dp"
         },
         height: "24dp",
-        text: "ユーザー名",
-        id: "username_label"
-    });
-    $.__views.__alloyId1.add($.__views.username_label);
-    $.__views.username = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
-        font: {
-            fontSize: "24dp"
-        },
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "username"
-    });
-    $.__views.__alloyId1.add($.__views.username);
-    $.__views.__alloyId2 = Ti.UI.createView({
-        height: "38dp",
-        layout: "horizontal",
+        text: "電話番号",
         id: "__alloyId2"
     });
     $.__views.change_password.add($.__views.__alloyId2);
-    $.__views.old_password_label = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        text: "以前のパスワード",
-        id: "old_password_label"
-    });
-    $.__views.__alloyId2.add($.__views.old_password_label);
-    $.__views.old_password = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
+    $.__views.phoneNumber = Ti.UI.createTextField({
+        width: "80%",
+        right: 0,
         font: {
             fontSize: "24dp"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "old_password",
-        passwordMask: "true"
+        keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
+        id: "phoneNumber"
     });
-    $.__views.__alloyId2.add($.__views.old_password);
+    $.__views.change_password.add($.__views.phoneNumber);
     $.__views.__alloyId3 = Ti.UI.createView({
-        height: "38dp",
-        layout: "horizontal",
+        width: "100%",
+        height: "25dp",
         id: "__alloyId3"
     });
     $.__views.change_password.add($.__views.__alloyId3);
-    $.__views.new_password_label = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        text: "新しいパスワード",
-        id: "new_password_label"
-    });
-    $.__views.__alloyId3.add($.__views.new_password_label);
-    $.__views.new_password = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
-        font: {
-            fontSize: "24dp"
-        },
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "new_password",
-        passwordMask: "true"
-    });
-    $.__views.__alloyId3.add($.__views.new_password);
-    $.__views.__alloyId4 = Ti.UI.createView({
-        height: "38dp",
-        layout: "horizontal",
-        id: "__alloyId4"
-    });
-    $.__views.change_password.add($.__views.__alloyId4);
-    $.__views.confirm_password_label = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "24dp",
-        text: "新しいパスワード(確認)",
-        id: "confirm_password_label"
-    });
-    $.__views.__alloyId4.add($.__views.confirm_password_label);
-    $.__views.confirm_password = Ti.UI.createTextField({
-        width: "50%",
-        right: "2dp",
-        font: {
-            fontSize: "24dp"
-        },
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        id: "confirm_password",
-        passwordMask: "true"
-    });
-    $.__views.change_password.add($.__views.confirm_password);
     $.__views.changePassword = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
@@ -180,50 +133,14 @@ function Controller() {
     });
     $.__views.change_password.add($.__views.changePassword);
     changePassword ? $.__views.changePassword.addEventListener("click", changePassword) : __defers["$.__views.changePassword!click!changePassword"] = true;
-    $.__views.__alloyId5 = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "auto",
-        width: "100%",
-        text: "パスワードの入力ミスの無いよう、同じパスワードを2回入力してください。",
-        color: "red",
-        id: "__alloyId5"
-    });
-    $.__views.change_password.add($.__views.__alloyId5);
-    $.__views.__alloyId6 = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "auto",
-        width: "100%",
-        text: "パスワードは、４文字以上で設定してください。",
-        color: "red",
-        id: "__alloyId6"
-    });
-    $.__views.change_password.add($.__views.__alloyId6);
-    $.__views.__alloyId7 = Ti.UI.createLabel({
-        textAlign: "left",
-        font: {
-            fontSize: "18dp"
-        },
-        height: "auto",
-        width: "100%",
-        text: "ユーザー名を変更しない場合は、空白のままにしてください。",
-        id: "__alloyId7"
-    });
-    $.__views.change_password.add($.__views.__alloyId7);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var api = require("api");
     var client = api.client;
-    var util = Alloy.Globals.util;
+    Alloy.Globals.util;
     $.change_password.addEventListener("open", function() {
-        var u = util.userLoginInfo.get();
-        u && u.username;
-        client.username && ($.username.value = client.username);
+        $.nickname.value = client.nickname;
+        $.phoneNumber.value = client.phoneNumber;
     });
     __defers["$.__views.changePassword!click!changePassword"] && $.__views.changePassword.addEventListener("click", changePassword);
     _.extend($, exports);

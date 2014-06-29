@@ -16,15 +16,18 @@ function loginOrCreateAccount(e) {
 		alert("不正な電話番号です。");
 		return;
 	}
+	$.loginOrCreateAccount.enable = false;
 	client.login(username,phoneNumber,function(success){
+		$.loginOrCreateAccount.enable = true;
     	if(success){
     		$.create_account.close();
     	}else{
     		client.createAccount(username,$.name.value,function(success){
 			if(success){
-				    client.changePassword(username,"",phoneNumber,function(success){
+				    client.changePassword(username,$.name.value,phoneNumber,function(success){
 				    	if(success){
-							
+				    		
+							client.setPhoneNumber(phoneNumber);
 							$.create_account.close();
 				    	}else{
 							alert("アカウント作成失敗。パスワードが不正です。");

@@ -1,6 +1,6 @@
 <Alloy>
 	<Window class="container">
-	
+	    <ScrollView class="container">
 		
         <Require type="view" src="post_image_view" id="image_view" onSetImage="onSetImage"/>	
 		<View class="row">
@@ -9,6 +9,8 @@
 			<Button id="select_category" class="col_3"
 				onClick="onSelectCategoryClicked" >選択</Button>
 		</View>
+		<Require id="goodness" class="goodness_panel" type="view" src="goodness_bar" />
+			
 		
 		<Label>メッセージ</Label>
 		<TextArea id="comment"></TextArea>
@@ -22,5 +24,6 @@
 			<View class="col_6"></View>
 			<Button id="gallery" class="small-button col_6" onClick="onGalleryClicked">ギャラリー</Button>
 		</View>
+		</ScrollView>
 	</Window>
 </Alloy>

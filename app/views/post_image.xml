@@ -19,6 +19,7 @@
 				<Button id="post" onClick="onPostClicked">投稿</Button>
 				<Button id="recapture" onClick="onRecaptureClicked">再撮影</Button>
 			</View>
+			<View class="line_break"></View>
 			<Button id="gallery" class="small-button" onClick="onGalleryClicked">ギャラリー</Button>
 		</ScrollView>
 	</Window>

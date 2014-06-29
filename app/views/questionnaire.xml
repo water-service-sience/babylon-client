@@ -11,6 +11,7 @@
 				<Label class="col_4">Q1.使用頻度</Label>
 				<Button id="useFrequency" class="col_8 dropdown_list" onClick="selectUseFrequency">未回答</Button>
 			</View>
+			<View class="line_break"></View>
 			<View class="row">
 				<Label class="col_4">Q2.操作性</Label>
 				<Button id="easiness" class="col_8 dropdown_list" onClick="selectEasiness">未回答</Button>
