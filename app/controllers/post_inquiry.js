@@ -11,10 +11,7 @@ var selectedCategory = 1;
 
 function onSelectCategoryClicked(){
 
-
-	
 	api.postManager.getCategories( function(categories){
-		
 		
 		var view = Alloy.createController("select_list",{
 			selectCallback : function(c) {
@@ -41,9 +38,7 @@ function onGalleryClicked(){
 function onPostClicked(){
 	
 	if(!imageIsSet && $.comment.value.length == 0){
-		
 		alert("写真を選択または、メッセージを入力してください。");
-		
 		return;
 	}
 	

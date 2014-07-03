@@ -1,4 +1,7 @@
 function Controller() {
+    function onClickHandler() {
+        Ti.API.debug("Clicked!");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "post_position_on_map";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,6 +9,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.post_position_on_map = Ti.UI.createView({
         backgroundColor: "#f0ffff",
         layout: "vertical",
@@ -25,16 +29,19 @@ function Controller() {
         id: "label"
     });
     $.__views.post_position_on_map.add($.__views.label);
+    onClickHandler ? $.__views.label.addEventListener("click", onClickHandler) : __defers["$.__views.label!click!onClickHandler"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    args.onClick | function(post) {
-        Ti.API.debug("Click post:" + post.id);
+    args.onClick | function(posts) {
+        Ti.API.debug("Click post:" + posts);
     };
-    var post = args.post;
-    var util = Alloy.Globals.util;
-    $.label.text = util.niceTimeString(post.posted);
+    var posts = args.posts;
+    Alloy.Globals.util;
+    $.label.text = "投稿" + posts.length + "件";
+    var post = posts[0];
     $.label.backgroundColor = 30 > post.goodness ? "red" : post.goodness > 70 ? "green" : "white";
+    __defers["$.__views.label!click!onClickHandler"] && $.__views.label.addEventListener("click", onClickHandler);
     _.extend($, exports);
 }
 

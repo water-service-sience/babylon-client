@@ -168,12 +168,14 @@ function Controller() {
     var util = Alloy.Globals.util;
     var client = api.client;
     util.questionnaire.get() && ($.questionnaire.title = "アンケートを修正");
+    $.index.addEventListener("focus", function() {
+        $.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
+    });
     $.index.addEventListener("open", function() {
         if (!client.isLogin) {
             var view = Alloy.createController("create_account").getView();
             view.open();
         }
-        $.welcomeMessage.text = "ようこそ" + client.nickname + "さん";
         if ("android" == Ti.Platform.osname) {
             var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();
             switch (rc) {

@@ -240,10 +240,14 @@ function PostManager() {
         Titanium.Geolocation.getCurrentPosition(function(e) {
             var lat = void 0;
             var lon = void 0;
-            if (e.coords) {
-                lat = e.coords.latitude;
-                lon = e.coords.longitude;
-            } else Ti.API.log("Can't get gps data");
+            if (!e.coords) {
+                Ti.API.log("Can't get gps data");
+                alert("GPSを有効にしてください。");
+                callback(null);
+                return;
+            }
+            lat = e.coords.latitude;
+            lon = e.coords.longitude;
             if (image) {
                 Ti.API.log("image size = " + image.length);
                 client.postBinary("/photo/upload", image, function() {}, function(result) {
@@ -274,6 +278,18 @@ function PostManager() {
         };
         updating = true;
         client.get("/post/near?lon=" + lon + "&lat=" + lat, param, function(posts) {
+            updating = false;
+            callback(posts);
+        });
+    };
+    this.getNearGroupedPosts = function(lat, lon, callback) {
+        if (this.updating) return;
+        var param = {
+            lat: lat,
+            lon: lon
+        };
+        updating = true;
+        client.get("/post/near/group?lon=" + lon + "&lat=" + lat, param, function(posts) {
             updating = false;
             callback(posts);
         });

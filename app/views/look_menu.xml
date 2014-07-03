@@ -7,7 +7,9 @@
 		<ListView id="my_lands" onItemclick="onSelectOwnLand" defaultItemTemplate="template">
 			<Templates>
 				<ItemTemplate name="template">
+					<View class="listItem">
 					<Label bindId="name" id="lang_name">aaa</Label>
+					</View>
 				</ItemTemplate>
 			</Templates>
 		</ListView>

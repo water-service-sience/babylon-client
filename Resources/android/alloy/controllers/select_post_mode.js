@@ -21,7 +21,7 @@ function Controller() {
         id: "select_post_mode"
     });
     $.__views.select_post_mode && $.addTopLevelView($.__views.select_post_mode);
-    $.__views.__alloyId211 = Ti.UI.createButton({
+    $.__views.__alloyId214 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -35,11 +35,11 @@ function Controller() {
         color: "#000",
         disabledColor: "#888888",
         title: "作業記録を投稿",
-        id: "__alloyId211"
+        id: "__alloyId214"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId211);
-    onWorkReportModeClicked ? $.__views.__alloyId211.addEventListener("click", onWorkReportModeClicked) : __defers["$.__views.__alloyId211!click!onWorkReportModeClicked"] = true;
-    $.__views.__alloyId212 = Ti.UI.createLabel({
+    $.__views.select_post_mode.add($.__views.__alloyId214);
+    onWorkReportModeClicked ? $.__views.__alloyId214.addEventListener("click", onWorkReportModeClicked) : __defers["$.__views.__alloyId214!click!onWorkReportModeClicked"] = true;
+    $.__views.__alloyId215 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -47,10 +47,10 @@ function Controller() {
         height: "auto",
         color: "#000",
         text: "写真付きで作業記録を投稿します。",
-        id: "__alloyId212"
+        id: "__alloyId215"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId212);
-    $.__views.__alloyId213 = Ti.UI.createButton({
+    $.__views.select_post_mode.add($.__views.__alloyId215);
+    $.__views.__alloyId216 = Ti.UI.createButton({
         font: {
             fontSize: "32dp"
         },
@@ -64,11 +64,11 @@ function Controller() {
         color: "#000",
         disabledColor: "#888888",
         title: "問い合わせ",
-        id: "__alloyId213"
+        id: "__alloyId216"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId213);
-    onInquiryModeClicked ? $.__views.__alloyId213.addEventListener("click", onInquiryModeClicked) : __defers["$.__views.__alloyId213!click!onInquiryModeClicked"] = true;
-    $.__views.__alloyId214 = Ti.UI.createLabel({
+    $.__views.select_post_mode.add($.__views.__alloyId216);
+    onInquiryModeClicked ? $.__views.__alloyId216.addEventListener("click", onInquiryModeClicked) : __defers["$.__views.__alloyId216!click!onInquiryModeClicked"] = true;
+    $.__views.__alloyId217 = Ti.UI.createLabel({
         textAlign: "left",
         font: {
             fontSize: "18dp"
@@ -76,14 +76,14 @@ function Controller() {
         height: "auto",
         color: "#000",
         text: "写真付きで土地改良区に問い合わせします。メッセージのみでも問い合わせは可能です。",
-        id: "__alloyId214"
+        id: "__alloyId217"
     });
-    $.__views.select_post_mode.add($.__views.__alloyId214);
+    $.__views.select_post_mode.add($.__views.__alloyId217);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
-    __defers["$.__views.__alloyId211!click!onWorkReportModeClicked"] && $.__views.__alloyId211.addEventListener("click", onWorkReportModeClicked);
-    __defers["$.__views.__alloyId213!click!onInquiryModeClicked"] && $.__views.__alloyId213.addEventListener("click", onInquiryModeClicked);
+    __defers["$.__views.__alloyId214!click!onWorkReportModeClicked"] && $.__views.__alloyId214.addEventListener("click", onWorkReportModeClicked);
+    __defers["$.__views.__alloyId216!click!onInquiryModeClicked"] && $.__views.__alloyId216.addEventListener("click", onInquiryModeClicked);
     _.extend($, exports);
 }
 

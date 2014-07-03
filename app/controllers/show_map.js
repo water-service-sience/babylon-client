@@ -13,7 +13,7 @@ function onZoomOutClicked(e){
 
 function mapClicked(e)
 {
-
+	Ti.API.debug("Clicked!!!!!");
 }
 
 var selectedPost = null;
@@ -23,7 +23,12 @@ function onClickHandler(e){
 	Ti.API.debug(e.clicksource + " : " + e.type);
 	if(e.clicksource == "pin"){
 		var annotation = e.annotation;
-		var post = annotation.post;
+		var posts = annotation.posts;
+		if(!posts) return;
+		updatePostList(posts);
+    	$.map.selectAnnotation(null);
+		
+		/*var post = annotation.post;
 		
 		if(!post)return;
 	
@@ -39,15 +44,57 @@ function onClickHandler(e){
 	    //画像を表示
 	    $.image_balloon.image = api.toImageUrl(post.imageFile);
 	    $.balloon.visible = true;
-		selectedPost = post;
+		selectedPost = post;*/
+		
 	}
 	
 	
 }
 
-function createCustomView(post){
-	var c = Alloy.createController('post_position_on_map',{
+function updatePostList(posts){
+    var section = $.item_list.sections[0];
+    var itemData = [];
+  
+	for(var i in posts){
+		var item = posts[i];
+		
+		Ti.API.debug(item.imageFile);
+		itemData.push({
+			properties : {
+				height : "64dp",
+				//category : c
+				item : item
+			},
+			postUser : {text : item.user.nickname + "さん"},
+			postTime : {text : util.dateToString(item.posted)},
+			image : {image : api.toImageUrl(item)}
+		});
+	}
+	section.items = itemData;
+
+    $.postList.visible = true;
+}
+
+function onListItemClick(e){
+	
+	var item = e.section.items[e.itemIndex];
+	var post = item.properties.item;
+	Ti.API.debug(post.id + " is clicked");
+	
+	var view = Alloy.createController("post_detail",{
 		post : post
+	}).getView();
+	Alloy.Globals.naviCon.open(view);
+}
+function closeList(){
+	
+    $.postList.visible = false;
+    $.map.selectAnnotation(null);
+}
+
+function createCustomView(posts){
+	var c = Alloy.createController('post_position_on_map',{
+		posts : posts
 	});
 	return c.getView();
 }
@@ -79,7 +126,7 @@ $.show_map.addEventListener("open",function(e){
 	var pinPosts = function(lat,lon){
 		lastLat = lat;
 		lastLon = lon;
-		Alloy.Globals.api.postManager.getNearPosts(lat,lon,function(posts) {
+		/*Alloy.Globals.api.postManager.getNearPosts(lat,lon,function(posts) {
 			
 			for( var i in posts){
 				var d = posts[i];
@@ -92,6 +139,24 @@ $.show_map.addEventListener("open",function(e){
 				    post:d // Custom property to uniquely identify this annotation.
 				});	
 				//anno.addEventListener("click",onClickHandler);
+				annotations.push(anno);
+			}
+			$.map.annotations = annotations;
+		});*/
+		api.postManager.getNearGroupedPosts(lat,lon,function(data){
+			for(var i in data){
+				var d = data[i];
+				var customView = createCustomView(d.posts);
+				var anno = Alloy.Globals.Map.createAnnotation({
+				    latitude:d.latitude,
+				    longitude:d.longitude,
+				    customView : customView,
+				    title : "Loading",
+				    
+				    animate:false,
+				    posts : d.posts
+				});	
+				//customView.addEventListener("click",onClickHandler);
 				annotations.push(anno);
 			}
 			$.map.annotations = annotations;

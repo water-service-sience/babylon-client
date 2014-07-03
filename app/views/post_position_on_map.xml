@@ -1,7 +1,5 @@
 <Alloy>
 	<View class="container">
-		<Label id="label">Hoge</Label>
-		
-		
+		<Label id="label" onClick="onClickHandler">Hoge</Label>
 	</View>
 </Alloy>

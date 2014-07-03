@@ -352,6 +352,9 @@ function PostManager() {
 				lon = e.coords.longitude;
 			}else{
 				Ti.API.log("Can't get gps data");
+				alert("GPSを有効にしてください。");
+				callback(null);
+				return;
 			}
 			
 			if(image){
@@ -399,6 +402,20 @@ function PostManager() {
 		};
 		updating = true;
 		client.get("/post/near?lon=" + lon + "&lat=" + lat,
+		  param,function(posts){
+		  	updating = false;
+			callback(posts);
+		});
+	};
+	this.getNearGroupedPosts = function(lat,lon,callback){
+		
+		if(this.updating) return;
+		var param = {
+			lat : lat,
+			lon : lon
+		};
+		updating = true;
+		client.get("/post/near/group?lon=" + lon + "&lat=" + lat,
 		  param,function(posts){
 		  	updating = false;
 			callback(posts);

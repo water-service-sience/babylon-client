@@ -38,5 +38,50 @@
 	bottom : "5dp",
 	left : "5%",
 	width : "90%"
+},
+"#postList" : {
+	left : "5%",
+	right : "5%",
+	top : "10%",
+	bottom : "10%"
+},
+"#listHeader" : {
+	height : "40dp",
+	top : "0"
+	
+},
+"#listCloseButton" : {
+	width : "100dp",
+	right : 0,
+	height : "38dp",
+	font: { fontSize:"20" }
+},
+"#listHeaderTitle" : {
+	left : 0,
+	font: { fontSize:"28" },
+	height : "28dp"
+},
+".listItem" : {
+	layout : "vertical",
+	width : "70%",
+	left : "30%"
+},
+".lineElement" : {
+	layout : "horizontal",
+	height : "28dp"
+},
+".itemImage" : {
+	left : "0dp",
+	width : "30%"
+},
+"Label" : {
+	font: { fontSize:"20dp" }
+},
+".listItem[platform=android]" : {
+	backgroundColor:"#ffffff"
+},
+".itemImage[platform=android]" : {
+	backgroundColor:"#ffffff"
 }
+
 

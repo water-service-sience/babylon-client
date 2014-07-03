@@ -40,12 +40,12 @@ function Controller() {
         id: "post_messages"
     });
     $.__views.post_messages && $.addTopLevelView($.__views.post_messages);
-    $.__views.__alloyId112 = Ti.UI.createView({
+    $.__views.__alloyId115 = Ti.UI.createView({
         height: "50dp",
         layout: "horizontal",
-        id: "__alloyId112"
+        id: "__alloyId115"
     });
-    $.__views.post_messages.add($.__views.__alloyId112);
+    $.__views.post_messages.add($.__views.__alloyId115);
     $.__views.send_message = Ti.UI.createTextField({
         font: {
             fontSize: "20dp"
@@ -57,7 +57,7 @@ function Controller() {
         height: "100%",
         id: "send_message"
     });
-    $.__views.__alloyId112.add($.__views.send_message);
+    $.__views.__alloyId115.add($.__views.send_message);
     $.__views.send_message_button = Ti.UI.createButton({
         font: {
             fontSize: "24dp"
@@ -74,18 +74,18 @@ function Controller() {
         title: "送信",
         id: "send_message_button"
     });
-    $.__views.__alloyId112.add($.__views.send_message_button);
-    var __alloyId113 = {};
-    var __alloyId116 = [];
-    var __alloyId118 = {
+    $.__views.__alloyId115.add($.__views.send_message_button);
+    var __alloyId116 = {};
+    var __alloyId119 = [];
+    var __alloyId121 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId119 = [];
-            var __alloyId121 = {
+            var __alloyId122 = [];
+            var __alloyId124 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId122 = [];
-                    var __alloyId124 = {
+                    var __alloyId125 = [];
+                    var __alloyId127 = {
                         type: "Ti.UI.Label",
                         properties: {
                             textAlign: "left",
@@ -97,8 +97,8 @@ function Controller() {
                             text: "送信者:"
                         }
                     };
-                    __alloyId122.push(__alloyId124);
-                    var __alloyId126 = {
+                    __alloyId125.push(__alloyId127);
+                    var __alloyId129 = {
                         type: "Ti.UI.Label",
                         bindId: "nickname",
                         properties: {
@@ -112,8 +112,8 @@ function Controller() {
                             bindId: "nickname"
                         }
                     };
-                    __alloyId122.push(__alloyId126);
-                    var __alloyId128 = {
+                    __alloyId125.push(__alloyId129);
+                    var __alloyId131 = {
                         type: "Ti.UI.Label",
                         properties: {
                             textAlign: "left",
@@ -125,8 +125,8 @@ function Controller() {
                             text: "投稿日:"
                         }
                     };
-                    __alloyId122.push(__alloyId128);
-                    var __alloyId130 = {
+                    __alloyId125.push(__alloyId131);
+                    var __alloyId133 = {
                         type: "Ti.UI.Label",
                         bindId: "date",
                         properties: {
@@ -141,20 +141,20 @@ function Controller() {
                             bindId: "date"
                         }
                     };
-                    __alloyId122.push(__alloyId130);
-                    return __alloyId122;
+                    __alloyId125.push(__alloyId133);
+                    return __alloyId125;
                 }(),
                 properties: {
                     height: "30dp",
                     layout: "horizontal"
                 }
             };
-            __alloyId119.push(__alloyId121);
-            var __alloyId132 = {
+            __alloyId122.push(__alloyId124);
+            var __alloyId135 = {
                 type: "Ti.UI.View",
                 childTemplates: function() {
-                    var __alloyId133 = [];
-                    var __alloyId135 = {
+                    var __alloyId136 = [];
+                    var __alloyId138 = {
                         type: "Ti.UI.Label",
                         properties: {
                             textAlign: "left",
@@ -166,8 +166,8 @@ function Controller() {
                             text: "コメント"
                         }
                     };
-                    __alloyId133.push(__alloyId135);
-                    var __alloyId137 = {
+                    __alloyId136.push(__alloyId138);
+                    var __alloyId140 = {
                         type: "Ti.UI.Label",
                         bindId: "message",
                         properties: {
@@ -181,8 +181,8 @@ function Controller() {
                             bindId: "message"
                         }
                     };
-                    __alloyId133.push(__alloyId137);
-                    return __alloyId133;
+                    __alloyId136.push(__alloyId140);
+                    return __alloyId136;
                 }(),
                 properties: {
                     height: "50dp",
@@ -190,23 +190,23 @@ function Controller() {
                     bottom: 0
                 }
             };
-            __alloyId119.push(__alloyId132);
-            return __alloyId119;
+            __alloyId122.push(__alloyId135);
+            return __alloyId122;
         }(),
         properties: {
             layout: "vertical"
         }
     };
-    __alloyId116.push(__alloyId118);
-    var __alloyId115 = {
+    __alloyId119.push(__alloyId121);
+    var __alloyId118 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId116
+        childTemplates: __alloyId119
     };
-    __alloyId113["template"] = __alloyId115;
+    __alloyId116["template"] = __alloyId118;
     $.__views.messages = Ti.UI.createListView({
-        templates: __alloyId113,
+        templates: __alloyId116,
         id: "messages",
         defaultItemTemplate: "template"
     });

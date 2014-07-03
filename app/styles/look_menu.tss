@@ -6,6 +6,15 @@
 	left : "3%",
 	right : "3%",
 	height : "80%"
+},
+"Label" : {
+	backgroundColor : "#ffffff",
+	font : { 
+		fontSize : "20dp"
+	}
+},
+".listItem" : {
+	backgroundColor : "#ffffff"
 }
 
 

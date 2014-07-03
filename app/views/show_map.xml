@@ -1,15 +1,49 @@
 <Alloy>
 	<Window class="map_container">
 		<!-- Note the ns attribute is used to change the default namespace. -->
-        <View id="map" ns="Alloy.Globals.Map" onClick="mapClicked"
+        <View id="map" ns="Alloy.Globals.Map" 
             animate="true" regionFit="true" userLocation="true"
-             >
+            enableZoomControls="true"
+            >
 
             <!-- Place other child views here, such as an ImageView to add an overlay. -->
 
         	<Button id="zoom_in" class="zoom_button" onClick="onZoomInClicked">+</Button>
         	<Button id="zoom_out" class="zoom_button" onClick="onZoomOutClicked">-</Button>
         
+        </View>
+        
+        <View id="postList" visible="false">
+        	<ListView id="item_list" defaultItemTemplate="template" onItemclick="onListItemClick">
+				<Templates>
+					<ItemTemplate name="template">
+						
+						<ImageView class="itemImage" bindId="image"></ImageView>
+						<View class="listItem">
+							<View class="lineElement">
+								<Label>投稿者:</Label>
+								<Label class="templateItem" bindId="postUser" />
+							</View>
+							<View class="lineElement">
+								<Label>投稿日:</Label>
+								<Label class="templateItem" bindId="postTime" />
+							</View>
+						</View>
+					</ItemTemplate>
+				</Templates>
+				
+	            <HeaderView>
+	                <View id="listHeader" backgroundColor="#e0ffff">
+	                    <Label id="listHeaderTitle">近隣の投稿</Label>
+	                    <Button id="listCloseButton" onClick="closeList">閉じる</Button>
+	                </View>
+	            </HeaderView>
+	            
+	            <ListSection>
+	
+	            </ListSection>
+				
+			</ListView>
         </View>
         
     	<View id="balloon" visible="false">

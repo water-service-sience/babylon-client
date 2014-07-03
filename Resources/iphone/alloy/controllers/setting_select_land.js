@@ -29,7 +29,8 @@ function Controller() {
                 land: l,
                 name: {
                     text: l.name
-                }
+                },
+                height: "30dp"
             };
         });
         $.land_list.sections[0].setItems(lands);
@@ -90,21 +91,23 @@ function Controller() {
     __alloyId228.push($.__views.__alloyId224);
     var __alloyId231 = [];
     $.__views.__alloyId232 = {
+        properties: {
+            height: "30dp",
+            id: "__alloyId232"
+        },
         name: {
             text: "新しく登録する"
-        },
-        properties: {
-            id: "__alloyId232"
         }
     };
     __alloyId231.push($.__views.__alloyId232);
     $.__views.__alloyId233 = {
-        name: {
-            text: "サーバーと同期"
-        },
         properties: {
+            height: "30dp",
             sync: "true",
             id: "__alloyId233"
+        },
+        name: {
+            text: "サーバーと同期"
         }
     };
     __alloyId231.push($.__views.__alloyId233);

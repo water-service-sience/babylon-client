@@ -44,21 +44,33 @@ function Controller() {
     onShowMapClicked ? $.__views.show_map.addEventListener("click", onShowMapClicked) : __defers["$.__views.show_map!click!onShowMapClicked"] = true;
     var __alloyId23 = {};
     var __alloyId26 = [];
-    var __alloyId27 = {
-        type: "Ti.UI.Label",
-        bindId: "name",
+    var __alloyId28 = {
+        type: "Ti.UI.View",
+        childTemplates: function() {
+            var __alloyId29 = [];
+            var __alloyId30 = {
+                type: "Ti.UI.Label",
+                bindId: "name",
+                properties: {
+                    textAlign: "left",
+                    font: {
+                        fontSize: "20dp"
+                    },
+                    height: "24dp",
+                    backgroundColor: "#ffffff",
+                    color: "#000",
+                    text: "aaa",
+                    bindId: "name"
+                }
+            };
+            __alloyId29.push(__alloyId30);
+            return __alloyId29;
+        }(),
         properties: {
-            textAlign: "left",
-            font: {
-                fontSize: "18dp"
-            },
-            height: "24dp",
-            color: "#000",
-            text: "aaa",
-            bindId: "name"
+            backgroundColor: "#ffffff"
         }
     };
-    __alloyId26.push(__alloyId27);
+    __alloyId26.push(__alloyId28);
     var __alloyId25 = {
         properties: {
             name: "template"
